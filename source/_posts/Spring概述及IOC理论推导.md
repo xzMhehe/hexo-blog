@@ -7,7 +7,7 @@ tags:
 categories: 
 - Java
 - Spring
-thumbnail: https://s1.ax1x.com/2020/07/17/UsF8oD.jpg
+thumbnail: https://s1.ax1x.com/2020/07/28/aEZGm8.gif
 ---
 # 简介
 - Spring : 春天 --->给软件行业带来了春天
