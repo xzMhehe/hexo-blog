@@ -2,11 +2,11 @@
 title: AOP
 date: 2020-07-23 19:18:05
 tags:
-- Java
 - Spring
-categories: 
-- Java
+categories:
 - Spring
+
+
 thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 ---
 

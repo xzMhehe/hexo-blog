@@ -2,11 +2,10 @@
 title: 什么是MyBatis
 date: 2020-07-11 08:09:32
 tags:
-- Java
 - MyBatis
-categories: 
-- Java
+categories:
 - MyBatis
+
 thumbnail: https://s1.ax1x.com/2020/07/17/UsF3dO.png
 reward: false
 copyright: false

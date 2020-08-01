@@ -2,11 +2,10 @@
 title: Spring依赖注入
 date: 2020-07-21 09:09:11
 tags:
-- Java
 - Spring
-categories: 
-- Java
+categories:
 - Spring
+
 thumbnail: https://s1.ax1x.com/2020/07/18/U2Mv2n.gif
 ---
 # 依赖注入

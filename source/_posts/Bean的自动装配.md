@@ -2,11 +2,10 @@
 title: Bean的自动装配与注解开发
 date: 2020-07-22 12:13:24
 tags:
-- Java
 - Spring
-categories: 
-- Java
+categories:
 - Spring
+
 thumbnail: https://s1.ax1x.com/2020/07/18/U2Mxvq.gif
 ---
 

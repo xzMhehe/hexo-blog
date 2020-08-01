@@ -2,11 +2,10 @@
 title: 其他分页
 date: 2020-07-14 09:10:39
 tags:
-- Java
 - MyBatis
-categories: 
-- Java
+categories:
 - MyBatis
+
 thumbnail: https://s1.ax1x.com/2020/07/17/UsF3dO.png
 ---
 ### RowBounds分页

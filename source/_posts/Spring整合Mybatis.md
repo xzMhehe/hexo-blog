@@ -4,8 +4,8 @@ date: 2020-08-01 09:23:33
 tags:
 - Spring
 - MyBatis
-
 categories:
+- Spring
 
 thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 ---
@@ -247,17 +247,3 @@ public class UserMapperImpl implements UserMapper {
         }
     }
 ```
-
-# 声明式事务
-回顾事务
-- 把一组业务当成一个业务来做,要么都成功, 要么都失败
-- 事务在项目开发中, 十分的重要, 涉及到数据一致性问题, 不能马虎
-- 确保事务完整性和一致性
-
-事务ACID原则
-- 原子性
-- 一致性
-- 隔离性
-    - 多个业务可能操作同一资源, 防止数据损坏
-- 持久性
-    - 事务一旦提交, 无论系统发生什么问题, 结果都不会在被影响, 被持久化的写到存储器中!

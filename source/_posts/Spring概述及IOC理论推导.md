@@ -2,11 +2,10 @@
 title: Spring概述及IOC理论推导
 date: 2020-07-17 20:51:07
 tags:
-- Java
 - Spring
-categories: 
-- Java
+categories:
 - Spring
+
 thumbnail: https://s1.ax1x.com/2020/07/28/aEZGm8.gif
 ---
 # 简介

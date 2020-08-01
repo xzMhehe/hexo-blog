@@ -2,11 +2,10 @@
 title: Mybatis中的属性名和字段名
 date: 2020-07-12 17:20:36
 tags:
-- Java
 - MyBatis
 categories: 
-- Java
 - MyBatis
+
 thumbnail: https://s1.ax1x.com/2020/07/17/UsF3dO.png
 ---
 ### 解决属性名和字段名不一致问题

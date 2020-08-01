@@ -2,11 +2,10 @@
 title: 第一个MyBatis程序
 date: 2020-07-11 10:11:52
 tags:
-- Java
 - MyBatis
-categories: 
-- Java
+categories:
 - MyBatis
+
 thumbnail: https://s1.ax1x.com/2020/07/17/UsFtWd.jpg
 ---
 

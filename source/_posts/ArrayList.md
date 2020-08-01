@@ -2,9 +2,10 @@
 title: ArrayList
 date: 2020-07-09 19:42:22
 tags:
-- 随记
+- Java
 categories: 
-- 随记
+- Java
+
 thumbnail: https://s1.ax1x.com/2020/07/17/UsFtWd.jpg
 reward: false
 copyright: false
