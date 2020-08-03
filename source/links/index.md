@@ -20,7 +20,7 @@ copyright: false
 
 <div class="friends">
     <a class="brick mdui-ripple mdui-ripple-white" href="http://r.codingce.com.cn/">
-        <img class="blog-avatar" src="https://www.bugteam.cn/header.jpg">
+        <img class="blog-avatar" src="http://yanxuan.nosdn.127.net/6e122f997506c72f08a3bf2ace84f83b.jpg">
         <div class="container">
             <div class="name">我的简历</div>
             <div class="motto">道阻且长</div>
@@ -45,27 +45,27 @@ copyright: false
 ### 特殊链接
 
 <div class="friends">
-    <a class="brick mdui-ripple mdui-ripple-white" href="https://www.bandbbs.cn/">
+    <!-- <a class="brick mdui-ripple mdui-ripple-white" href="https://www.bandbbs.cn/">
         <img class="blog-avatar" src="http://yanxuan.nosdn.127.net/6e122f997506c72f08a3bf2ace84f83b.jpg">
         <div class="container">
             <div class="name">米坛</div>
             <div class="motto">创造不一样</div>
         </div>
-    </a>
-    <a class="brick mdui-ripple mdui-ripple-white" href="https://aidn.jp/">
+    </a> -->
+    <!-- <a class="brick mdui-ripple mdui-ripple-white" href="https://aidn.jp/">
         <img class="blog-avatar" src="https://aidn.jp/apple-touch-icon.png">
         <div class="container">
             <div class="name">AIDN</div>
             <div class="motto">daniwell official website</div>
         </div>
-    </a>
-    <a class="brick mdui-ripple mdui-ripple-white" href="http://www.zhisou.cc">
+    </a> -->
+    <!-- <a class="brick mdui-ripple mdui-ripple-white" href="http://www.zhisou.cc">
         <img class="blog-avatar" src="https://secure.gravatar.com/avatar/1ee71d9da3b0fc793f4ad544533ebde4?s=200">
         <div class="container">
             <div class="name">来语直搜</div>
             <div class="motto">专注你的热爱</div>
         </div>
-    </a>
+    </a> -->
 </div>
 
 ### 失效友链
