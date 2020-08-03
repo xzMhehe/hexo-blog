@@ -160,5 +160,122 @@ ${msg}
 
 # 注解版
 - 新建一个Moudle，springmvc-03-hello-annotation 。添加web支持！
-- 由于Maven可能存在资源过滤的问题，我们将配置完善
+- 由于Maven可能存在资源过滤的问题，我们将配置完善   任何maven项目都建议在pom.xml中加上以下资源过滤配置
+```xml
 
+<build>
+   <resources>
+       <resource>
+           <directory>src/main/java</directory>
+           <includes>
+               <include>**/*.properties</include>
+               <include>**/*.xml</include>
+           </includes>
+           <filtering>false</filtering>
+       </resource>
+       <resource>
+           <directory>src/main/resources</directory>
+           <includes>
+               <include>**/*.properties</include>
+               <include>**/*.xml</include>
+           </includes>
+           <filtering>false</filtering>
+       </resource>
+   </resources>
+</build>
+```
+- 在pom.xml文件引入相关的依赖：主要有Spring框架核心库、Spring MVC、servlet , JSTL等。我们在父依赖中已经引入了！
+
+- 配置web.xml
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+        version="4.0">
+
+   <!--1.注册servlet-->
+   <servlet>
+       <servlet-name>SpringMVC</servlet-name>
+       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+       <!--通过初始化参数指定SpringMVC配置文件的位置，进行关联-->
+       <init-param>
+           <param-name>contextConfigLocation</param-name>
+           <param-value>classpath:springmvc-servlet.xml</param-value>
+       </init-param>
+       <!-- 启动顺序，数字越小，启动越早 -->
+       <load-on-startup>1</load-on-startup>
+   </servlet>
+
+   <!--所有请求都会被springmvc拦截 -->
+   <servlet-mapping>
+       <servlet-name>SpringMVC</servlet-name>
+       <url-pattern>/</url-pattern>
+   </servlet-mapping>
+
+</web-app>
+```
+/ 和 /* 的区别：< url-pattern > / </ url-pattern > 不会匹配到.jsp， 只针对我们编写的请求；即：.jsp 不会进入spring的 DispatcherServlet类 。< url-pattern > /* </ url-pattern > 会匹配 *.jsp，会出现返回 jsp视图 时再次进入spring的DispatcherServlet 类，导致找不到对应的controller所以报404错。
+    - 注意web.xml版本问题，要最新版！
+    - 注册DispatcherServlet
+    - 关联SpringMVC的配置文件
+    - 启动级别为1
+    - 映射路径为 / 【不要用/*，会404】
+
+- Controller
+```java
+package cn.com.codingce.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/hello")
+public class HelloController{
+
+    @RequestMapping("/h1")
+    public String hello(Model mv) {
+        //封装数据
+        mv.addAttribute("msg", "HelloAnnotation");
+        return "hello"; //会被视图解析器处理
+    }
+}
+```
+
+- @Controller是为了让Spring IOC容器初始化时自动扫描到；
+- @RequestMapping是为了映射请求路径，这里因为类与方法上都有映射所以访问时应该是/HelloController/hello；
+- 方法中声明Model类型的参数是为了把Action中的数据带到视图中；
+- 方法返回的结果是视图的名称hello，加上配置文件中的前后缀变成WEB-INF/jsp/hello.jsp。
+
+- 创建视图层
+
+在WEB-INF/ jsp目录中创建hello.jsp ， 视图可以直接取出并展示从Controller带回的信息；
+
+可以通过EL表示取出Model中存放的值，或者对象；
+
+```java
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+   <title>SpringMVC</title>
+</head>
+<body>
+${msg}
+</body>
+</html>
+```
+
+- 配置Tomcat运行
+配置Tomcat ，  开启服务器 ， 访问 对应的请求路径！
+![mark](http://image.codingce.com.cn/blog/20200803/151154817.png)
+
+## 小结
+实现步骤其实非常的简单：
+- 新建一个web项目
+- 导入相关jar包
+- 编写web.xml , 注册DispatcherServlet
+- 编写springmvc配置文件
+- 接下来就是去创建对应的控制类 , controller
+- 最后完善前端视图和controller之间的对应
+- 测试运行调试.
