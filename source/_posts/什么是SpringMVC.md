@@ -1,5 +1,5 @@
 ---
-title: 什么是SpringMVC
+title: 初识SpringMVC
 date: 2020-08-01 22:52:36
 tags:
 - SpringMVC
@@ -257,6 +257,7 @@ SpringMVC的原理如下图所示：
 图为SpringMVC的一个较完整的流程图，实线表示SpringMVC框架提供的技术，不需要开发者实现，虚线表示需要开发者实现。
 
 简要分析执行流程
+<font color=red >
 
 - DispatcherServlet表示前置控制器，是整个SpringMVC的控制中心。用户发出请求，DispatcherServlet接收请求并拦截请求。我们假设请求的url为 : http://localhost:8080/SpringMVC/hello
 如上url拆分成三部分：
@@ -287,6 +288,8 @@ HandlerMapping,HandlerMapping根据请求url查找Handler。
 - DispatcherServlet根据视图解析器解析的视图结果，调用具体的视图。
 
 - 最终视图呈现给用户。
+
+</font>
 
 <center><font color=BBBBBB size=5>微信公众号</font></center>
 
