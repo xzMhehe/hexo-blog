@@ -2,7 +2,7 @@
 title: my hexo blog
 date: 2020-07-07 21:22:21
 tags:
-- Java
+- 随记
 categories:
 
 thumbnail: https://s1.ax1x.com/2020/07/28/aEm3dS.gif
