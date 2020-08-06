@@ -713,3 +713,137 @@ public class BookController {
    </div>
 </div>
 ```
+
+## BookController 类编写 ， 方法二：添加书籍
+```java
+    @RequestMapping("/toAddBook")
+    public String toAddPaper() {
+        return "addBook";
+    }
+
+    @RequestMapping("/addBook")
+    public String addPaper(Books books) {
+        System.out.println(books);
+        bookService.addBook(books);
+        return "redirect:/book/allBook";
+    }
+```
+## 添加书籍页面：addBook.jsp
+```html
+<%--
+  Created by IntelliJ IDEA.
+  User: xzMa
+  Date: 2020/8/6
+  Time: 8:16
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<html>
+<head>
+    <title>新增书籍</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    <small>新增书籍</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <form action="${pageContext.request.contextPath}/book/addBook" method="post">
+        书籍名称：<input type="text" name="bookName"><br><br><br>
+        书籍数量：<input type="text" name="bookCounts"><br><br><br>
+        书籍详情：<input type="text" name="detail"><br><br><br>
+        <input type="submit" value="添加">
+    </form>
+
+</div>
+
+```
+
+## BookController 类编写 ， 方法三：修改书籍
+```java
+   @RequestMapping("/toUpdateBook")
+    public String toUpdateBook(Model model, int id) {
+        Books books = bookService.queryBookById(id);
+        System.out.println(books);
+        model.addAttribute("book",books );
+        return "updateBook";
+    }
+
+    @RequestMapping("/updateBook")
+    public String updateBook(Model model, Books book) {
+        System.out.println(book);
+        bookService.updateBook(book);
+        Books books = bookService.queryBookById(book.getBookID());
+        model.addAttribute("books", books);
+        return "redirect:/book/allBook";
+    }
+```
+
+## 修改书籍页面  updateBook.jsp
+```html
+<%--
+  Created by IntelliJ IDEA.
+  User: xzMa
+  Date: 2020/8/6
+  Time: 8:18
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>修改信息</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    <small>修改信息</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <form action="${pageContext.request.contextPath}/book/updateBook" method="post">
+        <input type="hidden" name="bookID" value="${book.getBookID()}"/>
+        书籍名称：<input type="text" name="bookName" value="${book.getBookName()}"/>
+        书籍数量：<input type="text" name="bookCounts" value="${book.getBookCounts()}"/>
+        书籍详情：<input type="text" name="detail" value="${book.getDetail() }"/>
+        <input type="submit" value="提交"/>
+    </form>
+
+</div>
+
+```
+
+## BookController 类编写 ， 方法四：删除书籍
+```java
+@RequestMapping("/del/{bookId}")
+public String deleteBook(@PathVariable("bookId") int id) {
+   bookService.deleteBookById(id);
+   return "redirect:/book/allBook";
+}
+```
+## 配置Tomcat，进行运行！
+
+到目前为止，这个SSM项目整合已经完全的OK了，可以直接运行进行测试！这个练习十分的重要，需要保证，不看任何东西，自己也可以完整的实现出来！
+
+# 项目结构图 
+![mark](http://image.codingce.com.cn/blog/20200806/083121119.png)

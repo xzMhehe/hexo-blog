@@ -26,8 +26,9 @@ top: 1
 
 - 博客园    https://www.cnblogs.com/mzdljgz/
 - CSDN  https://blog.csdn.net/weixin_43874301
-- 简书  https://www.jianshu.com/u/3dc04ad868c4
+- 简书  https://www.jianshu.com/u/a22e10515f17
 - 知乎  https://www.zhihu.com/people/jing-qing-qiu-52
+- 掘金  https://juejin.im/user/131597127652312
 - 公众号 ThePalmJava
 
 ## 至今
