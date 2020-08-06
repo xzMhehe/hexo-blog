@@ -99,7 +99,7 @@ theme: inside
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  # repo: git@139.9.34.48:/home/git/hexo.git     # 填写你的服务器地址 将SERVER替换掉
-  repo: https://github.com/xzMhehe/codingce-blog
+  repo: git@139.9.34.48:/home/git/hexo.git     # 填写你的服务器地址 将SERVER替换掉
+  # repo: https://github.com/xzMhehe/codingce-blog
   # example, https://github.com/hexojs/hexojs.github.io
   branch: master

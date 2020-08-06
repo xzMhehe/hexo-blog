@@ -111,3 +111,281 @@ jQuery.ajax(...)
         
 ```
 
+## 我们来个简单的测试，使用最原始的HttpServletResponse处理 , .最简单 , 最通用
+
+- 配置web.xml 和 springmvc的配置文件，复制上面案例的即可 【记得静态资源过滤和注解驱动配置上】
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    
+    <servlet>
+        <servlet-name>springmvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:applicationContext.xml</param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>springmvc</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>encoding</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encoding</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    
+</web-app>
+```
+
+- 编写一个AjaxController
+```java
+package cn.com.codingce.controller;
+
+import cn.com.codingce.pojo.User;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+public class AjaxController {
+
+    @RequestMapping("/t1")
+    public String test1(Model model) {
+        model.addAttribute("msg", "hello");
+        return "hello";
+    }
+
+    @RequestMapping("a1")
+    public void a1(String name, HttpServletResponse response) throws IOException {
+        System.out.println("a1:param=>" + name);
+        if ("掌上".equals(name)) {
+            response.getWriter().print(true);
+        } else {
+            response.getWriter().print(false);
+        }
+    }
+
+}
+
+```
+
+- 编写index.jsp测试
+```html
+<%--
+  Created by IntelliJ IDEA.
+  User: xzMa
+  Date: 2020/8/6
+  Time: 13:39
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+  <title>$Title$</title>
+  <%--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>--%>
+  <script src="${pageContext.request.contextPath}/statics/js/jquery-3.5.1.js"></script>
+  <script>
+    function a1(){
+      $.post({
+        url:"${pageContext.request.contextPath}/a1",
+        data:{'name':$("#txtName").val()},
+        success:function (data, status) {
+          alert(data);
+          alert(status);
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+  <%--失去焦点的时候, 发起一个请求(携带信息)到后台--%>
+  <%--onblur：失去焦点触发事件--%>
+  用户名:<input type="text" id="txtName" onblur="a1()"/>
+  </body>
+</html>
+```
+启动tomcat测试！打开浏览器的控制台，当我们鼠标离开输入框的时候，可以看到发出了一个ajax的请求！是后台返回给我们的结果！测试成功！
+
+## Springmvc实现
+
+- 实体类user
+```java
+package cn.com.codingce.pojo;
+
+public class User {
+
+    private String name;
+    private int age;
+    private String sex;
+
+    public User() {
+    }
+}
+```
+
+- 我们来获取一个集合对象，展示到前端页面
+```java
+    @RequestMapping("/a2")
+    public List<User> a2() {
+        ArrayList<User> list = new ArrayList<User>();
+        //添加数据
+        list.add(new User("掌上编程", 1, "男"));
+        list.add(new User("掌上编程", 2, "男"));
+        list.add(new User("掌上编程", 3, "男"));
+        list.add(new User("掌上编程", 4, "男"));
+        list.add(new User("掌上编程", 5, "男"));
+        return list;
+    }
+```
+- 前端页面
+```html
+<%--
+  Created by IntelliJ IDEA.
+  User: xzMa
+  Date: 2020/8/6
+  Time: 18:31
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Title</title>
+    <script src="${pageContext.request.contextPath}/statics/js/jquery-3.5.1.js"></script>
+    <script>
+
+        $(function () {
+            $("#btn").click(function () {
+                $.post("${pageContext.request.contextPath}/a2",function (data) {
+                    console.log(data)
+                    var html="";
+                    for (var i = 0; i <data.length ; i++) {
+                        html+= "<tr>" +
+                            "<td>" + data[i].name + "</td>" +
+                            "<td>" + data[i].age + "</td>" +
+                            "<td>" + data[i].sex + "</td>" +
+                            "</tr>"
+                    }
+                    $("#content").html(html);
+                });
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="button" id="btn" value="获取数据"/>
+<table width="80%" align="center">
+    <tr>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>性别</td>
+    </tr>
+    <tbody id="content">
+    </tbody>
+</table>
+</body>
+</html>
+
+```
+
+成功实现了数据回显！可以体会一下Ajax的好处！
+
+# 注册提示效果
+- Controller
+```java
+@RequestMapping("/a3")
+public String ajax3(String name,String pwd){
+   String msg = "";
+   //模拟数据库中存在数据
+   if (name!=null){
+       if ("admin".equals(name)){
+           msg = "OK";
+      }else {
+           msg = "用户名输入错误";
+      }
+  }
+   if (pwd!=null){
+       if ("123456".equals(pwd)){
+           msg = "OK";
+      }else {
+           msg = "密码输入有误";
+      }
+  }
+   return msg; //由于@RestController注解，将msg转成json格式返回
+}
+```
+
+- 前端页面 login.jsp
+```html
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>ajax</title>
+    <script src="${pageContext.request.contextPath}/statics/js/jquery-3.1.1.min.js"></script>
+    <script>
+
+        function a1(){
+            $.post({
+                url:"${pageContext.request.contextPath}/a3",
+                data:{'name':$("#name").val()},
+                success:function (data) {
+                    if (data.toString()=='OK'){
+                        $("#userInfo").css("color","green");
+                    }else {
+                        $("#userInfo").css("color","red");
+                    }
+                    $("#userInfo").html(data);
+                }
+            });
+        }
+        function a2(){
+            $.post({
+                url:"${pageContext.request.contextPath}/a3",
+                data:{'pwd':$("#pwd").val()},
+                success:function (data) {
+                    if (data.toString()=='OK'){
+                        $("#pwdInfo").css("color","green");
+                    }else {
+                        $("#pwdInfo").css("color","red");
+                    }
+                    $("#pwdInfo").html(data);
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+<p>
+    用户名:<input type="text" id="name" onblur="a1()"/>
+    <span id="userInfo"></span>
+</p>
+<p>
+    密码:<input type="text" id="pwd" onblur="a2()"/>
+    <span id="pwdInfo"></span>
+</p>
+</body>
+</html>
+```
+
