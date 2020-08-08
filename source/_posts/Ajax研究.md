@@ -312,7 +312,7 @@ public class User {
 成功实现了数据回显！可以体会一下Ajax的好处！
 
 # 注册提示效果
-- Controller
+## Controller
 ```java
 @RequestMapping("/a3")
 public String ajax3(String name,String pwd){
@@ -336,7 +336,7 @@ public String ajax3(String name,String pwd){
 }
 ```
 
-- 前端页面 login.jsp
+## 前端页面 login.jsp
 ```html
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
