@@ -144,3 +144,25 @@ public class HelloController {
 - 编写完毕后，从主程序启动项目，浏览器发起请求，看页面返回；控制台输出了 Tomcat 访问的端口号！
 
 # 将项目打成jar包，点击 maven的 package
+
+可以配置打包时 跳过项目运行测试用例
+```xml
+
+<!--
+    在工作中,很多情况下我们打包是不想执行测试用例的
+    可能是测试用例不完事,或是测试用例会影响数据库数据
+    跳过测试用例执
+    -->
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <configuration>
+        <!--跳过项目运行测试用例-->
+        <skipTests>true</skipTests>
+    </configuration>
+</plugin>
+
+```
+
+如果打包成功，则会在target目录下生成一个 jar 包
+
