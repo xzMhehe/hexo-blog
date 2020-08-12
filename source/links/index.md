@@ -16,6 +16,16 @@ copyright: false
     </a>
 </div>
 
+<div class="friends">
+    <a class="brick mdui-ripple mdui-ripple-white" href="https://blog.icyuyan.net/">
+        <img class="blog-avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=1184662350&spec=640">
+        <div class="container">
+            <div class="name">独孤伶俜</div>
+            <div class="motto">独孤伶俜 and 一生倥偬</div>
+        </div>
+    </a>
+</div>
+
 ### 本人链接
 
 <div class="friends">
@@ -118,6 +128,7 @@ copyright: false
 </summary>
 <div class="mdui-panel-item-body">
     <li>2019-12-01 —— 粉色桃子的博客</li>
+    <li>2020-08-10 —— 独孤伶俜</li>
 </div>
 </details>
 

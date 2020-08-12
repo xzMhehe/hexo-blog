@@ -475,6 +475,7 @@ plugins:
   - position: sidebar
     template: |
       <is-palette2></is-palette2>
+      
 ##头像设置
   - position: avatar
     template: |
@@ -482,6 +483,7 @@ plugins:
         style="padding:2px;width:8rem;height:8rem;border:1px solid #bbb;vertical-align:bottom;margin-top:2.4rem"
         draggable="false"
         width="160" height="160">
+
   - //cdn1.lncld.net/static/js/3.0.4/av-min.js
   - //unpkg.com/valine/dist/Valine.min.js
   - position: comments
@@ -492,7 +494,7 @@ plugins:
           el: '#vcomment',
           appId: 'u3kx4xhHFpadzMOyWK1tMiCd-gzGzoHsz',
           appKey: 'HbQueWo4YTSPBLYvqO9lS89B',
-          placeholder: '留个言8😆',
+          placeholder: '留个言8',
           path: location.pathname
         })
       </script>
