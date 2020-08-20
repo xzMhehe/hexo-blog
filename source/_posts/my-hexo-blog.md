@@ -5,7 +5,7 @@ tags:
 - 随记
 categories:
 
-thumbnail: https://s1.ax1x.com/2020/07/28/aEm3dS.gif
+thumbnail: https://s1.ax1x.com/2020/08/20/dJabfP.jpg
 top: 1
 ---
 我是xzMhehe，一名Java开发者，技术一般，经历平平，但是也一直渴望进步，同时也努力活着，为了人生不留遗憾，也希望能够一直做着自己喜欢的事情，得闲时分享心得、分享一些浅薄的经验，等以后老得不能再老了，就说故事已经讲完了,不去奢求圆满。

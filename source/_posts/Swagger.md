@@ -6,6 +6,7 @@ tags:
 categories: 
 - SpringBoot
 
+thumbnail: https://s1.ax1x.com/2020/08/20/dJdY0H.md.jpg
 ---
 
 # 项目集成Swagger

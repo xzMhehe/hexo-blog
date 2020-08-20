@@ -26,7 +26,7 @@ copyright: false
     </a>
 </div>
 
-### 本人链接
+### 本人站点
 
 <div class="friends">
     <a class="brick mdui-ripple mdui-ripple-white" href="http://r.codingce.com.cn/">
@@ -37,17 +37,24 @@ copyright: false
         </div>
     </a>
     <a class="brick mdui-ripple mdui-ripple-white" href="https://z.codingce.com.cn/">
-        <img class="blog-avatar" src="https://lemonadorable.gitee.io/img/avatar.png">
+        <img class="blog-avatar" src="https://avatars3.githubusercontent.com/u/15863367?s=100&v=4">
         <div class="container">
             <div class="name">我的主页</div>
             <div class="motto">欢迎访问!</div>
         </div>
     </a>
     <a class="brick mdui-ripple mdui-ripple-white" href="https://halo.codingce.com.cn/">
-        <img class="blog-avatar" src="https://blog.ojhdt.com/icon.png">
+        <img class="blog-avatar" src="https://avatars2.githubusercontent.com/u/472311?s=100&v=4">
         <div class="container">
             <div class="name">我的博客</div>
             <div class="motto">欢迎访问</div>
+        </div>
+    </a>
+        <a class="brick mdui-ripple mdui-ripple-white" href="https://folio.codingce.com.cn/">
+        <img class="blog-avatar" src="https://avatars1.githubusercontent.com/u/20219567?s=100&v=4">
+        <div class="container">
+            <div class="name">folio</div>
+            <div class="motto">play</div>
         </div>
     </a>
 </div>
