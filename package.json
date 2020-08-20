@@ -30,7 +30,8 @@
     "hexo-server": "^1.0.0",
     "html-minifier": "^4.0.0",
     "live2d-widget-model-haru": "^1.0.5",
-    "terser": "^4.8.0"
+    "terser": "^4.8.0",
+    "typed.js": "^2.0.11"
   },
   "devDependencies": {
     "gulp": "^4.0.2"

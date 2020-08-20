@@ -7,7 +7,7 @@ appearance:
   accent_color: '#2a2b33'
   foreground_color: '#363636'
   border_color: '#e0e0e0'
-  background: '#f5f7fa'
+  background: 'url(//s1.ax1x.com/2020/08/17/dVOcFJ.png) #f5f7fa'
   sidebar_background: '#2a2b33'
   card_background: '#fff'
 
@@ -86,7 +86,8 @@ profile:
   # You can set Avatar URL directly
   avatar: /images/bear.jpg
 
-  bio: The depth of thinking determines your altitude.
+  bio: '>'
+  # The depth of thinking determines your altitude.
 
 # Sidebar navigation links
 menu:
@@ -124,7 +125,7 @@ sns:
 # Sidebar footer copyright info
 footer:
   # Set to false to hide.
-  # copyright: '&copy; 2019 • <a href="">John Doe</a>'
+  copyright: '&copy; 2020 ♥ <a href="https://i.codingce.com.cn/">Xinze Ma</a>'
 
   # Set to false to hide Hexo link.
   powered: false
@@ -136,18 +137,8 @@ footer:
   # custom: Hosted by <a target="_blank" rel="external nofollow"
   #   href="https://github.com/xzMhehe"><b>Github Pages</b></a>
   custom: 
-    <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?cdff481970979bbbcc090ceb8abab72d";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
-    本站微信公众号:ThePalmJava<br />
-    <a target="_blank" rel="external nofollow"
-    href="http://www.beian.miit.gov.cn/"><b>津ICP备19009605号</b></a>
+    <p id="hitokoto"><a href="#" id="hitokoto_text">:D 获取中...</a></p>
+    <a target="_blank" rel="external nofollow" href="http://www.beian.miit.gov.cn/"><b>津ICP备19009605号</b></a>
 
 
 # ---------------------------------------------------------------
@@ -470,12 +461,15 @@ pwa:
 # Plugins
 
 plugins:
+  - //cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js
+  - //cdn.jsdelivr.net/npm/typed.js@2.0.11
   - //blog.oniuo.com/wc.cc9a2092fece1d80bf3b.js
   - //blog.oniuo.com/theme.js
+  - tag: script
+    code: source/123.js
   - position: sidebar
     template: |
       <is-palette2></is-palette2>
-      
 ##头像设置
   - position: avatar
     template: |
@@ -483,7 +477,17 @@ plugins:
         style="padding:2px;width:8rem;height:8rem;border:1px solid #bbb;vertical-align:bottom;margin-top:2.4rem"
         draggable="false"
         width="160" height="160">
-
+      <!--一言-->
+      <script>
+        fetch('https://v1.hitokoto.cn')
+          .then(response => response.json())
+          .then(data => {
+            const hitokoto = document.getElementById('hitokoto_text')
+            hitokoto.href = 'https://i.codingce.com.cn'
+            hitokoto.innerText = data.hitokoto
+          })
+          .catch(console.error)
+      </script>
   - //cdn1.lncld.net/static/js/3.0.4/av-min.js
   - //unpkg.com/valine/dist/Valine.min.js
   - position: comments
