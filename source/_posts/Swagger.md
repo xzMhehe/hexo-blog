@@ -203,3 +203,159 @@ public Docket docket(Environment environment) {
 
 
 # 配置API分组
+- 如果没有配置分组，默认是default。通过groupName()方法即可配置分组：
+```java
+        return new Docket(DocumentationType.SWAGGER_2)
+                //用的自己的             return new Docket(DocumentationType.SWAGGER_2); 默认
+                .apiInfo(apiInfo())
+                //enable    是否启动Swagger, 如果false则Swagger不能再浏览器中访问
+                //.enable(false)
+                .groupName("掌上编程")
+                .enable(flag)
+                .select()
+```
+
+- 如何配置多个分组？配置多个分组只需要配置多个docket即可：
+```java
+public class SwaggerConfig {
+
+    @Bean
+    public Docket docket1() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("A");
+    }
+
+    @Bean
+    public Docket docket2() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("B");
+    }
+
+    @Bean
+    public Docket docket3() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("C");
+    }
+
+    @Bean
+    public Docket docket4() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("D");
+    }
+
+    @Bean //配置docket以配置Swagger具体参数  链式编程
+    public Docket docket(Environment environment) {
+        //设置要显示的Swagger环境
+        Profiles profiles = Profiles.of("dev", "test");
+
+        //获取项目环境    Environment environment.acceptsProfiles(profiles);判断是否处于自己设定的环境中
+        boolean flag = environment.acceptsProfiles(profiles);
+
+
+        return new Docket(DocumentationType.SWAGGER_2)
+                //用的自己的             return new Docket(DocumentationType.SWAGGER_2); 默认
+                .apiInfo(apiInfo())
+                //enable    是否启动Swagger, 如果false则Swagger不能再浏览器中访问
+                //.enable(false)
+                .groupName("掌上编程")
+                .enable(flag)
+                .select()
+                //RequestHandlerSelectors配置要扫面接口的方式
+                //basePackage   指定要扫描的包      .apis(RequestHandlerSelectors.basePackage("cn.com.codingce.controller"))
+                //any() 扫描全部
+                //no() 都不扫描
+                //withClassAnnotation   :扫描类上的注解, 参数是一个注解反射的对象
+                //withMethodAnnotation  :扫描方法上的注解
+                .apis(RequestHandlerSelectors.basePackage("cn.com.codingce.controller"))
+                //paths() 过滤路径
+                //.paths(PathSelectors.ant("/codingce/**"))
+                .build();//build工厂模式
+    }
+```
+
+
+# 常用注解
+Swagger的所有注解定义在io.swagger.annotations包下
+
+下面列一些经常用到的，未列举出来的可以另行查阅说明：
+|Swagger注解|简单说明|
+| --- | --- |
+|@Api(tags = "xxx模块说明")|作用在模块类上|
+|@ApiOperation("xxx接口说明")|作用在接口方法上|
+|@ApiModel("xxxPOJO说明")|作用在模型类上：如VO、BO|
+|@ApiModelProperty(value = "xxx属性说明",hidden = true)|作用在类方法和属性上，hidden设置为true可以隐藏该属性|
+|@ApiParam("xxx参数说明")|作用在参数、方法和字段上，类似@ApiModelProperty|
+
+也可以给请求的接口配置一些注释
+```java
+//Operation接口
+@ApiOperation("Hello控制类")
+@RestController
+public class HelloCobtroller {
+
+    @RequestMapping(value = "/hello")
+    public String hello() {
+        return "hello";
+    }
+
+    @PostMapping("/myuser")
+    public User user() {
+        return new User();
+    }
+
+    //Operation接口, 不是放在类上, 是方法
+    @ApiOperation("Hello控制类")
+    @RequestMapping(value = "/hello2")
+    public String hello2() {
+        return "hello";
+    }
+
+    @ApiOperation("Hello控制类")
+    @RequestMapping(value = "/hello3")
+    public String hello3(@ApiParam("用户名") String username) {
+        return "hello" + username;
+    }
+
+}
+
+```
+
+# 拓展：其他皮肤
+- 默认的   访问 http://localhost:8080/swagger-ui.html
+```xml
+<dependency>
+   <groupId>io.springfox</groupId>
+   <artifactId>springfox-swagger-ui</artifactId>
+   <version>2.9.2</version>
+</dependency>
+```
+
+- bootstrap-ui  访问 http://localhost:8080/doc.html
+```xml
+<!-- 引入swagger-bootstrap-ui包 /doc.html-->
+<dependency>
+   <groupId>com.github.xiaoymin</groupId>
+   <artifactId>swagger-bootstrap-ui</artifactId>
+   <version>1.9.1</version>
+</dependency>
+```
+
+- Layui-ui   访问 http://localhost:8080/docs.html
+```xml
+<!-- 引入swagger-ui-layer包 /docs.html-->
+<dependency>
+   <groupId>com.github.caspar-chen</groupId>
+   <artifactId>swagger-ui-layer</artifactId>
+   <version>1.1.3</version>
+</dependency>
+
+```
+- mg-ui   访问 http://localhost:8080/document.html
+```xml
+<!-- 引入swagger-ui-layer包 /document.html-->
+<dependency>
+   <groupId>com.zyplayer</groupId>
+   <artifactId>swagger-mg-ui</artifactId>
+   <version>1.0.6</version>
+</dependency>
+```
