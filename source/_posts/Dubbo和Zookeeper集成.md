@@ -16,7 +16,7 @@ categories:
 
 分布式系统（distributed system）是建立在网络之上的软件系统。
 
-首先需要明确的是，只有当单个节点的处理能力无法满足日益增长的计算、存储任务的时候，且硬件的提升（加内存、加磁盘、使用更好的CPU）高昂到得不偿失的时候，应用程序也不能进一步优化的时候，我们才需要考虑分布式系统。因为，分布式系统要解决的问题本身就是和单机系统一样的，而由于分布式系统多节点、通过网络通信的拓扑结构，会引入很多单机系统没有的问题，为了解决这些问题又会引入更多的机制、协议，带来更多的问题。。。
+首先需要明确的是，只有当单个节点的处理能力无法满足日益增长的计算、存储任务的时候，且硬件的提升（加内存、加磁盘、使用更好的CPU）高昂到得不偿失的时候，应用程序也不能进一步优化的时候，才需要考虑分布式系统。因为，分布式系统要解决的问题本身就是和单机系统一样的，而由于分布式系统多节点、通过网络通信的拓扑结构，会引入很多单机系统没有的问题，为了解决这些问题又会引入更多的机制、协议，带来更多的问题。。。
 
 ## Dubbo文档
 随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，急需一个治理系统确保架构有条不紊的演进。
@@ -94,12 +94,12 @@ dubbo基本概念
 - 服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。
 
 ## Dubbo环境搭建
-点进dubbo官方文档，推荐我们使用Zookeeper 注册中心
+点进dubbo官方文档，推荐使用Zookeeper 注册中心
 
 什么是zookeeper呢？可以查看官方文档
 
 ## Window下安装zookeeper
-- 下载zookeeper ：地址， 我们下载3.4.14 ， 最新版！解压zookeeper
+- 下载zookeeper ：地址， 下载3.4.14 ， 最新版！解压zookeeper
 - 运行/bin/zkServer.cmd ，初次运行会报错，没有zoo.cfg配置文件；
 
 可能遇到问题：闪退 !
@@ -124,7 +124,7 @@ dubbo本身并不是一个服务软件。它其实就是一个jar包，能够帮
 
 但是为了让用户更好的管理监控众多的dubbo服务，官方提供了一个可视化的监控程序dubbo-admin，不过这个监控即使不装也不影响使用。
 
-我们这里来安装一下：
+这里来安装一下：
 - 下载dubbo-admin
 地址 ：https://github.com/apache/dubbo-admin/tree/master
 
@@ -152,14 +152,275 @@ mvn clean package -Dmaven.test.skip=true
 - 执行 dubbo-admin\target 下的dubbo-admin-0.0.1-SNAPSHOT.jar
 java -jar dubbo-admin-0.0.1-SNAPSHOT.jar
 【注意：zookeeper的服务一定要打开！】
-执行完毕，我们去访问一下 http://localhost:7001/ ， 这时候我们需要输入登录账户和密码，我们都是默认的root-root；
+执行完毕，去访问一下 http://localhost:7001/ ， 这时候需要输入登录账户和密码，都是默认的root-root；
 登录成功后，查看界面
 
 ![mark](http://image.codingce.com.cn/blog/20200826/223714248.png)
 
 安装完成！
 
-dubbo-admin: 是一个监控管理后台, 查看我们注册了哪些服务, 哪些服务被消费了
+dubbo-admin: 是一个监控管理后台, 查看注册了哪些服务, 哪些服务被消费了
 zookeeper: 注册中心
 
 Dubbo: jar包
+
+
+SpringBoot + Dubbo + zookeeper
+# 框架搭建
+- 启动zookeeper ！
+- IDEA创建一个空项目；
+- 创建一个模块，实现服务提供者：provider-server ， 选择web依赖即可
+- 项目创建完毕，写一个服务，比如卖票的服务；
+
+编写接口
+```java
+package cn.com.codingce.service;
+
+public interface TicketService {
+
+    public String getTicket();
+
+}
+```
+编写实现类
+```java
+package cn.com.codingce.service;
+
+import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Component;
+
+//zooheeper服务注册与发现
+@Service
+@Component  //使用了dubbo后尽量别用Service注解     使用的话  使用dubbo的service注解
+public class TicketServiceImpl implements TicketService {
+
+
+    @Override
+    public String getTicket() {
+        return "掌上编程";
+    }
+}
+```
+
+- 创建一个模块，实现服务消费者：consumer-server ， 选择web依赖即可
+
+- 项目创建完毕，写一个服务，比如用户的服务；
+
+编写service
+```java
+package cn.com.codingce.service;
+
+import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.stereotype.Component;
+
+@Component
+public class UserService {
+
+    @Reference
+    private TicketService ticketService;
+
+    public void buyTicket() {
+        System.out.println("===============" + ticketService.getTicket());
+    }
+
+}
+```
+
+
+需求：现在的用户想使用买票的服务，这要怎么弄呢 ？
+## 服务提供者
+
+- 将服务提供者注册到注册中心，需要整合Dubbo和zookeeper，所以需要导包
+从dubbo官网进入github，看下方的帮助文档，找到dubbo-springboot，找到依赖包
+
+```xml
+<!-- Dubbo Spring Boot Starter -->
+<dependency>
+   <groupId>org.apache.dubbo</groupId>
+   <artifactId>dubbo-spring-boot-starter</artifactId>
+   <version>2.7.3</version>
+</dependency>    
+```
+
+zookeeper的包去maven仓库下载，zkclient；
+```xml
+<!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient -->
+<dependency>
+   <groupId>com.github.sgroschupf</groupId>
+   <artifactId>zkclient</artifactId>
+   <version>0.1</version>
+</dependency>
+```
+
+【新版的坑】zookeeper及其依赖包，解决日志冲突，还需要剔除日志依赖；
+```xml
+<!-- 引入zookeeper -->
+<dependency>
+   <groupId>org.apache.curator</groupId>
+   <artifactId>curator-framework</artifactId>
+   <version>2.12.0</version>
+</dependency>
+<dependency>
+   <groupId>org.apache.curator</groupId>
+   <artifactId>curator-recipes</artifactId>
+   <version>2.12.0</version>
+</dependency>
+<dependency>
+   <groupId>org.apache.zookeeper</groupId>
+   <artifactId>zookeeper</artifactId>
+   <version>3.4.14</version>
+   <!--排除这个slf4j-log4j12-->
+   <exclusions>
+       <exclusion>
+           <groupId>org.slf4j</groupId>
+           <artifactId>slf4j-log4j12</artifactId>
+       </exclusion>
+   </exclusions>
+</dependency>
+```
+
+- 在springboot配置文件中配置dubbo相关属性！
+```yml
+server.port=8081
+
+# 服务应用名字
+dubbo.application.name=provider-server
+# 注册中心地址
+dubbo.registry.address=zookeeper://127.0.0.1:2181
+# 哪些服务要被注册
+dubbo.scan.base-packages=cn.com.codingce.service
+```
+
+- 在service的实现类中配置服务注解，发布服务！注意导包问题
+```java
+package cn.com.codingce.service;
+
+import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Component;
+
+//zooheeper服务注册与发现
+@Service
+@Component  //使用了dubbo后尽量别用Service注解     使用的话  使用dubbo的service注解
+public class TicketServiceImpl implements TicketService {
+
+
+    @Override
+    public String getTicket() {
+        return "掌上编程";
+    }
+}
+```
+
+逻辑理解 ：应用启动起来，dubbo就会扫描指定的包下带有@component注解的服务，将它发布在指定的注册中心中！
+
+## 服务消费者
+- 导入依赖，和之前的依赖一样；
+```xml
+<!--dubbo-->
+<!-- Dubbo Spring Boot Starter -->
+<dependency>
+   <groupId>org.apache.dubbo</groupId>
+   <artifactId>dubbo-spring-boot-starter</artifactId>
+   <version>2.7.3</version>
+</dependency>
+<!--zookeeper-->
+<!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient -->
+<dependency>
+   <groupId>com.github.sgroschupf</groupId>
+   <artifactId>zkclient</artifactId>
+   <version>0.1</version>
+</dependency>
+<!-- 引入zookeeper -->
+<dependency>
+   <groupId>org.apache.curator</groupId>
+   <artifactId>curator-framework</artifactId>
+   <version>2.12.0</version>
+</dependency>
+<dependency>
+   <groupId>org.apache.curator</groupId>
+   <artifactId>curator-recipes</artifactId>
+   <version>2.12.0</version>
+</dependency>
+<dependency>
+   <groupId>org.apache.zookeeper</groupId>
+   <artifactId>zookeeper</artifactId>
+   <version>3.4.14</version>
+   <!--排除这个slf4j-log4j12-->
+   <exclusions>
+       <exclusion>
+           <groupId>org.slf4j</groupId>
+           <artifactId>slf4j-log4j12</artifactId>
+       </exclusion>
+   </exclusions>
+</dependency>
+```
+
+- 配置参数
+```yml
+server.port=8082
+
+# 服务应用名字
+dubbo.application.name=consumer-server
+# 注册中心地址
+dubbo.registry.address=zookeeper://127.0.0.1:2181
+```
+
+- 本来正常步骤是需要将服务提供者的接口打包，然后用pom文件导入，这里使用简单的方式，直接将服务的接口拿过来，路径必须保证正确，即和服务提供者相同；
+![mark](http://image.codingce.com.cn/blog/20200827/194056389.png)
+
+- 完善消费者的服务类
+```java
+package cn.com.codingce.service;
+
+import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.stereotype.Component;
+
+@Component
+public class UserService {
+
+    @Reference
+    private TicketService ticketService;
+
+    public void buyTicket() {
+        System.out.println("===============" + ticketService.getTicket());
+    }
+
+}
+```
+
+- 测试类编写；
+```java
+package cn.com.codingce;
+
+import cn.com.codingce.service.UserService;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class ConsumerServerApplicationTests {
+
+	@Autowired
+	private UserService userService;
+
+	@Test
+	void contextLoads() {
+
+		userService.buyTicket();
+
+	}
+
+}
+```
+
+## 启动测试
+- 开启zookeeper
+- 打开dubbo-admin实现监控【可以不用做】
+- 开启服务者
+- 消费者消费测试，结果：
+
+![mark](http://image.codingce.com.cn/blog/20200827/194405615.png)
+- 监控中心 ：
+- ![mark](http://image.codingce.com.cn/blog/20200827/194448775.png)
+
+这就是SpingBoot + dubbo + zookeeper实现分布式开发的应用，其实就是一个服务拆分的思想；
