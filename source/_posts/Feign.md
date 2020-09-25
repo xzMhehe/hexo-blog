@@ -12,7 +12,7 @@ Feign[feɪn]
 # 什么是Feign？
 Feign 的英文表意为“假装，伪装，变形”， 是一个http请求调用的轻量级框架，可以以Java接口注解的方式调用Http请求，而不用像Java中通过封装HTTP请求报文的方式直接调用。Feign通过处理注解，将请求模板化，当实际调用的时候，传入参数，根据参数再应用到请求上，进而转化成真正的请求，这种请求相对而言比较直观。
 Feign被广泛应用在Spring Cloud 的解决方案中，是学习基于Spring Cloud 微服务架构不可或缺的重要组件。
-它让微服务之间调用变得更简单了, 类似controller调用service. SpringCloud集成了Ribbon Eureka, 可以在使用Feign时提供负载均衡的客户端
+它让微服务之间调用变得更简单了, 类似controller调用service. SpringCloud集成了Ribbon Eureka, 可以在使用Feign时提供 **负载均衡** 的客户端
 
 只需要一个接口, 然后添加注解即可
 
