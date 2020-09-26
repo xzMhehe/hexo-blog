@@ -26,6 +26,9 @@ hexo-blog, 自己搭建的hexo博客项目拉取即用
 3.  提交代码
 4.  新建 Pull Request
 
+#### 运行界面
+![mark](http://image.codingce.com.cn/blog/20200926/104806961.png)
+![mark](http://image.codingce.com.cn/blog/20200926/104829089.png)
 
 #### 特技
 
