@@ -149,25 +149,20 @@ hystrix[hɪst'rɪks]
 
 
 ### DeptController
-此处遇到问题
-    @Resource
-    private DeptServiceImpl deptService;
-这样才能把DeptServiceImpl注入bean  
-原    @Resource
-      private DeptService deptService; 不能
-
 ```java
 package cn.com.codingce.springcloud.controller;
 
-import cn.com.codingce.pojo.Dept;
-import cn.com.codingce.springcloud.service.DeptService;
-import cn.com.codingce.springcloud.service.DeptServiceImpl;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import cn.com.codingce.springcloud.pojo.Dept;
+import cn.com.codingce.springcloud.service.DeptClientService;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author xzMa
@@ -178,27 +173,43 @@ import javax.annotation.Resource;
 public class DeptController {
 
     @Resource
-    private DeptServiceImpl deptService;
+    private DeptClientService deptService;
 
-    @GetMapping("/dept/get/{id}")
-    @HystrixCommand(fallbackMethod = "hystrixGet")
-    public Dept get(@PathVariable("id") Long id) {
-        Dept dept = deptService.queryById(id);
-        if(dept == null) {
-            throw new RuntimeException("id=>" + id + ", 不存在该用户, 或者信息无法找到~");
-        }
-        return dept;
+    //获取一些配置的信息
+    @Resource
+    private DiscoveryClient client;
+
+    @PostMapping("/dept/add")
+    public boolean addDept(Dept dept) {
+        return deptService.addDept(dept);
     }
 
-    /**
-     * 备选方法
-     * @param id
-     * @return
-     * 注意该方法上面没有访问地址
-     */
-    public Dept hystrixGet(@PathVariable("id") Long id) {
-        Dept dept = new Dept(id, "id=>" + id + ", 不存在该用户, 或者信息无法找到~", "no datebase");
-        return dept;
+    @GetMapping("/dept/get/{id}")
+    public Dept queryBuId(@PathVariable("id") Long id) {
+        return deptService.queryById(id);
+    }
+
+    @GetMapping("/dept/list")
+    public List<Dept> queryAll() {
+        return deptService.queryAll();
+    }
+
+    //注册进来的微服务, 获取一些消息
+    @GetMapping("/dept/discovery")
+    public Object discovery() {
+        //获取微服务列表的清单
+        List<String> services = client.getServices();
+        System.out.println("discovery=>" + services);
+        //得到一个具体的服务信息, 通过微服务id, applicationName
+        List<ServiceInstance> instances = client.getInstances("SPRINGCLOUD-PROVIDER-DEPT");
+        for (ServiceInstance instance : instances) {
+            System.out.println(instance.getHost() + "\t" +
+                    instance.getPort() + "\t" +
+                    instance.getUri() + "\t" +
+                    instance.getServiceId());
+        }
+
+        return this.client;
     }
 
 }
@@ -239,7 +250,7 @@ public class DeptProvider_Hystrix_8001 {
 
 服务降级是在客户端进行编辑。
 
-![mark](http://image.codingce.com.cn/blog/20200923/160116283.png)
+![](http://image.codingce.com.cn/blog/20200923/160116283.png)
 
 ## 使用场景
 服务降级主要用于什么场景呢？当整个微服务架构整体的负载超出了预设的上限阈值或即将到来的流量预计将会超过预设的阈值时，为了保证重要或基本的服务能正常运行，我们可以将一些 不重要 或 不紧急 的服务或任务进行服务的 延迟使用 或 暂停使用。
@@ -248,9 +259,9 @@ public class DeptProvider_Hystrix_8001 {
 ### 创建工厂DeptClientServiceFallbackFactory
 客户端
 ```java
-package cn.com.codingce.service;
+package cn.com.codingce.springcloud.service;
 
-import cn.com.codingce.pojo.Dept;
+import cn.com.codingce.springcloud.pojo.Dept;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 
@@ -301,9 +312,9 @@ public class DeptClientServiceFallbackFactory implements FallbackFactory {
 ### DeptClientService接口
 @FeignClient(value = "SPRINGCLOUD-PROVIDER-DEPT", fallbackFactory = DeptClientServiceFallbackFactory.class)
 ```java
-package cn.com.codingce.service;
+package cn.com.codingce.springcloud.service;
 
-import cn.com.codingce.pojo.Dept;
+import cn.com.codingce.springcloud.pojo.Dept;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
