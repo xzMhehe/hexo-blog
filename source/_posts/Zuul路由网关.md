@@ -9,6 +9,7 @@ categories:
 ---
 
 # zuul是什么
+![mark](http://image.codingce.com.cn/blog/20200926/142511118.png)
 zuul 是netflix开源的一个API Gateway 服务器, 本质上是一个web servlet应用。
 Zuul 在云平台上提供动态路由，监控，弹性，安全等边缘服务的框架。Zuul 相当于是设备和 Netflix 流应用的 Web 网站后端所有请求的前门。
 zuul的例子可以参考 netflix 在github上的 simple webapp，可以按照netflix 在github wiki 上文档说明来进行使用。
@@ -31,3 +32,141 @@ zuul的例子可以参考 netflix 在github上的 simple webapp，可以按照ne
 - 负载分配: 为每一种负载类型分配对应容量，并弃用超出限定值的请求。
 - 静态响应处理: 在边缘位置直接建立部分响应，从而避免其流入内部集群。
 - 多区域弹性: 跨越AWS区域进行请求路由，旨在实现ELB使用多样化并保证边缘位置与使用者尽可能接近。
+
+![mark](http://image.codingce.com.cn/blog/20200926/142349524.png)
+
+# 简单实现
+## 项目截图
+![mark](http://image.codingce.com.cn/blog/20200927/132344573.png)
+## pom
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>springcloud</artifactId>
+        <groupId>cn.com.codingce</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>springcloud-zuul-9527</artifactId>
+
+    <dependencies>
+        <!--Zuul-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zuul</artifactId>
+            <version>1.4.6.RELEASE</version>
+        </dependency>
+
+        <!--Hystrix依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix</artifactId>
+            <version>1.4.6.RELEASE</version>
+        </dependency>
+        <!--Hystrix监控-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+            <version>1.4.6.RELEASE</version>
+        </dependency>
+
+        <!--我们需要拿到实体类, 所以要配置api -module-->
+        <dependency>
+            <groupId>cn.com.codingce</groupId>
+            <artifactId>springcloud-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!--热部署工具-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--Ribbon-->
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-ribbon -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-ribbon</artifactId>
+            <version>1.4.6.RELEASE</version>
+        </dependency>
+
+        <!--Eureka  客户端-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <version>1.4.6.RELEASE</version>
+        </dependency>
+    </dependencies>
+</project>
+```
+
+## application.yml配置
+```yml
+server:
+  port: 9527
+spring:
+  application:
+    name: springcloud-zuul
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka/, http://eureka7003.com:7003/eureka/, http://eureka7001.com:7001/eureka/   # 这里必须与服务端一致
+  instance:
+    instance-id: zuul9527.com
+    prefer-ip-address: true
+
+# info 配置
+info:
+  app.name: codingce-springcloud
+  cpmany.name: i.codingce.com.cn
+  author: xzMhehe
+
+# 路由网关配置  我们需要设置原路径不能访问, 仅可使用Zuul路由网关配置的  路径    (已在 win10 hosts  里面配置 127.0.0.1	www.codingce.com)
+zuul:
+  routes:
+    mydept.serviceId: springcloud-provider-dept
+    mydept.path: /mydept/**
+  ignored-services: springcloud-provider-dept # 不能在使用这个路径访问了  ignored-services: "*" 隐藏全部的真实的项目
+  prefix: /mxz  # 设置公共的前缀       可有可无  原 http://www.codingce.com:9527/mydept/dept/list    加了之后 http://www.codingce.com:9527/mxz/mydept/dept/list
+```
+
+
+## 启动项ZuulApplication_9527
+```java
+package cn.com.codingce.springcloud;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+
+@SpringBootApplication
+@EnableZuulProxy    //一般用代理 @EnableZuulProxy
+public class ZuulApplication_9527 {
+    public static void main(String[] args) {
+        SpringApplication.run(ZuulApplication_9527.class, args);
+    }
+}
+```
+
+## 运行界面
+### 服务端
+![mark](http://image.codingce.com.cn/blog/20200927/132717824.png)
+### Eureka界面
+![mark](http://image.codingce.com.cn/blog/20200927/132946755.png)
+### 配置Zuul路由网关后
+![mark](http://image.codingce.com.cn/blog/20200927/133029481.png)
+
+
+项目地址: https://github.com/xzMhehe/codingce-java

@@ -359,3 +359,6 @@ public interface DeptClientService {
 - 服务熔断: 服务端~ 某个服务超时或者异常, 引起熔断~ 保险丝
 
 - 服务降级： 客户端~ 从整体网站请求负载考虑~ 当某个服务熔断或者关闭后,  服务将不再调用, 此时在客户但我们可以准备 一个FallbackFactory, 返回一个默认的值(缺省值), 整体的服务水平下降了~ , 好歹能够使用
+
+
+![mark](http://image.codingce.com.cn/blog/20200926/141954963.png)
