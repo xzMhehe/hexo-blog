@@ -9,22 +9,26 @@ categories:
 ---
 
 # zuul是什么
-![mark](http://image.codingce.com.cn/blog/20200926/142511118.png)
+![](https://camo.githubusercontent.com/f091703491ae368dab9314065b31eab0fc3246ab/68747470733a2f2f692e696d6775722e636f6d2f6d52536f7345702e706e67)
 zuul 是netflix开源的一个API Gateway 服务器, 本质上是一个web servlet应用。
 Zuul 在云平台上提供动态路由，监控，弹性，安全等边缘服务的框架。Zuul 相当于是设备和 Netflix 流应用的 Web 网站后端所有请求的前门。
 zuul的例子可以参考 netflix 在github上的 simple webapp，可以按照netflix 在github wiki 上文档说明来进行使用。
 
+https://github.com/Netflix/zuul/wiki
+
 注意: Zuul服务最终还是会注册到Eureka
 提供: 代理 + 路由 + 过滤 三大功能!
 
-![mark](http://image.codingce.com.cn/blog/20200925/084657361.png)
+![](http://image.codingce.com.cn/blog/20200925/084657361.png)
+
+
+zuul的核心是一系列的filters, 其作用类比Servlet框架的Filter，或者AOP。zuul把请求路由到用户处理逻辑的过程中，这些filter参与一些过滤处理，比如Authentication，Load Shedding等
+
+![](http://image.codingce.com.cn/blog/20200926/142349524.png)
 
 # zuul 能做什么
 
-- 路由
-- 过滤
-
-细分功能：Zuul可以通过加载动态过滤机制，从而实现以下各项功能：
+Zuul可以通过加载动态过滤机制，从而实现以下各项功能(路由、过滤)：
 - 验证与安全保障: 识别面向各类资源的验证要求并拒绝那些与要求不符的请求。
 - 审查与监控: 在边缘位置追踪有意义数据及统计结果，从而为我们带来准确的生产状态结论。
 - 动态路由: 以动态方式根据需要将请求路由至不同后端集群处。
@@ -33,9 +37,21 @@ zuul的例子可以参考 netflix 在github上的 simple webapp，可以按照ne
 - 静态响应处理: 在边缘位置直接建立部分响应，从而避免其流入内部集群。
 - 多区域弹性: 跨越AWS区域进行请求路由，旨在实现ELB使用多样化并保证边缘位置与使用者尽可能接近。
 
-![mark](http://image.codingce.com.cn/blog/20200926/142349524.png)
 
-# 简单实现
+
+
+# 过滤器的生命周期
+
+![](https://imgkr2.cn-bj.ufileos.com/9f2bd698-f897-4801-8e1c-e8aa5c29b3c2.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&Signature=KzhanZPLIVzv5sz%252BAbRldoMoMgE%253D&Expires=1601351961)
+
+
+# zuul组件
+- zuul-core--zuul核心库，包含编译和执行过滤器的核心功能。
+- zuul-simple-webapp--zuul Web应用程序示例，展示了如何使用zuul-core构建应用程序。
+- zuul-netflix--lib包，将其他NetflixOSS组件添加到Zuul中，例如使用功能区进去路由请求处理。
+- zuul-netflix-webapp--webapp，它将zuul-core和zuul-netflix封装成一个简易的webapp工程包。
+
+# 搭建一个注册Eureka中心的Web服务
 ## 项目截图
 ![mark](http://image.codingce.com.cn/blog/20200927/132344573.png)
 ## pom
