@@ -349,13 +349,13 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
 }
 ```
 
-# 乐观锁
+## 乐观锁
 在面试过程中, 我们经常会被问到的乐观锁, 悲观锁! 这个其实非常简单!
 
 >乐观锁：乐观锁（ Optimistic Locking ） 相对悲观锁而言，乐观锁假设认为数据一般情况下不会造成冲突，所以在数据进行提交更新的时候，才会正式对数据的冲突与否进行检测，如果发现冲突了，则让返回用户错误的信息，让用户决定如何去做。
 故名思意十分乐观, 它总是认为不会出现问题, 无论干什么都不去上锁! 如果出现问题, 再次更新新值测试(version  new version)
 
->悲观锁:故名思意十分乐观, 它总认为总是出现问题, 无论干什么都会上锁! 再去操作!
+>悲观锁:故名思意十分悲观, 它总认为总是出现问题, 无论干什么都会上锁! 再去操作!
 
 乐观锁机制:
 - 取出记录记录, 获取当前version
@@ -373,7 +373,7 @@ update user set name = "zhangshangbiancheng", version = version + 1
 where id = 2 and version = 1
 ```
 
-## 测试MP乐观锁插件
+### 测试MP乐观锁插件
 - 给数据库中添加version字段
 ![](http://image.codingce.com.cn/blog/20201006/220733613.png)
 
@@ -441,4 +441,302 @@ public class MyBatisPlusConfig {
 ```
 
 
-# 查询操作
+## 查询操作
+```java
+    @Test
+    public void select() {
+        User user = userMapper.selectById(1L);
+        System.out.println(user);
+    }
+
+    @Test
+    public void selectBatchIds() {
+        List<User> users = userMapper.selectBatchIds(Arrays.asList(1L, 2L, 3L));
+        users.forEach(System.out::println);
+    }
+
+    //条件查询 map
+    @Test
+    public void testSelectByBathIds() {
+        HashMap<String, Object> map = new HashMap<>();
+        //自定义要查询
+        map.put("name", "xzMhehe222");
+        map.put("age", 12);
+
+        List<User> userList = userMapper.selectByMap(map);
+        userList.forEach(System.out::println);
+    }
+```
+
+## 分页查询
+分页在网站使用的十分之多
+- 原始的limit进行分页
+- pageHelper第三方插件
+- MP其实也内置了分页插件
+
+>如何使用    
+
+配置拦截器组件
+```java
+//Spring boot方式
+@Configuration
+@MapperScan("com.baomidou.cloud.service.*.mapper*")
+public class MybatisPlusConfig {
+
+    @Bean
+    public PaginationInterceptor paginationInterceptor() {
+        return new PaginationInterceptor();
+    }
+}
+```
+- 直接使用Page插件即可
+
+```java
+    /**
+     * 测试分页
+     */
+    @Test
+    public void testPage() {
+        //current参数一：当前页
+        //参数二：页面大小
+        Page<User> page = new Page<>(1, 5);
+        IPage<User> userIPage = userMapper.selectPage(page, null);
+
+        page.getRecords().forEach(System.out::println);
+    }
+```
+
+## 基本删除操作
+```java
+    //真删
+    @Test
+    public void testDelete() {
+        userMapper.deleteById(1L);
+    }
+
+
+    //批量删除
+    @Test
+    public void testDeleteBatchId() {
+        userMapper.deleteBatchIds(Arrays.asList(1L, 2L, 3L));
+    }
+
+    //通过map删除
+    @Test
+    public void testDeleteMap() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("name", "xzMhehe");
+        userMapper.deleteByMap(map);
+    }
+```
+
+我们在工作中会遇到一些问题：逻辑删除
+
+## 逻辑删除
+>物理删除：从数据库中直接删除
+逻辑删除：在数据库中没有移除，而是通过一个变量让他失效！ deleted = 0 =>deleted = 1
+管理员可以查看删除记录！防止数据丢失，类似于回收站
+
+
+- 在数据库中添加deleted字段
+![](http://image.codingce.com.cn/blog/20201011/094331687.png)
+
+- 在实体类中添加属性
+```java
+    @TableField //逻辑删除
+    private Integer deleted;
+```
+
+
+
+- 配置
+```java
+    //逻辑删除组件
+    @Bean
+    public ISqlInjector sqlInjector() {
+        return new LogicSqlInjector();
+    }
+```
+
+```yml
+mybatis-plus.global-config.db-config.logic-delete-value=1
+mybatis-plus.global-config.db-config.logic-not-delete-value=0
+```
+![](http://image.codingce.com.cn/blog/20201011/100107803.png)
+
+## 性能分析插件
+在平时开发中, 会遇到一些慢sql. 测试！druid
+MP也提供性能分析插件, 如果超过这个时间停止运行！
+
+- 导入插件
+```java
+    @Bean
+    @Profile({"dev", "test"})   //设置 dev text 环境开启, 保障我们的效率
+    public PerformanceInterceptor performanceInterceptor() {
+        PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
+        //  在工作中, 不允许用户等待
+        performanceInterceptor.setMaxTime(500);    //ms 设置sql执行的最大时间, 如果超过了则不执行
+        performanceInterceptor.setFormat(true); //开启格式化输出
+        return performanceInterceptor;
+    }
+```
+- 测试使用
+![](http://image.codingce.com.cn/blog/20201011/110911588.png)
+
+## 条件构造器
+十分重要 Wrapper
+![](http://image.codingce.com.cn/blog/20201012/103127618.png)
+
+- 测试1
+```java
+    @Test
+    void contextLoads() {
+        //查询条件name和邮箱不为空的用户, 年龄大于等于12的用户
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.isNotNull("name")
+                .isNotNull("email")
+                .ge("age", 12);
+        userMapper.selectList(wrapper).forEach(System.out::println); //对比Map
+    }
+```
+- 测试2
+```java
+@Test
+    public void Test() {
+        //查询名字 全栈自学社区
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.eq("name", "全栈自学社区");
+        userMapper.selectList(wrapper).forEach(System.out::println);
+    }
+```
+
+```java
+    @Test
+    public void Test3() {
+        //年龄在20~30岁之间的人
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.between("age", 20, 30);
+        Integer count = userMapper.selectCount(wrapper);
+        System.out.println(count);
+        userMapper.selectList(wrapper).forEach(System.out::println);
+    }
+
+    @Test
+    public void Test4() {
+        //名字中不包含
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.notLike("name", "e")
+                .likeRight("email", "t");   //左和右   %t%         likeRight("email", "t")         t%
+        List<Map<String, Object>> maps = userMapper.selectMaps(wrapper);
+        maps.forEach(System.out::println);
+    }
+
+    @Test
+    public void Test5() {
+        //id在子查询查出来
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.inSql("id", "select id from user where id < 3");
+        List<Map<String, Object>> maps = userMapper.selectMaps(wrapper);
+        maps.forEach(System.out::println);
+    }
+
+    @Test
+    public void Test6() {
+        //排序
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.orderByDesc("id");
+        List<Map<String, Object>> maps = userMapper.selectMaps(wrapper);
+        maps.forEach(System.out::println);
+    }
+```
+
+## 代码自动生成器
+dao pojo service controller 都是自动生成
+
+```java
+package cn.com.codingce.generator;
+
+import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.generator.AutoGenerator;
+import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
+import com.baomidou.mybatisplus.generator.config.GlobalConfig;
+import com.baomidou.mybatisplus.generator.config.PackageConfig;
+import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.po.TableFill;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
+import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+
+import java.util.ArrayList;
+
+public class CodeGenerator {
+    public static void main(String[] args) {
+
+        // 1、创建代码生成器
+        AutoGenerator mpg = new AutoGenerator();
+
+        // 2、全局配置
+        GlobalConfig gc = new GlobalConfig();
+        //当前的项目路径
+        String projectPath = System.getProperty("user.dir");
+        //所有代码都会生成到     /src/main/java  路径下
+        gc.setOutputDir(projectPath + "/src/main/java");
+        gc.setAuthor("小马Coding");
+        gc.setOpen(false); //生成后是否打开资源管理器
+        gc.setFileOverride(false); //重新生成时文件是否覆盖
+        gc.setServiceName("%sService");	//去掉Service接口的首字母I
+        gc.setIdType(IdType.ID_WORKER_STR); //主键策略
+        gc.setDateType(DateType.ONLY_DATE);//定义生成的实体类中日期类型
+        gc.setSwagger2(true);//开启Swagger2模式
+
+        mpg.setGlobalConfig(gc);
+
+        // 3、数据源配置
+        DataSourceConfig dsc = new DataSourceConfig();
+        dsc.setUrl("jdbc:mysql://cdb-q9atzwrq.bj.tencentcdb.com:10167/codingstudy?useUnicode=true&characterEncoding=utf-8&useSSL=false");
+        dsc.setDriverName("com.mysql.jdbc.Driver");
+        dsc.setUsername("root");
+        dsc.setPassword("123456");
+        dsc.setDbType(DbType.MYSQL);
+
+        mpg.setDataSource(dsc);
+
+        // 4、包配置
+        PackageConfig pc = new PackageConfig();
+        pc.setModuleName("blog");
+        pc.setParent("cn.com.codingce");
+        pc.setController("controller");
+        pc.setEntity("pojo");
+        pc.setService("service");
+        pc.setMapper("mapper");
+
+        mpg.setPackageInfo(pc);
+
+        // 5、策略配置
+        StrategyConfig strategy = new StrategyConfig();
+        //strategy.setInclude("ze_user");//设置要映射的表名
+        //strategy.setInclude("ze_user", "ze_course");//可设置多个
+        strategy.setInclude("ze_user");//设置要映射的表名
+        strategy.setNaming(NamingStrategy.underline_to_camel);//数据库表映射到实体的命名策略
+        strategy.setTablePrefix("ze_");//设置表前缀不生成
+        strategy.setColumnNaming(NamingStrategy.underline_to_camel);//数据库表字段映射到实体的命名策略
+        strategy.setEntityLombokModel(true); // lombok 模型 @Accessors(chain = true) setter链式操作
+        strategy.setRestControllerStyle(true); //restful api风格控制器
+        strategy.setControllerMappingHyphenStyle(true); //url中驼峰转连字符
+        //strategy.setLogicDeleteFieldName("deleted");    //逻辑删除字段
+        //自动填充配置
+        //TableFill gmtCreate = new TableFill("gmt_create", FieldFill.INSERT);
+        //TableFill gmtModified = new TableFill("gmt_modified", FieldFill.INSERT_UPDATE);
+        //ArrayList<TableFill> tableFills = new ArrayList<>();
+        //tableFills.add(gmtCreate);
+        //tableFills.add(gmtModified);
+        //strategy.setTableFillList(tableFills);
+
+        mpg.setStrategy(strategy);
+
+        // 6、执行
+        mpg.execute();
+    }
+}
+```
