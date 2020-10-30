@@ -326,5 +326,305 @@ OK
 127.0.0.1:6379> 
 
 
+###########################################################################
+对象
+
+
+set user:1{name: zhangsan, age: 13}     # 设置一个user:1 对象   值为json字符串来保存一个对象
+
+# 这里的key是一个巧妙地设计: user:{id}:{filed}, 如此设计是完全正确的
+127.0.0.1:6379> mset user:1:name zhangsan user:1:age 2 
+127.0.0.1:6379> mget user:1:name user:1:age
+1) "zhangsan"
+2) "2"
+
+
+
+###########################################################################
+getset      # 先get在set
+
+127.0.0.1:6379> getset db redis     # 如果不存在值 返回 nil
+(nil)
+127.0.0.1:6379> get db
+"redis"
+127.0.0.1:6379> getset db mongodb   # 如果存在值    获取原来的值
+"redis"
+127.0.0.1:6379> get db
+"mongodb"
+
+
+
 ```
 
+数据结构是相同的
+
+String类似使用的场景：value除了字符串还可以是数字
+- 计数器
+- 统计多单位的数量
+- 粉丝数
+- 对象缓存存储
+
+
+# List
+基本的数据类型, 列表    不能重复
+
+![](http://image.codingce.com.cn/blog/20201028/134131687.png)
+
+在redis里面 可以把list玩成 栈 队列  
+
+```sql
+127.0.0.1:6379> sadd myset "hello"          # 集合中添加一个元素
+(integer) 1
+127.0.0.1:6379> keys *
+1) "myset"
+127.0.0.1:6379> SMEMBERS myset              # 查看指定set的所有值
+1) "hello"
+127.0.0.1:6379> sadd myset "codingce"
+(integer) 1
+127.0.0.1:6379> sadd myset "love coding"
+(integer) 1
+127.0.0.1:6379> SMEMBERS myset               # 查看指定set的所有值
+1) "codingce"
+2) "love coding"
+3) "hello"
+127.0.0.1:6379> SISMEMBER myset hello        # 判断指定元素是否在set中
+(integer) 1
+127.0.0.1:6379> SISMEMBER myset hell
+(integer) 0
+
+
+127.0.0.1:6379> scard myset                  # 获取set集合中的内容元素个数
+(integer) 3
+127.0.0.1:6379> 
+
+
+127.0.0.1:6379> scard myset
+(integer) 3
+127.0.0.1:6379> srem myset hello             # 移除set集合中的指定元素
+(integer) 1
+127.0.0.1:6379> scard myset
+(integer) 2
+127.0.0.1:6379> 
+
+```
+
+set 无序不重复集合, 抽取随机
+
+```sql
+127.0.0.1:6379> SRANDMEMBER myset           # 随机抽取一个元素
+"love coding"
+127.0.0.1:6379> SRANDMEMBER myset 2         # 随机抽取二个元素
+1) "codingce"
+2) "love coding"
+127.0.0.1:6379> SRANDMEMBER myset 3         # 随机抽取三个元素
+1) "codingce"
+2) "love coding"
+127.0.0.1:6379> sadd keyset "haha"
+(integer) 1
+127.0.0.1:6379> sadd keyset "hehe"
+(integer) 1
+127.0.0.1:6379> SRANDMEMBER myset 3
+1) "codingce"
+2) "love coding"
+127.0.0.1:6379> SRANDMEMBER myset 3
+1) "codingce"
+2) "love coding"
+127.0.0.1:6379> SRANDMEMBER myset 3
+1) "codingce"
+2) "love coding"
+127.0.0.1:6379> sadd myset "haha"
+(integer) 1
+127.0.0.1:6379> sadd myset "hehe"
+(integer) 1
+127.0.0.1:6379> SRANDMEMBER myset 3
+1) "codingce"
+2) "love coding"
+3) "hehe"
+127.0.0.1:6379> SRANDMEMBER myset 2
+1) "love coding"
+2) "hehe"
+127.0.0.1:6379> 
+
+
+127.0.0.1:6379> SMEMBERS myset
+1) "codingce"
+2) "hehe"
+3) "love coding"
+4) "haha"
+127.0.0.1:6379> spop myset              # 随机移除元素
+"haha"
+127.0.0.1:6379> SMEMBERS myset
+1) "codingce"
+2) "hehe"
+3) "love coding"
+127.0.0.1:6379> 
+
+
+#######################################################
+将一个指定的值, 移动到另一个set集合中
+
+127.0.0.1:6379> sadd myset "hello"
+(integer) 1
+127.0.0.1:6379> sadd myset "world"
+(integer) 1
+127.0.0.1:6379> sadd myset "xzM"
+(integer) 1
+127.0.0.1:6379> sadd myset2 "set2"
+(integer) 1
+127.0.0.1:6379> smove myset  myset2 "xzM"   # 将元素移动到指定set中
+(integer) 1
+127.0.0.1:6379> SMEMBERS myset
+1) "hello"
+2) "world"
+127.0.0.1:6379> SMEMBERS myset2
+1) "xzM"
+2) "set2"
+127.0.0.1:6379> 
+
+
+#######################################################
+微博、B站、共同关注（并集）
+
+数字集合类
+- 差集
+- 交集
+- 并集
+
+127.0.0.1:6379> sadd key1 a
+(integer) 1
+127.0.0.1:6379> sadd key1 b
+(integer) 1
+127.0.0.1:6379> sadd key1 c
+(integer) 1
+127.0.0.1:6379> sadd key2 d
+(integer) 1
+127.0.0.1:6379> sadd key2 e
+(integer) 1
+127.0.0.1:6379> SDIFF key1 key2     # 差集
+1) "a"
+2) "b"
+3) "c"
+
+127.0.0.1:6379> sadd key2 c
+(integer) 1
+127.0.0.1:6379> SINTER key1 key2    # 交集  共同好友就能这样实现
+1) "c"
+127.0.0.1:6379> 
+
+
+127.0.0.1:6379> SUNION key1 key2    # 并集
+1) "a"
+2) "b"
+3) "d"
+4) "c"
+5) "e"
+
+```
+
+微博、A用户将所有关注的人放在一个Set集合中！ 将它的粉丝也放在一个集合中！   
+共同关注, 共同爱好, 二度好友（六度分割理论）推荐好友就是这么来的
+
+
+# Hash(哈希)
+Map集合 key-map  时候这个值就是一个map集合    本质和String类型没有太大区别, 还是一个简单的 key-value
+
+set myhash field xzm
+```sql
+127.0.0.1:6379> hset myhash field1 xzm  # set一个具体 key-value 
+(integer) 1
+127.0.0.1:6379> hget myhash field1   # 获取一个字段值
+"xzm"
+127.0.0.1:6379> 
+127.0.0.1:6379> hmset myhash field1 hello field2 world  # set多个 key-value
+OK 
+127.0.0.1:6379> hget myhash # 获取多个字段的值
+1) "hello"
+2) "world"
+127.0.0.1:6379> hgetall myhash      # 获取全部的数据    key-value
+1) "field1"
+2) "hello"
+3) "field2"
+4) "world"
+127.0.0.1:6379> 
+
+127.0.0.1:6379> hdel myhash field1      # 删除hash 指定key字段  对应的  value值也就消失了
+(integer) 1
+127.0.0.1:6379> hgetall myhash
+1) "field2"
+2) "world"
+127.0.0.1:6379> 
+
+#######################################################
+
+127.0.0.1:6379> hdel myhash field1 
+(integer) 1
+127.0.0.1:6379> hgetall myhash
+1) "field2"
+2) "world"
+127.0.0.1:6379> hlen myhash
+(integer) 1
+127.0.0.1:6379> hmset myhash field1 hello  field2 world  
+OK
+127.0.0.1:6379> hgetall myhash
+1) "field2"
+2) "world"
+3) "field1"
+4) "hello"
+127.0.0.1:6379> hlen myhash     # 获取hash表的字段的数量
+(integer) 2
+127.0.0.1:6379> 
+
+
+
+127.0.0.1:6379> hlen myhash
+(integer) 2
+127.0.0.1:6379> HEXISTS myhash field1       # 判断hash 中指定字段是否存在
+(integer) 1
+127.0.0.1:6379> HEXISTS myhash field3
+(integer) 0
+127.0.0.1:6379> 
+
+#######################################################
+# 只获取所有的field
+# 只获取所有的value
+
+
+127.0.0.1:6379> hkeys myhash        
+1) "field2"
+2) "field1"
+127.0.0.1:6379> hvals myhash
+1) "world"
+2) "hello"
+127.0.0.1:6379> 
+
+
+#######################################################
+incr        decr
+
+ 127.0.0.1:6379> hset myhash field4 hello
+(integer) 1
+127.0.0.1:6379> hset myhash field4 hello
+(integer) 0
+127.0.0.1:6379> hset myhash field5 5        # 指定增量
+(integer) 1
+127.0.0.1:6379> HINCRBY myhash field5 1
+(integer) 6
+127.0.0.1:6379> HINCRBY myhash field5 -1
+(integer) 5
+127.0.0.1:6379> hsetnx myhash field6 hello  # 如果不存在则可以设置
+(integer) 1
+127.0.0.1:6379> hsetnx myhash field6 hello  # 如果存在则不能设置
+(integer) 0 
+127.0.0.1:6379> 
+
+```
+hash变更的数据  usr name    age
+
+```sql
+127.0.0.1:6379> hset user:1 name xzm
+(integer) 1
+127.0.0.1:6379> hget user:1 name
+"xzm"
+127.0.0.1:6379> 
+
+```
