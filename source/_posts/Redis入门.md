@@ -628,3 +628,53 @@ hash变更的数据  usr name    age
 127.0.0.1:6379> 
 
 ```
+
+
+
+# Zset（有序集合）
+在Set的基础上, 增加了一个值 set k1 v1  zset k1 score1 v1
+```sql
+D:\redis-64.3.0.503>redis-cli -p 6379
+127.0.0.1:6379> ping
+PONG
+127.0.0.1:6379> zadd myset 1 one
+(integer) 1
+127.0.0.1:6379> zadd myset 2 two 3 three
+(integer) 2
+127.0.0.1:6379> ZRANGE myset 0 -1
+1) "one"
+2) "two"
+3) "three"
+127.0.0.1:6379>
+```
+
+排序如何实现
+```sql
+127.0.0.1:6379> zadd salary 2500 xiaohong
+(integer) 1
+127.0.0.1:6379> zadd salary 5000 zhangsan
+(integer) 1
+127.0.0.1:6379> zadd salary 200 xz
+(integer) 1
+127.0.0.1:6379> ZRANGE myset 0 -1
+1) "one"
+2) "two"
+3) "three"
+127.0.0.1:6379> ZRANGEBYSCORE salary -inf +inf
+1) "xz"
+2) "xiaohong"
+3) "zhangsan"
+127.0.0.1:6379> ZRANGEBYSCORE salary -inf +inf withscores
+1) "xz"
+2) "200"
+3) "xiaohong"
+4) "2500"
+5) "zhangsan"
+6) "5000"
+127.0.0.1:6379> ZRANGEBYSCORE salary -inf 2500  withscores
+1) "xz"
+2) "200"
+3) "xiaohong"
+4) "2500"
+127.0.0.1:6379>
+```
