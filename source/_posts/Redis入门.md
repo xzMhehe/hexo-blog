@@ -664,17 +664,60 @@ PONG
 1) "xz"
 2) "xiaohong"
 3) "zhangsan"
-127.0.0.1:6379> ZRANGEBYSCORE salary -inf +inf withscores
+127.0.0.1:6379> ZRANGEBYSCORE salary -inf +inf withscores   # 显示全部的用户并且附带成绩
 1) "xz"
 2) "200"
 3) "xiaohong"
 4) "2500"
 5) "zhangsan"
 6) "5000"
-127.0.0.1:6379> ZRANGEBYSCORE salary -inf 2500  withscores
+127.0.0.1:6379> ZRANGEBYSCORE salary -inf 2500  withscores  # 显示小于2500 员工的降序排列
 1) "xz"
 2) "200"
 3) "xiaohong"
 4) "2500"
 127.0.0.1:6379>
+
+
+127.0.0.1:6379> zrevrange salary 0 -1  # 从大到小排序
+1) "zhangsan"
+2) "xz"
+127.0.0.1:6379>  
 ```
+
+
+移除rem中的元素
+
+```sql
+127.0.0.1:6379> zrange salary 0 -1
+1) "xz"
+2) "xiaohong"
+3) "zhangsan"
+127.0.0.1:6379> zrem salary xiaohong           # 移除有序集合中的指定元素
+(integer) 1
+127.0.0.1:6379> zrange salary 0 -1
+1) "xz"
+2) "zhangsan"
+127.0.0.1:6379> 
+
+127.0.0.1:6379> zcard salary                # 获取有序集合中的个数
+(integer) 2
+127.0.0.1:6379>  
+```
+
+
+获取指定区间的成员数量
+```sql
+127.0.0.1:6379> zcount myset 1 4
+(integer) 4
+127.0.0.1:6379> zcount myset 1 3
+(integer) 3
+127.0.0.1:6379> zcount myset 1 2
+(integer) 2
+127.0.0.1:6379>    
+```
+
+案例思路： set排序 存储班级成绩表 工资表牌序
+普通消息    1 重要消息  2 带权重进行怕排序
+
+排行榜的应用实现
