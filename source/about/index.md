@@ -37,6 +37,7 @@ copyright: false
 
 ```
 
+<center><font color=BBBBBB size=3>永远相信美好的事情终将发生！</font></center>
 <center><font color=BBBBBB size=5>技术微信公众号</font></center>
 
 ![mark](https://s1.ax1x.com/2020/07/17/UsFeJJ.jpg)
