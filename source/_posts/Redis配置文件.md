@@ -338,11 +338,11 @@ requirepass 123456
 
 - requirepass 123456            # 手动设置
 - 命令行设置                     # config set requirepass "123456"
-- 若已2设置密码则需要登录 命令  auth 123456
+- 若已设置密码则需要登录 命令  auth 123456
 - 登录成功 获取用户密码      config get requirepass    
 
 
-# 限制 LIMITS
+## 限制 LIMITS
 CLIENTS
 ```bash
 ################################### LIMITS ####################################
@@ -575,4 +575,7 @@ aof-load-truncated yes
 - appendfsync everysec          # 每秒执行一次  sync 可能会丢失 1s 的数据
 # appendfsync no            # 不执行 sync 这个时候操作系统自己同步数据 速度最快
 # appendfsync always        # 每次修改都会 sync 消耗性能
+
+>文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>项目地址: https://github.com/xzMhehe/codingce-java
 
