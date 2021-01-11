@@ -2,6 +2,9 @@
 title: Redis配置文件
 date: 2021-01-10 19:17:32
 tags:
+- Redis
+categories: 
+- Redis
 ---
 
 
