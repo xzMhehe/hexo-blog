@@ -8,7 +8,7 @@ categories:
 ---
 
 
-## SpringBoot整合
+## SpringBoot整合Redis
 SpringBoot 操作数据:spring-data jpa  jdbc mongodb  redis
 SpringData 也是和 SpringBoot 齐名的项目
 
@@ -833,5 +833,5 @@ public final class RedisUtils {
 
 更重要的是理解 Redis 的思想和每一种数据结构的用处以及作用场景.
 
->文章已上传gitee https://gitee.com/codingce/hexo-blog
-项目地址: https://github.com/xzMhehe/codingce-java
+>文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>项目地址: https://github.com/xzMhehe/codingce-java
