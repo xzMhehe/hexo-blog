@@ -1,5 +1,5 @@
 ---
-title: ES安装
+title: ES、Kibana 的安装
 date: 2021-01-13 16:18:41
 tags:
 - Elasticsearch
@@ -155,6 +155,7 @@ s=true, -XX:-OmitStackTraceInFastThrow, -Dio.netty.noUnsafe=true, -Dio.netty.noK
 ## 安装可视化界面 es head 插件
 - 下载地址： https://github.com/mobz/elasticsearch-head/tree/master
 
+- 启动
 >Running with built in server
 git clone git://github.com/mobz/elasticsearch-head.git
 cd elasticsearch-head
@@ -163,8 +164,74 @@ npm run start
 open http://localhost:9100/
 
 
+- 存在跨域问题在 es配置文件配置
+
+```bash
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+```
 
 
+- 重启 ES
+
+初学就把es当作一个数据库(可以建立索引(库), 文档(库中的数据))
+
+![](https://image.codingce.com.cn/elhead.png)
+
+
+
+## Kibana 的安装
+
+### 了解ELK
+ELK是三个开源软件的缩写，分别表示：Elasticsearch , Logstash, Kibana , 它们都是开源软件。新增了一个FileBeat，它是一个轻量级的日志收集处理工具(Agent)，Filebeat占用资源少，适合于在各个服务器上搜集日志后传输给Logstash，官方也推荐此工具。
+
+Elasticsearch是个开源分布式搜索引擎，提供搜集、分析、存储数据三大功能。它的特点有：分布式，零配置，自动发现，索引自动分片，索引副本机制，restful风格接口，多数据源，自动搜索负载等。
+Logstash 主要是用来日志的搜集、分析、过滤日志的工具，支持大量的数据获取方式。一般工作方式为c/s架构，client端安装在需要收集日志的主机上，server端负责将收到的各节点日志进行过滤、修改等操作在一并发往elasticsearch上去。
+
+**Kibana** 也是一个开源和免费的工具，Kibana可以为 Logstash 和 ElasticSearch 提供的日志分析友好的 Web 界面，可以帮助汇总、分析和搜索重要数据日志。
+
+![](https://image.codingce.com.cn/elk1.png)
+
+### 启动
+bin目录下kibana.bat
+```bash
+  log   [09:42:43.291] [info][plugins-service] Plugin "visTypeXy" is disabled.
+  log   [09:42:43.305] [info][plugins-service] Plugin "auditTrail" is disabled.
+  log   [09:42:43.370] [warning][config][deprecation] Config key [monitoring.cluster_alerts.email_notifications.email_address] will be required for email notifications to work in 8.0."
+  log   [09:42:43.675] [info][plugins-system] Setting up [96] plugins: [taskManager,licensing,globalSearch,globalSearchProviders,code,usageCollection,xpackLegacy,telemetryCollectionManager,telemetry,telemetryCollectionXpack,kibanaUsageCollection,securityOss,newsfeed,mapsLegacy,kibanaLegacy,translations,share,legacyExport,embeddable,uiActionsEnhanced,expressions,data,home,observability,cloud,console,consoleExtensions,apmOss,searchprofiler,painlessLab,grokdebugger,management,indexPatternManagement,advancedSettings,fileUpload,savedObjects,dashboard,visualizations,visTypeVega,visTypeTimelion,timelion,features,upgradeAssistant,security,snapshotRestore,enterpriseSearch,encryptedSavedObjects,ingestManager,indexManagement,remoteClusters,crossClusterReplication,indexLifecycleManagement,dashboardMode,beatsManagement,transform,ingestPipelines,maps,licenseManagement,graph,dataEnhanced,visTypeTable,visTypeMarkdown,tileMap,regionMap,inputControlVis,visualize,esUiShared,charts,lens,visTypeVislib,visTypeTimeseries,rollup,visTypeTagcloud,visTypeMetric,watcher,discover,discoverEnhanced,savedObjectsManagement,spaces,reporting,lists,eventLog,actions,case,alerts,stackAlerts,triggersActionsUi,ml,securitySolution,infra,monitoring,logstash,apm,uptime,bfetch,canvas]
+  log   [09:42:43.978] [warning][config][plugins][security] Generating a random key for xpack.security.encryptionKey. To prevent sessions from being invalidated on restart, please set xpack.security.encryptionKey in kibana.yml
+  log   [09:42:43.978] [warning][config][plugins][security] Session cookies will be transmitted over insecure connections. This is not recommended.
+  log   [09:42:44.033] [warning][config][encryptedSavedObjects][plugins] Generating a random key for xpack.encryptedSavedObjects.encryptionKey. To be able to decrypt encrypted saved objects attributes after restart, please set xpack.encryptedSavedObjects.encryptionKey in kibana.yml
+  log   [09:42:44.044] [warning][ingestManager][plugins] Fleet APIs are disabled due to the Encrypted Saved Objects plugin using an ephemeral encryption key. Please set xpack.encryptedSavedObjects.encryptionKey in kibana.yml.
+  log   [09:42:44.178] [warning][config][plugins][reporting] Generating a random key for xpack.reporting.encryptionKey. To prevent sessions from being invalidated on restart, please set xpack.reporting.encryptionKey in kibana.yml
+  log   [09:42:44.182] [info][config][plugins][reporting] Chromium sandbox provides an additional layer of protection, and is supported for Win32 OS. Automatically enabling Chromium sandbox.
+  log   [09:42:44.200] [warning][actions][actions][plugins] APIs are disabled due to the Encrypted Saved Objects plugin using an ephemeral encryption key. Please set xpack.encryptedSavedObjects.encryptionKey in kibana.yml.
+  log   [09:42:44.310] [warning][alerting][alerts][plugins][plugins] APIs are disabled due to the Encrypted Saved Objects plugin using an ephemeral encryption key. Please set xpack.encryptedSavedObjects.encryptionKey in kibana.yml.
+  log   [09:42:44.474] [info][monitoring][monitoring][plugins] config sourced from: production cluster
+  log   [09:42:44.738] [info][savedobjects-service] Waiting until all Elasticsearch nodes are compatible with Kibana before starting saved objects migrations...
+  log   [09:42:45.409] [info][savedobjects-service] Starting saved objects migrations
+  log   [09:42:45.491] [info][savedobjects-service] Creating index .kibana_task_manager_1.
+  log   [09:42:45.659] [info][savedobjects-service] Creating index .kibana_1.
+  log   [09:42:48.662] [info][savedobjects-service] Pointing alias .kibana_task_manager to .kibana_task_manager_1.
+  log   [09:42:48.832] [info][savedobjects-service] Pointing alias .kibana to .kibana_1.
+  log   [09:42:49.107] [info][savedobjects-service] Finished in 3616ms.
+  log   [09:42:49.257] [info][savedobjects-service] Finished in 3768ms.
+  log   [09:42:49.320] [info][plugins-system] Starting [96] plugins: [taskManager,licensing,globalSearch,globalSearchProviders,code,usageCollection,xpackLegacy,telemetryCollectionManager,telemetry,telemetryCollectionXpack,kibanaUsageCollection,securityOss,newsfeed,mapsLegacy,kibanaLegacy,translations,share,legacyExport,embeddable,uiActionsEnhanced,expressions,data,home,observability,cloud,console,consoleExtensions,apmOss,searchprofiler,painlessLab,grokdebugger,management,indexPatternManagement,advancedSettings,fileUpload,savedObjects,dashboard,visualizations,visTypeVega,visTypeTimelion,timelion,features,upgradeAssistant,security,snapshotRestore,enterpriseSearch,encryptedSavedObjects,ingestManager,indexManagement,remoteClusters,crossClusterReplication,indexLifecycleManagement,dashboardMode,beatsManagement,transform,ingestPipelines,maps,licenseManagement,graph,dataEnhanced,visTypeTable,visTypeMarkdown,tileMap,regionMap,inputControlVis,visualize,esUiShared,charts,lens,visTypeVislib,visTypeTimeseries,rollup,visTypeTagcloud,visTypeMetric,watcher,discover,discoverEnhanced,savedObjectsManagement,spaces,reporting,lists,eventLog,actions,case,alerts,stackAlerts,triggersActionsUi,ml,securitySolution,infra,monitoring,logstash,apm,uptime,bfetch,canvas]
+  log   [09:42:49.323] [info][plugins][taskManager][taskManager] TaskManager is identified by the Kibana UUID: ab014865-546b-4ecf-a02d-f37e7c733238
+  log   [09:42:49.645] [info][crossClusterReplication][plugins] Your basic license does not support crossClusterReplication. Please upgrade your license.
+  log   [09:42:49.659] [info][plugins][watcher] Your basic license does not support watcher. Please upgrade your license.
+  log   [09:42:49.664] [info][kibana-monitoring][monitoring][monitoring][plugins] Starting monitoring stats collection
+  log   [09:42:51.493] [info][listening] Server running at http://localhost:5601
+  log   [09:42:53.130] [info][server][Kibana][http] http server running at http://localhost:5601
+
+```
+>http://localhost:5601/
+
+### 需要的可以汉化
+D:\develop\kibana-7.10.1-windows-x86_64\config\kibana.yml
+```bash
+i18n.locale: "zh-CN"
+```
 
 
 
