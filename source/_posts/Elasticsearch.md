@@ -1,10 +1,10 @@
 ---
-title: ElastciSearch
+title: Elasticsearch
 date: 2021-01-13 13:11:09
 tags:
-- ElastciSearch
+- Elasticsearch
 categories: 
-- ElastciSearch
+- Elasticsearch
 
 ---
 

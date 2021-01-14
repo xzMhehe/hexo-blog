@@ -2,17 +2,17 @@
 title: ElasticSearch和solr的区别
 date: 2021-01-13 14:58:12
 tags:
-- ElastciSearch
+- Elasticsearch
 categories: 
-- ElastciSearch
+- Elasticsearch
 ---
 
 
 
-## ElasticSearch 和 solr 的区别
+## Elasticsearch 和 solr 的区别
 
 
-### ElasticSearch 简介
+### Elasticsearch 简介
 Elasticsearch是一个开源（Apache 2许可证），是一个基于Apache Lucene库构建的RESTful搜索引擎。
 
 Elasticsearch是在Solr之后几年推出的。它提供了一个分布式，多租户能力的全文搜索引擎，具有HTTP Web界面（REST）和无架构JSON文档。Elasticsearch的官方客户端库提供Java，Groovy，PHP，Ruby，Perl，Python，.NET和Javascript。
