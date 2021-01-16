@@ -186,7 +186,7 @@ xinze.dic
 GET _analyze
 {
   "analyzer": "ik_smart"
-  , "text": "超级喜欢彼岸舞"
+  , "text": "超级喜欢彼鑫泽"
 }
 ```
 
