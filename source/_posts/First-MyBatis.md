@@ -432,3 +432,14 @@ logImpl 指定 MyBatis 所用日志的具体实现,未指定时将自动查找 S
 - 用完之后赶紧关闭, 否则资源占用
 
 ![mark](http://image.codingce.com.cn/blog/20200712/173037493.png)
+
+
+
+
+
+
+
+
+
+>文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>项目地址: https://github.com/xzMhehe/codingce-java

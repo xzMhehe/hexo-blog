@@ -455,3 +455,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 ```
 
 还有一点 本次SpringBoot版本为2.0.9.RELEASE, SpringBoot太高版本, SpringSecurity页面语法不会生效, 我的是降级后的, 其他SpringBoot版本为2.2.9.RELEASE
+
+
+>文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>项目地址: https://github.com/xzMhehe/codingce-java

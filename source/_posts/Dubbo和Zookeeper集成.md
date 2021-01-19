@@ -424,3 +424,26 @@ class ConsumerServerApplicationTests {
 - ![mark](http://image.codingce.com.cn/blog/20200827/194448775.png)
 
 这就是SpingBoot + dubbo + zookeeper实现分布式开发的应用，其实就是一个服务拆分的思想；
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>项目地址: https://github.com/xzMhehe/codingce-java

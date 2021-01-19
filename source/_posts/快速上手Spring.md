@@ -234,3 +234,7 @@ public class User {
 ```
 结论：在配置文件加载的时候。其中管理的对象都已经初始化了！
 
+
+
+>文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>项目地址: https://github.com/xzMhehe/codingce-java

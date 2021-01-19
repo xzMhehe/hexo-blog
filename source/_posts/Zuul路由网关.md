@@ -185,4 +185,7 @@ public class ZuulApplication_9527 {
 ![mark](http://image.codingce.com.cn/blog/20200927/133029481.png)
 
 
-项目地址: https://github.com/xzMhehe/codingce-java
+
+
+>文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>项目地址: https://github.com/xzMhehe/codingce-java

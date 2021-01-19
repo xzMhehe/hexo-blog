@@ -399,3 +399,11 @@ person:
       name: ${person.hello:other}_旺财
       age: 1
 ```
+
+
+
+
+
+
+>文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>项目地址: https://github.com/xzMhehe/codingce-java

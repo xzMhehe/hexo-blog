@@ -249,3 +249,15 @@ public SpringApplication(ResourceLoader resourceLoader, Class... primarySources)
 ## run方法流程分析
 
 ![mark](http://image.codingce.com.cn/blog/20200809/082900623.png)
+
+
+
+
+
+
+
+
+
+
+>文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>项目地址: https://github.com/xzMhehe/codingce-java
