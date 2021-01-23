@@ -426,12 +426,431 @@ public class CustomerFour {
 
 
 
+## 第三种模型(fanout) 
+`fanout 扇出 也称为广播`
+
+![](https://image.codingce.com.cn/20210123133218.png)
+
+在广播模式下，消息发送流程是这样的：
+
+-  可以有多个消费者
+-  每个**消费者有自己的queue**（队列）
+-  每个**队列都要绑定到Exchange**（交换机）
+-  **生产者发送的消息，只能发送到交换机**，交换机来决定要发给哪个队列，生产者无法决定。
+-  交换机把消息发送给绑定过的所有队列
+-  队列的消费者都能拿到消息。实现一条消息被多个消费者消费
 
 
 
+### 开发开发生产者
+```java
+/**
+ * 生产者
+ * <p>
+ * 任务模型 fanout
+ *
+ * @author mxz
+ */
+@Component
+public class Provider {
+
+    public static void main(String[] args) throws IOException, TimeoutException {
+        Connection connection = RabbitMQUtils.getConnection();
+        Channel channel = connection.createChannel();
+
+
+        // 将通道声明指定交换机  参数1 交换机名称   参数2 代表交换机类型 fanout 广播类型
+        channel.exchangeDeclare("logs", "fanout");
+
+        // 发送消息
+        channel.basicPublish("logs", "", null, "fanout type message".getBytes());
+
+        // 关闭资源
+        RabbitMQUtils.closeConnectionAndChannel(channel, connection);
+
+    }
+}
+```
+
+### 开发消费者
+
+- 消费者 1
+
+```java
+/**
+ * 消费者 1
+ * <p>
+ * 任务模型 fanout
+ *
+ * @author mxz
+ */
+public class CustomerOne {
+
+    public static void main(String[] args) throws IOException {
+
+        Connection connection = RabbitMQUtils.getConnection();
+
+        Channel channel = connection.createChannel();
+
+        // 通道绑定交换机
+        channel.exchangeDeclare("logs", "fanout");
+
+        // 临时队列
+        String queue = channel.queueDeclare().getQueue();
+
+        // 绑定交换机队列
+        channel.queueBind(queue, "logs", "");
+
+        // 消费消息
+        channel.basicConsume(queue, true, new DefaultConsumer(channel) {
+            @Override
+            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                System.out.println("消费者1 " + new String(body));
+            }
+        });
+    }
+
+}
+```
+
+- 消费者 2
+
+```java
+/**
+ * 消费者 2
+ * <p>
+ * 任务模型 fanout
+ *
+ * @author mxz
+ */
+public class CustomerTwo {
+
+    public static void main(String[] args) throws IOException {
+
+        Connection connection = RabbitMQUtils.getConnection();
+
+        Channel channel = connection.createChannel();
+
+        // 通道绑定交换机
+        channel.exchangeDeclare("logs", "fanout");
+
+        // 临时队列
+        String queue = channel.queueDeclare().getQueue();
+
+        // 绑定交换机队列
+        channel.queueBind(queue, "logs", "");
+
+        // 消费消息
+        channel.basicConsume(queue, true, new DefaultConsumer(channel) {
+            @Override
+            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                System.out.println("消费者2 " + new String(body));
+            }
+        });
+
+    }
+
+}
+```
+
+- 消费者 3
+
+```java
+/**
+ * 消费者 3
+ * <p>
+ * 任务模型 fanout
+ *
+ * @author mxz
+ */
+public class CustomerThree {
+
+    public static void main(String[] args) throws IOException {
+
+        Connection connection = RabbitMQUtils.getConnection();
+
+        Channel channel = connection.createChannel();
+
+        // 通道绑定交换机
+        channel.exchangeDeclare("logs", "fanout");
+
+        // 临时队列
+        String queue = channel.queueDeclare().getQueue();
+
+        // 绑定交换机队列
+        channel.queueBind(queue, "logs", "");
+
+        // 消费消息
+        channel.basicConsume(queue, true, new DefaultConsumer(channel) {
+            @Override
+            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                System.out.println("消费者3 " + new String(body));
+            }
+        });
+
+    }
+
+}
+```
+
+### 测试结果
+
+![](https://image.codingce.com.cn/20210123140015.png)
+
+![](https://image.codingce.com.cn/20210123140037.png)
+
+![](https://image.codingce.com.cn/20210123140052.png)
+
+## 第四种模型(Routing)
+### Routing 之订阅模型-Direct(直连)
+`在Fanout模式中，一条消息，会被所有订阅的队列都消费。但是，在某些场景下，我们希望不同的消息被不同的队列消费。这时就要用到Direct类型的Exchange。`
+
+ 在Direct模型下：
+
+- 队列与交换机的绑定，不能是任意绑定了，而是要指定一个`RoutingKey`（路由key）
+- 消息的发送方在 向 Exchange发送消息时，也必须指定消息的 `RoutingKey`。
+- Exchange不再把消息交给每一个绑定的队列，而是根据消息的`Routing Key`进行判断，只有队列的`Routingkey`与消息的 `Routing key`完全一致，才会接收到消息
+
+
+流程:
+
+![](https://image.codingce.com.cn/20210123140137.png)
+
+图解：
+
+- P：生产者，向Exchange发送消息，发送消息时，会指定一个routing key。
+- X：Exchange（交换机），接收生产者的消息，然后把消息递交给 与routing key完全匹配的队列
+- C1：消费者，其所在队列指定了需要routing key 为 error 的消息
+- C2：消费者，其所在队列指定了需要routing key 为 info、error、warning 的消息
+
+
+#### 开发生产者
+
+```java
+/**
+ * @author mxz
+ */
+public class Provider {
+    public static void main(String[] args) throws IOException {
+
+        Connection connection = RabbitMQUtils.getConnection();
+
+        Channel channel = connection.createChannel();
+
+        // 通过通道声明交换机   参数1 交换机名称  参数2 路由模式
+        channel.exchangeDeclare("logs_direct", "direct");
+
+        // 发送消息
+        String routingKey = "error";
+
+        channel.basicPublish("logs_direct", routingKey, null, ("这是 direct 模式发布基于 route_key [" + routingKey + "]").getBytes());
+
+        // 关闭资源
+        RabbitMQUtils.closeConnectionAndChannel(channel, connection);
+    }
+}
+```
 
 
 
+#### 开发消费者
+
+- 消费者1
+
+```java
+/**
+ * 消费者 1
+ *
+ * @author mxz
+ */
+@Component
+public class CustomerOne {
+    public static void main(String[] args) throws IOException, TimeoutException {
+
+        // 获取连接对象
+        Connection connection = RabbitMQUtils.getConnection();
+
+        // 创建通道
+        Channel channel = connection.createChannel();
+
+        // 创建一个临时队列
+        String queue = channel.queueDeclare().getQueue();
+
+        // 基于 route_key 绑定队列交换机
+        channel.queueBind(queue, "logs_direct", "error");
+
+        // 消费消息
+        channel.basicConsume(queue, true, new DefaultConsumer(channel) {
+            @Override
+            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                System.out.println("消费者1： " + new String(body));
+            }
+        });
+
+//        channel.close();
+//        connection.close();
+    }
+
+}
+```
+
+- 消费者2
+
+```java
+/**
+ * 消费者 2
+ *
+ * @author mxz
+ */
+@Component
+public class CustomerTwo {
+    public static void main(String[] args) throws IOException, TimeoutException {
+        Connection connection = RabbitMQUtils.getConnection();
+
+        Channel channel = connection.createChannel();
+
+        // 声明交换机
+        channel.exchangeDeclare("logs_direct", "direct");
+
+        // 创建一个临时队列
+        String queue = channel.queueDeclare().getQueue();
+
+        // 临时队列和绑定交换机
+        channel.queueBind(queue, "logs_direct", "info");
+        channel.queueBind(queue, "logs_direct", "error");
+        channel.queueBind(queue, "logs_direct", "warning");
+
+        // 消费消息
+        channel.basicConsume(queue, true, new DefaultConsumer(channel) {
+            @Override
+            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                System.out.println("消费者2：" + new String(body));
+            }
+        });
+    }
+
+}
+```
+
+
+### Routing 之订阅模型-Topic
+`Topic`类型的`Exchange`与`Direct`相比，都是可以根据`RoutingKey`把消息路由到不同的队列。只不过`Topic`类型`Exchange`可以让队列在绑定`Routing key` 的时候使用通配符！这种模型`Routingkey` 一般都是由一个或多个单词组成，多个单词之间以”.”分割，例如： `item.insert`
+
+
+![](https://image.codingce.com.cn/20210123153215.png)
+
+```markdown
+# 统配符
+		* (star) can substitute for exactly one word.    匹配不多不少恰好1个词
+		# (hash) can substitute for zero or more words.  匹配一个或多个词
+# 如:
+		audit.#    匹配audit.irs.corporate或者 audit.irs 等
+    audit.*   只能匹配 audit.irs
+```
+
+#### 开发生产者
+
+```java
+/**
+ * 生产者
+ * <p>
+ *
+ * @author mxz
+ */
+@Component
+public class Provider {
+
+    public static void main(String[] args) throws IOException, TimeoutException {
+        Connection connection = RabbitMQUtils.getConnection();
+        Channel channel = connection.createChannel();
+
+
+        // 声明交换机以及交换机类型
+        channel.exchangeDeclare("topics", "topic");
+
+
+        // 路由key
+        String routeKey = "user.save";
+
+        channel.basicPublish("topics", routeKey, null, ("这里是 topic 动态路由模型, routeKey:[" + routeKey + "]").getBytes());
+
+        // 关闭资源
+        RabbitMQUtils.closeConnectionAndChannel(channel, connection);
+    }
+}
+```
+
+#### 开发消费者
+
+- 消费者
+
+```java
+/**
+ * @author mxz
+ */
+public class CustomerOne {
+
+    public static void main(String[] args) throws IOException {
+        Connection connection = RabbitMQUtils.getConnection();
+
+        Channel channel = connection.createChannel();
+
+        // 声明交换机以及交换机类型
+        channel.exchangeDeclare("topics", "topic");
+
+        // 创建一个临时队列
+        String queue = channel.queueDeclare().getQueue();
+
+        // 绑定队列和交换机  动态通配符  route key
+        channel.queueBind(queue, "topics", "user.*");
+
+        // 消费消息
+        channel.basicConsume(queue, true, new DefaultConsumer(channel) {
+            @Override
+            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                System.out.println("消费者1：" + new String(body));
+            }
+        });
+
+    }
+
+}
+```
+
+- 消费者
+
+```java
+/**
+ * @author mxz
+ */
+public class CustomerTwo {
+
+    public static void main(String[] args) throws IOException {
+        Connection connection = RabbitMQUtils.getConnection();
+
+        Channel channel = connection.createChannel();
+
+        // 声明交换机以及交换机类型
+        channel.exchangeDeclare("topics", "topic");
+
+        // 创建一个临时队列
+        String queue = channel.queueDeclare().getQueue();
+
+        // 绑定队列和交换机  动态通配符  route key
+        channel.queueBind(queue, "topics", "user.#");
+
+        // 消费消息
+        channel.basicConsume(queue, true, new DefaultConsumer(channel) {
+            @Override
+            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                System.out.println("消费者2：" + new String(body));
+            }
+        });
+
+    }
+
+}
+```
 
 
 
