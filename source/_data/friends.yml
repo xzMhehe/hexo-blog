@@ -1,0 +1,62 @@
+- group: 🌸 主题作者 + 文档 —— 没有不劳而获的工作，更没有坐享其成的收获
+  noteStyle: warning
+  icon: fas fa-user-tie
+  items:
+    - title: XAOXUU
+      avatar: https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/links/xaoxuu.png
+      url: https://xaoxuu.com/
+      backgroundColor: '#34A853'
+      textColor: '#fff'
+      keywords: [ios, 前端]
+    - title: Volantis
+      avatar: https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/links/volantis.png
+      url: https://volantis.js.org/
+      backgroundColor: '#008B8B'
+      textColor: '#fff'
+      keywords: [官方文档]
+
+- group: 🌤️ 技术大佬 —— 相逢一醉是前缘，风雨散、飘然何处
+  noteStyle: quote
+  icon: fas fa-desktop
+  items:
+    - title: Sanarous
+      avatar: https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/links/Sanarous.jpg
+      url: https://bestzuo.cn
+      backgroundColor: '#A03EC9'
+      textColor: '#fff'
+      keywords: [码农人生]
+    - title: 小康博客
+      avatar: https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/links/小康博客.jpg
+      url: https://www.antmoe.com/
+      backgroundColor: '#3E74C9'
+      textColor: '#fff'
+      keywords: [记录学习, 技术]
+
+- group: ✨ 虐狗博主 —— 你的春日好运正在派件，请保持心情舒畅
+  noteStyle: info
+  icon: fas fa-heartbeat
+  items:
+    - title: LOVE109❤️纪实小屋
+      avatar: https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/links/LOVE109.jpg
+      url: https://www.love109.cn/
+      backgroundColor: '#FF69B4'
+      textColor: '#fff'
+      keywords: [记录爱情❤️记录生活]
+    - title: 两个有意思的
+      avatar: https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/links/两个有意思的.png
+      url: https://dxq520.cn/
+      backgroundColor: '#FF69B4'
+      textColor: '#fff'
+      keywords: [记录爱情❤️记录生活]
+
+- group: ⚡ 危险区（该区站点保留7天至3个月不定）
+  noteStyle: error
+  icon: fas fa-exclamation-triangle
+  description: 如贵站在该区请检查贵站是否能正常访问或是否违背了本站友链原则（例：未开启https）
+  items:
+    - title: LarsCheng
+      avatar: https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/links/LarsCheng.png
+      url: https://www.larscheng.com/
+      backgroundColor: '#34A853'
+      textColor: '#fff'
+      keywords: [Java]

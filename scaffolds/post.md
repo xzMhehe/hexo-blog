@@ -1,5 +1,13 @@
 ---
 title: {{ title }}
 date: {{ date }}
-tags:
+pin: false
+toc: true
+headimg:
+thumbnail:
+icons: []
+tags: []
+categories: []
+keywords: []
+description:
 ---

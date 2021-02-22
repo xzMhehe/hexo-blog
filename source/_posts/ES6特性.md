@@ -1,22 +1,32 @@
 ---
 title: ES6特性
 date: 2021-02-01 11:14:28
-tags:
+pin: false
+toc: true
+icons: [fas fa-fire red]
+headimg: https://s1.ax1x.com/2020/08/20/dJdY0H.jpg
+thumbnail: https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/vue.png
+tags: [JavaScript]
+categories: [JavaScript]
+keywords: [JavaScript]
+abbrlink: 461108bb
+description: ES6特性
 ---
-# ES6
-## 简介
+
+# :sun_with_face: ES6
+## :sun_with_face: 简介
 `ECMAScript6.0`（以下简称ES6，ECMAScript是一种由Ecma国际(前身为欧洲计算机制造商协会,英文名称是EuropeanComputerManufacturersAssociation)通过ECMA-262标准化的脚本程序设计语言）`是JavaScript语言的下一代标准`，已经在2015年6月正式发布了，并且从ECMAScript6开始，开始采用年号来做版本。即ECMAScript2015，就是ECMAScript6。它的目标，是使得JavaScript语言可以用来编写复杂的大型应用程序，成为企业级开发语言。
 `每年一个新版本`。
 
 
 ![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0abd9b7c3c514a538eaba2ab748c45b8~tplv-k3u1fbpfcp-watermark.image)
 
-## 什么是ECMAScript
+## :sun_with_face: 什么是ECMAScript
 来看下前端的发展历程：
-### web1.0时代：
+### :sun_with_face: web1.0时代：
 最初的网页以HTML为主，是纯静态的网页。网页是只读的，信息流只能从服务的到客户端单向流通。`开发人员也只关心页面的样式和内容即可`。
 
-### web2.0时代：
+### :sun_with_face: web2.0时代：
 
 - 1995年，网景工程师BrendanEich花了10天时间设计了JavaScript语言。
 - 1996年，微软发布了JScript，其实是JavaScript的逆向工程实现。
@@ -26,9 +36,9 @@ tags:
 所以，`ECMAScript`是浏览器脚本语言的规范，而各种我们熟知的js语言，如`JavaScript则是规范的具体实现`。
 
 
-## ES6新特性
+## :sun_with_face: ES6新特性
 
-### 1. let声明变量
+### :sun_with_face: 1. let声明变量
 
 ```js
   //var声明的变量往往会越域
@@ -59,7 +69,7 @@ tags:
 ```
 
 
-### 2. const声明常量（只读变量）
+### :sun_with_face: 2. const声明常量（只读变量）
 ```js
   //1.声明之后不允许改变
   //2.一但声明必须初始化，否则会报错
@@ -67,8 +77,8 @@ tags:
   a = 3;  //UncaughtTypeError:Assignmenttoconstantvariable.
 ```
 
-### 3. 解构表达式
-#### 数组结构
+### :sun_with_face: 3. 解构表达式
+#### :sun_with_face:数组结构
 ```js
 let arr = [1, 2, 3];
 //以前我们想获取其中的值，只能通过角标。ES6可以这样：
@@ -102,9 +112,9 @@ console.log(age);
 console.log(language);
 ```
 
-### 4. 字符串扩展
+### :sun_with_face: 4. 字符串扩展
 
-#### 几个新的API
+#### :sun_with_face: 几个新的API
 ES6为字符串扩展了几个新的API：
 - `includes()`：返回布尔值，表示是否找到了参数字符串。
 - `startsWith()`：返回布尔值，表示参数字符串是否在原字符串的头部。
@@ -118,7 +128,7 @@ console.log(str.includes("e")); //true
 console.log(str.includes("hello")); //true
 ```
 
-#### 字符串模板
+#### :sun_with_face: 字符串模板
 模板字符串相当于加强版的字符串，用反引号`,除了作为普通字符串，还可以用来定义多行字符串，还可以在字符串中加入变量和表达式。
 
 ```js
@@ -148,8 +158,8 @@ let sss = `O(∩_∩)O哈哈~，${fun()}`;
 console.log(sss); //O(∩_∩)O哈哈~，这是一个函数
 ```
 
-### 5. 函数优化
-#### 函数参数默认值
+### :sun_with_face: 5. 函数优化
+#### :sun_with_face: 函数参数默认值
 ```js
 //在ES6以前，我们无法给一个函数参数设置默认值，只能采用变通写法：
 function add(a, b) {
