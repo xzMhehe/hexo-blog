@@ -218,13 +218,13 @@ baidusitemap:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   - type: git
-    # repo: git@139.9.34.48:/home/git/hexo.git     # 填写你的服务器地址 将SERVER替换掉
-    repo: https://github.com/xzMhehe/codingce-blog
+    repo: git@139.9.34.48:/home/git/hexo.git     # 填写你的服务器地址 将SERVER替换掉
+    # repo: https://github.com/xzMhehe/codingce-blog
     branch: master
     
   # - type: baidu_url_submitter
 #  - type: git
 #    repo:
-#      github: git@github.com:XuxuGood/XuxuGood.github.io.git,master
-#      coding: git@git.dev.tencent.com:XuxuGood/XuxuGood.coding.me.git,master # 腾讯
-#      coding: git@git.coding.net:XuxuGood/XuxuGood.coding.me.git,master # Coding
+#      github: git@github.com:xzMhehe/xzMhehe.github.io.git,master
+#      coding: git@git.dev.tencent.com:xzMhehe/xzMhehe.coding.me.git,master # 腾讯
+#      coding: git@git.coding.net:xzMhehe/xzMhehe.coding.me.git,master # Coding

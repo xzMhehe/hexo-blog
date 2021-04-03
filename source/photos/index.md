@@ -17,7 +17,7 @@ sitemap: false
 {% span left logo h2 cyan, 回味无穷，唇齿留香 %}
 {% span small ,美食，顾名思义就是美味的食物，各个地区也有自己喜爱的口味，比如上海等地喜酸甜，四川重庆喜麻辣，东北地区则口味和盐会重一点。随着生活水平的提高，食物也不在只是充饥了 。美食不仅仅是简单的味觉感受，更是一种精神享受。所以，在做美食这一块也是很重要的。 %}
 {% gallery stretch, 4 %}
-![一品焖锅](https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/photos/deliciousFood/35.jpg)
+![水果](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210403234919.jpeg)
 
 {% endgallery %}
 
@@ -28,9 +28,7 @@ sitemap: false
 {% span left logo h2 cyan, 彼方为谁，无我有问 %}
 {% span small ,有人说生活就是生下来，活下去；生容易，活却难；七情六欲为人之本性，如果某一天你忽然对这个世界没了欲望，你也就不会留恋人的生活了，这看上去是个悖论，可事实就是如此，我们为了欲望痛苦，又因为欲望而生存！ %}
 {% gallery stretch, 3 %}
-![生日](https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/photos/life/生日2.jpg)
-![毕业季](https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/photos/life/毕业1.jpg)
-![日常生活](https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/photos/life/生活2.jpg)
+![日常生活](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210403234836.jpeg)
 {% endgallery %}
 
 <!-- endtab -->
@@ -40,8 +38,11 @@ sitemap: false
 {% span left logo h2 cyan, 九月露湿，待君之前 %}
 {% span small ,有人说要么读书，要么旅行，身体和灵魂，总有一个要在路上；曾梦想仗剑走天涯，看一看世间的繁华。这是一个出走的过程，在短暂的时间里与自己对话，在时光的缝隙中遇见真正的自己，变得淡然与豁达，至于风景这只是附赠品。骚年，愿你走出半生，归来仍是少年。一辈子是场修行。短的是旅途，长的是人生。 %}
 {% gallery stretch, 4 %}
-![风景](https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/photos/travel/1.jpg)
+![春](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210403234654.jpeg)
+
 {% endgallery %}
+
+
 
 <!-- endtab -->
 
