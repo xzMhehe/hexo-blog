@@ -10,7 +10,7 @@ sitemap: false
     <span class="milky">🎉小伙伴</span>
 </div>
 
-{% issues sites | api=https://gitee.com/api/v5/repos/codingce/blog_friends/issues?sort=created&direction=asc&labels=主题作者-主题文档,技术大佬,朋友们,虐狗博主&state=open&page=1&per_page=100 | group=group:主题作者 + 文档,技术大佬,朋友们,虐狗博主 %}
+{% issues sites | api=https://gitee.com/api/v5/repos/codingce/blog-friends/issues?sort=created&direction=asc&labels=主题作者-主题文档,技术大佬,朋友们,虐狗博主&state=open&page=1&per_page=100 | group=group:主题作者 + 文档,技术大佬,朋友们,虐狗博主 %}
 
 <br>
 
