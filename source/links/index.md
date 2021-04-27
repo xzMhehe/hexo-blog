@@ -24,7 +24,7 @@ sitemap: false
 
 {% timeline %}
 
-{% timenode 第一步：新建 [Gitee Issue](https://gitee.com/codingce/blog_friends/issues) 按照格式填写并提交 %}
+{% timenode 第一步：新建 [Gitee Issue](https://gitee.com/codingce/blog-friends/issues) 按照格式填写并提交 %}
 
 ```json
 {
@@ -115,7 +115,7 @@ screenshot: https://7.dusays.com/2020/10/23/d6d2f3589e979.png # 网站截图
 description: 简单不先于复杂，而是在复杂之后。 # 网站描述
 tags: [Java, 前端] # 标签
 ```
-待管理员核实以后，会帮您到 [Gitee Issue](https://gitee.com/XiaoXuxuy/blog_friends/issues) 添加友链。
+待管理员核实以后，会帮您到 [Gitee Issue](https://gitee.com/codingce/blog-friends/issues) 添加友链。
 
 {% endtimenode %}
 
