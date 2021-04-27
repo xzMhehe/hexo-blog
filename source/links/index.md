@@ -81,7 +81,7 @@ tags: [Java, 前端] # 标签
 
 <!-- tab &nbsp;其他方式添加友链 @anchor -->
 
-如果你不会使用 [Gitee Issue](https://gitee.com/codingce/blog_friends/issues) 提交友链，那么请按照以下步骤申请友链。
+如果你不会使用 [Gitee Issue](https://gitee.com/codingce/blog-friends/issues) 提交友链，那么请按照以下步骤申请友链。
 {% timeline %}
 
 {% timenode 第一步：按照下面格式留言 %}
