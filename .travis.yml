@@ -40,8 +40,8 @@ script:
 after_script:
   - cd ./public
   - git init
-  - git config user.name "xuxu"
-  - git config user.email "22476705@qq.com"
+  - git config user.name "codingce"
+  - git config user.email "2460798168@qq.com"
   - git add .
   - git commit -m "TravisCI 自动部署"
 

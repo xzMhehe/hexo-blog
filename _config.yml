@@ -201,7 +201,7 @@ baidu_url_submit:
   # 在百度站长平台中注册的域名
   host: i.codingce.com.cn
   # 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
-  token: J4BxmD9cRLN1GwrK
+  token: J6BxmD9cRLN1GwrK
   # 文本文档的地址， 新链接会保存在此文本文档里
   path: baidu_urls.txt
 
