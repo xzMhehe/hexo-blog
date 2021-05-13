@@ -12,7 +12,6 @@ thumbnail:
 abbrlink: 431108ab
 description: Nginx知识整理
 ---
-@[TOC](目录)
 
 # 1.准备工作
 结合本文场景，需要安装Nginx和Java环境（运行SpringBoot项目）
