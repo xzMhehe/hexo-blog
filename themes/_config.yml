@@ -720,7 +720,7 @@ plugins:
     lang: zh # 语言设置，zh为汉语，en为英语，es为西班牙语。默认为汉语
     pageSize: 5 #每页说说的显示数量
     shuoPla: 分享一些有趣的事情吧(◕ܫ◕)  #在编辑说说的输入框中的占位符
-    avatarPla: https://hasaik.com/images/avatar.jpg #自定义头像url的输入框的占位符
+    avatarPla: https://i.codingce.com.cn/about/ #自定义头像url的输入框的占位符
     motion: 1 #加载动画的开关，1为开，0为关，默认为开
     bgImg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN@main/blogImages/valine/comment.webp #说说输入框背景图片url
     color1: '#1BC3FB' #说说背景颜色1&按钮颜色1
