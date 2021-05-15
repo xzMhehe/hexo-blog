@@ -110,7 +110,7 @@ tags: [Java, 前端] # 标签
 ```
 title: Ze's Blog # 博客名
 avatar: https://i.codingce.com.cn/images/avatar.jpg # 头像链接
-url:  https://hasaik.com # 博客链接
+url:  https://i.codingce.com.cn # 博客链接
 screenshot: https://7.dusays.com/2020/10/23/d6d2f3589e979.png # 网站截图
 description: 简单不先于复杂，而是在复杂之后。 # 网站描述
 tags: [Java, 前端] # 标签

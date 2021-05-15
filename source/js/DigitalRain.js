@@ -23,7 +23,7 @@ window.onload = function(){
         drops.push(0);
     }
     //运动的文字
-    var str ="WELCOME TO HASAIK.COM";
+    var str ="WELCOME TO I.CODINGCE.COM.CN";
     //4:fillText(str,x,y);原理就是去更改y的坐标位置
     //绘画的函数
     function draw(){
