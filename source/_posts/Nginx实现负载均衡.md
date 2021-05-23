@@ -3,9 +3,9 @@ title: Nginx实现负载均衡
 pin: false
 toc: true
 icons: []
-tags: [nginx]
-categories: [nginx]
-keywords: [nginx, 负载均衡]
+tags: [Nginx]
+categories: [Nginx]
+keywords: [Nginx, 负载均衡]
 date: 2021-05-13 14:18:04
 headimg:
 thumbnail:
