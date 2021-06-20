@@ -1,132 +1,177 @@
 ---
-layout: page
-seo_title: 小伙伴们
-bottom_meta: false
-sidebar: [blogger, category, tagcloud]
-sitemap: false
+title: Links
+date: 2020-07-07 22:26:21
+reward: false
+copyright: false
 ---
+怎么可能有顺序呢，当然是随机的~
 
-<div style="margin-top: 2.5rem;text-align: center">
-    <span class="milky">🎉小伙伴</span>
+<div class="friends">
+    <a class="brick mdui-ripple mdui-ripple-white" href="https://pinkpeachabc.cn/">
+        <img class="blog-avatar" src="https://pinkpeachabc.cn/images/bear.jpg">
+        <div class="container">
+            <div class="name">pinkpeach</div>
+            <div class="motto">Life is sad at times, but it is up to you to make your own life happy..</div>
+        </div>
+    </a>
 </div>
 
-{% issues sites | api=https://gitee.com/api/v5/repos/codingce/blog-friends/issues?sort=created&direction=asc&labels=主题作者-主题文档,技术大佬,朋友们,虐狗博主&state=open&page=1&per_page=100 | group=group:主题作者 + 文档,技术大佬,朋友们,虐狗博主 %}
+<div class="friends">
+    <a class="brick mdui-ripple mdui-ripple-white" href="https://blog.icyuyan.net/">
+        <img class="blog-avatar" src="https://q.qlogo.cn/headimg_dl?dst_uin=1184662350&spec=640">
+        <div class="container">
+            <div class="name">独孤伶俜</div>
+            <div class="motto">独孤伶俜 and 一生倥偬</div>
+        </div>
+    </a>
+</div>
 
-<br>
+### 本人站点
 
-{% note warning, <strong>友链更新通知</strong> <br>由于近期对友链系统进行了重做，原链接失效的小伙伴请按照下方交换友链的步骤进行填写。在新的友链系统中，您随时可以对自己的信息进行修改而无需等待博主更新。 %}
+<div class="friends">
+    <a class="brick mdui-ripple mdui-ripple-white" href="http://r.codingce.com.cn/">
+        <img class="blog-avatar" src="http://yanxuan.nosdn.127.net/6e122f997506c72f08a3bf2ace84f83b.jpg">
+        <div class="container">
+            <div class="name">我的简历</div>
+            <div class="motto">道阻且长</div>
+        </div>
+    </a>
+    <a class="brick mdui-ripple mdui-ripple-white" href="https://z.codingce.com.cn/">
+        <img class="blog-avatar" src="https://avatars3.githubusercontent.com/u/15863367?s=100&v=4">
+        <div class="container">
+            <div class="name">我的主页</div>
+            <div class="motto">欢迎访问!</div>
+        </div>
+    </a>
+    <a class="brick mdui-ripple mdui-ripple-white" href="https://halo.codingce.com.cn/">
+        <img class="blog-avatar" src="https://avatars2.githubusercontent.com/u/472311?s=100&v=4">
+        <div class="container">
+            <div class="name">我的博客</div>
+            <div class="motto">欢迎访问</div>
+        </div>
+    </a>
+        <a class="brick mdui-ripple mdui-ripple-white" href="https://folio.codingce.com.cn/">
+        <img class="blog-avatar" src="https://avatars1.githubusercontent.com/u/20219567?s=100&v=4">
+        <div class="container">
+            <div class="name">folio</div>
+            <div class="motto">play</div>
+        </div>
+    </a>
+</div>
 
-<br>
+### 特殊链接
 
-{% tabs links,1 %}
+<div class="friends">
+    <!-- <a class="brick mdui-ripple mdui-ripple-white" href="https://www.bandbbs.cn/">
+        <img class="blog-avatar" src="http://yanxuan.nosdn.127.net/6e122f997506c72f08a3bf2ace84f83b.jpg">
+        <div class="container">
+            <div class="name">米坛</div>
+            <div class="motto">创造不一样</div>
+        </div>
+    </a> -->
+    <!-- <a class="brick mdui-ripple mdui-ripple-white" href="https://aidn.jp/">
+        <img class="blog-avatar" src="https://aidn.jp/apple-touch-icon.png">
+        <div class="container">
+            <div class="name">AIDN</div>
+            <div class="motto">daniwell official website</div>
+        </div>
+    </a> -->
+    <!-- <a class="brick mdui-ripple mdui-ripple-white" href="http://www.zhisou.cc">
+        <img class="blog-avatar" src="https://secure.gravatar.com/avatar/1ee71d9da3b0fc793f4ad544533ebde4?s=200">
+        <div class="container">
+            <div class="name">来语直搜</div>
+            <div class="motto">专注你的热爱</div>
+        </div>
+    </a> -->
+</div>
 
-<!-- tab &nbsp;添加友链流程 @plus-circle -->
+### 失效友链
 
-{% timeline %}
+<details class="mdui-panel-item">
+<summary class="mdui-panel-item-header" style="outline:none">
+<div class="mdui-panel-item-title">失效友链</div>
+<div class="mdui-panel-item-summary">糟糕的先收起来</div>
+<i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+</summary>
+<div class="mdui-panel-item-body">
+<div class="friends" style="opacity:0.5;">
+    <a class="brick mdui-ripple mdui-ripple-white" href="https://blog.martis.me" target="_blank" rel="noopener">
+        <img class="blog-avatar" src="https://blog.martis.me/images/me.jpg">
+        <div class="container">
+            <div class="name">Marti’s Blog</div>
+            <div class="motto">摸鱼天下第一</div>
+        </div>
+    </a>
+    <a class="brick mdui-ripple mdui-ripple-white" href="http://blog.ycly.ml/" target="_blank" rel="noopener">
+        <img class="blog-avatar" src="http://blog.ycly.ml/ycly/ycly.png">
+        <div class="container">
+            <div class="name">洋葱落叶的博客</div>
+            <div class="motto long">一个 Android 发烧友的博客</div>
+        </div>
+    </a>
+    <a class="brick mdui-ripple mdui-ripple-white" href="https://xiaohuyao.cn/">
+        <img class="blog-avatar" src="https://t.xiaohuyao.cn/blog/typecho/%E5%A4%B4%E5%83%8F.jpg-tu">
+        <div class="container">
+            <div class="name">小狐妖博客</div>
+            <div class="motto">I'm fine.</div>
+        </div>
+    </a>
+    <a class="brick mdui-ripple mdui-ripple-white" href="https://www.raaynk.com">
+        <img class="blog-avatar" src="https://www.raaynk.com/wp-content/uploads/2019/07/avatar_2.jpg">
+        <div class="container">
+            <div class="name">Raaynk’s Blog</div>
+            <div class="motto">Raaynk的个人博客</div>
+        </div>
+    </a>
+</div>
+</div>
+</details>
 
-{% timenode 第一步：新建 [Gitee Issue](https://gitee.com/codingce/blog-friends/issues) 按照格式填写并提交 %}
-
-```json
-{
-    "title": "",
-    "avatar": "",
-    "screenshot": "",
-    "url": "",
-    "description": "",
-    "group": ""
-}
-```
-为了提高图片加载速度，建议优化头像和截图：
-
-1.打开 [压缩图](https://www.yasuotu.com/) 上传自己的头像，将图片尺寸调整到 `96px` 后下载。
-2.将压缩后的图片上传到 [去不图床](https://7bu.top/) 或者 [sm.ms 图床](https://sm.ms/) 并使用此图片链接作为头像。
-3.重复上述步骤，把压缩网站截图并把尺寸调整到 `540x360` 以下。
-
-{% endtimenode %}
-
-{% timenode 第二步：添加友链并等待管理员审核 %}
-
-请添加本站到您的友链中，如果您也使用 issue 作为友链源，只需要告知您的友链源仓库即可。
-```
-title: Ze's Blog # 博客名
-avatar: https://i.codingce.com.cn/images/avatar.jpg # 头像链接
-url:  https://i.codingce.com.cn # 博客链接
-screenshot: https://7.dusays.com/2020/10/23/d6d2f3589e979.png # 网站截图
-description: 简单不先于复杂，而是在复杂之后。 # 网站描述
-tags: [Java, 前端] # 标签
-```
-待管理员审核通过，回来刷新即可生效。
-
-{% endtimenode %}
-
-{% endtimeline %}
-
-<!-- endtab -->
-
-<!-- tab &nbsp;友链申明 @bell -->
-
-:bell: 站点失效、停止维护、内容不当都可能被取消友链
-:bell: 禁链不尊重他人劳动成果，转载、引用不加出处，恶意行为的站点
-:bell: 本站会定期检查并清理无效的、单方面的友链，如更换信息请留言，谢谢合作
-:bell: 加入友链后会在本站任意留言区获得<span class="links-tips-friends">小伙伴</span>徽章（以邮箱判定）一枚哦，如果没有请联系我
-
-<!-- endtab -->
-
-<!-- tab &nbsp;更新自己的博客链接 @retweet -->
-
-如果是自己创建的 issue ，可以自己修改。
-如果是管理员创建的，请自己重新创建一份，然后让管理员删掉旧的。
-
-<!-- endtab -->
-
-<!-- tab &nbsp;其他方式添加友链 @anchor -->
-
-如果你不会使用 [Gitee Issue](https://gitee.com/codingce/blog-friends/issues) 提交友链，那么请按照以下步骤申请友链。
-{% timeline %}
-
-{% timenode 第一步：按照下面格式留言 %}
-
-```yml
-{
-    "title": "",        # 站点名字
-    "avatar": "",       # 头像
-    "screenshot": "",   # 站点截图
-    "url": "",          # 站点地址
-    "description": "",  # 描述
-    "group": ""         # 分组,可选值有[技术大佬、朋友们、虐狗博主]
-}
-```
-为了提高图片加载速度，建议优化头像和截图：
-
-1.打开 [压缩图](https://www.yasuotu.com/) 上传自己的头像，将图片尺寸调整到 `96px` 后下载。
-2.将压缩后的图片上传到 [去不图床](https://7bu.top/) 或者 [sm.ms 图床](https://sm.ms/) 并使用此图片链接作为头像。
-3.重复上述步骤，把压缩网站截图并把尺寸调整到 `540x360` 以下。
-
-{% endtimenode %}
-
-{% timenode 第二步：添加本站友链并等待管理员审核 %}
-
-请添加本站到您的友链中（信息按需取）
-```
-title: Ze's Blog # 博客名
-avatar: https://i.codingce.com.cn/images/avatar.jpg # 头像链接
-url:  https://i.codingce.com.cn # 博客链接
-screenshot: https://7.dusays.com/2020/10/23/d6d2f3589e979.png # 网站截图
-description: 简单不先于复杂，而是在复杂之后。 # 网站描述
-tags: [Java, 前端] # 标签
-```
-待管理员核实以后，会帮您到 [Gitee Issue](https://gitee.com/codingce/blog-friends/issues) 添加友链。
-
-{% endtimenode %}
-
-{% endtimeline %}
-
-<!-- endtab -->
-
-{% endtabs %}
+<details class="mdui-panel-item">
+<summary class="mdui-panel-item-header" style="outline:none">
+<div class="mdui-panel-item-title">友链记录册</div>
+<div class="mdui-panel-item-summary">那些曾经留过痕迹的友链</div>
+<i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+</summary>
+<div class="mdui-panel-item-body">
+    <li>2019-12-01 —— 粉色桃子的博客</li>
+    <li>2020-08-10 —— 独孤伶俜</li>
+</div>
+</details>
 
 <style>
-    .issues-api h2:first-child{
-        margin-top: -50px;
-    }
+.friends{display:flex;flex-wrap:wrap;}.friends .brick{-webkit-transition:all .3s ease;transition:all .3s ease;}.friends .brick{display:flex;margin:10px 10px 0 0;text-decoration:none;font-weight:300;padding:10px;background-color:#fff0;border:solid 1px #659eb929;color:#659eb9;text-align:center;border-radius:4px;overflow:hidden}.friends .brick:hover{background-color:#659eb9;color:#fff;border:solid 1px #659eb9;box-shadow:0 6px 16px 0 rgba(80, 178, 243, 0.35);}.blog-avatar:hover{animation:whirl 0.5s;}
+@keyframes whirl{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}.friends .brick:active{-webkit-transform:scale(0.95);-moz-transform:scale(0.95);-ms-transform:scale(0.95);-o-transform:scale(0.95);transform:scale(0.95);}.friends .brick .blog-avatar{background-color:#fff0;color:#fff;border:solid 1px #dbdbdb;border-radius:50%;width:50px;height:50px;}.friends .brick .container{margin-left:10px;}.friends .brick .container .name{font-size:14px;}.friends .brick .container .motto{font-size:12px;margin-top:5px;-webkit-box-orient:vertical;-webkit-line-clamp:1;}
+@media(max-width:450px){.friends .brick{width:100%;}.friends .brick .container{margin-left:0;width:100%;}.motto{width: 100% !important;}}.motto.long{width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.mdui-panel-item[open] .mdui-panel-item-arrow{transform:rotate(180deg);}.mdui-panel-item-body {height:auto!important;}
 </style>
+
+### 本站模板
+
+```CWorld
+名称：xzMhehe
+链接：https://i.codingce.com.cn/
+图标：https://www.gravatar.com/avatar/f91d03fb9bfb4e5eb37249f66f6973f6?s=80
+简介：The depth of thinking determines your altitude.
+```
+
+### 申请说明
+
+- 不违反国家法律。
+- 请确保你的站点活着。
+- 在你的友链上添加本站。
+
+### 格式模板
+
+欢迎评论区留链接。
+
+```Example
+名称：<Name>
+链接：<Link>
+图标：<Icon>
+简介：<Word>
+```
+
+
+<center><font color=BBBBBB size=5>本站微信公众号</font></center>
+
+![mark](https://s1.ax1x.com/2020/07/17/UsFeJJ.jpg)

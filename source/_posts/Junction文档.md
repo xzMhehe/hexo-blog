@@ -10,7 +10,8 @@ description: 极客马拉松纪念
 abbrlink: 8be234e2
 date: 2021-05-23 10:56:02
 headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/jikemalasong.JPG
-thumbnail:
+
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/jikemalasong.JPG
 ---
 
 
