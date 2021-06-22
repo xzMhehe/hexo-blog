@@ -1,8 +1,0 @@
-default:
-  name: 'Mr. Ma'
-  avatar: https://i.codingce.com.cn/images/avatar.jpg
-  url: /
-volantis:
-  name: Volantis Team
-  avatar: https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/blog/favicon/apple-touch-icon.png
-  url: https://github.com/volantis-x/
