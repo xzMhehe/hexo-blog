@@ -8,7 +8,10 @@ subtitle: ''
 description: '后端开发一枚'
 keywords:
 author: xzMhehe
-language: en
+language:
+  - zh-CN
+  - zh-tw
+  - en
 timezone: 'Asia/Shanghai'
 
 # URL
