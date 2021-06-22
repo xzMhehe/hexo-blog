@@ -399,9 +399,17 @@ pwa:
 # ```
 
 plugins:
-  # inside 主题没有引入 jQuery 框架，需要手动引入
   - //cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js
-  - //cdn1.lncld.net/static/js/3.0.4/av-min.js
+  - //cdn.jsdelivr.net/npm/typed.js@2.0.11
+  - //blog.oniuo.com/theme.js
+  - //cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/webstack/js/123.js
+  - //cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
+  - //cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css
+  - //sdk.jinrishici.com/v2/browser/jinrishici.js
+  - //fonts.gstatic.com/s/josefinsans/v14/Qw3aZQNVED7rKGKxtqIqX5EUDXx4Vn8sig.woff2
+  - //fonts.gstatic.com/s/lobster/v22/neILzCirqoswsqX9zoKmM4MwWJU.woff2
+  - //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+  # inside 主题没有引入 jQuery 框架，需要手动引入
   # 字头设置
   - //cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/webstack/css/fontawesome.min.css
   # 访问量
@@ -423,33 +431,23 @@ plugins:
           })
           .catch(console.error)
         </script>
-  - //cdn1.lncld.net/static/js/3.0.4/av-min.js
-
-  # 插件生效范围：post 和 page
-  - position: [post, page]
-    template: |
-      <script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.js"></script>
-      <script type="text/javascript" src="//cdn.jsdelivr.net/gh/fiteen/fiteen.github.io@v0.1.0/clipboard-use.js"></script>
-      <link href="//cdn.jsdelivr.net/gh/fiteen/fiteen.github.io@v0.1.1/clipboard.css" rel="stylesheet">
   # 引用本地 source/lib 路径下的 valine.js 文件
   # - lib/valine.js
   # 引用 CDN 上的 valine.js 文件
-  - //unpkg.com/valine@latest/dist/Valine.min.js
+  - //cdn1.lncld.net/static/js/3.0.4/av-min.js
+  - //unpkg.com/valine@1.4.14/dist/Valine.min.js
   - position: comments
     template: |
       <div id="vcomment"></div>
       <script>      
-      new Valine({
-          el: '#vcomment',
-          appId: 'u3kx4xhHFpadzMOyWK1tMiCd-gzGzoHsz',
-          appKey: 'HbQueWo4YTSPBLYvqO9lS89B',
-          placeholder: '留个言8',
-          path: location.pathname
-        })
+        new Valine({
+            el: '#vcomment',
+            appId: 'u3kx4xhHFpadzMOyWK1tMiCd-gzGzoHsz',
+            appKey: 'HbQueWo4YTSPBLYvqO9lS89B',
+            placeholder: '留个言8',
+            path: location.pathname
+          })
       </script>
-  - //blog.oniuo.com/theme.js
-  - //cdn.jsdelivr.net/npm/typed.js@2.0.11
-  - //cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/webstack/js//123.js
   # 
   - palette:
       theme: [
