@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [![Build Status](https://travis-ci.org/dmego/dmego.github.io.svg?branch=hexo)](https://travis-ci.org/dmego/dmego.github.io)
 [![Website](https://img.shields.io/website-up-down-green-red/http/dmego.me.svg)](https://i.codingce.com.cn/)
 [![Say Thanks](https://img.shields.io/badge/Say-Thanks!-1EAEDB.svg)](https://i.codingce.com.cn/)
@@ -111,6 +110,3 @@ hexo-blog, 拉取即用
 ### 更新时间
 
 >2020-9-26
-
-
->>>>>>> bbeb9eba8a8bcdf9145a71dd383799d96a84188e
