@@ -8,7 +8,11 @@ copyright: false
 
 <div class="friends">
     <a class="brick mdui-ripple mdui-ripple-white" href="https://pinkpeachabc.cn/">
+<<<<<<< HEAD
         <img class="blog-avatar" src="https://cdn.jsdelivr.net/gh/pinkpeachabc/images/Blog-imgs/logo.png">
+=======
+        <img class="blog-avatar" src="https://pinkpeachabc.cn/images/bear.jpg">
+>>>>>>> bbeb9eba8a8bcdf9145a71dd383799d96a84188e
         <div class="container">
             <div class="name">pinkpeach</div>
             <div class="motto">Life is sad at times, but it is up to you to make your own life happy..</div>

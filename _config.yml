@@ -12,8 +12,14 @@ language: en
 timezone: 'Asia/Shanghai'
 
 # URL
+<<<<<<< HEAD
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: http://i.codingce.com.cn
+=======
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: http://i.codingce.com.cn
+root: /
+>>>>>>> bbeb9eba8a8bcdf9145a71dd383799d96a84188e
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
