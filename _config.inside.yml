@@ -280,7 +280,7 @@ copyright:
 # for other comment system, see plugins
 comments:
   enable: true  # 开启评论
-  type: valine  # 指定使用的评论模块
+  # type: valine  # 指定使用的评论模块
   # disqus:
   #   shortname: disqus_shortname
   #   # Or you can set disqus script URL directly
@@ -295,25 +295,15 @@ comments:
   #   # Autoload, default to `true`, set to `false` to display a button
   #   autoload: false
 
-# valine:
-#   appid: 
-#   appkey: HbQueWo4YTSPBLYvqO9lS89B
-#   serverURLs: https://u3kx4xhh.lc-cn-n1-shared.com
-
-# Valine
-# You can get your appid and appkey from https://leancloud.cn
-# More info available at https://valine.js.org
-
+# 新年增部分
 valine:
-  enable: true
-  app_id: u3kx4xhHFpadzMOyWK1tMiCd-gzGzoHsz
-  app_key: HbQueWo4YTSPBLYvqO9lS89B
-  notify: false   #邮件提醒设置
-  verify: false   #验证码设置
-  placeholder: ヾﾉ≧∀≦)o快来评论一下吧!
-  avatar: monsterid  #头像设置
-  pageSize: 10
-  visitor: true
+  language: zh-cn # Language, available values: en, zh-cn
+  # 是否文章头部浏览量（不影响首页）
+  visitor: false # Article reading statistic
+  comment_count: true # If false, comment count will only be displayed in post page, not in home page
+  recordIP: false # Whether to record the commenter IP
+  serverURLs: '' # When the custom domain name is enabled, fill it in here (it will be detected    automatically by default, no need to fill in)
+  #post_meta_order: 0
 
 # ---------------------------------------------------------------
 # Misc
@@ -451,19 +441,6 @@ plugins:
             hitokoto.innerText = data.hitokoto
           })
           .catch(console.error)
-      </script>
-      <script>
-        new Valine({
-          el: '#vcomment',
-          appId: '9VJOBFW8tLtAVf2sjhIH2qi7-gzGzoHsz',
-          appKey: 'mHstIvpySUcxtwzJgzQGLMU3',
-          master: 'af107a46b7bad2df7cb020914f1778dd',
-          placeholder: '留个言8，求求了😆',
-          friends:  ["fe01ce2a7fbac8fafaed7c982a04e229","fe01ce2a7fbac8fafaed7c982a04e229"],  //小伙伴邮箱Md5
-          avatar: 'wavatar',
-          enableQQ: true,
-          path: location.pathname
-        })
       </script>
   # 引用本地 source/lib 路径下的 valine.js 文件
   # - lib/valine.js
