@@ -429,14 +429,14 @@ plugins:
   - //sdk.jinrishici.com/v2/browser/jinrishici.js
   - //fonts.gstatic.com/s/josefinsans/v14/Qw3aZQNVED7rKGKxtqIqX5EUDXx4Vn8sig.woff2
   - //fonts.gstatic.com/s/lobster/v22/neILzCirqoswsqX9zoKmM4MwWJU.woff2
-  - //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js
+    # 访问量
+  # - position: sidebar
+  - /lib/busuanzi.pure.mini.js
+
   # inside 主题没有引入 jQuery 框架，需要手动引入
   # 字头设置
   - //cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/webstack/css/fontawesome.min.css
-  # 访问量
-  - position: sidebar
-    template: |
-      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
   # 方头像
   - position: avatar
     template: |
@@ -451,24 +451,40 @@ plugins:
             hitokoto.innerText = data.hitokoto
           })
           .catch(console.error)
-        </script>
+      </script>
+      <script>
+        new Valine({
+          el: '#vcomment',
+          appId: '9VJOBFW8tLtAVf2sjhIH2qi7-gzGzoHsz',
+          appKey: 'mHstIvpySUcxtwzJgzQGLMU3',
+          master: 'af107a46b7bad2df7cb020914f1778dd',
+          placeholder: '留个言8，求求了😆',
+          friends:  ["fe01ce2a7fbac8fafaed7c982a04e229","fe01ce2a7fbac8fafaed7c982a04e229"],  //小伙伴邮箱Md5
+          avatar: 'wavatar',
+          enableQQ: true,
+          path: location.pathname
+        })
+      </script>
   # 引用本地 source/lib 路径下的 valine.js 文件
   # - lib/valine.js
   # 引用 CDN 上的 valine.js 文件
-  - /lib/Valine.min.js
+  - /lib/Valine2.min.js
   - //cdn1.lncld.net/static/js/3.0.4/av-min.js
   - position: comments
     template: |
       <div id="vcomment"></div>
       <script>
         new Valine({
-            el: '#vcomment',
-            appId: 'u3kx4xhHFpadzMOyWK1tMiCd-gzGzoHsz',
-            appKey: 'HbQueWo4YTSPBLYvqO9lS89B',
-            placeholder: '留个言8',
-            path: window.location.pathname,
-            serverURLs: 'https://u3kx4xhh.lc-cn-n1-shared.com',
-          })
+          el: '#vcomment',
+          appId: '9VJOBFW8tLtAVf2sjhIH2qi7-gzGzoHsz',
+          appKey: 'mHstIvpySUcxtwzJgzQGLMU3',
+          master: 'af107a46b7bad2df7cb020914f1778dd',
+          placeholder: '留个言8，求求了😆',
+          friends:  ["fe01ce2a7fbac8fafaed7c982a04e229","fe01ce2a7fbac8fafaed7c982a04e229"],  //小伙伴邮箱Md5
+          avatar: 'wavatar',
+          enableQQ: true,
+          path: location.pathname
+        })
       </script>
   # 
   - palette:
