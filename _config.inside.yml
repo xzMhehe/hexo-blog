@@ -279,6 +279,8 @@ copyright:
 # Built-in support Disqus (https://disqus.com) and LiveRe (https://livere.com),
 # for other comment system, see plugins
 comments:
+  enable: true  # 开启评论
+  type: valine  # 指定使用的评论模块
   # disqus:
   #   shortname: disqus_shortname
   #   # Or you can set disqus script URL directly
@@ -293,6 +295,25 @@ comments:
   #   # Autoload, default to `true`, set to `false` to display a button
   #   autoload: false
 
+# valine:
+#   appid: 
+#   appkey: HbQueWo4YTSPBLYvqO9lS89B
+#   serverURLs: https://u3kx4xhh.lc-cn-n1-shared.com
+
+# Valine
+# You can get your appid and appkey from https://leancloud.cn
+# More info available at https://valine.js.org
+
+valine:
+  enable: true
+  app_id: u3kx4xhHFpadzMOyWK1tMiCd-gzGzoHsz
+  app_key: HbQueWo4YTSPBLYvqO9lS89B
+  notify: false   #邮件提醒设置
+  verify: false   #验证码设置
+  placeholder: ヾﾉ≧∀≦)o快来评论一下吧!
+  avatar: monsterid  #头像设置
+  pageSize: 10
+  visitor: true
 
 # ---------------------------------------------------------------
 # Misc
@@ -434,18 +455,19 @@ plugins:
   # 引用本地 source/lib 路径下的 valine.js 文件
   # - lib/valine.js
   # 引用 CDN 上的 valine.js 文件
+  - /lib/Valine.min.js
   - //cdn1.lncld.net/static/js/3.0.4/av-min.js
-  - //unpkg.com/valine@1.4.14/dist/Valine.min.js
   - position: comments
     template: |
       <div id="vcomment"></div>
-      <script>      
+      <script>
         new Valine({
             el: '#vcomment',
             appId: 'u3kx4xhHFpadzMOyWK1tMiCd-gzGzoHsz',
             appKey: 'HbQueWo4YTSPBLYvqO9lS89B',
             placeholder: '留个言8',
-            path: location.pathname
+            path: window.location.pathname,
+            serverURLs: 'https://u3kx4xhh.lc-cn-n1-shared.com',
           })
       </script>
   # 
