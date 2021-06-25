@@ -401,6 +401,9 @@ pwa:
   #       sizes: 144x144
   #       type: image/png
 
+encrypt:
+    enable: true
+
 # Plugins
 # Inject html snippet to a specified position, Or global inject scripts/styles.
 # The code will take advantage of babel, uglifyjs and html-minifier if possible.

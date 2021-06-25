@@ -8,8 +8,8 @@ categories:
 keywords:
   - Mysql
 description: Mysql
-headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210625092055.png
-thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210625092055.png
+headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210623101512.png
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210623101512.png
 ---
 # 61、为表中得字段选择合适得数据类型
 字段类型优先级: `整形>date,time>enum,char>varchar>blob,text`优先考虑数字类型，其次是日期或者 二进制类型，最后是字符串类型，同级别得数据类型，应该优先选择占用空间小的数据类型
