@@ -1,78 +1,53 @@
-# ---------------------------------------------------------------
-# Basic
-# ---------------------------------------------------------------
-
-# Appearance
 appearance:
   # Accent color, default '#2a2b33'
-  accent_color:
+  accent_color: '#2a2b33'
   # Font color, default '#363636'
-  foreground_color:
+  foreground_color: '#363636'
   # Border color, default '#e0e0e0'
-  border_color:
+  border_color: '#e0e0e0'
   # body background, default '#f5f7fa'
   background: 'url(//s1.ax1x.com/2020/08/17/dVOcFJ.png) #f5f7fa'
   # Sidebar background (when opened), default to accent_color
-  sidebar_background:
+  sidebar_background: '#2a2b33'
   # Card background, default '#fff'
-  card_background:
+  card_background: '#fff'
 
   # All background settings above support image, e.g.,
   # '//www.toptal.com/designers/subtlepatterns/patterns/confectionary.png #f5f7fa' or
   # 'url(//www.toptal.com/designers/subtlepatterns/patterns/confectionary.png) #f5f7fa'
 
-  # Maximum width of content
-  # content_width: 640
+  # 内容区域最大宽度
+  content_width: 640
 
-  # Fonts
+  # 字体设置
   font:
-    # Url of font css file
-    # Below is a font set containing Baloo Bhaijaan, Josefin Sans, Montserrat and Inconsolata from Google Fonts.
+    # 字体 CSS 文件的 URL
     url: //fonts.googleapis.com/css?family=Baloo+Bhaijaan|Inconsolata|Josefin+Sans|Montserrat
 
-    # Base font which applied to body
-    base: "'Josefin Sans', 'PingFang SC'"
-    # Sidebar author font, fallback to `base`
+    # 基础字体，作用于 body 元素
+    base: "'Josefin Sans', 'PingFang SC', Microsoft YaHei"
+    # 作用于 sidebar 上方的 LOGO
     logo:
-    # Sidebar menu font, fallback to `base`
+    # 作用于 sidebar 菜单栏
     menu: 'Baloo Bhaijaan'
-    # Font for:
-    # - percentage on the fab button
-    # - month text on archives page
-    # - count
-    # - pager
-    # - toc index
-    # - category pill
-    # fallback to `base`
+    # 作用于文章百分比、归档页月份、分类文字数、分页、目录索引等地方
     label: Montserrat
-    # Headline(h1, h2, h3, h4, h5, h6) font, fallback to `base`
+    # 作用于标题
     heading:
-    # Code and code block
+    # 作用于代码及代码块
     code: Inconsolata, monospace
     # Base font for printing which applied to body
     print:
 
-  # Code Syntax Highlighting
-  # Uses an architecture called "base16" (https://github.com/chriskempson/base16),
-  # the default theme is a customized Atelier Dune Light theme,
-  # please feel free to explore more.
-  highlight:
-
-  # Default Light by Chris Kempson (http://chriskempson.com)
-  # highlight: [
-  #   '#f8f8f8', '#e8e8e8', '#d8d8d8', '#b8b8b8',
-  #   '#585858', '#383838', '#282828', '#181818',
-  #   '#ab4642', '#dc9656', '#f7ca88', '#a1b56c',
-  #   '#86c1b9', '#7cafc2', '#ba8baf', '#a16946'
-  # ]
-
-  # Harmonic16 Light by Jannik Siebert (https://github.com/janniks)
-  # highlight: [
-  #   '#f7f9fb', '#e5ebf1', '#cbd6e2', '#aabcce',
-  #   '#627e99', '#405c79', '#223b54', '#0b1c2c',
-  #   '#bf8b56', '#bfbf56', '#8bbf56', '#56bf8b',
-  #   '#568bbf', '#8b56bf', '#bf568b', '#bf5656'
-  # ]
+  # 代码语法高亮
+  # 接受设置值为 16 个 hex 色值的数组，具体请参考 base16 (https://github.com/chriskempson/base16)
+  # 默认配色方案为 Atelier Dune Light
+  highlight: [
+    '#f7f9fb', '#e5ebf1', '#cbd6e2', '#aabcce',
+    '#627e99', '#405c79', '#223b54', '#0b1c2c',
+    '#bf8b56', '#bfbf56', '#8bbf56', '#56bf8b',
+    '#568bbf', '#8b56bf', '#bf568b', '#bf5656'
+  ]
 
   # Tomorrow Night by Chris Kempson (http://chriskempson.com)
   # highlight: [
@@ -82,6 +57,7 @@ appearance:
   #   '#8abeb7', '#81a2be', '#b294bb', '#a3685a'
   # ]
 
+  # 启用 darkmode
   darkmode:
     accent_color: '#539bf5'
     foreground_color: '#adbac7'
@@ -98,9 +74,8 @@ appearance:
 
 # Sidebar profile
 profile:
-  # `email` is used for gravatar(https://en.gravatar.com),
-  # fallback to `hexo.config.email` if not specified
-  email:
+  # 邮箱用于生成 gravatar 头像，如配置了 `hexo.config.email`，此项可缺省
+  email: codingce@gmail.com
 
   # 也可以直接设置头像 URL
   avatar: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/avatar.jpg
@@ -108,7 +83,6 @@ profile:
   # 个性签名
   bio: '>'
   
-# Sidebar navigation links
 menu:
   🏠  Home: /
   📖  About: /about
@@ -116,7 +90,9 @@ menu:
   🔍  Search: /search
 
 # Social media URL
+# Try to sort by changing the order of the keys
 sns:
+  # `email` will fallback to `profile.email` if not specified
   email: shudaixiongxz@qq.com
   # If you use hexo-generator-feed, `sns.feed` can be left blank
   # and the theme will try to get `hexo.config.feed.path`.
@@ -135,15 +111,9 @@ sns:
   soundcloud:
   myspace:
   weibo: https://weibo.com/6408403066/profile?topnav=1&wvr=6
+  qq: 
 
-  # custom icon
-  # - title: Email me
-  #   url: # default to `profile.email`
-  #   template: <i class="fa fa-github"></i>
-  # - title: Love you
-  #   url:
-  #   template: |
-  #     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="18px" height="18px"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+
 
 # Sidebar footer copyright info
 footer:
@@ -165,20 +135,16 @@ footer:
     <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>|<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span>
 
 
-# ---------------------------------------------------------------
-# Content
-# ---------------------------------------------------------------
-
 # Page
 page:
   # Display Table of content, default to `true`
-  # toc: false
+  toc: true
 
   # Display reward, default to `false`
-  # reward: true
+  reward: true
 
   # Display copyright notice, default to `false`
-  # copyright: true
+  copyright: true
 
 
 # Post
@@ -313,12 +279,12 @@ copyright:
 # Built-in support Disqus (https://disqus.com) and LiveRe (https://livere.com),
 # for other comment system, see plugins
 comments:
-  # disqus:
-  #   shortname: xzMheheI
-  #   # Or you can set disqus script URL directly
-  #   script: //xzMheheI.disqus.com/embed.js
-  #   # Autoload, default to `true`, set to `false` to display a button
-  #   autoload: false
+  disqus:
+    shortname: xzMheheI
+    # Or you can set disqus script URL directly
+    script: //xzMheheI.disqus.com/embed.js
+    # Autoload, default to `true`, set to `false` to display a button
+    autoload: false
 
   # livere:
   #   uid: livere_uid
@@ -419,42 +385,88 @@ pwa:
   #     - src: icon-194x194.png
   #       sizes: 194x194 512x512
   #       type: image/png
-  #       purpose: any
   #     - src: icon-144x144.png
   #       sizes: 144x144
   #       type: image/png
-  #       purpose: any
+
+encrypt:
+    enable: true
 
 # Plugins
+# Inject html snippet to a specified position, Or global inject scripts/styles.
+# The code will take advantage of babel, uglifyjs and html-minifier if possible.
+# Simply run the following command in the root directory of Hexo (not `themes/inside`):
+# ```bash
+# npm install babel-core babel-preset-env html-minifier uglify-js --save
+# ```
+
 plugins:
-  # Built-in plugins
-  # - cipher:
-  #     placeholder: Passcode is required
-  #     excerpt: Content encrypted
-  # - palette:
-  #     col: 5
-  #     theme: [
-  #       '#673ab7',
-  #       '#3f51b5',
-  #       '#2196f3',
-  #       '#009688',
-  #       '#4caf50',
-  #       '#ff9800',
-  #       '#ff5722',
-  #       '#795548',
-  #       '#607D8B',
-  #       '#2a2b33'
-  #     ]
+  - //cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js
+  - //cdn.jsdelivr.net/npm/typed.js@2.0.11
+  - //blog.oniuo.com/theme.js
+  - //cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/webstack/js/123.js
+  - //cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
+  - //cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css
+  - //sdk.jinrishici.com/v2/browser/jinrishici.js
+  - //fonts.gstatic.com/s/josefinsans/v14/Qw3aZQNVED7rKGKxtqIqX5EUDXx4Vn8sig.woff2
+  - //fonts.gstatic.com/s/lobster/v22/neILzCirqoswsqX9zoKmM4MwWJU.woff2
+    # 访问量
+  # - position: sidebar
+  - /lib/busuanzi.pure.mini.js
 
-  # Global Inject script/style
-  # By default script will be injected into <body>, and style will be injected into <head>
-  # In general, script or style depends on their ext name.
-  # - xxx.css
-  # - xxx.jss
+  # inside 主题没有引入 jQuery 框架，需要手动引入
+  # 字头设置
+  - //cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/webstack/css/fontawesome.min.css
 
-  # Dynamic inject html snippet
-  # - position: # sidebar | post | page | comments | avatar | head_begin | head_end | body_begin | body_end
-    # HTML code
-    # template: <script>...</script>
-    # Or a path relative to `hexo.base_dir`
-    # template: snippets/snippet-1.html
+  # 方头像
+  - position: avatar
+    template: |
+      <img src="//cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/avatar.jpg">
+      <!--一言-->
+      <script>
+        fetch('https://v1.hitokoto.cn')
+          .then(response => response.json())
+          .then(data => {
+            const hitokoto = document.getElementById('hitokoto_text')
+            hitokoto.href = 'https://i.codingce.com.cn'
+            hitokoto.innerText = data.hitokoto
+          })
+          .catch(console.error)
+      </script>
+  # 引用本地 source/lib 路径下的 valine.js 文件
+  # - lib/valine.js
+  # 引用 CDN 上的 valine.js 文件
+  - //cdn1.lncld.net/static/js/3.0.4/av-min.js
+  - //unpkg.com/valine/dist/Valine.min.js
+  - position: comments
+    template: |
+      <div id="vcomment"></div>
+      <script>
+        new Valine({
+          el: '#vcomment',
+          appId: '9VJOBFW8tLtAVf2sjhIH2qi7-gzGzoHsz',
+          appKey: 'mHstIvpySUcxtwzJgzQGLMU3',
+          master: 'af107a46b7bad2df7cb020914f1778dd',
+          placeholder: '留个言8，求求了😆',
+          friends:  ["fe01ce2a7fbac8fafaed7c982a04e229","fe01ce2a7fbac8fafaed7c982a04e229"],  //小伙伴邮箱Md5
+          avatar: 'wavatar',
+          enableQQ: true,
+          path: location.pathname
+        })
+      </script>
+  # 
+  - palette:
+      theme: [
+        '#673ab7',
+        '#3f51b5',
+        '#2196f3',
+        '#009688',
+        '#4caf50',
+        '#ff9800',
+        '#ff5722',
+        '#795548',
+        '#607D8B',
+        '#2a2b33'
+      ]
+      # 每行展示的个数
+      # col: 5
