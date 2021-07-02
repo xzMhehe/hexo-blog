@@ -2,8 +2,16 @@
 title: Java集合-泛型指北1-24
 date: 2021-06-30 15:58:52
 tags:
----
+  - Java
+categories:
+  - Java
+keywords:
+  - Java
+description: Java
+headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210629190544.png
 
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210629190544.png
+---
 # 1、ArrayList和linkedList的区别
 Array(数组）是基于索引(index)的数据结构，它使用索引在数组中搜索和读取数据是很快的。 Array获取数据的时间复杂度是O(1),但是要删除数据却是开销很大，因为`这需要重排数组中的所有数据`, (因为`删除数据以后`, `需要把后面所有的数据前移`) 缺点: 数组初始化必须指定初始化的长度, 否则报错 例如:
 ```java
@@ -128,6 +136,90 @@ set结构结构图
 图 2 表示 hashCode 值相同，但 equals 不相同的情况。
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210630165151.png)
+
+
+# 15、什么是TreeSet（二叉树）
+1. TreeSet()是使用二叉树的原理对新 add()的对象按照指定的顺序排序（升序、降序），每增 加一个 对象都会进行排序，将对象插入的二叉树指定的位置。
+
+2. Integer 和 String 对象都可以进行默认的 TreeSet 排序，而自定义类的对象是不可以的， 自 己定 义的类必须实现 Comparable 接口，并且覆写相应的 compareTo()函数，才可以正常使 用。
+
+3. 在覆写 compare()函数时，要返回相应的值才能使 TreeSet 按照一定的规则来排序
+
+4. 比较此对象与指定对象的顺序。如果该对象小于、等于或大于指定对象，则分别返回负整 数、零 或正整数
+
+
+# 16、说说LinkHashSet（ HashSet + LinkedHashMap）
+对于 LinkedHashSet 而言，它继承与 `HashSet`、又基于 `LinkedHashMap` 来实现的。 `LinkedHashSet` 底层使用 `LinkedHashMap` 来`保存所有元素`，它`继承与 HashSet`，其所有的方法 `操作上又与 HashSet 相同`，因此 LinkedHashSet 的实现上非常简单，只提供了四个构造方法，并 通过传递一个标识参数， 调用父类的构造器，底层构造一个 LinkedHashMap 来实现，在相关操 作上与父类 HashSet 的操作相 同，直接调用父类 HashSet 的方法即可。
+
+
+# 17、HashMap（数组+链表+红黑树）
+HashMap 根据`键`的 `hashCode 值存储数据`，大多数情况下可以直接定位到它的值，因而`具有很快 的访 问速度`，但`遍历顺序却是不确定的`。 `HashMap` 最多`只允许一条记录的键为 null`，`允许多条记 录的值为 null`。 HashMap `非线程安全`，即任一时刻可以有多个线程同时写 HashMap，可能会导 致数据的不一 致。如果需要满足线程安全，可以用 `Collections` 的 `synchronizedMap` 方法使 HashMap 具有线程安 全的能力，或者使用 `ConcurrentHashMap`。 我们用下面这张图来介绍 HashMap 的结构。
+
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210701195916.png)
+
+
+大方向上， HashMap 里面是一个数组，然后数组中每个元素是一个`单向链表`。上图中，每个绿色 的实 体是嵌套类 Entry 的实例， Entry 包含四个属性： key, value, hash 值和用于单向链表的 next。
+1. capacity：当前数组容量，始终保持 2^n，可以扩容，扩容后数组大小为当前的 2 倍。
+
+2. oadFactor：负载因子，默认为 0.75。
+
+3. threshold：扩容的阈值，等于 capacity * loadFactor
+
+
+
+`Java8` 对 HashMap 进行了一些修改， `最大的不同`就`是利用了红黑树`，所以其由 `数组+链表+红黑树` 组成。 根据 Java7 HashMap 的介绍，我们知道，查找的时候，根据 hash 值我们能够快速定位到数组的 具体下标，但是之后的话， 需要顺着链表一个个比较下去才能找到我们需要的，时间复杂度取决 于链表的长度，为 O(n)。为了降低这部分的开销，在 Java8 中， 当`链表`中的`元素超过`了 `8` 个以后， `会将链表转换为红黑树`，在这些位置进行查找的时候可以降低时间复杂度为 `O(logN)`。
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210701200259.png)
+
+
+# 18、说说ConcurrentHashMap
+
+**Segment 段**          
+ConcurrentHashMap 和 HashMap `思路是差不多的`，`但是因为它支持并发操作`，`所以要复杂一些`。整个 ConcurrentHashMap 由一个个 `Segment` 组成， Segment 代表”部分“或”一段“的 意思，所以很多地 方都会将其描述为分段锁。注意，行文中，我很多地方用了“槽”来代表一个 segment。
+
+**线程安全**（Segment `继承 ReentrantLock` 加锁）
+
+简单理解就是， ConcurrentHashMap 是一个 Segment `数组`， Segment 通过继承 ReentrantLock 来 `进行加锁`，所以每次需要加锁的操作`锁住的是一个 segment`，这样`只要保证每 个 Segment 是线程安全的`，`也就实现了全局的线程安全`
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210701200714.png)
+
+并行度（默认 `16`）
+
+concurrencyLevel：并行级别、并发数、 Segment 数，怎么翻译不重要，理解它。默认是 16， 也就 是说 ConcurrentHashMap 有 16 个 Segments，所以理论上， 这个时候，最多可以同时支 持 16 个线 程并发写，只要它们的操作分别分布在不同的 Segment 上。这个值可以在初始化的时 候设置为其他 值，但是一旦初始化以后，它是不可以扩容的。再具体到每个 Segment 内部，其实 每个 Segment 很 像之前介绍的 HashMap，不过它要保证线程安全，所以处理起来要麻烦些。
+
+Java8 实现 （引入了红黑树）
+
+Java8 对 ConcurrentHashMap 进行了比较大的改动,Java8 也引入了红黑树。
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210701204411.png)
+
+
+# 19、HashTable（线程安全） 
+Hashtable 是`遗留类`，很多映射的常用功能`与 HashMap 类似`，不同的是它承自 `Dictionary` 类， 并且 `是线程安全的`，任一时间只有一个线程能写 Hashtable，`并发性不如 ConcurrentHashMap`， 因为 ConcurrentHashMap `引入了分段锁`。 Hashtable 不建议在新代码中使用，不需要线程安全 的场合可 以用 HashMap 替换，需要线程安全的场合可以用 `ConcurrentHashMap 替换`
+
+# 20、TreeMap（可排序）
+TreeMap 实现 `SortedMap` 接口，能够把它保存的记录根据键排序，`默认`是`按键值`的`升序排序`a 也可以 指定排序的比较器，当用 Iterator 遍历 TreeMap 时，得到的记录是排过序的。 如果使用排序的映射， 建议使用 TreeMap。 在使用 TreeMap 时， key 必须实现 Comparable 接口或者在构造 TreeMap 传入 自定义的 Comparator，否则会在运行时抛出 java.lang.ClassCastException 类型的异常。 参考： http s://www.ibm.com/developerworks/cn/java/j-lo-tree/index.html
+
+
+
+# 21、LinkHashMap（记录插入顺序）
+LinkedHashMap 是 HashMap 的一个子类，保存了记录的插入顺序，在用 Iterator 遍历 LinkedHashMap 时，先得到的记录肯定是先插入的，也可以在构造时带参数，按照访问次序排序。 
+
+
+# 22、泛型类
+泛型类的声明和非泛型类的声明类似，除了在类名后面添加了类型参数声明部分。和泛型方法一样，泛型类的类型参数声明部分也包含一个或多个类型参数，参数间用逗号隔开。一个泛型参数，也被称为一 个类型变量，是用于指定一个泛型类型名称的标识符。因为他们接受一个或多个参数，这些类被称为参 数化的类或参数化的类型。
+
+
+# 23、类型通配符 ?
+类型通配符一般是使用 `?` 代替具体的类型参数 。 例如 `List<?>` 在逻辑上是 List, List 等所有 `List<具体类型实参>` 的`父类`。
+
+
+# 24、类型擦除
+Java 中的泛型基本上都是在编译器这个层次来实现的。在生成的 Java 字节代码中是不包含泛型中的类 型信息的。`使用泛型的时候加上的类型参数`，`会被编译器在编译的时候去掉`。这个过程就称为类型擦除。 如在代码中定义的 List和 List等类型，在编译之后都会变成 List。 JVM 看到的只是 List，而由泛型附加的`类型信息`对 `JVM` 来说`是不可见的`。
+
+类型擦除的基本过程也比较简单，首先是找到用来替换类型参数的具体类。这个具体类一般是 Object。 如果指定了类型参数的上界的话，则使用这个上界。把代码中的类型参数都替换成具体的类。
+
+
 
 
 
