@@ -1,5 +1,5 @@
 ---
-title: Java集合-泛型指北1-24
+title: Java集合-泛型指北
 date: 2021-06-30 15:58:52
 tags:
   - Java
