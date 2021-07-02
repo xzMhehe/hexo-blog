@@ -8,9 +8,9 @@ categories:
 keywords:
   - Java
 description: Java
-headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210702094944.png
+headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210702094944.jpg
 
-thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210702094944.png
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210702094944.jpg
 ---
 # 1、Java中异常分为哪两种？
 `编译时异常` 、`运行时异常`
