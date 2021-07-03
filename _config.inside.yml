@@ -1,6 +1,6 @@
 appearance:
   # Accent color, default '#2a2b33'
-  accent_color: '#2a2b33'
+  accent_color: '#FE5E3C'
   # Font color, default '#363636'
   foreground_color: '#363636'
   # Border color, default '#e0e0e0'

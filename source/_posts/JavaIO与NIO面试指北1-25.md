@@ -27,9 +27,13 @@ Java 中 IO 流分为几种?
 
 Java Io 流共涉及 40 多个类，这些类看上去很杂乱，但实际上很有规则，而且彼此之间存在非常紧密的联系， Java I0 流的 40 多个类都是从如下 `4` 个抽象类基类中派生出来的。
 
-1. `InputStream`/`Reader`: 所有的  `输入流`的`基类`，前者是`字节输入流`，后者是`字符输入流`。
+**读数据**：
 
-2. `OutputStream`/`Writer`: 所有`输出流`的`基类`，前者是`字节输出流`，后者是`字符输出流`。
+`InputStream`/`Reader`: 所有的  `输入流`的`基类`，前者是`字节输入流`，后者是`字符输入流`。
+
+**写数据**：
+
+`OutputStream`/`Writer`: 所有`输出流`的`基类`，前者是`字节输出流`，后者是`字符输出流`。
 
 
 # 2、 Java IO与 NIO的区别
@@ -144,17 +148,6 @@ Selector 类是 NIO 的核心类， Selector 能够检测多个注册的通道�
 
 
 ```java
-package cn.com.codingce.ioandnio;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
-
 public class MyNio {
     public static void main(String[] args) throws IOException {
         new MyNio().readNIO();
