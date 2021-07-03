@@ -3,6 +3,7 @@ title: J2EE基础知识
 date: 2020-08-02 17:27:10
 tags:
 - Java
+- 面经
 categories: 
 - Java
 
@@ -12,21 +13,21 @@ copyright: false
 
 - [Servlet总结](#servlet总结)
 - [阐述Servlet和CGI的区别?](#阐述servlet和cgi的区别)
-    - [CGI的不足之处:](#cgi的不足之处)
-    - [Servlet的优点：](#servlet的优点)
+  - [CGI的不足之处:](#cgi的不足之处)
+  - [Servlet的优点:](#servlet的优点)
 - [Servlet接口中有哪些方法及Servlet生命周期探秘](#servlet接口中有哪些方法及servlet生命周期探秘)
 - [get和post请求的区别](#get和post请求的区别)
-- [什么情况下调用doGet\(\)和doPost\(\)](#什么情况下调用doget和dopost)
-- [转发（Forward）和重定向（Redirect）的区别](#转发forward和重定向redirect的区别)
-- [自动刷新\(Refresh\)](#自动刷新refresh)
+- [什么情况下调用doGet()和doPost()](#什么情况下调用doget和dopost)
+- [转发(Forward)和重定向(Redirect)的区别](#转发forward和重定向redirect的区别)
+- [自动刷新(Refresh)](#自动刷新refresh)
 - [Servlet与线程安全](#servlet与线程安全)
 - [JSP和Servlet是什么关系](#jsp和servlet是什么关系)
 - [JSP工作原理](#jsp工作原理)
-- [JSP有哪些内置对象、作用分别是什么](#jsp有哪些内置对象、作用分别是什么)
+- [JSP有哪些内置对象、作用分别是什么](#jsp有哪些内置对象作用分别是什么)
 - [Request对象的主要方法有哪些](#request对象的主要方法有哪些)
-- [request.getAttribute\(\)和 request.getParameter\(\)有何区别](#requestgetattribute和-requestgetparameter有何区别)
+- [request.getAttribute()和 request.getParameter()有何区别](#requestgetattribute和-requestgetparameter有何区别)
 - [include指令include的行为的区别](#include指令include的行为的区别)
-- [JSP九大内置对象，七大动作，三大指令](#jsp九大内置对象，七大动作，三大指令)
+- [JSP九大内置对象，七大动作，三大指令](#jsp九大内置对象七大动作三大指令)
 - [讲解JSP中的四种作用域](#讲解jsp中的四种作用域)
 - [如何实现JSP或Servlet的单线程模式](#如何实现jsp或servlet的单线程模式)
 - [实现会话跟踪的技术有哪些](#实现会话跟踪的技术有哪些)

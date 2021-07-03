@@ -1,11 +1,12 @@
 ---
 title: Mysql - 数据库面试题汇总
 date: 2021-06-25 09:26:17
-password: yourpassword
-# abstract: 密码：TloveY
+password: houduanmajiang
+abstract: 密码是"后端码匠"的拼音
 message:  输入密码，查看文章
 tags:
   - Mysql
+  - 面经
 categories:
   - Mysql
 keywords:
