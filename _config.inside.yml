@@ -25,7 +25,7 @@ appearance:
     url: //fonts.googleapis.com/css?family=Baloo+Bhaijaan|Inconsolata|Josefin+Sans|Montserrat
 
     # 基础字体，作用于 body 元素
-    base: "'Josefin Sans', 'PingFang SC', Microsoft YaHei"
+    base: "'Josefin Sans', 'PingFang SC', 'Microsoft YaHei'"
     # 作用于 sidebar 上方的 LOGO
     logo:
     # 作用于 sidebar 菜单栏
