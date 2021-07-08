@@ -1,5 +1,5 @@
 ---
-title: hexo速度优化，gulp压缩静态资源
+title: Hexo速度优化，gulp压缩静态资源
 date: 2020-08-11 08:36:17
 tags:
 - 随记

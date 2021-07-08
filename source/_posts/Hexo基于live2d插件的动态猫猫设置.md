@@ -2,8 +2,9 @@
 title: Hexo基于live2d插件的动态猫猫设置
 date: 2021-07-07 08:37:19
 tags: 随记
+headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210708095955.png
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210708095955.png
 ---
-
 
 # 下载安装
 检测npm版本是否最新             
