@@ -404,7 +404,6 @@ encrypt:
 plugins:
   - //cdnjs.loli.net/ajax/libs/jquery/3.2.1/jquery.min.js
   - //cdn.jsdelivr.net/npm/typed.js@2.0.11
-  - //blog.oniuo.com/theme.js
   - //cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/webstack/js/123.js
   - //cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
   - //cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css
