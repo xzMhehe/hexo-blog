@@ -1,15 +1,12 @@
 ---
 layout: page
-seo_title: 留言板
+seo_title: 🍭留言板
+title: 🍭留言板
 bottom_meta: false
 sidebar: []
 sitemap: false
 copyright: false
 ---
-<div style="margin-top: 2.5rem;text-align: center">
-    <h1 class="milky">🍭留言板</h1>
-</div>
-
 <div class="poem-wrap">
   <div class="poem-border poem-left"></div>
   <div class="poem-border poem-right"></div>
