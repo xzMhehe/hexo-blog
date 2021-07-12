@@ -25,7 +25,7 @@ appearance:
     url: //fonts.googleapis.com/css?family=Baloo+Bhaijaan|Inconsolata|Josefin+Sans|Montserrat
 
     # 基础字体，作用于 body 元素
-    base: "'Josefin Sans', 'PingFang SC', 'Microsoft YaHei'"
+    base: "'Josefin Sans', 'PingFang SC'"
     # 作用于 sidebar 上方的 LOGO
     logo:
     # 作用于 sidebar 菜单栏
@@ -278,13 +278,14 @@ copyright:
 # Comments
 # Built-in support Disqus (https://disqus.com) and LiveRe (https://livere.com),
 # for other comment system, see plugins
-comments:
-  disqus:
-    shortname: xzMheheI
-    # Or you can set disqus script URL directly
-    script: //xzMheheI.disqus.com/embed.js
-    # Autoload, default to `true`, set to `false` to display a button
-    autoload: false
+# 原 disqus
+# comments:
+#   disqus:
+#     shortname: xzMheheI
+#     # Or you can set disqus script URL directly
+#     script: //xzMheheI.disqus.com/embed.js
+#     # Autoload, default to `true`, set to `false` to display a button
+#     autoload: false
 
   # livere:
   #   uid: livere_uid
@@ -436,19 +437,20 @@ plugins:
   # 引用本地 source/lib 路径下的 valine.js 文件
   # - lib/valine.js
   # 引用 CDN 上的 valine.js 文件
-  - //cdn1.lncld.net/static/js/3.0.4/av-min.js
-  - //unpkg.com/valine/dist/Valine.min.js
+  # - //cdn1.lncld.net/static/js/3.0.4/av-min.js
+  # - //unpkg.com/valine/dist/Valine.min.js
+  - /lib/Valine2.min.js
   - position: comments
     template: |
       <div id="vcomment"></div>
       <script>
         new Valine({
           el: '#vcomment',
-          appId: '9VJOBFW8tLtAVf2sjhIH2qi7-gzGzoHsz',
-          appKey: 'mHstIvpySUcxtwzJgzQGLMU3',
-          master: 'af107a46b7bad2df7cb020914f1778dd',
+          appId: 'u3kx4xhHFpadzMOyWK1tMiCd-gzGzoHsz',
+          appKey: 'HbQueWo4YTSPBLYvqO9lS89B',
+          master: '982beaac4023514486065d4fd411e36c',
           placeholder: '留个言8，求求了😆',
-          friends:  ["fe01ce2a7fbac8fafaed7c982a04e229","fe01ce2a7fbac8fafaed7c982a04e229"],  //小伙伴邮箱Md5
+          friends:  ["982beaac4023514486065d4fd411e36c","fe01ce2a7fbac8fafaed7c982a04e229"],  //小伙伴邮箱Md5
           avatar: 'wavatar',
           enableQQ: true,
           path: location.pathname
