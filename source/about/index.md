@@ -42,6 +42,6 @@ copyright: false
 
 
 <!-- 证书 -->
-<!-- ![mark](https://s1.ax1x.com/2020/07/23/UL25p4.jpg) -->
+![mark](https://s1.ax1x.com/2020/07/23/UL25p4.jpg)
 
 <center><font color=BBBBBB size=3>本站部分资源整理自互联网侵删</font></center>
