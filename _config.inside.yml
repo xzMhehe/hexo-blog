@@ -132,7 +132,7 @@ footer:
   custom: 
     <span id="hitokoto"><span id="hitokoto_text">:D 获取中...</span></span><br />
     <span><b>津ICP备19009605号</b></span><br>
-    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>|<span id="busuanzi_container_site_uv">本站访客数<span id="busuanzi_value_site_uv"></span>人次</span>
+    <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_pv"></span></span> | <span id="busuanzi_container_site_uv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_uv"></span></span>
 
 
 # Page
@@ -412,7 +412,8 @@ plugins:
   - //fonts.gstatic.com/s/lobster/v22/neILzCirqoswsqX9zoKmM4MwWJU.woff2
     # 访问量
   # - position: sidebar
-  - /lib/busuanzi.pure.mini.js
+  # - /lib/busuanzi.pure.mini.js
+  - //busuanzi.ibruce.info//busuanzi/2.3/busuanzi.pure.mini.js
 
   # inside 主题没有引入 jQuery 框架，需要手动引入
   # 字头设置
