@@ -6,8 +6,8 @@ toc: false
 tags: [机器学习]
 categories: [机器学习]
 keywords: [机器学习]
-headimg: https://i.loli.net/2021/08/12/rI7oE6qpVAZ5kJ1.png
-thumbnail: https://i.loli.net/2021/08/12/rI7oE6qpVAZ5kJ1.png
+headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img202108130904094.png
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img202108130904094.png
 description: 分类算法-sklearn转换器和估计器
 ---
 # 目标
