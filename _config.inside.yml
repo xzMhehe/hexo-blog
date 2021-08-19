@@ -439,6 +439,7 @@ plugins:
   # 引用 CDN 上的 valine.js 文件
   # - //cdn1.lncld.net/static/js/3.0.4/av-min.js
   # - //unpkg.com/valine/dist/Valine.min.js
+  - /lib/baidu.js
   - /lib/Valine2.min.js
   - position: comments
     template: |
