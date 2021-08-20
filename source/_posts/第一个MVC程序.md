@@ -1,12 +1,16 @@
 ---
 title: 第一个MVC程序
 date: 2020-08-02 10:39:36
-tags:
-- SpringMVC
-categories: 
-- SpringMVC
+pin: false
+toc: false
+icons: []
+tags: [SpringMVC]
+categories: [SpringMVC]
+keywords: [SpringMVC]
+headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200915967.jpg
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200915967.jpg
+description: SpringMVC
 ---
-
 # 配置版
 
 - 新建一个Moudle ， springmvc-02-hello ， 添加web的支持！

@@ -1,13 +1,16 @@
 ---
 title: Zuul路由网关
 date: 2020-09-25 08:39:07
-
-tags:
-- SpringCloud
-categories: 
-- SpringCloud
+pin: false
+toc: false
+icons: []
+tags: [SpringCloud]
+categories: [SpringCloud]
+keywords: [SpringCloud]
+headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200921079.jpg
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200921079.jpg
+description: SpringCloud
 ---
-
 # zuul是什么
 ![](https://camo.githubusercontent.com/f091703491ae368dab9314065b31eab0fc3246ab/68747470733a2f2f692e696d6775722e636f6d2f6d52536f7345702e706e67)
 zuul 是netflix开源的一个API Gateway 服务器, 本质上是一个web servlet应用。

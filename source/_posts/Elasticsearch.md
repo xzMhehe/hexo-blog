@@ -1,11 +1,15 @@
 ---
 title: Elasticsearch
 date: 2021-01-13 13:11:09
-tags:
-- Elasticsearch
-categories: 
-- Elasticsearch
-
+pin: false
+toc: false
+icons: []
+tags: [Elasticsearch]
+categories: [Elasticsearch]
+keywords: [Elasticsearch]
+headimg: https://s1.ax1x.com/2020/07/18/U2Mxvq.gif
+thumbnail: https://s1.ax1x.com/2020/07/18/U2Mxvq.gif
+description: Elasticsearch
 ---
 
 ## 聊聊Doug Cutting
@@ -42,11 +46,17 @@ Elasticsearch 是一个分布式的开源搜索和分析引擎，适用于所有
 
 Elasticsearch 是一个分布式的 RESTful 风格的搜索和数据分析引擎。
 - 查询 ： Elasticsearch 允许执行和合并多种类型的搜索 — 结构化、非结构化、地理位置、度量指标 — 搜索方式随心而变。
+
 - 分析 ： 找到与查询最匹配的十个文档是一回事。但是如果面对的是十亿行日志，又该如何解读呢？Elasticsearch 聚合让您能够从大处着眼，探索数据的趋势和模式。
+
 - 速度 ： Elasticsearch 很快。真的，真的很快。
+
 - 可扩展性 ： 可以在笔记本电脑上运行。 也可以在承载了 PB 级数据的成百上千台服务器上运行。
+
 - 弹性 ： Elasticsearch 运行在一个分布式的环境中，从设计之初就考虑到了这一点。
+
 - 灵活性 ： 具备多个案例场景。数字、文本、地理位置、结构化、非结构化。所有的数据类型都欢迎。
+
 - HADOOP & SPARK ： Elasticsearch + Hadoop
 
 由于Elasticsearch的功能强大和使用简单，维基百科、卫报、Stack Overflow、GitHub等都纷纷采用它来做搜索。现在，Elasticsearch已成为全文搜索领域的主流软件之一。

@@ -1,11 +1,15 @@
 ---
 title: Dubbo和Zookeeper集成
 date: 2020-08-26 21:01:42
-tags:
-- SpringBoot
-categories: 
-- SpringBoot
-
+pin: false
+toc: false
+icons: []
+tags: [SpringBoot]
+categories: [SpringBoot]
+keywords: [SpringBoot]
+headimg: https://s1.ax1x.com/2020/07/18/U2Mxvq.gif
+thumbnail: https://s1.ax1x.com/2020/07/18/U2Mxvq.gif
+description: SpringBoot
 ---
 
 # 分布式理论
@@ -22,19 +26,29 @@ categories:
 随着互联网的发展，网站应用的规模不断扩大，常规的垂直应用架构已无法应对，分布式服务架构以及流动计算架构势在必行，急需一个治理系统确保架构有条不紊的演进。
 
 在Dubbo的官网文档有这样一张图
-![mark](http://image.codingce.com.cn/blog/20200826/210850496.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200856485.png)
+
 ## 单一应用架构
+
 当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。此时，用于简化增删改查工作量的数据访问框架(ORM)是关键。
-![mark](http://image.codingce.com.cn/blog/20200826/211523734.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200856769.png)
+
 适用于小型网站，小型管理系统，将所有功能都部署到一个功能里，简单易用。
 **缺点：**
+
 - 性能扩展比较难
+
 - 协同开发问题
+
 - 不利于升级维护
 
 ## 垂直应用架构
+
 当访问量逐渐增大，单一应用增加机器带来的加速度越来越小，将应用拆成互不相干的几个应用，以提升效率。此时，用于加速前端页面开发的Web框架(MVC)是关键。
-![mark](http://image.codingce.com.cn/blog/20200826/211639568.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200857179.png)
 
 通过切分业务来实现各个模块独立部署，降低了维护和部署的难度，团队各司其职更易管理，性能扩展也更方便，更有针对性。
 
@@ -43,12 +57,12 @@ categories:
 ## 分布式服务架构
 当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。此时，用于提高业务复用及整合的**分布式服务框架(RPC)是关键。**
 
-![mark](http://image.codingce.com.cn/blog/20200826/211711716.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200857095.png)
 
 ## 流动计算架构
 当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。此时，用于提高机器利用率的资源调度和治理中心(SOA)[ Service Oriented Architecture]是关键。
 
-![mark](http://image.codingce.com.cn/blog/20200826/211741955.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200857633.png)
 
 # 什么是RPC
 RPC【Remote Procedure Call】是指远程过程调用，是一种进程间通信方式，他是一种技术的思想，而不是规范。它允许程序调用另一个地址空间（通常是共享网络的另一台机器上）的过程或函数，而不用程序员显式编码这个远程调用的细节。即程序员无论是调用本地的还是远程的函数，本质上编写的调用代码基本相同。
@@ -58,9 +72,13 @@ RPC【Remote Procedure Call】是指远程过程调用，是一种进程间通�
 推荐阅读文章：https://www.jianshu.com/p/2accc2840a1b
 
 ## RPC基本原理
-![mark](http://image.codingce.com.cn/blog/20200826/212821421.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200858175.png)
+
 步骤解析：
-![mark](http://image.codingce.com.cn/blog/20200826/212859253.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200858492.png)
+
 RPC两个核心模块：通讯，序列化。
 
 # 测试环境搭建
@@ -74,7 +92,8 @@ dubbo官网 http://dubbo.apache.org/zh-cn/index.html
 2.查看官方文档
 
 dubbo基本概念
-![mark](http://image.codingce.com.cn/blog/20200826/213028864.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200858475.png)
 
 **服务提供者**（Provider）：暴露服务的服务提供方，服务提供者在启动时，向注册中心注册自己提供的服务。
 
@@ -87,10 +106,15 @@ dubbo基本概念
 **调用关系说明**
 
 - 服务容器负责启动，加载，运行服务提供者。
+
 - 服务提供者在启动时，向注册中心注册自己提供的服务。
+
 - 服务消费者在启动时，向注册中心订阅自己所需的服务。
+
 - 注册中心返回服务提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者。
+
 - 服务消费者，从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用。
+
 - 服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到监控中心。
 
 ## Dubbo环境搭建
@@ -99,12 +123,16 @@ dubbo基本概念
 什么是zookeeper呢？可以查看官方文档
 
 ## Window下安装zookeeper
+
 - 下载zookeeper ：地址， 下载3.4.14 ， 最新版！解压zookeeper
+
 - 运行/bin/zkServer.cmd ，初次运行会报错，没有zoo.cfg配置文件；
 
 可能遇到问题：闪退 !
 解决方案：编辑zkServer.cmd文件末尾添加pause 。这样运行出错就不会退出，会提示错误信息，方便找到原因。
+
 - 修改zoo.cfg配置文件
+
 将conf文件夹下面的zoo_sample.cfg复制一份改名为zoo.cfg即可。
 注意几个重要位置：
 dataDir=./   临时数据存储的目录（可写相对路径）
@@ -112,6 +140,7 @@ clientPort=2181   zookeeper的端口号
 修改完成后再次启动zookeeper
 
 - 使用zkCli.cmd测试
+
 ls /：列出zookeeper根下保存的所有节点
 [zk: 127.0.0.1:2181(CONNECTED) 4] ls /
 [zookeeper]
@@ -125,6 +154,7 @@ dubbo本身并不是一个服务软件。它其实就是一个jar包，能够帮
 但是为了让用户更好的管理监控众多的dubbo服务，官方提供了一个可视化的监控程序dubbo-admin，不过这个监控即使不装也不影响使用。
 
 这里来安装一下：
+
 - 下载dubbo-admin
 地址 ：https://github.com/apache/dubbo-admin/tree/master
 
@@ -143,19 +173,23 @@ spring.guest.password=guest
 
 dubbo.registry.address=zookeeper://127.0.0.1:2181
 ```
+
 - 在项目目录下打包dubbo-admin
+
 ```java
 mvn clean package -Dmaven.test.skip=true
 ```
+
 第一次打包的过程有点慢，需要耐心等待！直到成功！
 
 - 执行 dubbo-admin\target 下的dubbo-admin-0.0.1-SNAPSHOT.jar
+
 java -jar dubbo-admin-0.0.1-SNAPSHOT.jar
 【注意：zookeeper的服务一定要打开！】
 执行完毕，去访问一下 http://localhost:7001/ ， 这时候需要输入登录账户和密码，都是默认的root-root；
 登录成功后，查看界面
 
-![mark](http://image.codingce.com.cn/blog/20200826/223714248.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200859368.png)
 
 安装完成！
 
@@ -167,12 +201,17 @@ Dubbo: jar包
 
 SpringBoot + Dubbo + zookeeper
 # 框架搭建
+
 - 启动zookeeper ！
+
 - IDEA创建一个空项目；
+
 - 创建一个模块，实现服务提供者：provider-server ， 选择web依赖即可
+
 - 项目创建完毕，写一个服务，比如卖票的服务；
 
 编写接口
+
 ```java
 package cn.com.codingce.service;
 
@@ -182,7 +221,9 @@ public interface TicketService {
 
 }
 ```
+
 编写实现类
+
 ```java
 package cn.com.codingce.service;
 
@@ -207,6 +248,7 @@ public class TicketServiceImpl implements TicketService {
 - 项目创建完毕，写一个服务，比如用户的服务；
 
 编写service
+
 ```java
 package cn.com.codingce.service;
 
@@ -243,6 +285,7 @@ public class UserService {
 ```
 
 zookeeper的包去maven仓库下载，zkclient；
+
 ```xml
 <!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient -->
 <dependency>
@@ -253,6 +296,7 @@ zookeeper的包去maven仓库下载，zkclient；
 ```
 
 【新版的坑】zookeeper及其依赖包，解决日志冲突，还需要剔除日志依赖；
+
 ```xml
 <!-- 引入zookeeper -->
 <dependency>
@@ -280,6 +324,7 @@ zookeeper的包去maven仓库下载，zkclient；
 ```
 
 - 在springboot配置文件中配置dubbo相关属性！
+
 ```yml
 server.port=8081
 
@@ -292,6 +337,7 @@ dubbo.scan.base-packages=cn.com.codingce.service
 ```
 
 - 在service的实现类中配置服务注解，发布服务！注意导包问题
+
 ```java
 package cn.com.codingce.service;
 
@@ -315,6 +361,7 @@ public class TicketServiceImpl implements TicketService {
 
 ## 服务消费者
 - 导入依赖，和之前的依赖一样；
+
 ```xml
 <!--dubbo-->
 <!-- Dubbo Spring Boot Starter -->
@@ -356,6 +403,7 @@ public class TicketServiceImpl implements TicketService {
 ```
 
 - 配置参数
+
 ```yml
 server.port=8082
 
@@ -366,9 +414,11 @@ dubbo.registry.address=zookeeper://127.0.0.1:2181
 ```
 
 - 本来正常步骤是需要将服务提供者的接口打包，然后用pom文件导入，这里使用简单的方式，直接将服务的接口拿过来，路径必须保证正确，即和服务提供者相同；
-![mark](http://image.codingce.com.cn/blog/20200827/194056389.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200900422.png)
 
 - 完善消费者的服务类
+
 ```java
 package cn.com.codingce.service;
 
@@ -389,6 +439,7 @@ public class UserService {
 ```
 
 - 测试类编写；
+
 ```java
 package cn.com.codingce;
 
@@ -414,35 +465,22 @@ class ConsumerServerApplicationTests {
 ```
 
 ## 启动测试
+
 - 开启zookeeper
+
 - 打开dubbo-admin实现监控【可以不用做】
+
 - 开启服务者
+
 - 消费者消费测试，结果：
 
-![mark](http://image.codingce.com.cn/blog/20200827/194405615.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200901786.png)
+
 - 监控中心 ：
-- ![mark](http://image.codingce.com.cn/blog/20200827/194448775.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200902611.png)
 
 这就是SpingBoot + dubbo + zookeeper实现分布式开发的应用，其实就是一个服务拆分的思想；
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 >文章已上传gitee https://gitee.com/codingce/hexo-blog   
