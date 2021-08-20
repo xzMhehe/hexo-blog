@@ -8,11 +8,10 @@ categories: [Vue]
 keywords: [Vue]
 abbrlink: f8e09374
 date: 2021-02-05 20:43:43
-headimg: 
-thumbnail: https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/vue.png
+headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200933725.png
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200933725.png
 description: Vue
 ---
-
 ## :sun_with_face:Vue
 ### :sun_with_face:MVVM思想
 

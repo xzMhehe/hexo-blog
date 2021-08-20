@@ -1,23 +1,33 @@
 ---
 title: Web开发静态资源处理|thymeleaf模板引擎
 date: 2020-08-13 14:52:13
-tags:
-- SpringBoot
-categories: 
-- SpringBoot
-
+pin: false
+toc: false
+icons: []
+tags: [SpringBoot]
+categories: [SpringBoot]
+keywords: [SpringBoot]
+headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200930573.png
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200930573.png
+description: SpringBoot
 ---
 
 # Web开发探究
 ## 简介
 **使用SpringBoot的步骤:**
+
 - 创建一个SpringBoot应用，选择需要的模块，SpringBoot就会默认将的需要的模块自动配置好
+
 - 手动在配置文件中配置部分配置项目就可以运行起来了
+
 - 专注编写业务代码，不需要考虑以前那样一大堆的配置了。
 
 比如SpringBoot到底帮配置了什么？能不能修改？能修改哪些配置？能不能扩展？
 
+
+
 - 向容器中自动配置组件 ：*** Autoconfiguration
+
 - 自动配置类，封装配置文件的内容：***Properties
 
 # 静态资源处理
@@ -77,6 +87,7 @@ Webjars本质就是以jar包的方式引入的静态资源 ， 以前要导入�
 项目中要是使用自己的静态资源该怎么导入呢？看下一行代码；
 
 去找staticPathPattern发现第二种映射规则 ：/** , 访问当前的项目任意资源，它会去找 resourceProperties 这个类，可以点进去看一下分析：
+
 ```java
 // 进入方法
 public String[] getStaticLocations() {
@@ -106,6 +117,7 @@ ResourceProperties 可以设置和静态资源有关的参数；这里面指向�
 
 ## 自定义静态资源路径
 也可以自己通过配置文件来指定一下，哪些文件夹是需要放静态资源文件的，在application.properties中配置；
+
 ```yaml
 spring.resources.static-locations=classpath:/coding/,classpath:/kuang/
 ```
@@ -160,17 +172,20 @@ SpringBoot推荐你可以来使用模板引擎：
 
 模板引擎，其实大家听到很多，其实jsp就是一个模板引擎，还有用的比较多的freemarker，包括SpringBoot给推荐的Thymeleaf，模板引擎有非常多，但再多的模板引擎，他们的思想都是一样的，什么样一个思想呢来看一下这张图：
 
-![mark](http://image.codingce.com.cn/blog/20200813/155921406.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200931400.png)
 
 模板引擎的作用就是来写一个页面模板，比如有些值呢，是动态的，写一些表达式。而这些值，从哪来呢，就是在后台封装一些数据。然后把这个模板和这个数据交给模板引擎，模板引擎按照这个数据帮你把这表达式解析、填充到指定的位置，然后把这个数据最终生成一个想要的内容给写出去，这就是这个模板引擎，不管是jsp还是其他模板引擎，都是这个思想。只不过，就是说不同模板引擎之间，他们可能这个语法有点不一样。其他的就不介绍了，主要来介绍一下SpringBoot给推荐的Thymeleaf模板引擎，这模板引擎呢，是一个高级语言的模板引擎，他的这个语法更简单。而且，功能更强大。
 
 ## 引入Thymeleaf
 怎么引入呢，对于springboot来说，什么事情不都是一个start的事情嘛，去在项目中引入一下.三个网址：
 - Thymeleaf 官网：https://www.thymeleaf.org/
+
 - Thymeleaf 在Github 的主页：https://github.com/thymeleaf/thymeleaf
+
 - Spring官方文档：找到对应的版本https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#using-boot-starter 
 
 找到对应的pom依赖：可以适当点进源码看下本来的包！
+
 ```xml
 <!--thymeleaf-->
 <dependency>
@@ -180,7 +195,8 @@ SpringBoot推荐你可以来使用模板引擎：
 ```
 
 Maven会自动下载jar包，可以去看下下载的东西；
-![mark](http://image.codingce.com.cn/blog/20200813/160429839.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200931612.png)
 
 ## Thymeleaf分析
 首先得按照SpringBoot的自动配置原理看一下这个Thymeleaf的自动配置规则，在按照那个规则，进行使用。
@@ -211,6 +227,7 @@ public class ThymeleafProperties {
 
 ## 测试
 编写一个IndexController
+
 ```java
 package cn.com.codingce.controller;
 
@@ -236,6 +253,7 @@ public class IndexController {
 ```
 
 - 编写一个测试页面  test.html 放在 templates 目录下
+- 
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -255,7 +273,9 @@ public class IndexController {
 Thymeleaf 官网：https://www.thymeleaf.org/ ， 简单看一下官网！去下载Thymeleaf的官方文档！
 
 做个最简单的练习 ：需要查出一些数据，在页面中展示
+
 - 修改测试请求，增加数据传输；
+
 ```java
     @GetMapping("/test2")
     public String test1(Model model){
@@ -266,10 +286,13 @@ Thymeleaf 官网：https://www.thymeleaf.org/ ， 简单看一下官网！去下
     }
 ```
 - 要使用thymeleaf，需要在html文件中导入命名空间的约束，方便提示,可以去官方文档的#3中看一下命名空间拿来过来：
+
 ```yaml
 xmlns:th="http://www.thymeleaf.org"
 ```
+
 - 编写下前端页面
+
 ```html
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
@@ -285,12 +308,14 @@ xmlns:th="http://www.thymeleaf.org"
 </body>
 </html>
 ```
-![mark](http://image.codingce.com.cn/blog/20200813/214728969.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200932294.png)
 
 -可以使用任意的 th:attr 来替换Html中原生属性的值！
-![mark](http://image.codingce.com.cn/blog/20200813/215014146.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200932089.png)
 
 - 能写哪些表达式呢？
+
 ```yaml
 
 Simple expressions:（表达式语法）
@@ -361,7 +386,9 @@ Special tokens:
 
 
 **练习测试：**
+
 - 编写一个Controller
+
 ```java
     @GetMapping("/test3")
     public String test3(Model model){
@@ -375,6 +402,7 @@ Special tokens:
 ```
 
 - 测试页面取出数据
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -398,26 +426,6 @@ Special tokens:
 ```
 
 看完语法，很多样式，即使现在学习了，也会忘记，所以在学习过程中，需要使用什么，根据官方文档来查询，才是最重要的，要熟练使用官方文档！
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

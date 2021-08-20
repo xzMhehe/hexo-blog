@@ -1,15 +1,20 @@
 ---
 title: yaml配置注入
 date: 2020-08-10 19:24:41
-tags:
-- SpringBoot
-categories: 
-- SpringBoot
-
+pin: false
+toc: false
+icons: []
+tags: [SpringBoot]
+categories: [SpringBoot]
+keywords: [SpringBoot]
+headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200926053.png
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200926053.png
+description: SpringBoot
 ---
 # yaml语法学习
 ## 配置文件
 SpringBoot使用一个全局的配置文件 ， 配置文件名称是固定的
+
 - application.properties
     - 语法结构 ：key=value
 
@@ -20,6 +25,7 @@ application.yml
 配置文件的作用 ：修改SpringBoot自动配置的默认值，因为SpringBoot在底层都给我们自动配置好了；
 
 比如可以在配置文件中修改Tomcat 默认启动的端口号
+
 ```yaml
 server.port=8081
 ```
@@ -32,6 +38,7 @@ YAML是 "YAML Ain't a Markup Language" （YAML不是一种标记语言）的递�
 以前的配置文件，大多数都是使用xml来配置；比如一个简单的端口配置，我们来对比下yaml和xml
 
 传统xml配置：
+
 ```xml
 <server>
     <port>8081<port>
@@ -39,6 +46,7 @@ YAML是 "YAML Ain't a Markup Language" （YAML不是一种标记语言）的递�
 ```
 
 yaml配置：
+
 ```yaml
 server：
   prot: 8080
@@ -48,7 +56,9 @@ server：
 说明：语法要求严格！
 
 - 空格不能省略
+
 - 以缩进来控制层级关系，只要是左边对齐的一列数据都是同一个层级的。
+
 - 属性和值的大小写都是十分敏感的.
 
 字面量：普通的值  [ 数字，布尔值，字符串  ]
@@ -154,6 +164,7 @@ public class dag {
     }
 }
 ```
+
 - 思考，我们原来是如何给bean注入属性值的！@Value，给狗狗类测试一下：
 
 ```java
@@ -167,6 +178,7 @@ public class Dog {
 ```
 
 - 在SpringBoot的测试类下注入狗狗输出一下；
+
 ```java
 @SpringBootTest
 class DemoApplicationTests {
@@ -184,6 +196,7 @@ class DemoApplicationTests {
 结果成功输出，@Value注入成功.
 
 - 在编写一个复杂一点的实体类：Person 类
+
 ```java
 package cn.com.codingce.pojo;
 
@@ -289,6 +302,7 @@ public class Person {
 ```
 
 - 使用yaml配置的方式进行注入，大家写的时候注意区别和优势，我们编写一个yaml配置！
+
 ```yaml
 person:
   name: maxinze
@@ -306,6 +320,7 @@ person:
 ```
 
 - 刚才已经把person这个对象的所有值都写好了，现在来注入到类中
+
 ```java
 /*
 @ConfigurationProperties作用：
@@ -362,11 +377,13 @@ yaml配置注入到实体类完全OK！
 **@configurationProperties**：默认从全局配置文件中获取值；
 
 - 在resources目录下新建一个person.properties文件
+
 ```yaml
 name=zhangshangbiancheng
 ```
 
 - 然后在我们的代码中指定加载person.properties文件
+
 ```java
 @PropertySource(value = "classpath:person.properties")
 @Component //注册bean
@@ -380,7 +397,8 @@ public class Person {
 ```
 
 - 再次输出测试一下：指定配置文件绑定成功！
-![mark](http://image.codingce.com.cn/blog/20200811/082049729.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200928749.png)
 
 ## 配置文件占位符
 配置文件还可以编写占位符生成随机数
@@ -399,9 +417,6 @@ person:
       name: ${person.hello:other}_旺财
       age: 1
 ```
-
-
-
 
 
 
