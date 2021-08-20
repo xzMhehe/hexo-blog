@@ -4,15 +4,14 @@ date: 2021-02-01 11:14:28
 pin: false
 toc: true
 icons: [fas fa-fire red]
-headimg: https://s1.ax1x.com/2020/08/20/dJdY0H.jpg
-thumbnail: https://cdn.jsdelivr.net/gh/XuxuGood/cdn@master/blogImages/article-thumbnail/vue.png
+headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200949291.png
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200949291.png
 tags: [JavaScript]
 categories: [JavaScript]
 keywords: [JavaScript]
 abbrlink: 461108bb
 description: ES6特性
 ---
-
 # :sun_with_face: ES6
 ## :sun_with_face: 简介
 `ECMAScript6.0`（以下简称ES6，ECMAScript是一种由Ecma国际(前身为欧洲计算机制造商协会,英文名称是EuropeanComputerManufacturersAssociation)通过ECMA-262标准化的脚本程序设计语言）`是JavaScript语言的下一代标准`，已经在2015年6月正式发布了，并且从ECMAScript6开始，开始采用年号来做版本。即ECMAScript2015，就是ECMAScript6。它的目标，是使得JavaScript语言可以用来编写复杂的大型应用程序，成为企业级开发语言。
