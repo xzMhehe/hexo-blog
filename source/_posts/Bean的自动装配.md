@@ -1,26 +1,37 @@
 ---
 title: Bean的自动装配与注解开发
 date: 2020-07-22 12:13:24
-tags:
-- Spring
-categories:
-- Spring
-
+pin: false
+toc: false
+icons: []
+tags: [Spring]
+categories: [Spring]
+keywords: [Spring]
+headimg: https://s1.ax1x.com/2020/07/18/U2Mxvq.gif
 thumbnail: https://s1.ax1x.com/2020/07/18/U2Mxvq.gif
+description: Spring
 ---
 
 # Bean的自动装配
+
 - 自动装配是Spring满足Bean依赖的一种方式
+
 - Spring会在上下文自动寻找, 并且自动给bean装配属性
 
 在Spring中有三种装配的方式
+
 - 在xml中显示的配置
+
 - 在Java中显示配置
+
 - **隐式的自动配置bean【重要】**
 
 ## 测试
+
 - 搭建环境成功 ： 一个人有两个宠物
+
 ### ByName自动装配
+
 ```xml
     <bean id="cat" class="cn.com.codingce.pojo.Cat"/>
     <bean id="dog" class="cn.com.codingce.pojo.Dog"/>
@@ -50,7 +61,9 @@ thumbnail: https://s1.ax1x.com/2020/07/18/U2Mxvq.gif
 ```
 
 ### 小结 
+
 - byName的时候, 需要保证所有bean的id唯一, 并且这个bean需要和自动注入的属性的set方法的值一致
+
 - byType的时候, 需要保证所有class的id唯一, 并且这个bean需要和自动注入的属性的类型一样
 
 ## 使用注解实现自动装配
@@ -58,8 +71,11 @@ JDK1.5支持注解，Spring2.5就支持注解了
 The introduction of annotation-based configuration raised the question of whether this approach is "better" than XML
 
 要用注解须知
+
 - 导入约束 context  
+
 - 配置注解的支持<context:annotation-config/>
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -82,6 +98,7 @@ The introduction of annotation-based configuration raised the question of whethe
 直接使用在属性上即可! 也可以在set方式上的使用
 使用Autowired我们就可以不用使用Set方法了, 前提是你这个自动装配属性在IOC(Spring)容器中存在, 且符合名字byname
 科普:
+
 ```java
 @Nullable: 字段标记了这个注解, 说明这个字段可以为null；
 
@@ -122,21 +139,28 @@ public class People {
 
 小结: 
 @Resource与@Autowired的区别
+
 - 都是用来自动装配, 都可以放在属性字段上
+
 - @Autowired是通过byType的方式实现, 而且必须要求这个对象存在!
+
 - @Resource默认通过byName的方式实现, 如果找不到名字, 则通过byType实现, 如果两个都找不到的情况下就报错
+
 - 执行顺序不同:  @Autowired通过btType的方式实现。@Resource默认通过byName的方式来实现
 
 
-
 # 使用注解开发
+
 - bean
+
 ```java
 注解说明
 @Component: 组件放在类名上, 说明这个类被Spring管理了, 就是Bean
 @Value: 相当于等价<property name="name" value="掌上编程" />
 ```
+
 - 属性如何注入
+
 ```java
 @Component
 public class User {
@@ -147,6 +171,7 @@ public class User {
 }
 ```
 - 衍生的注解
+
 @Componment有几个衍生的注解, 我们在Web开发中, 会按照mvc三层架构分层
     - dao【@Repository】
     - service【@Service】
@@ -154,6 +179,7 @@ public class User {
     这四个注解功能都是一样的, 都是代表将某个类注册到Spring, 装配Bean
 
 - 作用域
+
 ```java
 @Component
 @Scope("prototype")
@@ -170,14 +196,21 @@ public class User {
 
 小结:
 xml与注解
+
 - xml更加万能, 适用于任何场合! 维护简单方便
+
 - 注解不是自己的类使用不了, 维护相对复杂！
+
 xml与注解最佳实践
+
 - xml用来管理bean;
+
 - 注解只负责完成属性的注入.
+
 - 我们在使用过程中, 只需要注意一个问题: 必须让注解生效, 就需要开启注解的支持
+
 ```xml
-    <!--指定要扫描的宝, 这个包下的注解就会生效-->
+    <!--指定要扫描的包, 这个包下的注解就会生效-->
     <context:component-scan base-package="cn.com.codingce"/>
     <!--开启注解的支持-->
     <context:annotation-config/>
@@ -259,16 +292,6 @@ public class ZeConfig {
 }
 
 ```
-
-
-
-
-
-
-
-
-
-
 
 
 >文章已上传gitee https://gitee.com/codingce/hexo-blog   

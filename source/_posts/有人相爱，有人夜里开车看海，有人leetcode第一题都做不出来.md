@@ -1,19 +1,15 @@
 ---
 title: 有人相爱，有人夜里开车看海，有人leetcode第一题都做不出来
+date: 2021-04-21 21:37:22
 pin: false
 toc: false
 icons: []
-tags:
-  - 力扣
-categories:
-  - 力扣
-keywords:
-  - 力扣
-description: 两数之和
-abbrlink: aa3ba8
-date: 2021-04-21 21:37:22
-headimg:
-thumbnail:
+tags: [力扣, 数组]
+categories: [力扣, 数组]
+keywords: [力扣, 数组]
+headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210715163600.png
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210715163600.png
+description: 旋转数组
 ---
 # 题目描述
 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。

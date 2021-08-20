@@ -1,12 +1,15 @@
 ---
 title: Spring依赖注入
 date: 2020-07-21 09:09:11
-tags:
-- Spring
-categories:
-- Spring
-
+pin: false
+toc: false
+icons: []
+tags: [Spring]
+categories: [Spring]
+keywords: [Spring]
+headimg: https://s1.ax1x.com/2020/07/18/U2Mv2n.gif
 thumbnail: https://s1.ax1x.com/2020/07/18/U2Mv2n.gif
+description: Spring
 ---
 # 依赖注入
 ## 构造器注入

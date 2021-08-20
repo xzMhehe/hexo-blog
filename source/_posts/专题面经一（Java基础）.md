@@ -9,7 +9,6 @@ keywords:
   - 面试
 description: Java
 headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210718093154.png
-
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210718093154.png
 ---
 # 1.ArrayList和LinkedList区别
@@ -249,3 +248,5 @@ public static void main(String[] args) {
 
 
 
+>文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>项目地址: https://github.com/xzMhehe/codingce-java

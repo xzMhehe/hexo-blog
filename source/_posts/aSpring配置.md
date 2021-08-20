@@ -1,16 +1,20 @@
 ---
 title: Spring配置
 date: 2020-07-21 08:31:41
-tags:
-- Spring
-categories:
-- Spring
-
+pin: false
+toc: false
+icons: []
+tags: [Spring]
+categories: [Spring]
+keywords: [Spring]
+headimg: https://s1.ax1x.com/2020/07/28/aEe2b8.gif
 thumbnail: https://s1.ax1x.com/2020/07/28/aEe2b8.gif
+description: Spring
 ---
 
 # Spring配置
 ## 别名
+
 ```xml
     <!--别名,别名区分大小写, 我们也可以使用别名获取到这个对象-->
     <alias name="user" alias="aliasUser"/>
@@ -25,6 +29,7 @@ public static void main(String[] args) {
 ```
 
 ## Bean配置
+
 ```xml
     <!--
         id: bean 唯一标识符, 也就是相当于我们学的对象名
@@ -47,9 +52,13 @@ public static void main(String[] args) {
 ## import
 这个import, 一般用于团队开发使用, 它可以将多个配置文件, 导入合并为一个
 假设现在项目有多个人开发, 这三个人复制不同的类开发, 不同的类需要注册在不同的bean中, 我们可以利用import将所有人的beans.xml合并为一个总的, 使用的时候直接使用总的
+
 - 张三
+
 - 李四
+
 - 王五
+
 - applicationContext.xml
 
 ```xml
@@ -58,10 +67,7 @@ public static void main(String[] args) {
     <import resource="beans3.xml"/>
 ```
 
-![mark](https://s1.ax1x.com/2020/07/21/U56RSS.png)
-
-
-
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200848644.png)
 
 
 >文章已上传gitee https://gitee.com/codingce/hexo-blog   

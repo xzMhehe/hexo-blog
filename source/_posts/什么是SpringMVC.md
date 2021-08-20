@@ -22,49 +22,70 @@ categories:
 **Controller（控制器）**：接收用户请求，委托给模型进行处理（状态改变），处理完毕后把返回的模型数据返回给视图，由视图负责展示。也就是说控制器做了个调度员的工作。
 
 **最典型的MVC就是JSP + servlet + javabean的模式。**
-![mark](http://image.codingce.com.cn/blog/20200802/084203349.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200818144.png)
+
 ## Model1时代
 在web早期的开发中，通常采用的都是Model1。
 Model1中，主要分为两层，视图层和模型层。
-![mark](http://image.codingce.com.cn/blog/20200802/084635467.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200818477.png)
+
 Model1优点：架构简单，比较适合小型项目开发；
 Model1缺点：JSP职责不单一，职责过重，不便于维护；
 
 ## Model2时代
+
 Model2把一个项目分成三部分，包括视图、控制、模型。
-![mark](http://image.codingce.com.cn/blog/20200802/084738828.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200818009.png)
 
 - 用户发请求
+
 - Servlet接收请求数据，并调用对应的业务逻辑方法
+
 - 业务处理完毕，返回更新后的数据给servlet
+
 - servlet转向到JSP，由JSP来渲染页面
+
 - 响应给前端更新后的页面
 
 **职责分析：**
 
 **Controller：控制器**
+
 - 取得表单数据
+
 - 调用业务逻辑
+
 - 转向指定的页面
 
 **Model：模型**
+
 - 业务逻辑
+
 - 保存数据的状态
 
 **View：视图**
+
 - 显示页面
 
 Model2这样不仅提高的代码的复用率与项目的扩展性，且大大降低了项目的维护成本。Model 1模式的实现比较简单，适用于快速开发小规模项目，Model1中JSP页面身兼View和Controller两种角色，将控制逻辑和表现逻辑混杂在一起，从而导致代码的重用性非常低，增加了应用的扩展性和维护的难度。Model2消除了Model1的缺点。
 
 
 假设: 你的项目的架构, 是设计好的还是演进的?
+
 - Alibaba   PHP
+
 - 随着用户大    java
+
 - 王坚 去 IOE MySql
+
 - Mysql:    Mysql->AliSQL->AliRedis
+
 - All in one --->微服务
 
 ## 回顾Servlet
+
 - 新建一个Maven工程当做父工程！pom依赖！
 
 ```xml
@@ -98,9 +119,11 @@ Model2这样不仅提高的代码的复用率与项目的扩展性，且大大�
 ```
 
 - 建立一个Moudle：springmvc-01-servlet ， 添加Web app的支持！
-![mark](http://image.codingce.com.cn/blog/20200802/093246449.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200819731.png)
 
 - 导入servlet 和 jsp 的 jar 依赖
+
 ```xml
 <dependency>
    <groupId>javax.servlet</groupId>
@@ -115,6 +138,7 @@ Model2这样不仅提高的代码的复用率与项目的扩展性，且大大�
 ```
 
 - 编写一个Servlet类，用来处理用户的请求
+
 ```java
 package cn.com.codingce.servlet;
 
@@ -148,7 +172,9 @@ public class HelloServlet extends HttpServlet {
 }
 
 ```
+
 - 编写test.jsp，在WEB-INF目录下新建一个jsp的文件夹，新建test.jsp
+
 ```java
 <%--
   Created by IntelliJ IDEA.
@@ -168,7 +194,9 @@ ${msg}
 </html>
 
 ```
+
 - 在web.xml中注册Servlet
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
@@ -196,15 +224,23 @@ ${msg}
 </web-app>
 ```
 
+
 - 配置Tomcat，并启动测试
+
 - localhost:8080/user?method=add
+
 - localhost:8080/user?method=delete
-![mark](http://image.codingce.com.cn/blog/20200802/093559895.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200820593.png)
 
 ### MVC框架要做哪些事情
+
 - 将url映射到java类或java类的方法 .
+
 - 封装用户提交的数据 .
+
 - 处理请求--调用相关的业务处理--封装响应数据 .
+
 - 将响应的数据进行渲染 . jsp / html 等表示层数据 .
 
 说明：
@@ -226,11 +262,17 @@ Spring MVC是Spring Framework的一部分，是基于Java实现MVC的轻量级We
 
 我们为什么要学习SpringMVC呢?
 - Spring MVC的特点：
+
 - 轻量级，简单易学
+
 - 高效 , 基于请求响应的MVC框架
+
 - 与Spring兼容性好，无缝结合
+
 - 约定优于配置
+
 - 功能强大：RESTful、数据验证、格式化、本地化、主题等
+
 - 简洁灵活
 
 Spring的web框架围绕DispatcherServlet [ 调度Servlet ] 设计。
@@ -243,20 +285,24 @@ DispatcherServlet的作用是将请求分发到不同的处理器。从Spring 2.
 Spring的web框架围绕DispatcherServlet设计。DispatcherServlet的作用是将请求分发到不同的处理器。从Spring 2.5开始，使用Java 5或者以上版本的用户可以采用基于注解的controller声明方式。
 
 Spring MVC框架像许多其他MVC框架一样, 以请求为驱动 , 围绕一个中心Servlet分派请求及提供其他功能，DispatcherServlet是一个实际的Servlet (它继承自HttpServlet 基类)。
-![mark](http://image.codingce.com.cn/blog/20200802/101801712.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200821258.png)
 
 SpringMVC的原理如下图所示：
 
 
 当发起请求时被前置的控制器拦截到请求，根据请求参数生成代理请求，找到请求对应的实际控制器，控制器处理请求，创建数据模型，访问数据库，将模型响应给中心控制器，控制器使用模型与视图渲染视图结果，将结果返回给中心控制器，再将结果返回给请求者。
-![mark](http://image.codingce.com.cn/blog/20200802/102051726.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200821499.png)
 
 ## SpringMVC执行原理
-![mark](http://image.codingce.com.cn/blog/20200802/103018977.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200821247.png)
 
 图为SpringMVC的一个较完整的流程图，实线表示SpringMVC框架提供的技术，不需要开发者实现，虚线表示需要开发者实现。
 
 简要分析执行流程
+
 <font color=red >
 
 - DispatcherServlet表示前置控制器，是整个SpringMVC的控制中心。用户发出请求，DispatcherServlet接收请求并拦截请求。我们假设请求的url为 : http://localhost:8080/SpringMVC/hello
@@ -266,8 +312,7 @@ SpringMVC部署在服务器上的web站点
 hello表示控制器
 通过分析，如上url表示为：请求位于服务器localhost:8080上的SpringMVC站点的hello控制器。
 
-- HandlerMapping为处理器映射。DispatcherServlet调用
-HandlerMapping,HandlerMapping根据请求url查找Handler。
+- HandlerMapping为处理器映射。DispatcherServlet调用，HandlerMapping,HandlerMapping根据请求url查找Handler。
 
 - HandlerExecution表示具体的Handler,其主要作用是根据url查找控制器，如上url被查找控制器为：hello。
 
@@ -292,10 +337,6 @@ HandlerMapping,HandlerMapping根据请求url查找Handler。
 </font>
 
 <center><font color=BBBBBB size=5>微信公众号</font></center>
-
-![mark](https://s1.ax1x.com/2020/07/17/UsFeJJ.jpg)
-
-
 
 
 >文章已上传gitee https://gitee.com/codingce/hexo-blog   

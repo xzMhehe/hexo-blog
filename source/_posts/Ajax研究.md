@@ -1,21 +1,33 @@
 ---
 title: Ajax研究
 date: 2020-08-06 13:13:06
-tags:
-- SpringMVC
-categories: 
-- SpringMVC
-
+pin: false
+toc: false
+icons: []
+tags: [SpringMVC]
+categories: [SpringMVC]
+keywords: [SpringMVC]
+headimg: https://s1.ax1x.com/2020/07/17/UsFYJH.png
+thumbnail: https://s1.ax1x.com/2020/07/17/UsFYJH.png
+description: SpringMVC
 ---
 # 简介
 - AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。
+
 - AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。
+
 - Ajax 不是一种新的编程语言，而是一种用于创建更好更快以及交互性更强的Web应用程序的技术。
+
 - 在 2005 年，Google 通过其 Google Suggest 使 AJAX 变得流行起来。Google Suggest能够自动帮你完成搜索单词。
+
 - Google Suggest 使用 AJAX 创造出动态性极强的 web 界面：当您在谷歌的搜索框输入关键字时，JavaScript 会把这些字符发送到服务器，然后服务器会返回一个搜索建议的列表。
+
 - 就和国内百度的搜索框一样!
+
 - 传统的网页(即不用ajax技术的网页)，想要更新内容或者提交一个表单，都需要重新加载整个网页。
+
 - 使用ajax技术的网页，通过在后台服务器进行少量的数据交换，就可以实现异步局部更新。
+
 - 使用Ajax，用户可以创建接近本地桌面应用的直接、高可用、更丰富、更动态的Web用户界面。
 
 # 伪造Ajax
@@ -23,6 +35,7 @@ categories:
 我们可以使用前端的一个标签来伪造一个ajax的样子。iframe标签
 
 - 新建一个module ：sspringmvc-06-ajax ， 导入web支持！
+
 - 编写一个 ajax-frame.html 使用 iframe 测试，感受下效果
 
 ```html
@@ -68,9 +81,13 @@ categories:
 - 使用IDEA开浏览器测试一下！
 
 ## 利用AJAX可以做：
+
 - 注册时，输入用户名自动检测用户是否已经存在。
+
 - 登陆时，提示用户名密码错误
+
 - 删除数据行时，将行ID发送到后台，后台在数据库中删除，数据库删除成功后，在页面DOM中将数据行也删除。
+
 - ....等等
 
 # jQuery.ajax
@@ -155,6 +172,7 @@ jQuery.ajax(...)
 ```
 
 - 编写一个AjaxController
+
 ```java
 package cn.com.codingce.controller;
 
@@ -192,6 +210,7 @@ public class AjaxController {
 ```
 
 - 编写index.jsp测试
+
 ```html
 <%--
   Created by IntelliJ IDEA.
@@ -226,11 +245,13 @@ public class AjaxController {
   </body>
 </html>
 ```
+
 启动tomcat测试！打开浏览器的控制台，当我们鼠标离开输入框的时候，可以看到发出了一个ajax的请求！是后台返回给我们的结果！测试成功！
 
 ## Springmvc实现
 
 - 实体类user
+
 ```java
 package cn.com.codingce.pojo;
 
@@ -246,6 +267,7 @@ public class User {
 ```
 
 - 我们来获取一个集合对象，展示到前端页面
+
 ```java
     @RequestMapping("/a2")
     public List<User> a2() {
@@ -259,7 +281,9 @@ public class User {
         return list;
     }
 ```
+
 - 前端页面
+
 ```html
 <%--
   Created by IntelliJ IDEA.
@@ -306,13 +330,13 @@ public class User {
 </table>
 </body>
 </html>
-
 ```
 
 成功实现了数据回显！可以体会一下Ajax的好处！
 
 # 注册提示效果
 ## Controller
+
 ```java
 @RequestMapping("/a3")
 public String ajax3(String name,String pwd){
@@ -337,6 +361,7 @@ public String ajax3(String name,String pwd){
 ```
 
 ## 前端页面 login.jsp
+
 ```html
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
