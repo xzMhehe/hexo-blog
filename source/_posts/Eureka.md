@@ -15,7 +15,7 @@ Eureka是Netflix服务发现的服务端与客户端，Eureka提供服务注册�
 # 注册中心
 当Eureka想要成为注册中心时，必须将注册中心的服务地址指向自己，同时禁用服务检索的功能。Eureka是一个高可用的组件，它没有后端缓存，每一个实例注册之后需要向注册中心发送心跳来检测服务的可用性，注册中心不处理请求的转发，只是记录每个实例注册进来的信息。
 
-![mark](http://image.codingce.com.cn/blog/20200908/202952247.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211256796.png)
 
 # 项目搭建
 - 导入依赖
