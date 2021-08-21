@@ -23,7 +23,8 @@ css引用建议放在head标签里面；js脚本建议放到body内容的最后�
 # 插件安装
 - 安装gulp工具
 *$ npm install --global gulp*
-- ![mark](http://image.codingce.com.cn/blog/20200811/083940539.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211301794.png)
 
 - 实现gulp压缩需要安装以下五个模块
 >gulp-htmlclean // 清理html
@@ -35,11 +36,13 @@ gulp-imagemin // 压缩图片
 安装命令: *npm install gulp-htmlclean gulp-htmlmin gulp-minify-css gulp-uglify gulp-imagemin --save*
 
 - 添加系统环境变量, 将步骤1图红框的路径添加进Path中, 注意Users后面是你自己的用户名
-![mark](http://image.codingce.com.cn/blog/20200811/084059097.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211302352.png)
 
 - 重启Git, 在博客根目录下安装开发依赖: $ npm install --save-dev gulp
 在站点根目录下新建gulpfile.js文件，内容如下：
-```java
+
+```js
 var gulp = require('gulp');
 
 //Plugins模块获取

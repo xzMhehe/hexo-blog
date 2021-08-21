@@ -18,7 +18,9 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEZ67F.gif
 </dependency>
 ```
 # 编写代码
+
 - 编写一个Hello实体类
+
 ```java
 public class Hello {
 
@@ -47,7 +49,9 @@ public class Hello {
     }
 }
 ```
+
 - 编写我们的spring文件,这里我们命名为beans.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -71,7 +75,9 @@ public class Hello {
 
 </beans>
 ```
+
 - 测试
+
 ```java
 public class MyTest {
     public static void main(String[] args) {
@@ -153,6 +159,7 @@ public class MyTest {
 ## 通过无参构造方法来创建
 
 - User.java
+
 ```java
 public class User {
 
@@ -184,6 +191,7 @@ public class User {
 ```
 
 - beans.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -198,6 +206,7 @@ public class User {
 ```
 
 - 测试类
+
 ```java
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
@@ -210,6 +219,7 @@ public class User {
 
 ## 通过有参构造方法来创建
 - 下标赋值
+
 ```xml
     <!--第一种下标赋值-->
     <bean id="user" class="cn.com.codingce.pojo.User">
@@ -218,6 +228,7 @@ public class User {
 ```
  
 - 参数类型
+
 ```xml
     <!--第二种参数类型 不建议使用 假设两个参数都是String-->
     <bean id="user" class="cn.com.codingce.pojo.User">
@@ -236,5 +247,5 @@ public class User {
 
 
 
->文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>文章已上传gitee: https://gitee.com/codingce/hexo-blog   
 >项目地址: https://github.com/xzMhehe/codingce-java

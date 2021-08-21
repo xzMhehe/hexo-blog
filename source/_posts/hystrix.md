@@ -36,7 +36,7 @@ hystrix[hɪst'rɪks]
 
 在微服务架构中，我们将业务拆分成一个个的服务，服务与服务之间可以相互调用（RPC百科: RPC是远程过程调用（Remote Procedure Call）的缩写形式。）。为了保证其高可用，单个服务又必须集群部署。由于网络原因或者自身的原因，服务并不能保证服务的100%可用，如果单个服务出现问题，调用这个服务就会出现网络延迟，此时若有大量的网络涌入，会形成任务累计，导致服务瘫痪，甚至导致服务“雪崩”。为了解决这个问题，就出现断路器模型。
 
-![mark](http://image.codingce.com.cn/blog/20200913/182113465.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211302333.png)
 
 
 
@@ -250,7 +250,7 @@ public class DeptProvider_Hystrix_8001 {
 
 服务降级是在客户端进行编辑。
 
-![](http://image.codingce.com.cn/blog/20200923/160116283.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211303644.png)
 
 ## 使用场景
 服务降级主要用于什么场景呢？当整个微服务架构整体的负载超出了预设的上限阈值或即将到来的流量预计将会超过预设的阈值时，为了保证重要或基本的服务能正常运行，我们可以将一些 不重要 或 不紧急 的服务或任务进行服务的 延迟使用 或 暂停使用。
@@ -361,13 +361,10 @@ public interface DeptClientService {
 - 服务降级： 客户端~ 从整体网站请求负载考虑~ 当某个服务熔断或者关闭后,  服务将不再调用, 此时在客户但我们可以准备 一个FallbackFactory, 返回一个默认的值(缺省值), 整体的服务水平下降了~ , 好歹能够使用
 
 
-![mark](http://image.codingce.com.cn/blog/20200926/141954963.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211303436.png)
 
 
 
 
-
-
-
->文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>文章已上传gitee: https://gitee.com/codingce/hexo-blog   
 >项目地址: https://github.com/xzMhehe/codingce-java

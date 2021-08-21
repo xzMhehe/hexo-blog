@@ -5,7 +5,6 @@ tags:
 - SpringBoot
 categories: 
 - SpringBoot
-
 thumbnail: https://s1.ax1x.com/2020/08/20/dJwev8.md.jpg
 ---
 # SpringSecurity
@@ -35,7 +34,8 @@ Spring 是一个非常流行和成功的 Java 应用开发框架。Spring Securi
 ### 实验环境搭建
 - 新建一个初始的springboot项目web模块，thymeleaf模块
 - 导入静态资源
-![mark](http://image.codingce.com.cn/blog/20200817/121758010.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211306743.png)
 
 - controller跳转！
 ```java
@@ -168,10 +168,12 @@ http.formLogin();
 ```
 
 - 测试一下：发现，没有权限的时候，会跳转到登录的页面！
-![mark](http://image.codingce.com.cn/blog/20200817/122148406.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211306996.png)
 
 - 查看刚才登录页的注释信息；
 可以定义认证规则，重写configure(AuthenticationManagerBuilder auth)方法
+
 ```java
 //定义认证规则
 @Override
@@ -189,7 +191,9 @@ protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
 - 测试，可以使用这些账号登录进行测试！发现会报错！
 There is no PasswordEncoder mapped for the id “null”
+
 - 原因，要将前端传过来的密码进行某种方式加密，否则就无法登录，修改代码      我选择这BCryptPasswordEncoder加密
+
 ```java
 auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
                 .withUser("xzM").password(new BCryptPasswordEncoder().encode("123456")).roles("vip2","vip3")
@@ -201,12 +205,14 @@ auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
 
 ## 权限控制和注销
 - 开启自动配置的注销的功能
+
 ```java
         //注销    开启注销功能 跳转首页 .logoutSuccessUrl("/"); 注销成功来到首页
         http.logout().logoutSuccessUrl("/");
 ```
 
 - 在前端，增加一个注销的按钮，index.html 导航栏中
+
 ```html
 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">注销</a></li>
 ```
@@ -298,6 +304,7 @@ http.logout().logoutSuccessUrl("/");
 ## 记住我
 现在的情况，只要登录之后，关闭浏览器，再登录，就会让重新登录，但是很多网站的情况，就是有一个记住密码的功能，这个该如何实现 很简单
 - 开启记住我功能
+
 ```java
 //定制请求的授权规则
 @Override
@@ -307,10 +314,12 @@ protected void configure(HttpSecurity http) throws Exception {
    http.rememberMe();
 }
 ```
+
 - 再次启动项目测试一下，发现登录页多了一个记住我功能，登录之后关闭 浏览器，然后重新打开浏览器访问，发现用户依旧存在！
 思考：如何实现的呢？ 其实非常简单
 可以查看浏览器的cookie
-- ![mark](http://image.codingce.com.cn/blog/20200817/123122981.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211307473.png)
 
 - 点击注销的时候，可以发现，spring security 帮自动删除了这个 cookie
 
@@ -318,11 +327,13 @@ protected void configure(HttpSecurity http) throws Exception {
 现在这个登录页面都是spring security 默认的，怎么样可以使用自己写的Login界面呢？
 
 - 在刚才的登录页配置后面指定 loginpage
+
 ```java
 http.formLogin().loginPage("/toLogin");
 ```
 
 - 然后前端也需要指向自己定义的 login请求
+
 ```html
 <li sec:authorize="!isAuthenticated()"><a th:href="@{/tologin}">登录</a></li>
 ```
@@ -351,6 +362,7 @@ http.formLogin().loginPage("/toLogin");
 ```
 
 - 这个请求提交上来，还需要验证处理，怎么做呢？可以查看formLogin()方法的源码！配置接收登录的用户名和密码的参数！
+
 ```java
 http.formLogin()
   .usernameParameter("username")
@@ -358,11 +370,15 @@ http.formLogin()
   .loginPage("/toLogin")
   .loginProcessingUrl("/login"); // 登陆表单提交请求
 ```
+
 - 在登录页增加记住我的多选框
+
 ```html
 <input type="checkbox" name="remember"> 记住我
 ```
+
 - 后端验证处理！
+
 ```java
 http.rememberMe().rememberMeParameter("remember");
 ```
@@ -457,5 +473,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 还有一点 本次SpringBoot版本为2.0.9.RELEASE, SpringBoot太高版本, SpringSecurity页面语法不会生效, 我的是降级后的, 其他SpringBoot版本为2.2.9.RELEASE
 
 
->文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>文章已上传gitee: https://gitee.com/codingce/hexo-blog   
 >项目地址: https://github.com/xzMhehe/codingce-java

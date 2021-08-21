@@ -29,7 +29,9 @@ feign主要是社区, 大家都习惯面向接口编程. 这是很多开发人�
 # 具体实现
 ## 实体类项目 加入 接口(和注解)
 项目结构
-![mark](http://image.codingce.com.cn/blog/20200913/141924599.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211258632.png)
+
 ### pom
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -125,7 +127,9 @@ public interface DeptClientService {
 
 ## 新建客户端项目(springcloud-cusumer-dept-feign)
 项目结构
-![mark](http://image.codingce.com.cn/blog/20200913/142140631.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211258298.png)
+
 ### pom
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -284,9 +288,10 @@ public class FeginDeptConsumer_80 {
 ```
 
 ### 操作截图
-![mark](http://image.codingce.com.cn/blog/20200913/142423277.png)
 
-![mark](http://image.codingce.com.cn/blog/20200913/142508103.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211259873.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211259069.png)
 
 
 

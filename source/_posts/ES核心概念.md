@@ -63,7 +63,7 @@ ElasticSearch会自动的将新字段加入映射,但是这个字段的不确定
 一个集群至少有一个节点,而一个节点就是一个ElasticSearch进程节点可以有多个索引默认的,如果你创建索引,那么索引会至少有5个分片(primary shard ,又称为主分片)构成的,每一个主分片会有一个副本(replica shard,又称为复制分片)
 
 
-![](https://image.codingce.com.cn/jiqun1.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211257490.png)
 
 上图是一个有3个节点的集群,可以看到主分片和对应的复制分片都不会在同一个节点内,这样有利于某个节点挂掉了,数据也不至于丢失,实际上一个分片就是一个Lucene索引,一个包含倒排索引的文件目录,倒排索引的结构使得ElasticSearch在不扫描全部文档的情况下,就可以告诉你那些文档包含特定的关键字,不过额,倒排索引是啥?
 
@@ -73,7 +73,7 @@ ElasticSearch会自动的将新字段加入映射,但是这个字段的不确定
 ElasticSearch使用的是一种称为倒排索引的结构,采用Lucene倒排索引作为底层,这种结构适用于快速的全文检索,一个索引由文档中所有不重复的列表构成,对于每一个词,都包含他的文档列表,
 
 列如现在有两个文档,每个文档包含如下内容
-![](https://image.codingce.com.cn/dapai1.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211257831.png)
 
  为了创建倒排索引,我们首先要将每个文档拆分成独立的词(或称为词条或者tokens),然后创建一个不包含所有补充度的词条的排序列表,然后列出每个词出现在那个文档
 

@@ -5,7 +5,6 @@ tags:
 - MyBatis
 categories:
 - MyBatis
-
 thumbnail: https://s1.ax1x.com/2020/07/17/UsFtWd.jpg
 ---
 
@@ -18,6 +17,7 @@ thumbnail: https://s1.ax1x.com/2020/07/17/UsFtWd.jpg
  - 新建一个普通的maven项目
  - 删除src目录
  - 导入maven依赖
+
  ```xml
     <!--导入依赖-->
     <dependencies>
@@ -43,7 +43,9 @@ thumbnail: https://s1.ax1x.com/2020/07/17/UsFtWd.jpg
  ```
 
 ### 创建一个模块
+
 - 编写mybatis的核心配置文件
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
@@ -66,7 +68,9 @@ thumbnail: https://s1.ax1x.com/2020/07/17/UsFtWd.jpg
   </mappers>
 </configuration>
 ```
+
 - 编写mybatis的工具类
+
 ```java
 //sqlSessionFactory->sqlSession
 public class MybatisUtils {
@@ -92,15 +96,19 @@ public class MybatisUtils {
     }
 }
 ```
+
 - 编写代码
     - 实体类
     - Dao接口
+
 ```java
 public interface UserDao {
     List<User> getUserList();
 }
 ```
+
 - 接口实现类由原来的UserDaoImpl转变为一个Mapper配置文件
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
@@ -147,6 +155,7 @@ public interface UserDao {
         }
     }
 ```
+
 可能遇到的问题:
 - 配置文件没有注册
 - 绑定接口错误
@@ -160,8 +169,11 @@ namespace中的包名要和Dao/mapper接口包名一致
 #### select
 选择,查询语句:
 - id: 就是对应的namespace中的方法名
+
 - resultType: Sql语句执行的返回值! 
+
 - parameterType: 参数类型!
+
 ```java
     @Test
     public void getUserById() {
@@ -178,7 +190,9 @@ namespace中的包名要和Dao/mapper接口包名一致
         }
     }
 ```
+
 - 插入一条数据
+
 ```java
     //insert一个用户
     int addUser(User user);
@@ -205,6 +219,7 @@ namespace中的包名要和Dao/mapper接口包名一致
 ```
 
 - 修改用户
+
 ```java
     //修改
     int updateUser(User user);
@@ -226,7 +241,9 @@ namespace中的包名要和Dao/mapper接口包名一致
         sqlSession.close();
     }
 ```
+
 - 删除用户
+
 ```java
     //删除
     int deleteUser(int id);
@@ -294,15 +311,20 @@ namespace中的包名要和Dao/mapper接口包名一致
 
 ### 模糊查询
 - Java代码执行的时候, 传递通配符%%
+
 >List<User> userList = userMapper.getUserListLike("%掌%");
 
 - 在sql拼接使用通配符
+
 >select * from mybatis.user where name like "%"#{name}"%"
 
 ### 配置解析
 #### 核心配置文件
+
 - mybatis-config.xml(官方建议使用这个名字)
+
 - mybatis的配置文件包含了会深深影响Mybatis行为设置和属性信息
+
 ```
 configuration（配置）
 properties（属性）
@@ -348,6 +370,7 @@ MyBatis 可以配置成适应多种环境
 
 #### 类型别名（typeAliases）
 - 类型别名可为 Java 类型设置一个缩写名字. 它仅用于 XML 配置,意在降低冗余的全限定类名书写.
+
 ```xml
 <typeAliases>
   <typeAlias alias="Author" type="domain.blog.Author"/>
@@ -360,8 +383,10 @@ MyBatis 可以配置成适应多种环境
 当这样配置时,Blog 可以用在任何使用 domain.blog.Blog 的地方.
 ```
 
+
 也可以指定一个包名,MyBatis 会在包名下面搜索需要的 Java Bean
 每一个在包 domain.blog 中的 Java Bean,在没有注解的情况下,会使用 Bean 的首字母小写的非限定类名来作为它的别名. 比如 domain.blog.Author 的别名为 author；若有注解,则别名为其注解值.
+
 ```xml
 <typeAliases>
   <package name="domain.blog"/>
@@ -370,14 +395,18 @@ MyBatis 可以配置成适应多种环境
 实体类少的时候使用第一种, 实体类多的时候使用第二种
 第一种可以DIY别名,第二种则不行, 如果非要改, 需要在实体类上增加注解
 使用注解
+
 ```java
 @Alias("author")
 public class Author {
     ...
 }
 ```
+
 #### 设置
+
 这是Mybatis中极为重要的调整设置, 他们会改变Mybatis的运行行为
+
 >cacheEnabled   全局性地开启或关闭所有映射器配置文件中已配置的任何缓存.    true | false    true
 lazyLoadingEnabled  	延迟加载的全局开关.当开启时,所有关联对象都会延迟加载. 特定关联关系中可通过设置 fetchType 属性来覆盖该项的开关状态.  true | false    true
 logImpl 指定 MyBatis 所用日志的具体实现,未指定时将自动查找 SLF4J | LOG4J | LOG4J2 | JDK_LOGGING | COMMONS_LOGGING | STDOUT_LOGGING | NO_LOGGING    未设置
@@ -389,6 +418,7 @@ logImpl 指定 MyBatis 所用日志的具体实现,未指定时将自动查找 S
 
 #### 映射器（mappers）
 既然 MyBatis 的行为已经由上述元素配置完了,我们现在就要来定义 SQL 映射语句了. 但首先,我们需要告诉 MyBatis 到哪里去找到这些语句. 在自动查找资源方面,Java 并没有提供一个很好的解决方案,所以最好的办法是直接告诉 MyBatis 到哪里去找映射文件. 你可以使用相对于类路径的资源引用,或完全限定资源定位符（包括 file:/// 形式的 URL）,或类名和包名等.
+
 ```xml
 <!-- 使用相对于类路径的资源引用 推荐使用-->
 <mappers>
@@ -415,7 +445,6 @@ logImpl 指定 MyBatis 所用日志的具体实现,未指定时将自动查找 S
 <mappers>
   <package name="org.mybatis.builder"/>
 </mappers>
-
 ```
 
 #### 生命周期和作用域
@@ -431,15 +460,9 @@ logImpl 指定 MyBatis 所用日志的具体实现,未指定时将自动查找 S
 - SqlSession 的实例不是线程安全的，因此是不能被共享的，所以它的最佳的作用域是请求或方法作用域
 - 用完之后赶紧关闭, 否则资源占用
 
-![mark](http://image.codingce.com.cn/blog/20200712/173037493.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211301806.png)
 
 
 
-
-
-
-
-
-
->文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>文章已上传gitee: https://gitee.com/codingce/hexo-blog   
 >项目地址: https://github.com/xzMhehe/codingce-java
