@@ -139,10 +139,15 @@ INSERT  INTO `books`(`bookID`,`bookName`,`bookCounts`,`detail`)VALUES
 
 # 建立基本结构和配置框架！
 - cn.com.codingce.pojo
+
 - cn.com.codingce.dao
+
 - cn.com.codingce.service
+
 - cn.com.codingce.controller
+
 - mybatis-config.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
@@ -167,7 +172,8 @@ INSERT  INTO `books`(`bookID`,`bookName`,`bookCounts`,`detail`)VALUES
 
 # Mybatis层编写
 ## 数据库配置文件 database.properties
-```xml
+
+```yml
 jdbc.driver=com.mysql.cj.jdbc.Driver
 jdbc.url=jdbc:mysql://cdb-q9atzwrq.bj.tencentcdb.com:10167/ssmbuild?useSSL=true&useUnicode=true
 jdbc.username=root
@@ -175,6 +181,7 @@ jdbc.password=123456
 ```
 
 ## 编写MyBatis的核心配置文件
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
@@ -191,6 +198,7 @@ jdbc.password=123456
 ```
 
 ## 编写数据库对应的实体类
+
 ```java
 package cn.com.codingce.pojo;
 
@@ -256,6 +264,7 @@ public class Books {
 ```
 
 ## 编写Dao层的 Mapper接口！
+
 ```java
 package cn.com.codingce.dao;
 
@@ -283,6 +292,7 @@ public interface BookMapper {
 ```
 
 ## 编写接口对应的 Mapper.xml 文件。需要导入MyBatis的包；
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
@@ -324,7 +334,9 @@ public interface BookMapper {
 ```
 
 ## 编写Service层的接口和实现类
+
 - 接口：
+
 ```java
 package cn.com.codingce.service;
 
@@ -346,7 +358,9 @@ public interface BookService {
     List<Books> queryAllBook();
 }
 ```
+
 - 实现类：
+
 ```java
 package cn.com.codingce.service;
 
@@ -392,7 +406,9 @@ public class BookServiceImpl implements BookService {
 
 ## 配置Spring整合MyBatis，我们这里数据源使用c3p0连接池；
 ## 我们去编写Spring整合Mybatis的相关的配置文件；spring-dao.xml
-- ![mark](http://image.codingce.com.cn/blog/20200805/175335842.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221002192.png)
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -451,6 +467,7 @@ public class BookServiceImpl implements BookService {
 ```
 
 ## Spring整合service层
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -482,6 +499,7 @@ Spring层搞定！再次理解一下，Spring就是一个大杂烩，一个容�
 
 # SpringMVC层
 ## web.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
@@ -530,6 +548,7 @@ Spring层搞定！再次理解一下，Spring就是一个大杂烩，一个容�
 ```
 
 ## spring-mvc.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -563,6 +582,7 @@ Spring层搞定！再次理解一下，Spring就是一个大杂烩，一个容�
 ```
 
 ## Spring配置整合文件，applicationContext.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -581,6 +601,7 @@ Spring层搞定！再次理解一下，Spring就是一个大杂烩，一个容�
 
 # Controller 和 视图层编写
 ## BookController 类编写 ， 方法一：查询全部书籍
+
 ```java
 package cn.com.codingce.controller;
 
@@ -617,6 +638,7 @@ public class BookController {
 ```
 
 ## 编写首页 index.jsp
+
 ```java
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE HTML>
@@ -650,6 +672,7 @@ public class BookController {
 ```
 
 ## 书籍列表页面 allbook.jsp
+
 ```java
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -714,6 +737,7 @@ public class BookController {
 ```
 
 ## BookController 类编写 ， 方法二：添加书籍
+
 ```java
     @RequestMapping("/toAddBook")
     public String toAddPaper() {
@@ -727,7 +751,9 @@ public class BookController {
         return "redirect:/book/allBook";
     }
 ```
+
 ## 添加书籍页面：addBook.jsp
+
 ```html
 <%--
   Created by IntelliJ IDEA.
@@ -770,6 +796,7 @@ public class BookController {
 ```
 
 ## BookController 类编写 ， 方法三：修改书籍
+
 ```java
    @RequestMapping("/toUpdateBook")
     public String toUpdateBook(Model model, int id) {
@@ -790,6 +817,7 @@ public class BookController {
 ```
 
 ## 修改书籍页面  updateBook.jsp
+
 ```html
 <%--
   Created by IntelliJ IDEA.
@@ -833,6 +861,7 @@ public class BookController {
 ```
 
 ## BookController 类编写 ， 方法四：删除书籍
+
 ```java
 @RequestMapping("/del/{bookId}")
 public String deleteBook(@PathVariable("bookId") int id) {
@@ -942,19 +971,11 @@ public String deleteBook(@PathVariable("bookId") int id) {
 到目前为止，这个SSM项目整合已经完全的OK了，可以直接运行进行测试！这个练习十分的重要，需要保证，不看任何东西，自己也可以完整的实现出来！
 
 # 项目结构图 
-![mark](http://image.codingce.com.cn/blog/20200806/083121119.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221003507.png)
 
 
 
 
 
-
-
-
-
-
-
-
-
->文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>文章已上传gitee: https://gitee.com/codingce/hexo-blog   
 >项目地址: https://github.com/xzMhehe/codingce-java

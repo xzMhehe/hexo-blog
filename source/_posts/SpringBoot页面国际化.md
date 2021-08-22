@@ -12,7 +12,8 @@ categories:
 有的时候，的网站会去涉及中英文甚至多语言的切换，这时候就需要学习国际化了！
 # 准备工作
 先在IDEA中统一设置properties的编码问题！
-![mark](http://image.codingce.com.cn/blog/20200815/082222583.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221006425.png)
 
 编写国际化配置文件，抽取页面需要显示的国际化页面消息。
 
@@ -20,17 +21,22 @@ categories:
 - 在resources资源文件下新建一个i18n目录，存放国际化配置文件
 - 建立一个login.properties文件，还有一个login_zh_CN.properties；发现IDEA自动识别了要做国际化操作；文件夹变了！
 
-![mark](http://image.codingce.com.cn/blog/20200815/082324393.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221007868.png)
+
 - 可以在这上面去新建一个文件；
-![mark](http://image.codingce.com.cn/blog/20200815/082405303.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221007652.png)
 
 弹出如下页面：添加一个英文的；
-![mark](http://image.codingce.com.cn/blog/20200815/082453967.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221007129.png)
 
 - 接下来，编写配置，可以看到idea下面有另外一个视图；
-![mark](http://image.codingce.com.cn/blog/20200815/082534870.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221008236.png)
 
 login.properties ：默认
+
 ```yaml
 login.btn=登录
 login.password=密码
@@ -38,6 +44,7 @@ login.remember=记住我
 login.tip=请登录
 login.username=用户名
 ```
+
 英文：
 ```yaml
 login.btn=Sgin in
@@ -85,19 +92,21 @@ public MessageSource messageSource(MessageSourceProperties properties) {
 ```
 
 真实的情况是放在了i18n目录下，所以要去配置这个messages的路径；
+
 ```yaml
 spring.messages.basename=i18n.login
 ```
 # 配置页面国际化值
 去页面获取国际化的值，查看Thymeleaf的文档，找到message取值操作为：#{...}。去页面测试：
-![mark](http://image.codingce.com.cn/blog/20200815/082855333.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221008424.png)
 
 # 配置国际化解析
 在Spring中有一个国际化的Locale （区域信息对象）；里面有一个叫做LocaleResolver （获取区域信息对象）的解析器！
 
 去webmvc自动配置文件，寻找一下  看到SpringBoot默认配置：
-```java
 
+```java
 @Bean
 @ConditionalOnMissingBean
 @ConditionalOnProperty(prefix = "spring.mvc", name = "locale")
@@ -112,6 +121,7 @@ public LocaleResolver localeResolver() {
     return localeResolver;
 }
 ```
+
 AcceptHeaderLocaleResolver 这个类中有一个方法
 ```java
 public Locale resolveLocale(HttpServletRequest request) {
@@ -193,19 +203,14 @@ public class MyLocaleResolver implements LocaleResolver {
         return new MyLocaleResolver();
     }
 ```
-![mark](http://image.codingce.com.cn/blog/20200815/083255553.png)
-![mark](http://image.codingce.com.cn/blog/20200815/083246025.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221009659.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221009493.png)
 
 
 
 
 
 
-
-
-
-
-
-
->文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>文章已上传gitee: https://gitee.com/codingce/hexo-blog   
 >项目地址: https://github.com/xzMhehe/codingce-java

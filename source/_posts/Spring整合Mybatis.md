@@ -6,9 +6,9 @@ tags:
 - MyBatis
 categories:
 - Spring
-
 thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 ---
+
 # 整合Mybatis
 - 导入相关jar包
     - junit
@@ -17,72 +17,77 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
     - spring相关的
     - aop织入
     - mybatis-spring 【new】
-    ```xml
-        <dependencies>
-        <!--mybatis-->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.5.4</version>
-        </dependency>
-        <!--mysql驱动-->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.16</version>
-        </dependency>
 
-        <!--Spring操作数据库的话还需要一个spring-jdbc-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>5.1.9.RELEASE</version>
-        </dependency>
+```xml
+    <dependencies>
+    <!--mybatis-->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>3.5.4</version>
+    </dependency>
+    <!--mysql驱动-->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.16</version>
+    </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>1.8.13</version>
-        </dependency>
+    <!--Spring操作数据库的话还需要一个spring-jdbc-->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>5.1.9.RELEASE</version>
+    </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>2.0.2</version>
-        </dependency>
+    <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+        <version>1.8.13</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>2.0.2</version>
+    </dependency>
 
 
-    </dependencies>
+</dependencies>
 
-    <!--在build中配置resources, 来防止我们资源导出失败的问题-->
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-    </build>
-    ```
+<!--在build中配置resources, 来防止我们资源导出失败的问题-->
+<build>
+    <resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>**/*.properties</include>
+                <include>**/*.xml</include>
+            </includes>
+            <filtering>true</filtering>
+        </resource>
+        <resource>
+            <directory>src/main/java</directory>
+            <includes>
+                <include>**/*.properties</include>
+                <include>**/*.xml</include>
+            </includes>
+            <filtering>true</filtering>
+        </resource>
+    </resources>
+</build>
+```
+
 - 编写配置文件
+
 - 测试
 
 # 回忆Mybatis（他认识你你不认识他）
+
 - 编写实体类
+
 ```java
 public class User {
 
@@ -91,7 +96,9 @@ public class User {
     private String pwd;
     }
 ```
+
 - 编写核心配置文件
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
@@ -131,7 +138,9 @@ public class User {
     </mappers>
 </configuration>
 ```
+
 - 编写接口
+
 ```java
 package cn.com.codingce.mapper;
 
@@ -146,7 +155,9 @@ public interface UserMapper {
 }
 
 ```
+
 - 编写Mapper.xml
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
@@ -159,7 +170,9 @@ public interface UserMapper {
 </mapper>
 
 ```
+
 - 测试
+
 ```java
     @Test
     public void test1() throws IOException {
@@ -178,6 +191,7 @@ public interface UserMapper {
 # Mybatis-Spring
 
 - 编写数据源
+
 ```xml
     <!--
         遇到的问题以及解决方案
@@ -194,7 +208,9 @@ public interface UserMapper {
         <property name="password" value="123456"/>
     </bean>
 ```
+
 - sqlSessionFactory
+
 ```xml
     <!--sqlSessionFactory-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -204,7 +220,9 @@ public interface UserMapper {
         <property name="mapperLocations" value="classpath:cn/com/codingce/mapper/*.xml"/>
     </bean>
 ```
+
 - sqlSessionTemplate
+
 ```xml
     <!--SqlSessionTemplate 这就是我们使用的sqlSession-->
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
@@ -212,7 +230,9 @@ public interface UserMapper {
         <constructor-arg index="0" ref="sqlSessionFactory"/>
     </bean>
 ```
+
 - 需要给接口添加实现类【】
+
 ```java
 public class UserMapperImpl implements UserMapper {
 
@@ -230,13 +250,17 @@ public class UserMapperImpl implements UserMapper {
     }
 }
 ```
+
 - 将自己的实现类，注入到Spring中
+
 ```xml
     <bean id="userMapper" class="cn.com.codingce.mapper.UserMapperImpl">
         <property name="sqlSession" ref="sqlSession"/>
     </bean>
 ```
+
 - 测试使用即可
+
 ```java
     @Test
     public void test1() throws IOException {
@@ -250,10 +274,5 @@ public class UserMapperImpl implements UserMapper {
 
 
 
-
-
-
-
-
->文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>文章已上传gitee: https://gitee.com/codingce/hexo-blog   
 >项目地址: https://github.com/xzMhehe/codingce-java

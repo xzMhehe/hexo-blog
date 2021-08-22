@@ -39,7 +39,9 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 - JDK的动态代理需要了解两个类
 - 核心 : InvocationHandler     和     Proxy   ， 打开JDK帮助文档看看
 - 【InvocationHandler：调用处理程序】
-![mark](http://image.codingce.com.cn/blog/20200729/083308753.png)
+
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221011512.png)
 
 
 
@@ -53,6 +55,7 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 
 ### 代码
 - 接口
+
 ```java
 /**
  * @author xzMa
@@ -78,7 +81,9 @@ public class Host implements Rent {
     }
 }
 ```
+
 - 代理角色
+
 ```java
 public class Proxy implements Rent {
 
@@ -115,7 +120,9 @@ public class Proxy implements Rent {
 
 }
 ```
+
 - 客户端访问代理角色
+
 ```java
 public class Client {
 
@@ -132,6 +139,7 @@ public class Client {
 ```
 
 ### 缺点
+
 - 一个真实角色就会产生一个代理角色, 代码量就会翻倍 开发效率会变低
 
 
@@ -236,6 +244,7 @@ public class UserServiceProxy implements UserService {
 
 
 - ProxyInvocationHandler类
+
 ```java
 //等会我们会用这个类, 自动生成代理类
 public class ProxyInvocationHandler implements InvocationHandler {
@@ -282,6 +291,7 @@ public class ProxyInvocationHandler implements InvocationHandler {
 ```
 
 - Rent
+
 ```java
 /**
  * @author xzMa
@@ -295,6 +305,7 @@ public interface Rent {
 ```
 
 - Host
+
 ```java
 /**
  * @author xzMa
@@ -309,6 +320,7 @@ public class Host implements Rent {
 ```
 
 - Client
+
 ```java
 public class Client {
     public static void main(String[] args) {
@@ -329,6 +341,7 @@ public class Client {
 ```
 
 **继续优化使其成为公共的**
+
 ```java
 //等会我们会用这个类, 自动生成代理类
 public class ProxyInvocationHandler implements InvocationHandler {
@@ -365,6 +378,7 @@ public class ProxyInvocationHandler implements InvocationHandler {
 ```
 
 - Client
+
 ```java
 public class Client {
     public static void main(String[] args) {
@@ -394,7 +408,8 @@ public class Client {
 进入重点
 什么是AOP
 AOP（Aspect Oriented Programming）意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。
-![mark](http://image.codingce.com.cn/blog/20200731/095353004.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221012343.png)
 
 # Aop在Spring中的作用
 提供声明式事务；允许用户自定义切面
@@ -408,9 +423,13 @@ AOP（Aspect Oriented Programming）意为：面向切面编程，通过预编�
 - 切入点（PointCut）：切面通知 执行的 “地点”的定义。
 - 连接点（JointPoint）：与切入点匹配的执行点。
 
-![mark](http://image.codingce.com.cn/blog/20200731/095822859.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221013574.png)
+
+
 SpringAOP中，通过Advice定义横切逻辑，Spring中支持5种类型的Advice:
-![mark](http://image.codingce.com.cn/blog/20200731/095855041.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221013718.png)
+
 即 Aop 在 不改变原有代码的情况下 , 去增加新的功能 .
 
 # 使用Spring实现Aop
@@ -590,6 +609,7 @@ public class UserServiceImpl implements UserService {
 ## 第三种注解实现
 
 - AnnotationPointCut
+
 ```java
 //使用注解方式实现AOP
 @Aspect //标注这个类是一个切面
@@ -619,7 +639,9 @@ public class AnnotationPointCut {
     }
 }
 ```
+
 - XML
+
 ```xml
     <!--方式三-->
     <bean id="annotationpointcut" class="cn.com.codingce.diy.AnnotationPointCut"/>
@@ -633,11 +655,5 @@ public class AnnotationPointCut {
 
 
 
-
-
-
-
-
-
->文章已上传gitee https://gitee.com/codingce/hexo-blog   
+>文章已上传gitee: https://gitee.com/codingce/hexo-blog   
 >项目地址: https://github.com/xzMhehe/codingce-java

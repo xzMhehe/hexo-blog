@@ -5,8 +5,6 @@ tags:
 - SpringBoot
 categories: 
 - SpringBoot
-
-
 ---
 
 # Spring Boot 2.x 增加拦截器后静态资源文件404无法访问

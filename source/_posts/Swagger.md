@@ -11,7 +11,7 @@ thumbnail: https://s1.ax1x.com/2020/08/20/dJdY0H.md.jpg
 
 # 项目集成Swagger
 
-![mark](http://image.codingce.com.cn/blog/20200820/092227572.png)
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108220958577.png)
 
 - 了解Swagger的概念及作用
 - 掌握在项目中集成Swagger自动生成API文档
@@ -50,6 +50,7 @@ SpringBoot集成Swagger => springfox，两个jar包
 - 新建一个SpringBoot-web项目
 
 - 添加Maven依赖
+
 ```xml
 <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
 <dependency>
@@ -67,6 +68,7 @@ SpringBoot集成Swagger => springfox，两个jar包
 
 - 编写HelloController，测试确保运行成功！
 - 要使用Swagger，需要编写一个配置类-SwaggerConfig来配置 Swagger
+
 ```java
 @Configuration //配置类
 @EnableSwagger2// 开启Swagger2的自动配置
@@ -75,9 +77,11 @@ public class SwaggerConfig {
 ```
 
 - 访问测试 ：http://localhost:8080/swagger-ui.html ，可以看到swagger的界面；
-- ![mark](http://image.codingce.com.cn/blog/20200820/100957378.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108220958408.png)
 
 # 配置Swagger
+
 - Swagger实例Bean是Docket，所以通过配置Docket实例来配置Swaggger.
 
 ```java
@@ -88,6 +92,7 @@ public Docket docket() {
 ```
 
 - 可以通过apiInfo()属性配置文档信息
+
 ```java
 //配置swaagger信息
     private ApiInfo apiInfo() {
@@ -105,6 +110,7 @@ public Docket docket() {
 ```
 
 - Docket 实例关联上 apiInfo()
+
 ```java
 @Bean
 public Docket docket() {
@@ -113,11 +119,13 @@ public Docket docket() {
 ```
 
 - 重启项目，访问测试 http://localhost:8080/swagger-ui.html  看下效果；
-![mark](http://image.codingce.com.cn/blog/20200820/111516583.png)
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221000060.png)
 
 
 # 配置扫描接口
 - 构建Docket时通过select()方法配置怎么扫描接口.
+
 ```java
 @Bean
 public Docket docket() {
@@ -130,7 +138,9 @@ public Docket docket() {
 ```
 
 - 重启项目测试，由于我们配置根据包的路径扫描接口，所以我们只能看到一个类
+
 - 除了通过包路径配置扫描接口外，还可以通过配置其他方式扫描接口，这里注释一下所有的配置方式：
+
 ```java
 any() // 扫描所有，项目中的所有接口都会被扫描到
 none() // 不扫描接口
@@ -142,6 +152,7 @@ basePackage(final String basePackage) // 根据包路径扫描接口
 ```
 
 - 除此之外，我们还可以配置接口扫描过滤：
+
 ```java
 @Bean
 public Docket docket() {
@@ -156,6 +167,7 @@ public Docket docket() {
 ```
 
 - 这里的可选值还有
+
 ```java
 any() // 任何请求都扫描
 none() // 任何请求都不扫描
@@ -164,7 +176,9 @@ ant(final String antPattern) // 通过ant()控制
 ```
 
 # 配置Swagger开关
+
 - 通过enable()方法配置是否启用swagger，如果是false，swagger将不能在浏览器中访问了
+
 ```java
 @Bean
 public Docket docket() {
@@ -180,6 +194,7 @@ public Docket docket() {
 ```
 
 - 如何动态配置当项目处于test、dev环境时显示swagger，处于prod时不显示？
+
 ```java
 @Bean
 public Docket docket(Environment environment) {
@@ -199,11 +214,14 @@ public Docket docket(Environment environment) {
       .build();
 }
 ```
+
 - 可以在项目中增加一个dev的配置文件查看效果！
 
 
 # 配置API分组
+
 - 如果没有配置分组，默认是default。通过groupName()方法即可配置分组：
+
 ```java
         return new Docket(DocumentationType.SWAGGER_2)
                 //用的自己的             return new Docket(DocumentationType.SWAGGER_2); 默认
@@ -216,6 +234,7 @@ public Docket docket(Environment environment) {
 ```
 
 - 如何配置多个分组？配置多个分组只需要配置多个docket即可：
+
 ```java
 public class SwaggerConfig {
 
@@ -287,6 +306,7 @@ Swagger的所有注解定义在io.swagger.annotations包下
 |@ApiParam("xxx参数说明")|作用在参数、方法和字段上，类似@ApiModelProperty|
 
 也可以给请求的接口配置一些注释
+
 ```java
 //Operation接口
 @ApiOperation("Hello控制类")
@@ -321,7 +341,9 @@ public class HelloCobtroller {
 ```
 
 # 拓展：其他皮肤
+
 - 默认的   访问 http://localhost:8080/swagger-ui.html
+
 ```xml
 <dependency>
    <groupId>io.springfox</groupId>
@@ -331,6 +353,7 @@ public class HelloCobtroller {
 ```
 
 - bootstrap-ui  访问 http://localhost:8080/doc.html
+
 ```xml
 <!-- 引入swagger-bootstrap-ui包 /doc.html-->
 <dependency>
@@ -341,6 +364,7 @@ public class HelloCobtroller {
 ```
 
 - Layui-ui   访问 http://localhost:8080/docs.html
+
 ```xml
 <!-- 引入swagger-ui-layer包 /docs.html-->
 <dependency>
@@ -350,7 +374,9 @@ public class HelloCobtroller {
 </dependency>
 
 ```
+
 - mg-ui   访问 http://localhost:8080/document.html
+
 ```xml
 <!-- 引入swagger-ui-layer包 /document.html-->
 <dependency>
