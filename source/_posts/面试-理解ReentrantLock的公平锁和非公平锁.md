@@ -5,6 +5,7 @@ tags: [面试]
 categories: [面试]
 keywords: [面试]
 description: 一面
+copyright: false
 headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202109070922104.png
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202109070922104.png
 ---
@@ -67,11 +68,54 @@ ReentrantLock 默认采用非公平锁，除非在构造方法中传入参数 tr
 
 
 # 非公平锁的lock方法
+```java
+    static final class NonfairSync extends Sync {
+        final void lock() {
+            // 2. 和公平锁相比，这里会直接先进行一次CAS，成功就返回了
+            if (compareAndSetState(0, 1))
+                setExclusiveOwnerThread(Thread.currentThread());
+            else
+                acquire(1);
+        }
+        // AbstractQueuedSynchronizer.acquire(int arg)
+        public final void acquire(int arg) {
+            if (!tryAcquire(arg) &&
+                acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
+                selfInterrupt();
+        }
+        protected final boolean tryAcquire(int acquires) {
+            return nonfairTryAcquire(acquires);
+        }
+    }
+    /**
+    * Performs non-fair tryLock.  tryAcquire is implemented in
+    * subclasses, but both need nonfair try for trylock method.
+    */
+    final boolean nonfairTryAcquire(int acquires) {
+        final Thread current = Thread.currentThread();
+        int c = getState();
+        if (c == 0) {
+            //3.这里也是直接CAS，没有判断前面是否还有节点。
+            if (compareAndSetState(0, acquires)) {
+                setExclusiveOwnerThread(current);
+                return true;
+            }
+        }
+        else if (current == getExclusiveOwnerThread()) {
+            int nextc = c + acquires;
+            if (nextc < 0) // overflow
+                throw new Error("Maximum lock count exceeded");
+            setState(nextc);
+            return true;
+        }
+        return false;
+    }
+```
 非公平锁的实现在刚进入lock方法时会直接使用一次CAS去尝试获取锁，不成功才会到acquire方法中，如注释2。而在nonfairTryAcquire方法中并没有判断是否有前驱节点在等待，直接CAS尝试获取锁，如注释3。由此实现了非公平锁。
 
 
 # 总结
-非公平锁和公平锁的两处不同：
+**非公平锁和公平锁的两处不同**：
 - 非公平锁在调用 lock 后，首先就会调用 CAS 进行一次抢锁，如果这个时候恰巧锁没有被占用，那么直接就获取到锁返回了。
 
 - 非公平锁在 CAS 失败后，和公平锁一样都会进入到 tryAcquire 方法，在 tryAcquire 方法中，如果发现锁这个时候被释放了（state == 0），非公平锁会直接 CAS 抢锁，但是公平锁会判断等待队列是否有线程处于等待状态，如果有则不去抢锁，乖乖排到后面。
@@ -80,6 +124,9 @@ ReentrantLock 默认采用非公平锁，除非在构造方法中传入参数 tr
 公平锁和非公平锁就这两点区别，如果这两次 CAS 都不成功，那么后面非公平锁和公平锁是一样的，都要进入到阻塞队列等待唤醒。
 
 相对来说，非公平锁会有更好的性能，因为它的吞吐量比较大。当然，非公平锁让获取锁的时间变得更加不确定，可能会导致在阻塞队列中的线程长期处于饥饿状态。
+
+
+原文链接:https://www.jianshu.com/p/2ada27eee90b
 
 
 
