@@ -5,13 +5,13 @@ password: houduanmajiang
 abstract: 密码是"后端码匠"的拼音
 message:  输入密码，查看文章
 tags:
-  - Mysql
+  - MySQL
   - 面经
 categories:
-  - Mysql
+  - MySQL
 keywords:
-  - Mysql
-description: Mysql
+  - MySQL
+description: MySQL
 headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210625092259.png
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210625092259.png
 ---

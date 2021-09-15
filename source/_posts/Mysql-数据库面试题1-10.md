@@ -1,16 +1,16 @@
 ---
-title: Mysql - 数据库面试题打卡第一天
+title: MySQL - 数据库面试题打卡第一天
 pin: false
 toc: true
 icons: []
 tags:
-  - Mysql
+  - MySQL
   - 面经
 categories:
-  - Mysql
+  - MySQL
 keywords:
-  - Mysql
-description: Mysql
+  - MySQL
+description: MySQL
 abbrlink: 46cc00de
 date: 2021-06-19 10:10:17
 headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210621095729.png

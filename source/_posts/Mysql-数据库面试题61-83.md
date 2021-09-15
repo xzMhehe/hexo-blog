@@ -2,13 +2,13 @@
 title: Mysql - 数据库面试题打卡第七天
 date: 2021-06-25 09:04:14
 tags:
-  - Mysql
+  - MySQL
   - 面经
 categories:
-  - Mysql
+  - MySQL
 keywords:
-  - Mysql
-description: Mysql
+  - MySQL
+description: MySQL
 headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210623101512.png
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210623101512.png
 ---
