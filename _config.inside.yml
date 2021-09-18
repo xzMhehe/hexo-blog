@@ -118,7 +118,7 @@ sns:
 # Sidebar footer copyright info
 footer:
   # Set to false to hide.
-  copyright: '&copy; 2020 ♥ <span>Xinze Ma</span>'
+  copyright: '&copy; 2020 ♥ <span>后端码匠</span>'
 
   # Set to false to hide Hexo link.
   powered: false
