@@ -131,7 +131,7 @@ footer:
   #   href="https://github.com/xzMhehe"><b>Github Pages</b></a>
   custom: 
     <span id="hitokoto"><span id="hitokoto_text">:D 获取中...</span></span><br />
-    <span><b>津ICP备19009605号</b></span><br>
+    <span><b><img src="images/favicon.ico" width="15px">&nbsp;<a href="https://beian.miit.gov.cn/">津ICP备19009605号-1</a></b></span><br>
     <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_pv"></span></span> | <span id="busuanzi_container_site_uv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_uv"></span></span>
 
 
@@ -439,8 +439,10 @@ plugins:
   # 引用 CDN 上的 valine.js 文件
   # - //cdn1.lncld.net/static/js/3.0.4/av-min.js
   # - //unpkg.com/valine/dist/Valine.min.js
-  - /lib/baidu.js
-  - /lib/Valine2.min.js
+  # - /lib/baidu.js
+  # - /lib/Valine2.min.js
+  - //cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/webstack/js/Valine2.min.js
+  - //cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/webstack/js/baidu.js
   - position: comments
     template: |
       <div id="vcomment"></div>
