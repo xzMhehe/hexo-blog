@@ -442,7 +442,7 @@ plugins:
   # - /lib/Valine2.min.js
   - //cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/webstack/js/Valine2.min.js
   - //cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/webstack/js/baidu.js
-  - //cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/blogJs/codingce-hotjar.js
+  - //cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/blogJs/codingce-hotjar-t.js
   - position: comments
     template: |
       <div id="vcomment"></div>
