@@ -37,7 +37,7 @@
     "hexo-theme-landscape": "^0.0.3",
     "html-minifier": "^4.0.0",
     "live2d-widget-model-tororo": "^1.0.5",
-    "terser": "^5.7.1",
+    "terser": "^5.10.0",
     "uglify-js": "^3.13.9",
     "valine": "^1.4.14"
   }
