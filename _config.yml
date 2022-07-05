@@ -99,6 +99,11 @@ include:
 exclude:
 ignore:
 
+lazyload:
+  enable: true
+  onlypost: false
+  loadingImg: /images/loading.jpg 
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
