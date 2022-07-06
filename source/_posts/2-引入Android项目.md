@@ -51,7 +51,7 @@ arch -x86_64 /bin/bash $DIR/build/ndk-build "$@"
 
 
 
-# ijk 项目下载和拉取 fmpeg 代码
+# ijk 项目下载和拉取 ffmpeg 代码
 
 ```bash
 # clone项目
@@ -150,6 +150,8 @@ cd ..
 到此 ijkplayer 编译完成，如果播放器之前逻辑已经写好，则直接替换项目中对应的动态链接库文件就行
 
 <img src="https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/mo/20220705175436.png" width="600"/>
+
+
 
 
 # 使用
