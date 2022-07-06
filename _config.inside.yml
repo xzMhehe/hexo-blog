@@ -452,7 +452,7 @@ plugins:
           appId: 'u3kx4xhHFpadzMOyWK1tMiCd-gzGzoHsz',
           appKey: 'HbQueWo4YTSPBLYvqO9lS89B',
           master: '982beaac4023514486065d4fd411e36c',
-          placeholder: '忘记时间😆',
+          placeholder: '期待艳阳明天',
           friends:  ["982beaac4023514486065d4fd411e36c","fe01ce2a7fbac8fafaed7c982a04e229"],  //小伙伴邮箱Md5
           avatar: 'wavatar',
           enableQQ: true,
