@@ -36,27 +36,27 @@ copyright: false
             <div class="motto">道阻且长</div>
         </div>
     </a>
-    <a class="brick mdui-ripple mdui-ripple-white" href="https://z.codingce.com.cn/">
+    <a class="brick mdui-ripple mdui-ripple-white" href="https://codingce.com.cn/">
         <img class="blog-avatar" src="https://q2.qlogo.cn/headimg_dl?dst_uin=2460798168@qq.com,2460798168,&spec=100">
         <div class="container">
             <div class="name">我的主页</div>
             <div class="motto">欢迎访问!</div>
         </div>
     </a>
-    <a class="brick mdui-ripple mdui-ripple-white" href="https://halo.codingce.com.cn/">
+    <!-- <a class="brick mdui-ripple mdui-ripple-white" href="https://halo.codingce.com.cn/">
         <img class="blog-avatar" src="https://avatars2.githubusercontent.com/u/472311?s=100&v=4">
         <div class="container">
             <div class="name">我的博客</div>
             <div class="motto">欢迎访问</div>
         </div>
-    </a>
-    <a class="brick mdui-ripple mdui-ripple-white" href="https://folio.codingce.com.cn/">
+    </a> -->
+    <!-- <a class="brick mdui-ripple mdui-ripple-white" href="https://folio.codingce.com.cn/">
         <img class="blog-avatar" src="https://avatars1.githubusercontent.com/u/20219567?s=100&v=4">
         <div class="container">
             <div class="name">folio</div>
             <div class="motto">play</div>
         </div>
-    </a>
+    </a> -->
     <a class="brick mdui-ripple mdui-ripple-white" href="https://i.codingce.com.cn/comments">
         <img class="blog-avatar" src="https://avatars1.githubusercontent.com/u/20219567?s=100&v=4">
         <div class="container">
