@@ -102,12 +102,13 @@ ignore:
 lazyload:
   enable: true
   onlypost: false
-  loadingImg: /images/loading.jpg 
+  loadingImg: /images/loading.gif
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: inside
+# theme: inside
+theme: paper
 
 live2d:
   enable: true
