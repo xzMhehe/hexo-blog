@@ -1,0 +1,62 @@
+
+# html lang
+language: zh
+
+# main menu navigation
+menu:
+  Home: /
+  About: /about
+
+# stylesheets loaded in the <head>
+stylesheets:
+
+stylesheets_preload:
+- https://cdn.bootcss.com/highlight.js/9.6.0/styles/github.min.css # for highlight
+- https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap # for font
+
+# scripts loaded in the end of the body
+scripts_defer:
+- https://cdn.bootcss.com/highlight.js/9.6.0/highlight.min.js # for highlight
+- /js/paper.js # for basic script
+
+
+social:
+  Github: https://github.com/xzMhehe
+  Codepen: https://codepen.io/trending
+  #Dribbble: https://dribbble.com/yours
+  #Twitter: https://twitter.com/yours
+  知乎: https://www.zhihu.com/people/jing-qing-qiu-52
+  掘金: https://juejin.cn/user/131597127652312
+  Mail: mailto:codingce@gmail.com
+  # and more, you can add other link by the same way
+
+# Uncomment to disable sidebar
+# toc: false
+# link: false
+# archives: false
+# categories: false
+# tags: false
+
+# theme color
+main_color: default # default | forest | grass | sky | sun | sea
+
+# google Analytics
+google_analytics_id: xx-xxxxxxx-xx
+
+# comment module
+comment:
+  enable: false
+  type: valine # valine | utterances
+
+  # valine 需要的参数
+  appId: your-app-id
+  appKey: your-app-key
+  placeholder: say something
+  notify: false
+  verify: false
+  avatar: mp
+
+  # utterances (https://utteranc.es/) 需要的参数
+  repo: your-repo-name
+  issue_term: your-issue-term
+  theme: your-comment-theme
