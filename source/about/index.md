@@ -15,13 +15,14 @@ copyright: false
   github: 'https://github.com/xzMhehe',
   blog: 'https://z.codingce.com.cn/',
   email: 'codingce@gmail.com',
-  description: '后端开发，极客生活',
+  description: '但行好事,莫問前程',
 
   skills: [
-    ['Java', 'Spring', 'Python', 'Linux', 'SQL'],
+    ['Java', 'Spring', 'Python', 'Linux', 'SQL', 'C++', 'Go','Objective-C'],
     ['SSH','SSM','Spring Boot'],
     ['Hadoop','Hive','Hbase','Spark'],
     ['HyperLedger Fabric','Docker'],
+    ['H.264','MPEG-4','H.265','RTP/RTSP/RTCP','TCP/IP/UDP'],
     ['JavaScript', 'JQuery','HTML+CSS','Bootstrap'],
     ['Git', 'SVN']
   ],
@@ -40,8 +41,7 @@ copyright: false
 
 ![mark](https://s1.ax1x.com/2020/07/17/UsFeJJ.jpg)
 
-
 <!-- 证书 -->
-![mark](https://s1.ax1x.com/2020/07/23/UL25p4.jpg)
+<!-- ![mark](https://s1.ax1x.com/2020/07/23/UL25p4.jpg) -->
 
 <center><font color=BBBBBB size=3>本站部分资源整理自互联网侵删</font></center>
