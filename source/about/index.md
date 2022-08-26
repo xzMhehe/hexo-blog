@@ -14,7 +14,7 @@ copyright: false
   address: 'Tianjin',
   github: 'https://github.com/xzMhehe',
   blog: 'https://z.codingce.com.cn/',
-  email: 'codingce@gmail.com',
+  email: 'codingce#gmail.com',
   description: '但行好事,莫問前程',
 
   skills: [
