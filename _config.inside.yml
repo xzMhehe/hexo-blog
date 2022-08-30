@@ -78,7 +78,6 @@ profile:
   email: codingce@gmail.com
 
   # 也可以直接设置头像 URL
-  # avatar: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/avatar.jpg
   avatar: /images/avatar.jpg
   # 个性签名
   bio: 'The depth of thinking determines your altitude.'
