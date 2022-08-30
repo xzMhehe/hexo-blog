@@ -1,0 +1,56 @@
+sidebar:
+
+  menu:
+    post: '[btn.blog](/)'
+    about: '[关于](/about/)'
+    friends: '[友链](/links/)'
+
+  # Sidebar widgets
+  widgets:
+    # Recent update
+    recent:
+      layout: recent
+      rss: /atom.xml # npm i hexo-generator-feed
+      limit: 5 # Count of posts
+    # TOC (valid only in layout:post/wiki)
+    toc:
+      layout: toc
+      list_number: false
+      min_depth: 2
+      max_depth: 5
+    # welcome
+    welcome:
+      layout: markdown
+      title: 旅行者
+      content: |
+        The depth of thinking determines your altitude.
+
+######## Comments ########
+comments:
+  service: valine # beaudar, utterances, valine, twikoo, waline
+  valine:
+    js: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/webstack/js/Valine2.min.js
+    appId: u3kx4xhHFpadzMOyWK1tMiCd-gzGzoHsz # your appId
+    appKey: HbQueWo4YTSPBLYvqO9lS89B # your appKey
+    placeholder:
+    requiredFields: [nick, mail]
+    enableQQ: true # Unstable avatar link
+    recordIP: false # Record commenter IP
+    avatar: robohash # gravatar style https://valine.js.org/avatar
+    pageSize: 10 # comment list page size
+    lang: zh-cn
+    highlight: true
+    mathJax: false
+    tagMeta: [博主, 小伙伴, 访客] # 标签要显示的文字,默认'博主,小伙伴,访客'
+    metaPlaceholder:
+      nick: "昵称/QQ号(必填)"
+      mail: "邮箱（必填，完全保密）"
+      link: "网址(https://)"
+    master: #md5加密后的博主邮箱
+      - 982beaac4023514486065d4fd411e36c
+    friends: #md5加密后的小伙伴邮箱
+      - fe01ce2a7fbac8fafaed7c982a04e229
+
+footer:
+  info_not_open_source: '本站由 %s 创建。'
+  info_open_source: '本站由 %s 创建。'

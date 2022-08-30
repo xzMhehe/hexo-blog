@@ -3,14 +3,15 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: xzMhehe
+title: 后端码匠
+avatar: /images/avatar.jpg
+favicon: /images/favicon.png
 subtitle: ''
 description: '后端开发一枚'
 keywords:
 author: xzMhehe
 language:
   - zh-CN
-  - zh-tw
   - en
 timezone: 'Asia/Shanghai'
 
@@ -107,7 +108,7 @@ lazyload:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: inside
+theme: stellar
 # theme: paper
 
 live2d:
