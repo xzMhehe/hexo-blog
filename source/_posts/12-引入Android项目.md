@@ -8,9 +8,6 @@ categories:
 keywords:
   - Android
 description: ijkplayer引入Android项目
-headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/mo/20220705140819.png
-
-thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/mo/20220705140819.png
 ---
 
 # 【ijkplayer】引入Android项目（基于k0.8.8）

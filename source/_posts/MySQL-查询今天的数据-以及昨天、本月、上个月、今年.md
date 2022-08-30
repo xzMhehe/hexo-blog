@@ -10,8 +10,6 @@ keywords:
   - MySQL
 description: MySQL
 abbrlink: 46cc00de
-headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210621095729.png
-thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210621095729.png
 ---
 
 建表语句如下：

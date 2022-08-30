@@ -8,9 +8,6 @@ categories:
 keywords:
   - Go
 description: Go的json解析：Marshal与Unmarshal
-headimg: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/mo/20220706172636.png
-
-thumbnail: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/mo/20220706172636.png
 ---
 
 # Go的json解析：Marshal与Unmarshal

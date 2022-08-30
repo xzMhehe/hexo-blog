@@ -6,7 +6,7 @@ categories: [面试]
 keywords: [面试]
 description: 一面
 copyright: false
-headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202109070922104.png
+
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202109070922104.png
 ---
 学习AQS的时候，了解到AQS依赖于内部的FIFO同步队列来完成同步状态的管理，当前线程获取同步状态失败时，同步器会将当前线程以及等待状态等信息构造成一个Node对象并将其加入到同步队列，同时会阻塞当前线程，当同步状态释放时，会把首节点中的线程唤醒，使其再次尝试获取同步状态。

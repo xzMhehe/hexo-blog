@@ -8,9 +8,6 @@ categories:
 keywords:
   - Go
 description: 探究io.WriteString
-headimg: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/mo/20220706172730.png
-
-thumbnail: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/mo/20220706172730.png
 ---
 # 【Go】探究io.WriteString
 
