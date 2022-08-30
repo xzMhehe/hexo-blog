@@ -603,9 +603,9 @@ MP也提供性能分析插件, 如果超过这个时间停止运行！
 ```java
 @Test
     public void Test() {
-        //查询名字 全栈自学社区
+        //查询名字 后端码匠
         QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper.eq("name", "全栈自学社区");
+        wrapper.eq("name", "后端码匠");
         userMapper.selectList(wrapper).forEach(System.out::println);
     }
 ```

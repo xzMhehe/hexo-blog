@@ -142,7 +142,7 @@ public class User {
     @Test
     void test() throws JsonProcessingException {
         // 真实开发都是使用 json 来传递对象
-        User user = new User("全栈自学社区", 2);
+        User user = new User("后端码匠", 2);
         String jsonUser = new ObjectMapper().writeValueAsString(user);
         redisTemplate.opsForValue().set("user", user);  //set("user", jsonUser)
         System.out.println(redisTemplate.opsForValue().get("user"));
@@ -805,7 +805,7 @@ public final class RedisUtils {
 ```java
     @Test
     void testUtil() {
-        redisUtils.set("name", "全栈自学社区");
+        redisUtils.set("name", "后端码匠");
         System.out.println(redisUtils.get("name"));
     }
 ```
@@ -828,7 +828,7 @@ public final class RedisUtils {
 2021-01-10 14:48:56.930  INFO 17168 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
 2021-01-10 14:48:57.441  INFO 17168 --- [           main] c.c.c.Redis02SpringbootApplicationTests  : Started Redis02SpringbootApplicationTests in 5.815 seconds (JVM running for 8.492)
 
-全栈自学社区
+后端码匠
 ```
 
 更重要的是理解 Redis 的思想和每一种数据结构的用处以及作用场景.

@@ -36,7 +36,7 @@ REST是一种软件架构风格，或者说是一种规范，其强调HTTP应当
 ```json
 PUT /test1/type1/1
 {
-  "name":"全栈自学社区",
+  "name":"后端码匠",
   "age":12
 }
 ```
@@ -152,7 +152,7 @@ GET test2
 ```json
 PUT /test3/_doc/1
 {
-  "name": "全栈自学社区",
+  "name": "后端码匠",
   "age": 18,
   "birth": "1997-01-25" 
 }
@@ -255,7 +255,7 @@ green  open   .tasks                          UDpsMCO1SyasUGAJTqxFgw   1   0    
 ```json
 POST /test3/_doc/1/_update
 {
-    "name": "全栈自学社区关注就对了"
+    "name": "后端码匠关注就对了"
 }
 ```
 

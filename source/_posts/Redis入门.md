@@ -28,7 +28,7 @@ Redis（Remote Dictionary Server )，即远程字典服务，是一个开源的�
 - ......
 
 ## 学习中需要的东西
-- 全栈自学社区公众号
+- 后端码匠公众号
 - 官网：https://redis.io
 - 中文网：http:www.redis.cn/
 

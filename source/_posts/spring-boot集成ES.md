@@ -164,7 +164,7 @@ public class User {
 //测试添加文档
     @Test
     void testAddDocument() throws IOException {
-        User u = new User("全栈自学社区", 3);
+        User u = new User("后端码匠", 3);
         // 创建请求
         IndexRequest request = new IndexRequest("codingce_index");
 
@@ -210,7 +210,7 @@ public class User {
     void testUpdateDocument() throws IOException {
         UpdateRequest updateRequest = new UpdateRequest("codingce_index", "1");
         updateRequest.timeout(TimeValue.timeValueSeconds(1));
-        User u = new User("全栈自学社区", 4);
+        User u = new User("后端码匠", 4);
         updateRequest.doc(JSON.toJSONString(u), XContentType.JSON);
 
 
@@ -237,14 +237,14 @@ public class User {
         bulkRequest.timeout(TimeValue.timeValueSeconds(10));
 
         List<User> list = new ArrayList<>();
-        list.add(new User("全栈自学社区1", 1));
-        list.add(new User("全栈自学社区2", 2));
-        list.add(new User("全栈自学社区3", 3));
-        list.add(new User("全栈自学社区4", 4));
-        list.add(new User("全栈自学社区5", 5));
-        list.add(new User("全栈自学社区6", 6));
-        list.add(new User("全栈自学社区7", 7));
-        list.add(new User("全栈自学社区8", 8));
+        list.add(new User("后端码匠1", 1));
+        list.add(new User("后端码匠2", 2));
+        list.add(new User("后端码匠3", 3));
+        list.add(new User("后端码匠4", 4));
+        list.add(new User("后端码匠5", 5));
+        list.add(new User("后端码匠6", 6));
+        list.add(new User("后端码匠7", 7));
+        list.add(new User("后端码匠8", 8));
 
         for (int i = 0; i < list.size(); i++) {
             // 批量更新和批量删除, 就在这里修改对应的请求就可以了
@@ -266,7 +266,7 @@ public class User {
 
         // 查询条件 可以使用 QueryBuilders 工具类
         // termQuery 精确匹配
-//        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("name", "全栈自学社区1");
+//        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("name", "后端码匠1");
         MatchAllQueryBuilder matchAllQueryBuilder = QueryBuilders.matchAllQuery();
 
 
