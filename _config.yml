@@ -108,7 +108,7 @@ lazyload:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: stellar
+theme: stellar-codingce-use
 # theme: paper
 
 live2d:
