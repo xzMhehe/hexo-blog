@@ -1,5 +1,5 @@
 ---
-title: Links
+title: 友链
 date: 2020-07-07 22:26:21
 reward: false
 copyright: false
@@ -181,4 +181,17 @@ copyright: false
 
 <center><font color=BBBBBB size=5>本站微信公众号</font></center>
 
-![mark](https://s1.ax1x.com/2020/07/17/UsFeJJ.jpg)
+![mark](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108311552149.png)
+
+- [博客园](https://www.cnblogs.com/mzdljgz/)
+
+- [掘金](https://juejin.cn/user/131597127652312)
+
+- [简书](https://www.jianshu.com/u/a22e10515f17)
+
+- [CSDN](https://codingce.blog.csdn.net/)
+
+<!-- 证书 -->
+<!-- ![mark](https://s1.ax1x.com/2020/07/23/UL25p4.jpg) -->
+
+<center><font color=BBBBBB size=3>本站部分资源整理自互联网侵删</font></center>
