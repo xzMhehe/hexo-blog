@@ -2,8 +2,8 @@ sidebar:
 
   menu:
     post: '[btn.blog](/)'
+    friends: '[友链](/friends/)'
     about: '[关于](/about/)'
-    friends: '[友链](/links/)'
 
   # Sidebar widgets
   widgets:

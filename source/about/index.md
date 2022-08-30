@@ -1,8 +1,9 @@
 ---
-title: About Me
+title: 关于
 date: 2020-07-07 22:24:58
 reward: false
 copyright: false
+menu_id: about
 ---
 
 ```java
@@ -37,9 +38,18 @@ copyright: false
 ```
 
 <center><font color=BBBBBB size=3>永远相信美好的事情终将发生！</font></center>
-<center><font color=BBBBBB size=5>技术微信公众号</font></center>
 
-![mark](https://s1.ax1x.com/2020/07/17/UsFeJJ.jpg)
+<center><font color=BBBBBB size=5>本站微信公众号</font></center>
+
+![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108311552149.png)
+
+- [博客园](https://www.cnblogs.com/mzdljgz/)
+
+- [掘金](https://juejin.cn/user/131597127652312)
+
+- [简书](https://www.jianshu.com/u/a22e10515f17)
+
+- [CSDN](https://codingce.blog.csdn.net/)
 
 <!-- 证书 -->
 <!-- ![mark](https://s1.ax1x.com/2020/07/23/UL25p4.jpg) -->
