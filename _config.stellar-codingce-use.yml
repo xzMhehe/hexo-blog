@@ -51,6 +51,21 @@ comments:
     friends: #md5加密后的小伙伴邮箱
       - fe01ce2a7fbac8fafaed7c982a04e229
 
+######## Footer ########
 footer:
+  social:
+    github:
+      icon: '<img src="/images/08a41b181ce68.svg"/>'
+      url: https://github.com/xzMhehe
+    music:
+      icon: '<img src="/images/3845874.svg"/>'
+      url: https://i.y.qq.com/n2/m/share/details/taoge.html?id=3045180444
+    unsplash:
+      icon: '<img src="/images/3616429.svg"/>'
+      url: https://unsplash.com/@xinze
+    comments:
+      icon: '<img src="/images/942ebbf1a4b91.svg"/>'
+      url: /about/#comments
+
   info_not_open_source: '本站由 %s 创建。'
   info_open_source: '本站由 %s 创建。'
