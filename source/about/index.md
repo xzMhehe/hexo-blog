@@ -12,10 +12,10 @@ menu_id: about
   age: 23,
   gender: 'Boy',
   profession: 'Backend Developer & Geek',
-  address: 'Tianjin',
+  address: '北京',
   github: 'https://github.com/xzMhehe',
   blog: 'https://z.codingce.com.cn/',
-  email: 'codingce#gmail.com',
+  email: 'echo "Y29kaW5nY2VAZ21haWwuY29tCg==" | base64 -d',
   description: '但行好事,莫問前程',
 
   skills: [
@@ -50,6 +50,10 @@ menu_id: about
 - [简书](https://www.jianshu.com/u/a22e10515f17)
 
 - [CSDN](https://codingce.blog.csdn.net/)
+
+- [围住小猫](https://i.codingce.com.cn/catchTheCat)
+
+- [评论区](https://i.codingce.com.cn/comments)
 
 <!-- 证书 -->
 <!-- ![mark](https://s1.ax1x.com/2020/07/23/UL25p4.jpg) -->

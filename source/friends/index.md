@@ -190,6 +190,10 @@ menu_id: friends
 
 - [CSDN](https://codingce.blog.csdn.net/)
 
+- [围住小猫](https://i.codingce.com.cn/catchTheCat)
+
+- [评论区](https://i.codingce.com.cn/comments)
+
 <!-- 证书 -->
 <!-- ![mark](https://s1.ax1x.com/2020/07/23/UL25p4.jpg) -->
 
