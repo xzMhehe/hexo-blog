@@ -42,7 +42,7 @@
     "hexo-theme-stellar-codingce-use": "^2.0.2",
     "html-minifier": "^4.0.0",
     "live2d-widget-model-tororo": "^1.0.5",
-    "terser": "^5.7.1",
+    "terser": "^5.15.0",
     "uglify-js": "^3.13.9",
     "valine": "^1.4.14"
   }
