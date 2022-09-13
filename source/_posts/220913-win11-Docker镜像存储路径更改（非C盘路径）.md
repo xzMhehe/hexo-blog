@@ -10,6 +10,7 @@ categories: [操作]
 
 
 最新的windows提供了新的虚拟化技术（WSL/WSL2），所以设置页面不能镜像的存储位置进行修改了。
+<img src="https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/mo/20220913155323.png"/>
 
 # 修改方案
 
@@ -20,7 +21,11 @@ categories: [操作]
 wsl --list -v
 ```
 
+<img src="https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/mo/20220913155443.png"/>
+
 确保所有wsl应用都停止（stopped）
+
+<img src="https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/mo/20220913155504.png"/>
 
 ## 导出docker镜像文件
 创建文件夹
