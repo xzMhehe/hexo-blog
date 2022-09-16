@@ -15,10 +15,10 @@ description: SpringCloud
 Spring Cloud 是一套完整的微服务解决方案，基于 Spring Boot 框架，准确的说，它不是一个框架，而是一个大的容器，它将市面上较好的微服务框架集成进来，从而简化了开发者的代码量。
 
 
-# Spring Cloud 是什么？
+## Spring Cloud 是什么？
 Spring Cloud 是一系列框架的有序集合，它利用 Spring Boot 的开发便利性简化了分布式系统的开发，比如服务发现、服务网关、服务路由、链路追踪等。Spring Cloud 并不重复造轮子，而是将市面上开发得比较好的模块集成进去，进行封装，从而减少了各模块的开发成本。换句话说：Spring Cloud 提供了构建分布式系统所需的“全家桶”。
 
-# Spring Cloud 现状
+## Spring Cloud 现状
 目前，国内使用 Spring Cloud 技术的公司并不多见，不是因为 Spring Cloud 不好，主要原因有以下几点：
 - Spring Cloud 中文文档较少，出现问题网上没有太多的解决方案。
 
@@ -28,7 +28,7 @@ Spring Cloud 是一系列框架的有序集合，它利用 Spring Boot 的开发
 
 但是，微服务架构是一个趋势，而 Spring Cloud 是微服务解决方案的佼佼者.
 
-# Spring Cloud 优缺点
+## Spring Cloud 优缺点
 优点
 
 - 集大成者，Spring Cloud 包含了微服务架构的方方面面。
@@ -54,7 +54,7 @@ Spring Cloud 的优势是显而易见的。学习 Spring Cloud 是一个不错�
 
 
 
-# Spring Cloud 和 Dubbo 对比
+## Spring Cloud 和 Dubbo 对比
 Dubbo 只是实现了服务治理，而 Spring Cloud 实现了微服务架构的方方面面，服务治理只是其中的一个方面。下面通过一张图对其进行比较：
 
 
@@ -62,10 +62,10 @@ Dubbo 只是实现了服务治理，而 Spring Cloud 实现了微服务架构的
 
 可以看出，Spring Cloud 比较全面，而 Dubbo 由于只实现了服务治理，需要集成其他模块，需要单独引入，增加了学习成本和集成成本。
 
-# 项目结构
+## 项目结构
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200913277.png)
 
-## 总包
+### 总包
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -195,8 +195,8 @@ Dubbo 只是实现了服务治理，而 Spring Cloud 实现了微服务架构的
 </project>
 ```
 
-## 实体类
-### pom
+### 实体类
+#### pom
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -239,7 +239,7 @@ Dubbo 只是实现了服务治理，而 Spring Cloud 实现了微服务架构的
 </project>
 ```
 
-### Dept
+#### Dept
 
 ```java
 package cn.com.codingce.pojo;
@@ -308,8 +308,8 @@ public class Dept implements Serializable {
 }
 ```
 
-## 服务端
-### pom
+### 服务端
+#### pom
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -386,7 +386,7 @@ public class Dept implements Serializable {
 </project>
 ```
 
-### Controller
+#### Controller
 
 ```java
 package cn.com.codingce.controller;
@@ -431,7 +431,7 @@ public class DeptController {
 }
 ```
 
-### DAO (mapper)
+#### DAO (mapper)
 
 ```java
 package cn.com.codingce.dao;
@@ -455,7 +455,7 @@ public interface DeptDao {
 }
 ```
 
-### Mapper.xml
+#### Mapper.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -479,7 +479,7 @@ public interface DeptDao {
 </mapper>
 ```
 
-### Service接口
+#### Service接口
 
 ```java
 package cn.com.codingce.service;
@@ -497,7 +497,7 @@ public interface DeptService {
 }
 ```
 
-### Service实现类
+#### Service实现类
 
 ```java
 package cn.com.codingce.service;
@@ -532,7 +532,7 @@ public class DeptServiceImpl implements DeptService {
 }
 ```
 
-### mybatis-config.xml
+#### mybatis-config.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -549,7 +549,7 @@ public class DeptServiceImpl implements DeptService {
 </configuration>
 ```
 
-### application.yml
+#### application.yml
 
 ```yml
 server:
@@ -560,23 +560,23 @@ mybatis:
   type-aliases-package: cn.com.codingce.pojo
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
-#  configuration:
-#    map-underscore-to-camel-case: true
+##  configuration:
+##    map-underscore-to-camel-case: true
 
-# spring配置
+## spring配置
 spring:
   application:
     name: springcloud-provider-dept
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource # 数据源 德鲁伊
+    type: com.alibaba.druid.pool.DruidDataSource ## 数据源 德鲁伊
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://cdb-q9atzwrq.bj.tencentcdb.com:10167/db01?useSSL=true
     username: root
     password: 123456
 ```
 
-## 客户端
-### pom
+### 客户端
+#### pom
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -614,7 +614,7 @@ spring:
 </project>
 ```
 
-### 配置文件
+#### 配置文件
 
 ```java
 package cn.com.codingce.config;
@@ -634,7 +634,7 @@ public class ConfigBean {   //configuration -- spring applicationContext.xml
 }
 ```
 
-### Controller
+#### Controller
 
 ```java
 package cn.com.codingce.controller;
@@ -680,7 +680,7 @@ public class DeptConsumerController {
 }
 ```
 
-### application.yml
+#### application.yml
 
 ```yml
 server:

@@ -11,11 +11,11 @@ headimg: https://s1.ax1x.com/2020/07/18/U2Mv2n.gif
 thumbnail: https://s1.ax1x.com/2020/07/18/U2Mv2n.gif
 description: Spring
 ---
-# 依赖注入
-## 构造器注入
+## 依赖注入
+### 构造器注入
 翻看上文
 
-## Set方式注入【重点】
+### Set方式注入【重点】
 - 依赖注入: Set注入
     - 依赖: bean对象的创建依赖于容器 
     - 注入: bean对象中所有属性, 由容器来注入
@@ -66,8 +66,8 @@ public class Student {
 
 
 
-## 拓展方式
-### p 命名空间注入
+### 拓展方式
+#### p 命名空间注入
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -101,7 +101,7 @@ public class Student {
     }
 ```
 
-### c命名空间
+#### c命名空间
 ```xml
     <!--xmlns:c="http://www.springframework.org/schema/c"   c命名空间, 通过构造器注入: construct-args-->
     <bean id="user2" class="cn.com.codingce.pojo.User" c:age="18" c:name="人间事Life"/>
@@ -123,7 +123,7 @@ xmlns:p="http://www.springframework.org/schema/p"
 xmlns:c="http://www.springframework.org/schema/c"
 
 
-## bean的作用域
+### bean的作用域
 
 - 单例模式(Spring默认机制)
 ```xml

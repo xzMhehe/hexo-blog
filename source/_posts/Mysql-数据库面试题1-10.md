@@ -16,10 +16,10 @@ date: 2021-06-19 10:10:17
 headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210621095729.png
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210621095729.png
 ---
-# 1、数据库存储引擎
+## 1、数据库存储引擎
 数据库存储引擎是数据库底层软件组织，数据库管理系统（DBMS）使用数据引擎进行创建、查询、更 新和删除数据。不同的存储引擎提供不同的存储机制、索引技巧、锁定水平等功能，使用不同的存储引 擎，还可以 获得特定的功能。现在许多不同的数据库管理系统都支持多种不同的数据引擎。存储引擎主 要有： 1. MyIsam , 2. InnoDB, 3. Memory, 4. Archive, 5. Federated 。
 
-# 2、InnoDB（B+树）
+## 2、InnoDB（B+树）
 InnoDB 底层存储结构为B+树， B树的每个节点对应innodb的一个page， page大小是固定的，一般设 为 16k。其中非叶子节点只有键值，叶子节点包含完成数据
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210619102427.png)
@@ -30,7 +30,7 @@ InnoDB 底层存储结构为B+树， B树的每个节点对应innodb的一个pag
 4）外键约束。只有他支持外键。     
 5）支持自动增加列属性 auto_increment。     
 
-# 3、TokuDB（ Fractal Tree-节点带数据）
+## 3、TokuDB（ Fractal Tree-节点带数据）
 TokuDB 底层存储结构为 Fractal Tree,Fractal Tree 的结构与 B+树有些类似, 在 Fractal Tree中， 每一个 child 指针除了需要指向一个 child 节点外，还会带有一个 Message Buﬀer ，这个Message Buﬀer 是                
 一个 FIFO 的队列，用来缓存更新操作。
 
@@ -40,17 +40,17 @@ TokuDB 底层存储结构为 Fractal Tree,Fractal Tree 的结构与 B+树有些�
 
 TokuDB 在线添加索引，不影响读写操作, 非常快的写入性能， Fractal-tree 在事务实现上有优 势。 他主要适用于访问频率不高的数据或历史数据归档
 
-# 4、MyIASM
+## 4、MyIASM
 MyIASM是 MySQL默认的引擎，但是它没有提供对数据库事务的支持，也不支持行级锁和外键，因此当 INSERT(插入)或 UPDATE(更新)数据时即写操作需要锁定整个表，效率便会低一些。
 
 ISAM 执行读取操作的速度很快，而且不占用大量的内存和存储资源。在设计之初就预想数据组织成有 固定长度的记录，按顺序存储的。 ---ISAM 是一种静态索引结构。
 
 缺点是它不 支持事务处理。
 
-# 5、Memory
+## 5、Memory
 Memory（也叫 HEAP）堆内存：使用存在内存中的内容来创建表。每个 MEMORY 表只实际对应一个 磁盘文件。 MEMORY 类型的表访问非常得快，因为它的数据是放在内存中的，并且默认使用HASH 索 引。但是一旦服务关闭，表中的数据就会丢失掉。 Memory 同时支持散列索引和 B 树索引， B树索引 可以使用部分查询和通配查询，也可以使用<,>和>=等操作符方便数据挖掘，散列索引相等的比较快但是对于范围的比较慢很多
 
-# 6、数据库引擎有哪些
+## 6、数据库引擎有哪些
 如何查看mysql提供的所有存储引擎
 ```sql
 mysql> show engines;
@@ -69,7 +69,7 @@ mysql常用引擎包括：MYISAM、Innodb、Memory、MERGE
 
 4. MERGE：是一组MYISAM表的组合
 
-# 7、InnoDB与MyISAM的区别
+## 7、InnoDB与MyISAM的区别
 1. InnoDB支持事务，MyISAM不支持，对于InnoDB每一条SQL语言都默认封装成事务，自动提交，这样会影响速度，所以最好把多条SQL语言放在begin和commit之间，组成一个事务；
 
 2. InnoDB支持外键，而MyISAM不支持。对一个包含外键的InnoDB表转为MYISAM会失败；
@@ -82,7 +82,7 @@ mysql常用引擎包括：MYISAM、Innodb、Memory、MERGE
 5. Innodb不支持全文索引，而MyISAM支持全文索引，查询效率上MyISAM要高
 
 
-# 8、索引
+## 8、索引
 索引（Index）是帮助 MySQL 高效获取数据的数据结构。 常见的查询算法,顺序查找,二分查找,二叉排序树查找,哈希散列法,分块查找,平衡多路搜索树 B 树（B-tree） ，索引是对数据库表中一个或多个列的 值进行排序的结构，建立索引有助于快速获取信息。
 
 你也可以这样理解：索引就是加快检索表中数据的方法。数据库的索引类似于书籍的索引。在书籍中， 索引允许用户不必翻阅完整个书就能迅速地找到所需要的信息。在数据库中，索引也允许数据库程序迅 速地找到表中的数据，而不必扫描整个数据库
@@ -103,7 +103,7 @@ mysql 有4种不同的索引：
 通过使用索引，可以在查询的过程中使用优化隐藏器，提高系统的性能      
 索引需要占物理和数据空间      
 
-# 9、常见索引原则有
+## 9、常见索引原则有
 1. 选择唯一性索引，唯一性索引的值是唯一的，可以更快速的通过该索引来确定某条记录。
 
 2. 为经常需要排序、分组和联合操作的字段建立索引。
@@ -126,7 +126,7 @@ mysql 有4种不同的索引：
 
 11. 尽量的扩展索引，不要新建索引
 
-# 10、数据库的三范式是什么
+## 10、数据库的三范式是什么
 第一范式：列不可再分         
 第二范式：行可以唯一区分，主键约束        
 第三范式：表的非主属性不能依赖与其他表的非主属性 外键约束        

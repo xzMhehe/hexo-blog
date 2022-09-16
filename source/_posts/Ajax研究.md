@@ -11,7 +11,7 @@ headimg: https://s1.ax1x.com/2020/07/17/UsFYJH.png
 thumbnail: https://s1.ax1x.com/2020/07/17/UsFYJH.png
 description: SpringMVC
 ---
-# 简介
+## 简介
 - AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。
 
 - AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术。
@@ -30,7 +30,7 @@ description: SpringMVC
 
 - 使用Ajax，用户可以创建接近本地桌面应用的直接、高可用、更丰富、更动态的Web用户界面。
 
-# 伪造Ajax
+## 伪造Ajax
 
 我们可以使用前端的一个标签来伪造一个ajax的样子。iframe标签
 
@@ -80,7 +80,7 @@ description: SpringMVC
 
 - 使用IDEA开浏览器测试一下！
 
-## 利用AJAX可以做：
+### 利用AJAX可以做：
 
 - 注册时，输入用户名自动检测用户是否已经存在。
 
@@ -90,7 +90,7 @@ description: SpringMVC
 
 - ....等等
 
-# jQuery.ajax
+## jQuery.ajax
 纯JS原生实现Ajax， 直接使用jquery提供的
 
 Ajax的核心是XMLHttpRequest对象(XHR)。XHR为向服务器发送请求和解析服务器响应提供了接口。能够以异步方式从服务器获取新数据。
@@ -128,7 +128,7 @@ jQuery.ajax(...)
         
 ```
 
-## 我们来个简单的测试，使用最原始的HttpServletResponse处理 , .最简单 , 最通用
+### 我们来个简单的测试，使用最原始的HttpServletResponse处理 , .最简单 , 最通用
 
 - 配置web.xml 和 springmvc的配置文件，复制上面案例的即可 【记得静态资源过滤和注解驱动配置上】
 
@@ -248,7 +248,7 @@ public class AjaxController {
 
 启动tomcat测试！打开浏览器的控制台，当我们鼠标离开输入框的时候，可以看到发出了一个ajax的请求！是后台返回给我们的结果！测试成功！
 
-## Springmvc实现
+### Springmvc实现
 
 - 实体类user
 
@@ -334,8 +334,8 @@ public class User {
 
 成功实现了数据回显！可以体会一下Ajax的好处！
 
-# 注册提示效果
-## Controller
+## 注册提示效果
+### Controller
 
 ```java
 @RequestMapping("/a3")
@@ -360,7 +360,7 @@ public String ajax3(String name,String pwd){
 }
 ```
 
-## 前端页面 login.jsp
+### 前端页面 login.jsp
 
 ```html
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

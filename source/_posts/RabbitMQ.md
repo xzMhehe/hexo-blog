@@ -10,15 +10,15 @@ categories:
 ![](https://image.codingce.com.cn/aa.jpg)
 
 
-## MQ引言
-### 什么是MQ
+### MQ引言
+#### 什么是MQ
 MQ（Message Queue）消息队列，是基础数据结构中“先进先出”的一种数据结构。一般用来解决应用解耦，异步消息，流量削峰等问题，实现高性能，高可用，可伸缩和最终一致性架构。
 通过典型的`生产者`和`消费者`模型, 生产者不断向消息队列中生产消息, 消费者不断从队列中获取消息. 因为消息的生产和消费都是异步的, 而且只关心消息的发送和接受, 没有业务逻辑的侵入, 轻松的实现系统间解耦. 别名 `消息中间件` 通过利用高可用的消息传递机制进行平台的数据交流, 并基于数据通信来进行分布式系统的集成.
 
-### MQ有哪些
+#### MQ有哪些
 ActiveMQ、RabbitMQ、RocketMQ、Kafka
 
-### 不同MQ的特点
+#### 不同MQ的特点
 - ActiveMQ    
 >单机吞吐量：万级   
 　　topic数量都吞吐量的影响：  
@@ -87,7 +87,7 @@ ActiveMQ、RabbitMQ、RocketMQ、Kafka
 
 >RabbitMQ 比 Kafaka可靠, Kafka 更适合IO高吞吐的处理, 一般用在大数据日志处理或对实时性(少量延迟), 可靠性(少量丢失数据), 要求稍低的场景使用, 比如ELK日志收集
 
-## RabbitMQ引言
+### RabbitMQ引言
 RabbitMQ是实现了高级消息队列协议（`AMQP`）的开源消息代理软件（亦称面向消息的中间件）。RabbitMQ服务器是用Erlang语言编写的，而集群和故障转移是构建在开放电信平台框架上的。所有主要的编程语言均有与代理接口通讯的客户端库。
 
 
@@ -102,13 +102,13 @@ RabbitMQ是实现了高级消息队列协议（`AMQP`）的开源消息代理软
 AMQP（advanced message queuing protocol）`在2003年时被提出，最早用于解决金融领不同平台之间的消息传递交互问题。顾名思义，AMQP是一种协议，更准确的说是一种binary wire-level protocol（链接协议）。这是其和JMS的本质差别，AMQP不从API层进行限定，而是直接定义网络交换的数据格式。这使得实现了AMQP的provider天然性就是跨平台的。以下是AMQP协议模型:
 ![](https://image.codingce.com.cn/20210122111115.png)
 
-## 安装
-### Windows 安装
+### 安装
+#### Windows 安装
 - 安装 erlang环境
 - 配置 erlang环境变量
 - 安装 rabbitmq
 
-#### 使用
+##### 使用
 sbin 目录下
 - RabbitMQ Service-install 安装服务
 - RabbitMQ Service-remove 删除服务
@@ -116,7 +116,7 @@ sbin 目录下
 - RabbitMQ Service-stop 启动
 
 
-#### 访问 RabbitMQ 主页
+##### 访问 RabbitMQ 主页
 在`sbin`目录启动控制台, 输入以下命令
 ```bash
 rabbitmq-plugins.bat enable rabbitmq_management
@@ -130,7 +130,7 @@ rabbitmq-plugins.bat enable rabbitmq_management
 注意一点：当卸载重新安装的时候会出现 RabbitMQ 服务注册失败, 此时需要进入注册表 清理erlang 搜索 RabbitMQ ErlSrv, 对应的项全部删除
 
 
-### Linux 安装
+#### Linux 安装
 - 1.将rabbitmq安装包上传到linux系统中
 	erlang-22.0.7-1.el7.x86_64.rpm
 	rabbitmq-server-3.7.18-1.el7.noarch.rpm

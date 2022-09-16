@@ -9,7 +9,7 @@ thumbnail: https://s1.ax1x.com/2020/07/17/UsFtWd.jpg
 reward: false
 copyright: false
 ---
-### 开发常见单词™
+#### 开发常见单词™
 
 | 单词  | 音标  | 释义  |
 | ------------ | ------------ | ------------ |

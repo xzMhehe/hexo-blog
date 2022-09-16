@@ -7,7 +7,7 @@ categories:
 - SpringMVC
 
 ---
-# 什么是JSON？
+## 什么是JSON？
 - JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式，目前使用特别广泛。
 - 采用完全独立于编程语言的文本格式来存储和表示数据。
 - 简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。
@@ -35,7 +35,7 @@ var obj = {a: 'Hello', b: 'World'}; //这是一个对象，注意键名也是可
 var json = '{"a": "Hello", "b": "World"}'; //这是一个 JSON 字符串，本质是一个字符串
 ```
 
-## JSON 和 JavaScript 对象互转
+### JSON 和 JavaScript 对象互转
 
 要实现从JSON字符串转换为JavaScript 对象，使用 JSON.parse() 方法：
 ```javascript
@@ -81,7 +81,7 @@ var json = JSON.stringify({a: 'Hello', b: 'World'});
 </html>
 ```
 
-# Controller返回JSON数据
+## Controller返回JSON数据
 - Jackson应该是目前比较好的json解析工具了
 - 当然工具不止这一个，比如还有阿里巴巴的 fastjson 等等。
 - 我们这里使用Jackson，使用它需要导入它的jar包；
@@ -179,9 +179,9 @@ springmvc-servlet.xml
 @RequestMapping(value = "/json1",produces = "application/json;charset=utf-8")
 ```
 
-# 代码优化
+## 代码优化
 
-## 乱码统一解决
+### 乱码统一解决
 
 上一种方法比较麻烦，如果项目中有许多请求则每一个都要添加，可以通过Spring配置统一指定，这样就不用每次都去处理了！
 
@@ -203,10 +203,10 @@ springmvc-servlet.xml
 </mvc:annotation-driven>
 ```
 
-## 返回json字符串统一解决
+### 返回json字符串统一解决
 在类上直接使用 @RestController ，这样子，里面所有的方法都只会返回 json 字符串了，不用再每一个都添加@ResponseBody ！我们在前后端分离开发中，一般都使用 @RestController ，十分便捷！
 
-# 测试集合输出
+## 测试集合输出
 增加一个新的方法
 ```java
 @RequestMapping("/json3")
@@ -247,7 +247,7 @@ public String json4() throws JsonProcessingException {
 ```
 运行结果 : 成功的输出了时间！
 
-# 抽取为工具类
+## 抽取为工具类
 如果要经常使用的话，这样是比较麻烦的，我们可以将这些代码封装到一个工具类中；我们去编写下
 ```java
 package cn.com.codingce.utils;
@@ -294,7 +294,7 @@ public class JsonUtils {
 
 ```
 
-# FastJson
+## FastJson
 fastjson.jar是阿里开发的一款专门用于Java开发的包，可以方便的实现json对象与JavaBean对象的转换，实现JavaBean对象与json字符串的转换，实现json对象与json字符串的转换。实现json的转换方法很多，最后的实现结果都是一样的。
 
 fastjson 的 pom依赖！
@@ -305,19 +305,19 @@ fastjson 的 pom依赖！
    <version>1.2.60</version>
 </dependency>
 ```
-## fastjson 三个主要的类：
-### JSONObject  代表 json 对象 
+### fastjson 三个主要的类：
+#### JSONObject  代表 json 对象 
 - JSONObject实现了Map接口, 猜想 JSONObject底层操作是由Map实现的。
 - JSONObject对应json对象，通过各种形式的get()方法可以获取json对象中的数据，也可利用诸如size()，isEmpty()等方法获取"键：值"对的个数和判断是否为空。其本质是通过实现Map接口并调用接口中的方法完成的。
 
-### JSONArray   代表 json 对象数组
+#### JSONArray   代表 json 对象数组
 - 内部是有List接口中的方法来完成操作的。
 
-### JSON代表 JSONObject和JSONArray的转化
+#### JSON代表 JSONObject和JSONArray的转化
 - JSON类源码分析与使用
 - 仔细观察这些方法，主要是实现json对象，json对象数组，javabean对象，json字符串之间的相互转化。
 
-### 代码测试，我们新建一个FastJsonDemo 类
+#### 代码测试，我们新建一个FastJsonDemo 类
 ```java
 package cn.com.codingce.controller;
 

@@ -11,7 +11,7 @@ headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200921079.jpg
 description: SpringCloud
 ---
-# zuul是什么
+## zuul是什么
 ![](https://camo.githubusercontent.com/f091703491ae368dab9314065b31eab0fc3246ab/68747470733a2f2f692e696d6775722e636f6d2f6d52536f7345702e706e67)
 zuul 是netflix开源的一个API Gateway 服务器, 本质上是一个web servlet应用。
 Zuul 在云平台上提供动态路由，监控，弹性，安全等边缘服务的框架。Zuul 相当于是设备和 Netflix 流应用的 Web 网站后端所有请求的前门。
@@ -29,7 +29,7 @@ zuul的核心是一系列的filters, 其作用类比Servlet框架的Filter，或
 
 ![](http://image.codingce.com.cn/blog/20200926/142349524.png)
 
-# zuul 能做什么
+## zuul 能做什么
 
 Zuul可以通过加载动态过滤机制，从而实现以下各项功能(路由、过滤)：
 - 验证与安全保障: 识别面向各类资源的验证要求并拒绝那些与要求不符的请求。
@@ -43,21 +43,21 @@ Zuul可以通过加载动态过滤机制，从而实现以下各项功能(路由
 
 
 
-# 过滤器的生命周期
+## 过滤器的生命周期
 
 ![](https://imgkr2.cn-bj.ufileos.com/9f2bd698-f897-4801-8e1c-e8aa5c29b3c2.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&Signature=KzhanZPLIVzv5sz%252BAbRldoMoMgE%253D&Expires=1601351961)
 
 
-# zuul组件
+## zuul组件
 - zuul-core--zuul核心库，包含编译和执行过滤器的核心功能。
 - zuul-simple-webapp--zuul Web应用程序示例，展示了如何使用zuul-core构建应用程序。
 - zuul-netflix--lib包，将其他NetflixOSS组件添加到Zuul中，例如使用功能区进去路由请求处理。
 - zuul-netflix-webapp--webapp，它将zuul-core和zuul-netflix封装成一个简易的webapp工程包。
 
-# 搭建一个注册Eureka中心的Web服务
-## 项目截图
+## 搭建一个注册Eureka中心的Web服务
+### 项目截图
 ![mark](http://image.codingce.com.cn/blog/20200927/132344573.png)
-## pom
+### pom
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -129,7 +129,7 @@ Zuul可以通过加载动态过滤机制，从而实现以下各项功能(路由
 </project>
 ```
 
-## application.yml配置
+### application.yml配置
 ```yml
 server:
   port: 9527
@@ -141,28 +141,28 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka7002.com:7002/eureka/, http://eureka7003.com:7003/eureka/, http://eureka7001.com:7001/eureka/   # 这里必须与服务端一致
+      defaultZone: http://eureka7002.com:7002/eureka/, http://eureka7003.com:7003/eureka/, http://eureka7001.com:7001/eureka/   ## 这里必须与服务端一致
   instance:
     instance-id: zuul9527.com
     prefer-ip-address: true
 
-# info 配置
+## info 配置
 info:
   app.name: codingce-springcloud
   cpmany.name: i.codingce.com.cn
   author: xzMhehe
 
-# 路由网关配置  我们需要设置原路径不能访问, 仅可使用Zuul路由网关配置的  路径    (已在 win10 hosts  里面配置 127.0.0.1	www.codingce.com)
+## 路由网关配置  我们需要设置原路径不能访问, 仅可使用Zuul路由网关配置的  路径    (已在 win10 hosts  里面配置 127.0.0.1	www.codingce.com)
 zuul:
   routes:
     mydept.serviceId: springcloud-provider-dept
     mydept.path: /mydept/**
-  ignored-services: springcloud-provider-dept # 不能在使用这个路径访问了  ignored-services: "*" 隐藏全部的真实的项目
-  prefix: /mxz  # 设置公共的前缀       可有可无  原 http://www.codingce.com:9527/mydept/dept/list    加了之后 http://www.codingce.com:9527/mxz/mydept/dept/list
+  ignored-services: springcloud-provider-dept ## 不能在使用这个路径访问了  ignored-services: "*" 隐藏全部的真实的项目
+  prefix: /mxz  ## 设置公共的前缀       可有可无  原 http://www.codingce.com:9527/mydept/dept/list    加了之后 http://www.codingce.com:9527/mxz/mydept/dept/list
 ```
 
 
-## 启动项ZuulApplication_9527
+### 启动项ZuulApplication_9527
 ```java
 package cn.com.codingce.springcloud;
 
@@ -179,12 +179,12 @@ public class ZuulApplication_9527 {
 }
 ```
 
-## 运行界面
-### 服务端
+### 运行界面
+#### 服务端
 ![mark](http://image.codingce.com.cn/blog/20200927/132717824.png)
-### Eureka界面
+#### Eureka界面
 ![mark](http://image.codingce.com.cn/blog/20200927/132946755.png)
-### 配置Zuul路由网关后
+#### 配置Zuul路由网关后
 ![mark](http://image.codingce.com.cn/blog/20200927/133029481.png)
 
 

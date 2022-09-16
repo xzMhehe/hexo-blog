@@ -12,20 +12,20 @@ keywords: [JavaScript]
 abbrlink: 461108bb
 description: ES6特性
 ---
-# :sun_with_face: ES6
-## :sun_with_face: 简介
+## :sun_with_face: ES6
+### :sun_with_face: 简介
 `ECMAScript6.0`（以下简称ES6，ECMAScript是一种由Ecma国际(前身为欧洲计算机制造商协会,英文名称是EuropeanComputerManufacturersAssociation)通过ECMA-262标准化的脚本程序设计语言）`是JavaScript语言的下一代标准`，已经在2015年6月正式发布了，并且从ECMAScript6开始，开始采用年号来做版本。即ECMAScript2015，就是ECMAScript6。它的目标，是使得JavaScript语言可以用来编写复杂的大型应用程序，成为企业级开发语言。
 `每年一个新版本`。
 
 
 ![](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0abd9b7c3c514a538eaba2ab748c45b8~tplv-k3u1fbpfcp-watermark.image)
 
-## :sun_with_face: 什么是ECMAScript
+### :sun_with_face: 什么是ECMAScript
 来看下前端的发展历程：
-### :sun_with_face: web1.0时代：
+#### :sun_with_face: web1.0时代：
 最初的网页以HTML为主，是纯静态的网页。网页是只读的，信息流只能从服务的到客户端单向流通。`开发人员也只关心页面的样式和内容即可`。
 
-### :sun_with_face: web2.0时代：
+#### :sun_with_face: web2.0时代：
 
 - 1995年，网景工程师BrendanEich花了10天时间设计了JavaScript语言。
 - 1996年，微软发布了JScript，其实是JavaScript的逆向工程实现。
@@ -35,9 +35,9 @@ description: ES6特性
 所以，`ECMAScript`是浏览器脚本语言的规范，而各种我们熟知的js语言，如`JavaScript则是规范的具体实现`。
 
 
-## :sun_with_face: ES6新特性
+### :sun_with_face: ES6新特性
 
-### :sun_with_face: 1. let声明变量
+#### :sun_with_face: 1. let声明变量
 
 ```js
   //var声明的变量往往会越域
@@ -68,7 +68,7 @@ description: ES6特性
 ```
 
 
-### :sun_with_face: 2. const声明常量（只读变量）
+#### :sun_with_face: 2. const声明常量（只读变量）
 ```js
   //1.声明之后不允许改变
   //2.一但声明必须初始化，否则会报错
@@ -76,8 +76,8 @@ description: ES6特性
   a = 3;  //UncaughtTypeError:Assignmenttoconstantvariable.
 ```
 
-### :sun_with_face: 3. 解构表达式
-#### :sun_with_face:数组结构
+#### :sun_with_face: 3. 解构表达式
+##### :sun_with_face:数组结构
 ```js
 let arr = [1, 2, 3];
 //以前我们想获取其中的值，只能通过角标。ES6可以这样：
@@ -85,7 +85,7 @@ const [x, y, z] = arr; //x，y，z将与arr中的每个位置对应来取值//�
 console.log(x, y, z);
 ```
 
-#### 对象结构
+##### 对象结构
 ```js
 const person = {
   name: "jack",
@@ -111,9 +111,9 @@ console.log(age);
 console.log(language);
 ```
 
-### :sun_with_face: 4. 字符串扩展
+#### :sun_with_face: 4. 字符串扩展
 
-#### :sun_with_face: 几个新的API
+##### :sun_with_face: 几个新的API
 ES6为字符串扩展了几个新的API：
 - `includes()`：返回布尔值，表示是否找到了参数字符串。
 - `startsWith()`：返回布尔值，表示参数字符串是否在原字符串的头部。
@@ -127,7 +127,7 @@ console.log(str.includes("e")); //true
 console.log(str.includes("hello")); //true
 ```
 
-#### :sun_with_face: 字符串模板
+##### :sun_with_face: 字符串模板
 模板字符串相当于加强版的字符串，用反引号`,除了作为普通字符串，还可以用来定义多行字符串，还可以在字符串中加入变量和表达式。
 
 ```js
@@ -157,8 +157,8 @@ let sss = `O(∩_∩)O哈哈~，${fun()}`;
 console.log(sss); //O(∩_∩)O哈哈~，这是一个函数
 ```
 
-### :sun_with_face: 5. 函数优化
-#### :sun_with_face: 函数参数默认值
+#### :sun_with_face: 5. 函数优化
+##### :sun_with_face: 函数参数默认值
 ```js
 //在ES6以前，我们无法给一个函数参数设置默认值，只能采用变通写法：
 function add(a, b) {
@@ -179,7 +179,7 @@ console.log(add2(10));
 
 ```
 
-#### 不定参数
+##### 不定参数
 不定参数用来表示不确定参数个数，形如，...变量名，`由...加上一个具名参数标识符组成。具名参数只能放在参数列表的最后，并且有且只有一个不定参数`
 
 ```js
@@ -190,7 +190,7 @@ fun(1, 2) //2
 fun(1, 2, 3, 4) //4
 ```
 
-#### 箭头函数
+##### 箭头函数
 ES6中定义函数的简写方式
 
 - 一个参数时：
@@ -230,7 +230,7 @@ var sum3 = (a, b) => {
 console.log(sum3(10, 20)); //30
 ```
 
-#### 实战：箭头函数结合解构表达式
+##### 实战：箭头函数结合解构表达式
 ```js
 //需求，声明一个对象，hello方法需要对象的个别属性
 //以前的方式：
@@ -249,8 +249,8 @@ var hello2 = ({name}) => {console.log("hello," + name)};
 hello2(person);
 ```
 
-### 6. 对象优化
-#### 新增的API
+#### 6. 对象优化
+##### 新增的API
 ES6给Object拓展了许多新的方法，如：
 
 - keys(obj)：获取对象的所有key形成的数组
@@ -270,7 +270,7 @@ console.log(Object.values(person)); //["jack",21,Array(3)]
 console.log(Object.entries(person)); //[Array(2),Array(2),Array(2)]
 ```
 
-#### 声明对象简写
+##### 声明对象简写
 ```js
 const age = 23
 const name = "张三"
@@ -283,7 +283,7 @@ const person2 = {age, name}
 console.log(person2)  //{age:23,name:"张三"}
 ```
 
-#### 对象的函数属性简写
+##### 对象的函数属性简写
 
 ```js
 let person = {
@@ -302,7 +302,7 @@ let person = {
 person.eat("apple");
 ```
 
-#### 对象拓展运算符
+##### 对象拓展运算符
 拓展运算符（...）用于取出参数对象所有可遍历属性然后拷贝到当前对象。
 
 ```js
@@ -318,10 +318,10 @@ console.log(person2) //{age: 15, name: "Amy"}
 ```
 
 
-### 7. map和reduce
+#### 7. map和reduce
 数组中新增了map和reduce方法。
 
-#### map
+##### map
 map()：接收一个函数，将原数组中的所有元素用这个函数处理后放入新数组返回。
 
 ```js
@@ -332,7 +332,7 @@ arr = arr.map(s => parseInt(s));
 console.log(arr)
 ```
 
-#### reduce
+##### reduce
 语法：     
 `arr.reduce(callback,[initialValue])`      
 reduce为数组中的每一个元素依次执行回调函数，不包括数组中被删除或从未被赋值的元素，接受四个参数：初始值（或者上一次回调函数的返回值），当前元素值，当前索引，调用reduce的数组。 
@@ -360,7 +360,7 @@ console.log(arr.reduce((a, b) => a * b, 0)); //-0
 
 
 
-### 8. Promise
+#### 8. Promise
 在JavaScript的世界中，所有代码都是单线程执行的。由于这个“缺陷”，导致JavaScript的所有网络操作，浏览器事件，都必须是异步执行。异步执行可以用回调函数实现。一旦有一连串的ajax请求a,b,c,d...后面的请求依赖前面的请求结果，就需要层层嵌套。这种缩进和层层嵌套的方式，非常容易造成上下文代码混乱，我们不得不非常小心翼翼处理内层函数与外层函数的数据，一旦内层函数使用了上层函数的变量，这种混乱程度就会加剧......总之，这     
 种`层叠上下文`的层层嵌套方式，着实增加了神经的紧张程度。     
 案例：用户登录，并展示该用户的各科成绩。在页面发送两次请求：     
@@ -428,7 +428,7 @@ $.ajax({
 ```
 
 我们可以通过Promise解决以上问题。
-#### Promise语法
+##### Promise语法
 
 ```js
 const promise = new Promise(function(resolve, reject) {
@@ -455,7 +455,7 @@ const promise = new Promise((resolve, reject) => {
 这样，在promise中就封装了一段异步执行的结果。
 
 
-#### 处理异步结果
+##### 处理异步结果
 如果我们想要等待异步执行完成，做一些事情，我们可以通过promise的then方法来实现。如果想要处理promise异步执行失败的事件，还可以跟上catch：
 
 ```js
@@ -466,7 +466,7 @@ promise.then(function(value){
 })
 ```
 
-#### Promise改造以前嵌套方式
+##### Promise改造以前嵌套方式
 ```js
 new Promise((resolve, reject) => {
     $.ajax({
@@ -506,7 +506,7 @@ new Promise((resolve, reject) => {
 });
 ```
 
-#### 优化处理
+##### 优化处理
 优化：通常在企业开发中，会把promise封装成通用方法，如下：封装了一个通用的get请求方法；
 
 ```js
@@ -543,7 +543,7 @@ get("mock/user.json").then((result) => {
 
 
 
-### 9. 模块化
+#### 9. 模块化
 模块化就是把代码进行拆分，方便重复利用。类似java中的导包：要使用一个包，必须先导包。而JS中没有包的概念，换来的是模块。
 
 模块功能主要由两个命令构成：`export`和`import`。
@@ -551,7 +551,7 @@ get("mock/user.json").then((result) => {
 - `export`命令用于规定模块的对外接口。
 - `import`命令用于导入其他模块提供的功能。
 
-#### export
+##### export
 比如我定义一个js文件:hello.js，里面有一个对象
 ```js
 const util = {
@@ -600,7 +600,7 @@ export default {
 
 这样，当使用者导入时，可以任意起名字
 
-#### import
+##### import
 使用`export`命令定义了模块的对外接口以后，其他JS文件就可以通过`import`命令加载这个模块。
 
 例如我要使用上面导出的util：

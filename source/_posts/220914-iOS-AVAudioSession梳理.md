@@ -5,7 +5,7 @@ tags: 音视频
 categories: [音视频]
 ---
 
-# AVAudioSession 概述
+## AVAudioSession 概述
 AVAudioSession是一个对象，用于向系统传达你将如何在应用程序中使用音频。
 使用AVAudioSession可以向操作系统描述应用程序使用音频的一般策略，而无需详细说明特定场景下的表现或与音频硬件的交互。你可以将这些细节的管理委托给AVAudioSession实现，这样可以确保操作系统能够最好地管理用户的音频体验。
 
@@ -27,7 +27,7 @@ AVAudioSession是一个对象，用于向系统传达你将如何在应用程序
 - 是否支持录音，录音同时是否支持音频播放
 
 
-# AVAudioSession Category
+## AVAudioSession Category
 AVAudioSession的接口比较简单。APP启动的时候会自动帮激活AVAudioSession，当然可以手动激活代码如下。
 
 ```objc
@@ -144,14 +144,14 @@ if (!success) {
 ```
 
 
-#  AVAudioSession Mode&&Options
+##  AVAudioSession Mode&&Options
 刚刚介绍的Category定义了七种主场景，实际开发需求中有时候需要对Category进行微调整，发现这个接口还有两个参数`Mode`和`Options`。
 ```objc
 /* set session category and mode with options */
 - (BOOL)setCategory:(NSString *)category mode:(NSString *)mode options:(AVAudioSessionCategoryOptions)options error:(NSError **)outError API_AVAILABLE(ios(10.0), watchos(3.0), tvos(10.0));
 ```
 
-## AVAudioSession Mode
+### AVAudioSession Mode
 通过读取下面这条属性获取当前设备支持的Mode
 
 ```objc
@@ -228,7 +228,7 @@ iOS下有七种mode来定制Category行为
 - AVAudioSessionModeMoviePlayback，适用于播放视频的应用。只用于 AVAudioSessionCategoryPlayback 这个Category。
 
 
-## AVAudioSession Options
+### AVAudioSession Options
 可以使用options去微调Category行为，如下表
 
 <table>
@@ -263,7 +263,7 @@ iOS下有七种mode来定制Category行为
 </tbody>
 </table>
 
-## 调优Category
+### 调优Category
 通过Category和合适的Mode和Options的搭配可以调优出效果，下面举两个应用场景:
 
 用过高德地图的都知道，在后台播放QQ音乐的时候，如果导航语音出来，QQ音乐不会停止，而是被智能压低和混音，等导航语音播报完后，QQ音乐正常播放，这里需要后台播放音乐，所以Category使用`AVAudioSessionCategoryPlayback`，需要混音和智能压低其他APP音量，所以Options选用 `AVAudioSessionCategoryOptionMixWithOthers`和`AVAudioSessionCategoryOptionDuckOthers`
@@ -280,7 +280,7 @@ iOS下有七种mode来定制Category行为
 
 通过选择合适和Category，mode和options，就可以调优音频的输入输出，来满足日常开发需求（需要注意的是Category，mode，option是搭配使用的，而`不是简单组合`，也就是说某种Category支持某些mode和option，从上面的表中也可以看出这一点）
 
-# 音频中断处理
+## 音频中断处理
 其他APP或者电话会中断APP音频，所以相应的要做出处理。 可以通过监听`AVAudioSessionInterruptionNotification`这个`key`获取音频中断事件
 
 回调回来`Userinfo`有键值
@@ -307,6 +307,6 @@ iOS下有七种mode来定制Category行为
 
 - AVAudioSession同样可以监听外设音频状态，比如耳机拔入拔出。这里不做累述
 
-# AVAudioSession总结
+## AVAudioSession总结
 AVAudioSession的作用就是`管理音频这一唯一硬件资源的分配`，通过调优合适的AVAudioSession来适配APP对于音频的功能需求。`切换音频场景时候`，`需要相应的切换AVAudioSession`。
 

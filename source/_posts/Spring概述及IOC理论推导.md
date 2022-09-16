@@ -8,7 +8,7 @@ categories:
 
 thumbnail: https://s1.ax1x.com/2020/07/28/aEZGm8.gif
 ---
-# 简介
+## 简介
 - Spring : 春天 --->给软件行业带来了春天
 - 2002年,Rod Jahnson首次推出了Spring框架雏形interface21框架.
 - 2004年3月24日,Spring框架以interface21框架为基础,经过重新设计,发布了1.0正式版.
@@ -18,7 +18,7 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEZGm8.gif
 - 官方下载地址 : https://repo.spring.io/libs-release-local/org/springframework/spring/
 - GitHub : https://github.com/spring-projects
 
-# 优点
+## 优点
 - Spring是一个开源免费的框架 , 容器  .
 - Spring是一个轻量级的框架 , 非侵入式的 .
 - 控制反转 IoC  , 面向切面 Aop
@@ -26,7 +26,7 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEZGm8.gif
 一句话概括：
 **Spring是一个轻量级的控制反转(IoC)和面向切面(AOP)的容器（框架）.**
 
-# 组成
+## 组成
 ![mark](http://image.codingce.com.cn/blog/20200718/064149134.png)
 Spring 框架是一个分层架构,由 7 个定义良好的模块组成.Spring 模块构建在核心容器之上,核心容器定义了创建、配置和管理 bean 的方式 .
 ![mark](http://image.codingce.com.cn/blog/20200718/064448436.png)
@@ -44,7 +44,7 @@ Spring 框架是一个分层架构,由 7 个定义良好的模块组成.Spring �
 
 - Spring MVC 框架：MVC 框架是一个全功能的构建 Web 应用程序的 MVC 实现.通过策略接口,MVC 框架变成为高度可配置的,MVC 容纳了大量视图技术,其中包括 JSP、Velocity、Tiles、iText 和 POI.
 
-# 拓展
+## 拓展
 
 - Spring Boot与Spring Cloud
 - Spring Boot 是 Spring 的一套快速配置脚手架,可以基于Spring Boot 快速开发单个微服务;
@@ -55,10 +55,10 @@ Spring 框架是一个分层架构,由 7 个定义良好的模块组成.Spring �
 
 ![mark](http://image.codingce.com.cn/blog/20200718/064642921.png)
 
-# IoC基础
+## IoC基础
 ![mark](http://image.codingce.com.cn/blog/20200718/070239568.png)
 
-## Dao
+### Dao
 ```java
     public interface UserDao {
         void getUser();
@@ -95,7 +95,7 @@ Spring 框架是一个分层架构,由 7 个定义良好的模块组成.Spring �
     }
 ```
 
-## Service
+### Service
 ```java
     public interface UserService {
         void getUser();
@@ -132,7 +132,7 @@ public class UserServiceImpl implements UserService {
 这时IOC的原型.
 ![mark](http://image.codingce.com.cn/blog/20200718/075744519.png)
 
-## Test
+### Test
 ```java
     public class MyTest {
         public static void main(String[] args) {
@@ -145,7 +145,7 @@ public class UserServiceImpl implements UserService {
 
 ```
 
-# IOC本质
+## IOC本质
 控制反转IoC(Inversion of Control),是一种设计思想,DI(依赖注入)是实现IoC的一种方法,也有人认为DI只是IoC的另一种说法.没有IoC的程序中 , 我们使用面向对象编程 , 对象的创建与对象间的依赖关系完全硬编码在程序中,对象的创建由程序自己控制,控制反转后将对象的创建转移给第三方,个人认为所谓控制反转就是：获得依赖对象的方式反转了.
 ![mark](http://image.codingce.com.cn/blog/20200718/080055564.png)
 

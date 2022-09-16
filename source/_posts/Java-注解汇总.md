@@ -12,7 +12,7 @@ description: Java
 headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210629190505.png
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210629190505.png
 ---
-# 1、4种标准元注解是哪四种？
+## 1、4种标准元注解是哪四种？
 元注解的作用是负责注解其他注解。 `Java5.0` 定义了 `4` 个标准的 `meta-annotation` 类型，它们被用来提供对其它 `annotation` 类型`作说明`。
 
 **@Target 修饰的对象范围**             
@@ -40,7 +40,7 @@ thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/2021062
 class 的子类。
 
 
-# 2、注解是什么？
+## 2、注解是什么？
 Annotation（注解）是 Java 提供的一种对元程序中元素关联信息和元数据（metadata）的途径和方法。 Annatation(注解)是一个接口，程序可以通过反射来获取指定程序中元素的 Annotation对象，然 后通过该 Annotation 对象来获取注解中的元数据信息。
 
 

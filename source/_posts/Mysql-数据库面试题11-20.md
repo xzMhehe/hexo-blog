@@ -13,22 +13,22 @@ headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202106250
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210625092259.png
 ---
 
-# 11、第一范式(1st NF － 列都是不可再分)
+## 11、第一范式(1st NF － 列都是不可再分)
 第一范式的目标是确保每列的原子性:如果每列都是不可再分的最小数据单元（也称为最小的原子单 元），则满足第一范式（1NF）
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/1nf.png)
 
-# 12、第二范式(2nd NF－ 每个表只描述一件事情)
+## 12、第二范式(2nd NF－ 每个表只描述一件事情)
 首先满足第一范式，并且表中非主键列不存在对主键的部分依赖。 第二范式要求每个表只描述一件事 情。
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/2nf.png)
 
-# 13、第三范式(3rd NF－ 不存在对非主键列的传递依赖)
+## 13、第三范式(3rd NF－ 不存在对非主键列的传递依赖)
 第三范式定义是，满足第二范式，并且表中的列不存在对非主键列的传递依赖。 除了主键订单编号外， 顾客姓名依赖于非主键顾客编号。
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/3nf.png)
 
-# 14、数据库是事务
+## 14、数据库是事务
 事务(TRANSACTION)是作为单个逻辑工作单元执行的一系列操作， 这些操作作为一个整体一起向系统 提交，要么都执行、要么都不执行 。 事务是一个不可分割的工作逻辑单元事务必须具备以下四个属 性，简称 ACID 属性：
 
 原子性（Atomicity）
@@ -43,7 +43,7 @@ thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/2021062
 永久性（Durability）
 1. 事务完成后，`它对数据库的修改被永久保持`，事务日志能够保持事务的永久性
 
-# 15、SQL优化
+## 15、SQL优化
 
 1、`查询语句中不要使用select *`        
 2、尽量减少子查询，`使用关联查询（left join,right join,inner join）替代`         
@@ -58,24 +58,24 @@ WHERE EXISTS
 5、应尽量避免在 where 子句中使用!=或<>操作符，否则将引擎放弃使用索引而进行全表扫描。         
 6、应尽量避免在 where 子句中对字段进行 null 值判断，否则将导致引擎放弃使用索引而进行全表扫 描，如： select id from t where num is null 可以在num上设置默认值0，确保表中num列没有null 值，然后这样查询： select id from t where num=0      
 
-# 16、简单说一说drop、delete与truncate的区别
+## 16、简单说一说drop、delete与truncate的区别
 SQL中的drop、delete、truncate都表示删除，但是三者有一些差别         
 delete和truncate只删除表的数据不删除表的结构         
 速度,一般来说: drop> truncate >delete         
 delete语句是dml,这个操作会放到rollback segement中,事务提交之后才生效;         
 如果有相应的trigger,执行的时候将被触发. truncate,drop是ddl, 操作立即生效,原数据不放到 rollbacksegment中,不能回滚. 操作不触发trigger   
 
-# 17、什么是视图
+## 17、什么是视图
 视图是一种虚拟的表，具有和物理表相同的功能。可以对视图进行增，改，查，操作，试图通常是有一 个表或者多个表的行或列的子集。对视图的修改不影响基本表。它使得我们获取数据更容易，相比多表 查询
 
-# 18、什么是内联接、左外联接、右外联接？
+## 18、什么是内联接、左外联接、右外联接？
 内联接（Inner Join）：匹配2张表中相关联的记录。          
 左外联接（Left Outer Join）：除了匹配2张表中相关联的记录外，还会匹配左表中剩余的记录，右表 中未匹配到的字段用NULL表示。         
 右外联接（Right Outer Join）：除了匹配2张表中相关联的记录外，还会匹配右表中剩余的记录，左表 中未匹配到的字段用NULL表示。在判定左表和右表时，要根据表名出现在Outer Join的左右位置关系     
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/join.png)
 
-# 19、并发事务带来哪些问题?
+## 19、并发事务带来哪些问题?
 在典型的应用程序中，多个事务并发运行，经常会操作相同的数据来完成各自的任务（多个用户对同一 数据进行操作）。并发虽然是必须的，但可能会导致以下的问题。
 
 脏读（Dirty read）: 当一个事务正在访问数据并且对数据进行了修改，而这种修改还没有提交到数据库中，这时另外一个事务也访问了这个数据，然后使用了这个数据。因为这个数据`是还没有提交的数据`，那么另外一个事务读到的这个数据是“脏数据”，依据“脏数据”所做的操作可能是不正确的。
@@ -89,7 +89,7 @@ delete语句是dml,这个操作会放到rollback segement中,事务提交之后�
 `不可重复读`和`幻读`区别：                       
 `不可重复读`的重点是修改比如多次读取一条记录发现其中某些列的值被`修改`，`幻读`的重点在于`新增`或者`删除`比如多次读取一条记录发现`记录增多`或`减少`了
 
-# 20、事务隔离级别有哪些?MySQL的默认隔离级别是?
+## 20、事务隔离级别有哪些?MySQL的默认隔离级别是?
 SQL 标准定义了四个隔离级别：
 
 READ-UNCOMMITTED(读取未提交)： `最低`的隔离级别，允许读取尚未提交的数据变更，可能会导致 `脏读`、`幻读`或`不可重复读`。

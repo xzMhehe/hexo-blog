@@ -10,19 +10,19 @@ keywords:
 description: Go的json解析：Marshal与Unmarshal
 ---
 
-# Go的json解析：Marshal与Unmarshal
+## Go的json解析：Marshal与Unmarshal
 
 
 
-# 简介
+## 简介
 
 Json(Javascript Object Nanotation)是一种数据交换格式，常用于前后端数据传输。任意一端将数据转换成json **字符串**，另一端再将该字符串解析成相应的数据结构，如string类型，strcut对象等。
 
 
 
-## 实现
+### 实现
 
-### Json Marshal：将数据编码成json字符串
+#### Json Marshal：将数据编码成json字符串
 
 ```go
 type Stu struct {
@@ -159,7 +159,7 @@ json2,_ := json.Marshal(stus2)
 
 解码时定义对应的切片接受即可
 
-### Json Unmarshal：将json字符串解码到相应的数据结构
+#### Json Unmarshal：将json字符串解码到相应的数据结构
 
 我们将上面的例子进行解码
 

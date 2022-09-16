@@ -5,7 +5,7 @@ tags: 音视频
 categories: [音视频]
 ---
 
-# 1.常规播放
+## 1.常规播放
 一般如果应用只有简单音乐播放功能，那么我们的AVAudioSession-Category只用像如下一样设置即可：
 ```objc
 [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];     
@@ -21,14 +21,14 @@ categories: [音视频]
 
 这样我们兼容其他后台播放的音乐一起进行播放，不过`大部分场景下`，我们是需要`独占式后台播放`。
 
-# 2.常规录音
+## 2.常规录音
 在录音的时候，我们一般如以下设置：
 ```objc
 [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryRecord error:nil];     
 [[AVAudioSession sharedInstance] setActive:YES error:nil];
 ```
 
-# 3.如果将录音和播放同时进行时，我们改选择何种Category？
+## 3.如果将录音和播放同时进行时，我们改选择何种Category？
 同时进行播放和录音时，我们需要这样设置:
 ```objc
 [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord                                            error:nil];     
@@ -37,7 +37,7 @@ categories: [音视频]
 
 需要注意的是，设置成这样的情况下，如果，在录音未开启的情况下，直接进行播放，则会出现，播放音量特别小的情况，我们需要在播放之前，将录音打开。
 
-# 4.前后台切换
+## 4.前后台切换
 上述的模式，在iOS系统下，是`不允许录音`和`播放`在`后台状态下同时进行`的(PS:语音视频通话是通过CallKit实现的，不用于常规的播放和录音功能)。由此，我们在应用进入后台时就需要关掉其中一个功能。
 
 以后台支持播放为例，在应用将要失活时，先切换模式，再关掉录音功能：
@@ -61,7 +61,7 @@ categories: [音视频]
 [self performSelectorOnMainThread:@selector(startRecording) withObject:nil waitUntilDone:NO];
 ```
 
-# 5.电话中断
+## 5.电话中断
 电话闹钟的中断也会对，[AVAudioSession sharedInstance] 产生影响。
 
 我们一般场景下会用 下面这个通知进行监控并处理暂停和恢复的工作：
@@ -106,7 +106,7 @@ self.center.callEventHandler = ^(CTCall * call){
 ps:至于闹钟的中断以及siri等其他中断，暂时没有调研和实现。
 
 
-# 6.蓝牙车载
+## 6.蓝牙车载
 本来以为车载的车机连接后对于iPhone的播放控制与锁屏控制类似，直接在系统媒体远程控制监控中就能够拿到相应的控制方法回调。
 
 在APPDelegate中加上如下代码：

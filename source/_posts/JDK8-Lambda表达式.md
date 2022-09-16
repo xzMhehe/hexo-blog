@@ -11,10 +11,10 @@ copyright: false
 
 JDK8--Lambda表达式
 ===
-## 1.什么是Lambda表达式
+### 1.什么是Lambda表达式
 **Lambda表达式实质上是一个可传递的代码块，Lambda又称为闭包或者匿名函数，是函数式编程语法，让方法可以像普通参数一样传递**
 
-## 2.Lambda表达式语法
+### 2.Lambda表达式语法
 (参数列表) -> {执行代码块}
 
 参数列表可以为空()->{}
@@ -22,7 +22,7 @@ JDK8--Lambda表达式
 在编译器可以推断出类型的时候，可以将类型声明省略，比如```(para1, para2) -> {return para1 + para2;}```
 (lambda有点像动态类型语言语法。lambda在字节码层面是用invokedynamic实现的，而这条指令就是为了让JVM更好的支持运行在其上的动态类型语言)
 
-## 3.函数式接口
+### 3.函数式接口
 在了解Lambda表达式之前，有必要先了解什么是函数式接口```(@FunctionalInterface)```<br>
 **函数式接口指的是有且只有一个抽象(abstract)方法的接口**<br>
 当需要一个函数式接口的对象时，就可以用Lambda表达式来实现，举个常用的例子:
@@ -77,7 +77,7 @@ public interface Runnable {
   - ```Predicate<T> {boolean test(T t);}``` 判断，接受一个T对象，返回一个布尔值。
   - ```Supplier<T> {T get();} 提供者(工厂)``` 返回一个T对象。
   - 其他的跟上面的相似，大家可以看一下function包下的具体接口。
-## 4.变量作用域
+### 4.变量作用域
 ```java
 public class VaraibleHide {
     @FunctionalInterface
@@ -112,7 +112,7 @@ public class VaraibleHide {
 <br>lambda表达式和内部类一样，对外部自由变量捕获时，外部自由变量必须为final或者是最终变量(effectively final)的，也就是说这个变量初始化后就不能为它赋新值，
 同时lambda不像内部类/匿名类，lambda表达式与外围嵌套块有着相同的作用域，因此对变量命名的有关规则对lambda同样适用。大家阅读上面的代码对这些概念应该
 不难理解。
-## 5.方法引用
+### 5.方法引用
 **只需要提供方法的名字，具体的调用过程由Lambda和函数式接口来确定，这样的方法调用成为方法引用。**
 <br>下面的例子会打印list中的每个元素:
 ```java
@@ -241,7 +241,7 @@ List<Integer> list = new ArrayList<>();
         list.forEach(System.out::println);
 ```
 其中System.out就是一个实例，println是一个实例方法。相信不用再给大家做解释了。
-## 总结
+### 总结
 Lambda表达式是JDK8引入Java的函数式编程语法，使用Lambda需要直接或者间接的与函数式接口配合，在开发中使用Lambda可以减少代码量，
 但是并不是说必须要使用Lambda(虽然它是一个很酷的东西)。有些情况下使用Lambda会使代码的可读性急剧下降，并且也节省不了多少代码，
 所以在实际开发中还是需要仔细斟酌是否要使用Lambda。和Lambda相似的还有JDK10中加入的var类型推断，同样对于这个特性需要斟酌使用。

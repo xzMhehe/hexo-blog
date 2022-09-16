@@ -11,7 +11,7 @@ categories:
 thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 ---
 
-# 代理模式
+## 代理模式
 为什么要学习代理模式，因为AOP的底层机制就是动态代理！
 代理模式：
 - 静态代理
@@ -20,7 +20,7 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 
 学习aop之前 , 我们要先了解一下代理模式！
 
-## 静态代理
+### 静态代理
 静态代理角色分析
 - 抽象角色 : 一般使用接口或者抽象类来实现
 - 真实角色 : 被代理的角色
@@ -28,7 +28,7 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 - 客户  :  使用代理角色来进行一些操作 .
 
 
-## 动态代理
+### 动态代理
 - 动态代理的角色和静态代理的一样 .
 - 动态代理的代理类是动态生成的 . 静态代理的代理类是我们提前写好的
 - 动态代理分为两类 : 一类是基于接口动态代理 , 一类是基于类的动态代理
@@ -45,7 +45,7 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 
 
 
-### 动态代理的好处
+#### 动态代理的好处
 静态代理有的它都有，静态代理没有的，它也有！
 - 可以使得我们的真实角色更加纯粹 . 不再去关注一些公共的事情 .
 - 公共的业务由代理来完成 . 实现了业务的分工 ,
@@ -53,7 +53,7 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 - 一个动态代理 , 一般代理某一类业务
 - 一个动态代理可以代理多个类，代理的是接口！
 
-### 代码
+#### 代码
 - 接口
 
 ```java
@@ -138,12 +138,12 @@ public class Client {
 }
 ```
 
-### 缺点
+#### 缺点
 
 - 一个真实角色就会产生一个代理角色, 代码量就会翻倍 开发效率会变低
 
 
-## 静态代理详解
+### 静态代理详解
 
 ```java
 public interface UserService {
@@ -230,7 +230,7 @@ public class UserServiceProxy implements UserService {
     }
 ```
 
-## 动态代理
+### 动态代理
 - 动态代理和静态代理角色一样
 - 动态代理的代理类是动态生成的, 不是我们直接写好的
 - 动态代理分为两大类: 基于接口的动态代理, 基于类的动态代理
@@ -397,21 +397,21 @@ public class Client {
 }
 ```
 
-### 动态代理的好处
+#### 动态代理的好处
 - 可以使得我们的真实角色更加纯粹 . 不再去关注一些公共的事情 .
 - 公共的业务由代理来完成 . 实现了业务的分工 ,
 - 公共业务发生扩展时变得更加集中和方便 .
 - 一个动态代理是一个接口, 一般就是对应的一类业务
 - 一个动态代理可以代理多个类，只要是实现了一个接口即可
 
-# 什么是AOP
+## 什么是AOP
 进入重点
 什么是AOP
 AOP（Aspect Oriented Programming）意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发中的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221012343.png)
 
-# Aop在Spring中的作用
+## Aop在Spring中的作用
 提供声明式事务；允许用户自定义切面
 以下名词需要了解下：
 
@@ -432,7 +432,7 @@ SpringAOP中，通过Advice定义横切逻辑，Spring中支持5种类型的Advi
 
 即 Aop 在 不改变原有代码的情况下 , 去增加新的功能 .
 
-# 使用Spring实现Aop
+## 使用Spring实现Aop
 重点】使用AOP织入，需要导入一个依赖包！
 
 ```xml
@@ -444,12 +444,12 @@ SpringAOP中，通过Advice定义横切逻辑，Spring中支持5种类型的Advi
 </dependency>
 ```
 
-## 第一种方式
+### 第一种方式
 
 通过 Spring API 实现
 首先编写我们的业务接口和实现类
 
-### log类
+#### log类
 ```java
 public class AfterLog implements AfterReturningAdvice {
     //returnValue 返回值
@@ -470,7 +470,7 @@ public class Log implements MethodBeforeAdvice {
 }
 ```
 
-### UserService
+#### UserService
 ```java
 public interface UserService {
     public void add();
@@ -480,7 +480,7 @@ public interface UserService {
 }
 ```
 
-### UserServiceImpl
+#### UserServiceImpl
 ```java
 public class UserServiceImpl implements UserService {
     public void add() {
@@ -501,7 +501,7 @@ public class UserServiceImpl implements UserService {
 }
 ```
 
-### bean
+#### bean
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -540,7 +540,7 @@ public class UserServiceImpl implements UserService {
 </beans>
 ```
 
-## 第二种
+### 第二种
 自定义实现AOP【主要切面定义】
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -606,7 +606,7 @@ public class UserServiceImpl implements UserService {
 
 ```
 
-## 第三种注解实现
+### 第三种注解实现
 
 - AnnotationPointCut
 

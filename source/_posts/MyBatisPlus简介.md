@@ -4,12 +4,12 @@ date: 2020-10-05 10:15:23
 tags:
 ---
 ![mark](http://image.codingce.com.cn/blog/20201006/144630065.png)
-# MyBatis-Plus
+## MyBatis-Plus
 是什么？
 https://baomidou.com/#/
 Mybatis-Plus（简称MP）是一个 Mybatis 的增强工具，在 Mybatis 的基础上只做增强不做改变，为简化开发、提高效率而生。这是官方给的定义，关于mybatis-plus的更多介绍及特性，可以参考mybatis-plus官网。那么它是怎么增强的呢？其实就是它已经封装好了一些crud方法，我们不需要再写xml了，直接调用这些方法就行，就类似于JPA。
 
-# 特性
+## 特性
 - **无侵入** ：只做增强不做改变，引入它不会对现有工程产生影响，如丝般顺滑
 - **损耗小** ：启动即会自动注入基本 CURD，性能基本无损耗，直接面向对象操作, BaseMapper
 - **强大的 CRUD 操作** ：内置通用 Mapper、通用 Service，仅仅通过少量配置即可实现单表大部分 CRUD 操作，更有强大的条件构造器，满足各类使用需求, 以后的简单的增删改查, 它不用自己写了!
@@ -23,7 +23,7 @@ Mybatis-Plus（简称MP）是一个 Mybatis 的增强工具，在 Mybatis 的基
 - **内置性能分析插件** ：可输出 Sql 语句以及其执行时间，建议开发测试时启用该功能，能快速揪出慢查询
 - **内置全局拦截插件** ：提供全表 delete 、 update 操作智能分析阻断，也可自定义拦截规则，预防误操作
 
-# 快速入门
+## 快速入门
 地址: https://baomidou.com/guide/quick-start.html
 使用第三方组件
 - 导入对应依赖
@@ -31,10 +31,10 @@ Mybatis-Plus（简称MP）是一个 Mybatis 的增强工具，在 Mybatis 的基
 - 代码如何编写
 - 提高拓展
 
-## 步骤
-### 创建数据库    
+### 步骤
+#### 创建数据库    
 mybatis_plus
-### 创建 user表
+#### 创建 user表
 
 ```sql
 DROP TABLE IF EXISTS user;
@@ -62,10 +62,10 @@ INSERT INTO user (id, name, age, email) VALUES
 (5, 'Billie', 24, 'test5@baomidou.com');
 ```
  
-### 创建SpringBoot项目
+#### 创建SpringBoot项目
 mybatis_plus
 
-### 导入依赖
+#### 导入依赖
 ```xml
 <!--数据库驱动-->
         <dependency>
@@ -89,16 +89,16 @@ mybatis_plus
 
 说明: 我们使用mybatis-plus可以节省我们大量代码, 尽量不要导入mybtis和mybatis-plus! 版本差异
 
-### 连接数据库
+#### 连接数据库
 ```yml
 spring.datasource.username=root
 spring.datasource.data-password=123456
 spring.datasource.url=jdbc:mysql://cdb-q9atzwrq.bj.tencentcdb.com:10167/mybatis_plus?useSSL=false&amp;useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-# serverTimezone=GMT 时区 8.0以上版本需要添加否则会报错
+## serverTimezone=GMT 时区 8.0以上版本需要添加否则会报错
 ```
 
-### 传统项目结构对比使用mybatis-plus之后
+#### 传统项目结构对比使用mybatis-plus之后
 - pojo-dao(连接mybatis, 配置mapper.xml文件)service-controller
 - 使用mybatis-plus之后
     - pojo
@@ -152,21 +152,21 @@ class MybatisPlusApplicationTests {
 }
     ```
 
-## 思考问题
+### 思考问题
 - SQL谁帮我们写好了?    MyBatis-Plus都写好了
 方法哪里来?     MyBatis-Plus都写好了
 
 
-# 配置日志
+## 配置日志
 我们所有的SQL是不可见的, 我们希望知道它是怎么执行的, 所以我们必须要看日志
 (真正上线, 在下)
 ```yml
-# 配置日志
+## 配置日志
 mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
 ```
 
-# CRUD拓展
-## Insert
+## CRUD拓展
+### Insert
 ```java
     @Test
     void testInsert() {
@@ -180,7 +180,7 @@ mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
 
 >数据库插入的id的默认值为：全局的唯一id
 
-## 主键的策略
+### 主键的策略
 分布式系统唯一id生成：
 ```java
 默认
@@ -220,7 +220,7 @@ public enum IdType {
 }
 ```
 
-## 更新操作
+### 更新操作
 ```java
     @Test
     void testUpdate() {
@@ -233,11 +233,11 @@ public enum IdType {
     }
 ```
 
-## 自动填充
+### 自动填充
 创建时间、更改时间! 这些操作一遍都是自动化完成的, 我们不希望手动更新！ 
 阿里巴巴开发手册：所有的数据表:gm_create、 gmt_modified 几乎所有的表都需要配置上！而且需要自动化!
 
-### 方式一 数据库级别
+#### 方式一 数据库级别
 - 在表中新增字段create_time、 update_time
 
 ![mark](http://image.codingce.com.cn/blog/20201006/203803878.png)
@@ -274,7 +274,7 @@ public class User {
 
 
 
-### 方式二：代码级别
+#### 方式二：代码级别
 数据库的时间默认值去掉
 
 直接在实体类中
@@ -349,7 +349,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
 }
 ```
 
-## 乐观锁
+### 乐观锁
 在面试过程中, 我们经常会被问到的乐观锁, 悲观锁! 这个其实非常简单!
 
 >乐观锁：乐观锁（ Optimistic Locking ） 相对悲观锁而言，乐观锁假设认为数据一般情况下不会造成冲突，所以在数据进行提交更新的时候，才会正式对数据的冲突与否进行检测，如果发现冲突了，则让返回用户错误的信息，让用户决定如何去做。
@@ -373,7 +373,7 @@ update user set name = "zhangshangbiancheng", version = version + 1
 where id = 2 and version = 1
 ```
 
-### 测试MP乐观锁插件
+#### 测试MP乐观锁插件
 - 给数据库中添加version字段
 ![](http://image.codingce.com.cn/blog/20201006/220733613.png)
 
@@ -441,7 +441,7 @@ public class MyBatisPlusConfig {
 ```
 
 
-## 查询操作
+### 查询操作
 ```java
     @Test
     public void select() {
@@ -468,7 +468,7 @@ public class MyBatisPlusConfig {
     }
 ```
 
-## 分页查询
+### 分页查询
 分页在网站使用的十分之多
 - 原始的limit进行分页
 - pageHelper第三方插件
@@ -506,7 +506,7 @@ public class MybatisPlusConfig {
     }
 ```
 
-## 基本删除操作
+### 基本删除操作
 ```java
     //真删
     @Test
@@ -532,7 +532,7 @@ public class MybatisPlusConfig {
 
 我们在工作中会遇到一些问题：逻辑删除
 
-## 逻辑删除
+### 逻辑删除
 >物理删除：从数据库中直接删除
 逻辑删除：在数据库中没有移除，而是通过一个变量让他失效！ deleted = 0 =>deleted = 1
 管理员可以查看删除记录！防止数据丢失，类似于回收站
@@ -564,7 +564,7 @@ mybatis-plus.global-config.db-config.logic-not-delete-value=0
 ```
 ![](http://image.codingce.com.cn/blog/20201011/100107803.png)
 
-## 性能分析插件
+### 性能分析插件
 在平时开发中, 会遇到一些慢sql. 测试！druid
 MP也提供性能分析插件, 如果超过这个时间停止运行！
 
@@ -583,7 +583,7 @@ MP也提供性能分析插件, 如果超过这个时间停止运行！
 - 测试使用
 ![](http://image.codingce.com.cn/blog/20201011/110911588.png)
 
-## 条件构造器
+### 条件构造器
 十分重要 Wrapper
 ![](http://image.codingce.com.cn/blog/20201012/103127618.png)
 
@@ -650,7 +650,7 @@ MP也提供性能分析插件, 如果超过这个时间停止运行！
     }
 ```
 
-## 代码自动生成器
+### 代码自动生成器
 dao pojo service controller 都是自动生成
 
 ```java

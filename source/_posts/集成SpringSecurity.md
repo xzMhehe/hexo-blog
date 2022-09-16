@@ -7,8 +7,8 @@ categories:
 - SpringBoot
 thumbnail: https://s1.ax1x.com/2020/08/20/dJwev8.md.jpg
 ---
-# SpringSecurity
-## 安全简介
+## SpringSecurity
+### 安全简介
 在 Web 开发中，安全一直是非常重要的一个方面。安全虽然属于应用的非功能性需求，但是应该在应用开发的初期就考虑进来。如果在应用开发的后期才考虑安全的问题，就可能陷入一个两难的境地：一方面，应用存在严重的安全漏洞，无法满足用户的要求，并可能造成用户的隐私数据被攻击者窃取；另一方面，应用的基本架构已经确定，要修复安全漏洞，可能需要对系统的架构做出比较重大的调整，因而需要更多的开发时间，影响应用的发布进程。因此，从应用开发的第一天就应该把安全相关的因素考虑进来，并在整个应用的开发过程中。
 
 市面上存在比较有名的：Shiro，Spring Security ！
@@ -30,8 +30,8 @@ Spring 是一个非常流行和成功的 Java 应用开发框架。Spring Securi
 
 对于上面提到的两种应用情景，Spring Security 框架都有很好的支持。在用户认证方面，Spring Security 框架支持主流的认证方式，包括 HTTP 基本认证、HTTP 表单验证、HTTP 摘要认证、OpenID 和 LDAP 等。在用户授权方面，Spring Security 提供了基于角色的访问控制和访问控制列表（Access Control List，ACL），可以对应用中的领域对象进行细粒度的控制。
 
-## 实战测试
-### 实验环境搭建
+### 实战测试
+#### 实验环境搭建
 - 新建一个初始的springboot项目web模块，thymeleaf模块
 - 导入静态资源
 
@@ -76,7 +76,7 @@ public class RouterController {
 }
 ```
 
-## 认识SpringSecurity
+### 认识SpringSecurity
 Spring Security 是针对Spring项目的安全框架，也是Spring Boot底层安全模块默认的技术选型，他可以实现强大的Web安全控制，对于安全控制，仅需要引入 spring-boot-starter-security 模块，进行少量的配置，即可实现强大的安全管理！
 
 记住几个类：
@@ -98,7 +98,7 @@ Spring Security的两个主要目标是 “认证” 和 “授权”（访问�
 
 这个概念是通用的，而不是只在Spring Security 中存在。
 
-## 认证和授权
+### 认证和授权
 目前，的测试环境，是谁都可以访问的，使用 Spring Security 增加上认证和授权的功能
 
 - 引入 Spring Security 模块
@@ -203,7 +203,7 @@ auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
                 .withUser("guest").password(new BCryptPasswordEncoder().encode("123456")).roles("vip1","vip2");
 ```
 
-## 权限控制和注销
+### 权限控制和注销
 - 开启自动配置的注销的功能
 
 ```java
@@ -301,7 +301,7 @@ http.logout().logoutSuccessUrl("/");
 
 - 权限控制和注销搞定
 
-## 记住我
+### 记住我
 现在的情况，只要登录之后，关闭浏览器，再登录，就会让重新登录，但是很多网站的情况，就是有一个记住密码的功能，这个该如何实现 很简单
 - 开启记住我功能
 
@@ -323,7 +323,7 @@ protected void configure(HttpSecurity http) throws Exception {
 
 - 点击注销的时候，可以发现，spring security 帮自动删除了这个 cookie
 
-## 定制登录页
+### 定制登录页
 现在这个登录页面都是spring security 默认的，怎么样可以使用自己写的Login界面呢？
 
 - 在刚才的登录页配置后面指定 loginpage
@@ -383,7 +383,7 @@ http.formLogin()
 http.rememberMe().rememberMeParameter("remember");
 ```
 
-## 完整配置代码
+### 完整配置代码
 ```java
 package cn.com.codingce.config;
 

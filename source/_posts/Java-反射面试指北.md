@@ -13,21 +13,21 @@ headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202107031
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210703173402.png
 ---
 
-# 1、除了使用new创建对象之外，还可以用什么方法创建对象？
+## 1、除了使用new创建对象之外，还可以用什么方法创建对象？
 使用Java反射可以创建对象!
 
 
-# 2、Java反射创建对象效率高还是通过new创建对象的效率高？
+## 2、Java反射创建对象效率高还是通过new创建对象的效率高？
 通过new创建对象的效率比较高。通过反射时，先找查找类资源，使用类加载器创建，过程比较繁琐， 所以效率较低
 
 
-# 3、java反射的作用
+## 3、java反射的作用
 反射机制是在`运行时`，`对于任意一个类`，`都能够知道这个类的所有属性和方法`；`对于任意个对象`，`都能够调用它的任意一个方法`。在java中，只要给定类的名字，就可以通过反射机制来获得类的所有信息。
 
 这种动态获取的信息以及动态调用对象的方法的功能称为Java语言的反射机制。
 
 
-# 4、哪里会用到反射机制？
+## 4、哪里会用到反射机制？
 
 jdbc就是典型的反射
 
@@ -38,7 +38,7 @@ Class.forName('com.mysql.jdbc.Driver.class');//加载MySQL的驱动类
 这就是反射。如hibernate，struts等框架使用反射实现的。
 
 
-# 5、反射的实现方式：
+## 5、反射的实现方式：
 第一步：获取Class对象，有4中方法： 
 
 1）Class.forName(“类的路径”)； 
@@ -50,7 +50,7 @@ Class.forName('com.mysql.jdbc.Driver.class');//加载MySQL的驱动类
 4）基本类型的包装类，可以调用包装类的Type属性来获得该包装类的Class对象
 
 
-# 6、实现Java反射的类：
+## 6、实现Java反射的类：
 1）Class：表示正在运行的Java应用程序中的类和接口 注意： 所有获取对象的信息都需要Class类来实现。 
 
 2）Field：提供有关类和接口的属性信息，以及对它的动态访问权限。 
@@ -60,7 +60,7 @@ Class.forName('com.mysql.jdbc.Driver.class');//加载MySQL的驱动类
 4）Method：提供类或接口中某个方法的信息
 
 
-# 7、反射机制的优缺点：
+## 7、反射机制的优缺点：
 **优点**：             
 1）能够运行时动态获取类的实例，提高灵活性； 
 
@@ -80,7 +80,7 @@ Class.forName('com.mysql.jdbc.Driver.class');//加载MySQL的驱动类
 
 
 
-# 8、Java 反射 API
+## 8、Java 反射 API
 反射 API 用来生成 JVM 中的类、接口或则对象的信息。
 
 1. Class 类：反射的核心类，可以获取类的属性，方法等信息。
@@ -92,7 +92,7 @@ Class.forName('com.mysql.jdbc.Driver.class');//加载MySQL的驱动类
 1. Constructor 类： Java.lang.reflec 包中的类，表示类的构造方法。
 
 
-# 9、反射使用步骤（获取 Class 对象、调用对象方法）
+## 9、反射使用步骤（获取 Class 对象、调用对象方法）
 1. 获取想要操作的类的 Class 对象，他是反射的核心，通过 Class 对象我们可以任意调用类的方法。
 
 2. 调用 Class 类中的方法，既就是反射的使用阶段。
@@ -100,7 +100,7 @@ Class.forName('com.mysql.jdbc.Driver.class');//加载MySQL的驱动类
 3. 使用反射 API 来操作这些信息。
 
 
-# 10、反射案例
+## 10、反射案例
 **英雄类**
 ```java
 @Date

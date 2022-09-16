@@ -8,7 +8,7 @@ categories:
 
 thumbnail: https://s1.ax1x.com/2020/07/28/aEZ67F.gif
 ---
-# 导入Jar包
+## 导入Jar包
 注 : spring 需要导入commons-logging进行日志记录 . 我们利用maven,他会自动下载对应的依赖项 .
 ```xml
 <dependency>
@@ -17,7 +17,7 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEZ67F.gif
    <version>5.1.10.RELEASE</version>
 </dependency>
 ```
-# 编写代码
+## 编写代码
 
 - 编写一个Hello实体类
 
@@ -90,7 +90,7 @@ public class MyTest {
 }
 ```
 
-# 思考
+## 思考
 - Hello 对象是谁创建的 ?  【hello 对象是由Spring创建的Hello 对象的属性是怎么设置的 ?  hello 对象的属性是由Spring容器设置的
 - 这个过程就叫控制反转 :
     - 控制 : 谁来控制对象的创建,传统应用程序的对象是由程序本身控制创建的,使用Spring后,对象是由Spring来创建的
@@ -99,7 +99,7 @@ public class MyTest {
 - IOC是一种编程思想，由主动的编程变成被动的接收
 - 可以通过newClassPathXmlApplicationContext去浏览一下底层源码
 
-# 修改案例一
+## 修改案例一
 在案例一中， 新增一个Spring配置文件beans.xml
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -155,8 +155,8 @@ public class MyTest {
 到了现在,我们彻底不用再程序中去改动了,要实现不同的操作,只需要在xml配置文件中进行修改,所谓的IoC,一句话搞定:对象由Spring 来创建,管理,装配!
 
 
-# IOC创建对象方式(构造器)
-## 通过无参构造方法来创建
+## IOC创建对象方式(构造器)
+### 通过无参构造方法来创建
 
 - User.java
 
@@ -217,7 +217,7 @@ public class User {
 
 结果可以发现，在调用toString方法之前，User对象已经通过无参构造初始化了!
 
-## 通过有参构造方法来创建
+### 通过有参构造方法来创建
 - 下标赋值
 
 ```xml
@@ -236,7 +236,7 @@ public class User {
     </bean>
 ```
 
-## 参数名来设置
+### 参数名来设置
 ```xml
     <!--第三种通过参数名来设置-->
     <bean id="user" class="cn.com.codingce.pojo.User">

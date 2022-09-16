@@ -7,7 +7,7 @@ categories:
 - Git
 thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 ---
-# 简单的代码提交流程
+## 简单的代码提交流程
 - git status 查看工作区代码相对于暂存区的差别
 - git add . 将当前目录下修改的所有代码从工作区添加到暂存区 . 代表当前目录
 - git commit -m ‘注释’ 将缓存区内容添加到本地仓库
@@ -15,7 +15,7 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 - git push origin master 将本地版本库推送到远程服务器，
 - origin是远程主机，master表示是远程服务器上的master分支和本地分支重名的简写，分支名是可以修改的
 
-# Git add
+## Git add
 git add [参数] <路径>　作用就是将我们需要提交的代码从工作区添加到暂存区，就是告诉git系统，我们要提交哪些文件，之后就可以使用git commit命令进行提交了。
  为了方便下面都用 . 来标识路径， . 表示当前目录，路径可以修改，下列操作的作用范围都在版本库之内。
 
@@ -28,7 +28,7 @@ git add [参数] <路径>　作用就是将我们需要提交的代码从工作�
 - git add -A .
 -A 表示将所有的已跟踪的文件的修改与删除和新增的未跟踪的文件都添加到暂存区。
 
-# Git commit
+## Git commit
 git commit 主要是将暂存区里的改动给提交到本地的版本库。每次使用git commit 命令我们都会在本地版本库生成一个40位的哈希值，这个哈希值也叫commit-id，
  commit-id 在版本回退的时候是非常有用的，它相当于一个快照,可以在未来的任何时候通过与git reset的组合命令回到这里.
 
@@ -40,7 +40,7 @@ message即是我们用来简要说明这次提交的语句。
 -a参数可以将所有已跟踪文件中的执行修改或删除操作的文件都提交到本地仓库，即使它们没有经过git add添加到暂存区，
 注意: 新加的文件（即没有被git系统管理的文件）是不能被提交到本地仓库的。
 
-# Git push
+## Git push
 在使用git commit命令将修改从暂存区提交到本地版本库后，只剩下最后一步将本地版本库的分支推送到远程服务器上对应的分支了，如果不清楚版本库的构成，可以查看我的另一篇，git 仓库的基本结构。
  git push的一般形式为 git push <远程主机名> <本地分支名> <远程分支名> ，例如 git push origin master：refs/for/master ，即是将本地的master分支推送到远程主机origin上的对应master分支， origin 是远程主机名。第一个master是本地分支名，第二个master是远程分支名。
 

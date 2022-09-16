@@ -9,19 +9,19 @@ categories:
 
 SpringBoot简介
 
-# 回顾什么是Spring
+## 回顾什么是Spring
 Spring是一个开源框架，2003 年兴起的一个轻量级的Java 开发框架，作者：Rod Johnson  。
 
 **Spring是为了解决企业级应用开发的复杂性而创建的，简化开发。**
 
-# Spring是如何简化Java开发的
+## Spring是如何简化Java开发的
 为了降低Java开发的复杂性，Spring采用了以下4种关键策略：
 - 基于POJO的轻量级和最小侵入性编程，所有东西都是bean；
 - 通过IOC，依赖注入（DI）和面向接口实现松耦合；
 - 基于切面（AOP）和惯例进行声明式编程；
 - 通过切面和模版减少样式代码，RedisTemplate，xxxTemplate；
 
-# 什么是SpringBoot
+## 什么是SpringBoot
 学过javaweb的同学就知道，开发一个web应用，从最初开始接触Servlet结合Tomcat, 跑出一个Hello Wolrld程序，是要经历特别多的步骤；后来就用了框架Struts，再后来是SpringMVC，到了现在的SpringBoot，过一两年又会有其他web框架出现；你们有经历过框架不断的演进，然后自己开发项目所有的技术也在不断的变化、改造吗？建议都可以去经历一遍；
 言归正传，什么是SpringBoot呢，就是一个javaweb的开发框架，和SpringMVC类似，对比其他javaweb框架的好处，官方说是简化开发，约定大于配置，  you can "just run"，能迅速的开发web应用，几行代码开发一个http接口。
 所有的技术框架的发展似乎都遵循了一条主线规律：从一个复杂应用场景 衍生 一种规范框架，人们只需要进行各种配置而不需要自己去实现它，这时候强大的配置功能成了优点；发展到一定程度之后，人们根据实际生产应用情况，选取其中实用功能和设计精华，重构出一些轻量级的框架；之后为了提高开发效率，嫌弃原先的各类配置过于麻烦，于是开始提倡“约定大于配置”，进而衍生出一些一站式的解决方案。
@@ -37,7 +37,7 @@ Spring Boot 出生名门，从一开始就站在一个比较高的起点，又�
 - 内嵌式容器简化Web项目
 - 没有冗余代码生成和XML配置的要求
 
-# 准备工作
+## 准备工作
 我们将学习如何快速的创建一个Spring Boot应用，并且实现一个简单的Http请求处理。通过这个例子对Spring Boot有一个初步的了解，并体验其结构简单、开发快速的特性。
 
 环境准备：
@@ -48,7 +48,7 @@ Spring Boot 出生名门，从一开始就站在一个比较高的起点，又�
 开发工具：
 - IDEA
 
-# 创建基础项目说明
+## 创建基础项目说明
 Spring官方提供了非常方便的工具让我们快速构建应用
 Spring Initializr：https://start.spring.io/
 
@@ -78,7 +78,7 @@ Spring Initializr：https://start.spring.io/
 - 一个 测试类
 - 一个 pom.xml
 
-# pom.xml 分析
+## pom.xml 分析
 打开pom.xml，看看Spring Boot项目的依赖：
 
 ```xml
@@ -124,7 +124,7 @@ Spring Initializr：https://start.spring.io/
 
 ```
 
-# 编写一个http接口
+## 编写一个http接口
 - 在主程序的同级目录下，新建一个controller包，一定要在同级目录下，否则识别不到
 - 在包中新建一个HelloController类
 
@@ -143,7 +143,7 @@ public class HelloController {
 
 - 编写完毕后，从主程序启动项目，浏览器发起请求，看页面返回；控制台输出了 Tomcat 访问的端口号！
 
-# 将项目打成jar包，点击 maven的 package
+## 将项目打成jar包，点击 maven的 package
 
 可以配置打包时 跳过项目运行测试用例
 ```xml

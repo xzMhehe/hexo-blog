@@ -5,7 +5,7 @@ tags: 操作
 categories: [操作]
 ---
 
-# 一、安装 Hyper-V
+## 一、安装 Hyper-V
 >目前有很多Win11系统的用户使用的是windows11家庭中文版，程序添加这就没有hyper-v，只有专业版才有。以下为你提供详细的教程，只要按照以下方法操作，就可以开启Hyper-V功能了！
 
 Windows11家庭中文版找不到hyper解决方法：
@@ -28,14 +28,14 @@ Dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /AL
 
 `注意重启完避免重启不彻底，建议手动再次重启下`
 
-# 二、初始化环境
+## 二、初始化环境
 已管理员身份打开Powershell,分别执行下面的命令
 ```bash
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
 
-# 三、更新wsl2
+## 三、更新wsl2
 下载安装 wsl2
 ```bash
 https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
@@ -45,7 +45,7 @@ https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
 wsl --set-default-version 2
 ```
 
-# 四、安装Docker
+## 四、安装Docker
 在[官网](https://www.docker.com/get-started/)下载，下一步执行即可
 修改Docker Engine配置，增加镜像仓库地址
 

@@ -10,7 +10,7 @@ categories:
 So much in life depends on our attitude.
 态度决定绝大多数的结果.
 
-## 题目描述
+### 题目描述
 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。
 
 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
@@ -39,10 +39,10 @@ So much in life depends on our attitude.
 - 只会存在一个有效答案
 
 
-## Java
+### Java
 
 
-### 暴力枚举
+#### 暴力枚举
 ```java
     public static int[] twoNumOne(int[] nums, int tearget) {
         int n = nums.length;
@@ -57,7 +57,7 @@ So much in life depends on our attitude.
     }
 ```
 
-### 查找表法
+#### 查找表法
 ```java
 package cn.com.codingce.mytest;
 
@@ -93,8 +93,8 @@ public class TwoSumTest {
 }
 ```
 
-## C语言
-### 暴力枚举
+### C语言
+#### 暴力枚举
 ```c
 int* twoNum(int* nums, int numsSize, int target, int returnSize) {
     for(int i = 0; i < numsSize; i++) {
@@ -111,7 +111,7 @@ int* twoNum(int* nums, int numsSize, int target, int returnSize) {
     return NULL;
 }
 ```
-### 查找表法
+#### 查找表法
 ```c
 struct hashTable {
     int key;

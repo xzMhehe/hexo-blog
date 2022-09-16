@@ -12,8 +12,8 @@ headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200933725.png
 description: Vue
 ---
-## :sun_with_face:Vue
-### :sun_with_face:MVVM思想
+### :sun_with_face:Vue
+#### :sun_with_face:MVVM思想
 
 - M：即Model，模型，包括数据和一些基本操作
 - V：即View，视图，页面渲染结果
@@ -29,7 +29,7 @@ description: Vue
 
 ![](https://image.codingce.com.cn/20210205205042.png)
 
-### :sun_with_face:Vue简介
+#### :sun_with_face:Vue简介
 Vue(读音/vjuː/，类似于view)是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue被设计为可以自底向上逐层应用。Vue的核心库只关注视图层，不仅易于上      
 手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue也完全能够为复杂的单页应用提供驱动。     
 
@@ -39,8 +39,8 @@ Vue(读音/vjuː/，类似于view)是一套用于构建用户界面的渐进式�
 Git地址：https://github.com/vuejs
 尤雨溪，Vue.js创作者，VueTechnology创始人，致力于Vue的研究开发。
 
-## :sun_with_face:入门案例
-### :sun_with_face:安装
+### :sun_with_face:入门案例
+#### :sun_with_face:安装
 官网文档提供了3中安装方式：
 
 1.直接script引入本地vue文件。需要通过官网下载vue文件。
@@ -49,7 +49,7 @@ Git地址：https://github.com/vuejs
 本课程就采用第三种方式
 
 
-### :sun_with_face:HelloWorld
+#### :sun_with_face:HelloWorld
 h2中要输出一句话：`xx是技术类公众号`。前面的`xx`是要渲染的数据。
 
 ```html
@@ -68,7 +68,7 @@ h2中要输出一句话：`xx是技术类公众号`。前面的`xx`是要渲染�
 ```
 
 
-### :sun_with_face:vue声明式渲染
+#### :sun_with_face:vue声明式渲染
 ```html
 <body>
     <div id="app">
@@ -96,7 +96,7 @@ h2中要输出一句话：`xx是技术类公众号`。前面的`xx`是要渲染�
 
 更神奇的在于，当你修改name属性时，页面会跟着变化：
 
-### :sun_with_face:双向绑定
+#### :sun_with_face:双向绑定
 
 ```html
 <body>
@@ -118,7 +118,7 @@ h2中要输出一句话：`xx是技术类公众号`。前面的`xx`是要渲染�
 
 **双向绑定:**
 效果：修改表单项，num会发生变化。修改num，表单项也会发生变化。为了实时观察到这个变化，将num输出到页面。
-### :sun_with_face:事件处理
+#### :sun_with_face:事件处理
 
 ```html
 <body>
@@ -160,9 +160,9 @@ h2中要输出一句话：`xx是技术类公众号`。前面的`xx`是要渲染�
 
 
 
-## :sun_with_face:概念
+### :sun_with_face:概念
 
-### :sun_with_face:创建Vue实例
+#### :sun_with_face:创建Vue实例
 每个Vue应用都是通过用Vue函数创建一个新的Vue实例开始的：
 
 ```js
@@ -178,7 +178,7 @@ let app = new Vue({
 
 等等
 
-### :sun_with_face:模板或元素
+#### :sun_with_face:模板或元素
 
 每个Vue实例都需要关联一段Html模板，Vue会基于此模板进行视图渲染。
 可以通过el属性来指定。
@@ -198,7 +198,7 @@ let vm = new Vue({
 这样，Vue就可以基于id为`app`的div元素作为模板进行渲染了。在这个div范围以外的部
 分是无法使用vue特性的。
 
-### :sun_with_face:数据
+#### :sun_with_face:数据
 
 当Vue实例被创建时，它会尝试获取在data中定义的所有属性，用于视图的渲染，并且监视data中的属性变化，当data发生改变，所有相关的视图都将重新渲染，这就是“响应式
 “系统。
@@ -224,7 +224,7 @@ let vm = new Vue({
 - input中输入的值，也会导致vm中的name发生改变
 
 
-### :sun_with_face:方法
+#### :sun_with_face:方法
 Vue实例中除了可以定义data属性，也可以定义方法，并且在Vue实例的作用范围内使用。
 Html：
 ```html
@@ -251,7 +251,7 @@ let vm = new Vue({
 });
 ```
 
-### :sun_with_face:指令
+#### :sun_with_face:指令
 什么是指令？
 
 - 指令(Directives)是带有`v-`前缀的特殊特性。
@@ -262,9 +262,9 @@ let vm = new Vue({
 
 
 
-### :sun_with_face:插值表达式
+#### :sun_with_face:插值表达式
 
-#### :sun_with_face:花括号
+##### :sun_with_face:花括号
 格式：{{表达式}}
 说明：
 
@@ -272,7 +272,7 @@ let vm = new Vue({
 - 表达式必须有返回结果。例如1+1，没有结果的表达式不允许使用，如：let a = 1 + 1;
 - 可以直接获取Vue实例中定义的数据或函数
 
-#### :sun_with_face:插值闪烁
+##### :sun_with_face:插值闪烁
 使用
 ```bash
 {{}}
@@ -286,7 +286,7 @@ let vm = new Vue({
 
 将网速调慢一些，然后刷新页面，试试看案例：
 
-### :sun_with_face:v-text和v-html
+#### :sun_with_face:v-text和v-html
 
 可以使用`v-text`和`v-html`指令来替代 
 ```bash
@@ -320,11 +320,11 @@ let vm = new Vue({
 
 并且`不会出现插值闪烁`，当没有数据时，`会显示空白或者默认数据`。
 
-### :sun_with_face:v-bind
+#### :sun_with_face:v-bind
 html属性不能使用双大括号形式绑定，使用v-bind指令给HTML标签属性绑定值；
 而且在将`v-bind`用于`class`和`style`时，Vue.js做了专门的增强。
 
-#### :sun_with_face:绑定class
+##### :sun_with_face:绑定class
 
 ```html
 <div class="static" v-bind:class="{active: isActive, 'text-danger': hasError}">
@@ -340,7 +340,7 @@ html属性不能使用双大括号形式绑定，使用v-bind指令给HTML标签
 </script>
 ```
 
-#### :sun_with_face:绑定style
+##### :sun_with_face:绑定style
 `v-bind:style`的对象语法十分直观，看着非常像CSS，但其实是一个JavaScript对象。style属性名可以用驼峰式(camelCase)或短横线分隔(kebab-case，这种方式记得用单引号括起来)来命名。      
 例如：font-size-->fontSize
 
@@ -359,7 +359,7 @@ html属性不能使用双大括号形式绑定，使用v-bind指令给HTML标签
 ```
 结果：<div style = "color: red; font-size: 30px;"></div>
 
-#### :sun_with_face:绑定其他任意属性
+##### :sun_with_face:绑定其他任意属性
 
 ```html
 <div id = "app" v-bind:style="{color: activeColor, fontSize: fontSize + 'px'}" v-bind:user = "userName"></div>
@@ -378,14 +378,14 @@ html属性不能使用双大括号形式绑定，使用v-bind指令给HTML标签
 效果：
 <div id = "app" user = "zhangsan" style = "color: red; font-size: 30px;"></div>
 
-### :sun_with_face:v-bind缩写
+#### :sun_with_face:v-bind缩写
 ```html
 <div id = "app" :style="{color: activeColor, fontSize: fontSize + 'px'}" :user = userName>
 </div>
 ```
 
 
-### :sun_with_face:v-model
+#### :sun_with_face:v-model
 
 刚才的v-text、v-html、v-bind可以看做是单向绑定，数据影响了视图渲染，但是反过来就不行。接下来的v-model是双向绑定，视图（View）和模型（Model）之间会互相影响。       
 既然是双向绑定，一定是在视图中可以修改数据，这样就限定了视图的元素类型。目前v-model的可使用元素有：
@@ -427,8 +427,8 @@ html属性不能使用双大括号形式绑定，使用v-bind指令给HTML标签
 - `select`单选对应字符串，多选对应也是数组
 
 
-### :sun_with_face:v-on
-#### :sun_with_face:基本用法
+#### :sun_with_face:v-on
+##### :sun_with_face:基本用法
 v-on指令用于给页面元素绑定事件。语法：v-on:事件名="js片段或函数名"
 示例：
 
@@ -460,7 +460,7 @@ v-on指令用于给页面元素绑定事件。语法：v-on:事件名="js片段�
 另外，事件绑定可以简写，例如`v-on:click='add'`可以简写为`@click='add'`
 
 
-#### :sun_with_face:事件修饰符
+##### :sun_with_face:事件修饰符
 在事件处理程序中调用`event.preventDefault()`或`event.stopPropagation()`是非常常见的需求。尽管可以在方法中轻松实现这点，但更好的方式是：方法只有纯粹的数据逻辑，而不是去处理DOM事件细节。
 为了解决这个问题，Vue.js为`v-on`提供了事件修饰符。修饰符是由点开头的指令后缀来表示的。
 
@@ -501,7 +501,7 @@ v-on指令用于给页面元素绑定事件。语法：v-on:事件名="js片段�
 
 效果：右键“点赞”，不会触发默认的浏览器右击事件；右键“取消”，会触发默认的浏览器右击事件）
 
-#### :sun_with_face:按键修饰符
+##### :sun_with_face:按键修饰符
 在监听键盘事件时，经常需要检查常见的键值。Vue允许为`v-on`在监听键盘事件时添加按键修饰符：
 
 ```html
@@ -529,7 +529,7 @@ v-on指令用于给页面元素绑定事件。语法：v-on:事件名="js片段�
 - `.right`
 
 
-#### :sun_with_face:组合按钮
+##### :sun_with_face:组合按钮
 可以用如下修饰符来实现仅在按下相应按键时才触发鼠标或键盘事件的监听器。
 
 - `ctrl`
@@ -545,10 +545,10 @@ v-on指令用于给页面元素绑定事件。语法：v-on:事件名="js片段�
 
 
 
-### :sun_with_face:v-for  
+#### :sun_with_face:v-for  
 遍历数据渲染页面是非常常用的需求，Vue中通过v-for指令来实现。
 
-#### :sun_with_face:遍历数组
+##### :sun_with_face:遍历数组
 语法：v-for = "item in items"
 
 - items：要遍历的数组，需要在vue的data中定义好。      
@@ -586,7 +586,7 @@ v-on指令用于给页面元素绑定事件。语法：v-on:事件名="js片段�
 
 
 
-#### :sun_with_face:数组角标
+##### :sun_with_face:数组角标
 在遍历的过程中，如果需要知道数组角标，可以指定第二个参数：        
 语法：v-for="(item, index) in items"    
 
@@ -605,7 +605,7 @@ v-on指令用于给页面元素绑定事件。语法：v-on:事件名="js片段�
 ```
 
 
-#### :sun_with_face:遍历对象
+##### :sun_with_face:遍历对象
 v-for除了可以迭代数组，也可以迭代对象。语法基本类似   
 语法：   
 v-for="valueinobject"   
@@ -651,7 +651,7 @@ v-for="(value,key,index)inobject"
 - 2.gender - 男
 - 3.age - 18
 
-#### :sun_with_face:Key
+##### :sun_with_face:Key
 用来标识每一个元素的唯一特征，这样Vue可以使用“就地复用”策略有效的提高渲染的效率。     
 示例：  
 
@@ -669,9 +669,9 @@ v-for="(value,key,index)inobject"
 
 
 
-### :sun_with_face:v-if和v-show
+#### :sun_with_face:v-if和v-show
 
-#### :sun_with_face:基本用法
+##### :sun_with_face:基本用法
 v-if，顾名思义，条件判断。当得到结果为true时，所在的元素才会被渲染。v-show，当得到结果为true时，所在的元素才会被显示。     
 语法：v-if="布尔表达式",v-show="布尔表达式",
 
@@ -696,7 +696,7 @@ v-if，顾名思义，条件判断。当得到结果为true时，所在的元素
 </script>
 ```
 
-#### :sun_with_face:与v-for结合
+##### :sun_with_face:与v-for结合
 当v-if和v-for出现在一起时，v-for优先级更高。也就是说，会先遍历，再判断条件。修改v-for中的案例，添加v-if：
 <ul>
     <li v-for = "(user, index) in users" v-if = "user.gender == '女'">
@@ -705,7 +705,7 @@ v-if，顾名思义，条件判断。当得到结果为true时，所在的元素
 </ul>
 
 
-#### :sun_with_face:v-else和v-else-if
+##### :sun_with_face:v-else和v-else-if
 v-else元素必须紧跟在带`v-if`或者`v-else-if`的元素的后面，否则它将不会被识别。
 
 ```html
@@ -737,10 +737,10 @@ v-else元素必须紧跟在带`v-if`或者`v-else-if`的元素的后面，否则
 ```
 
 
-## :sun_with_face:计算属性和侦听器
+### :sun_with_face:计算属性和侦听器
 
 
-### :sun_with_face:计算属性（computed）
+#### :sun_with_face:计算属性（computed）
 某些结果是基于之前数据实时计算出来的，可以利用计算属性。来完成
 
 ```html
@@ -774,7 +774,7 @@ v-else元素必须紧跟在带`v-if`或者`v-else-if`的元素的后面，否则
 效果：只要依赖的属性发生变化，就会重新计算这个属性
 
 
-### :sun_with_face:侦听（watch）
+#### :sun_with_face:侦听（watch）
 
 watch可以让监控一个值的变化。从而做出相应的反应。
 
@@ -817,7 +817,7 @@ watch可以让监控一个值的变化。从而做出相应的反应。
 </script>
 ```
 
-### :sun_with_face:过滤器（filters）
+#### :sun_with_face:过滤器（filters）
 
 过滤器不改变真正的`data`，而只是改变渲染的结果，并返回过滤后的版本。在很多不同的
 情况下，过滤器都是有用的，比如尽可能保持API响应的干净，并在前端处理数据的格式。
@@ -850,7 +850,7 @@ watch可以让监控一个值的变化。从而做出相应的反应。
 </script>
 ```
 
-#### :sun_with_face:局部过滤器
+##### :sun_with_face:局部过滤器
 册在当前vue实例中，只有当前实例能用
 
 ```html
@@ -875,7 +875,7 @@ watch可以让监控一个值的变化。从而做出相应的反应。
 <td>&#123;&#123;user.gender | myGenderFilter&#125;&#125;</td>
 
 
-#### :sun_with_face:全局过滤器
+##### :sun_with_face:全局过滤器
 ```js
 //在创建Vue实例之前全局定义过滤器：
 Vue.filter('capitalize', function(value) {
@@ -889,7 +889,7 @@ Vue.filter('capitalize', function(value) {
 过滤器常用来处理文本格式化的操作。过滤器可以用在两个地方：双花括号插值和v-bind表达式
 
 
-### :sun_with_face:组件化
+#### :sun_with_face:组件化
 在大型应用开发的时候，页面可以划分成很多部分。往往不同的页面，也会有相同的部分。       
 例如可能会有相同的头部导航。
 
@@ -902,7 +902,7 @@ Vue.filter('capitalize', function(value) {
 
 ![](https://cn.vuejs.org/images/components.png)
 
-#### :sun_with_face:全局组件
+##### :sun_with_face:全局组件
 通过Vue的component方法来定义一个全局组件。
 
 ```html
@@ -934,7 +934,7 @@ Vue.filter('capitalize', function(value) {
 - data必须是一个函数，不再是一个对象。
 
 
-#### :sun_with_face:组件的复用
+##### :sun_with_face:组件的复用
 
 定义好的组件，可以任意复用多次：
 
@@ -957,7 +957,7 @@ https://cn.vuejs.org/v2/guide/components.html#data-%E5%BF%85%E9%A1%BB%E6%98%AF%E
 
 
 
-#### :sun_with_face:局部组件
+##### :sun_with_face:局部组件
 一旦全局注册，就意味着即便以后你不再使用这个组件，它依然会随着Vue的加载而加载。因此，对于一些并不频繁使用的组件，会采用局部注册。
 
 先在外部定义一个对象，结构与创建组件时传递的第二个参数一致：
@@ -1000,14 +1000,14 @@ let app = new Vue({
 
 
 
-### :sun_with_face:生命周期钩子函数
+#### :sun_with_face:生命周期钩子函数
 
-#### :sun_with_face:生命周期
+##### :sun_with_face:生命周期
 每个Vue实例在被创建时都要经过一系列的初始化过程：创建实例，装载模板，渲染模板等等。Vue为生命周期中的每个状态都设置了钩子函数（监听函数）。每当Vue实例处于不同的生命周期时，对应的函数就会被触发调用。
 
 生命周期：你不需要立马弄明白所有的东西。
 
-#### :sun_with_face:钩子函数
+##### :sun_with_face:钩子函数
 
 - beforeCreated：在用Vue时都要进行实例化，因此，该函数就是在Vue实例化时调用，也可以将他理解为初始化函数比较方便一点，在Vue1.0时，这个函数的名字就是init。
 - created：在创建实例之后进行调用。
@@ -1082,7 +1082,7 @@ let app = new Vue({
 
 
 
-### :sun_with_face:vue模块化开发
+#### :sun_with_face:vue模块化开发
 
 - npminstallwebpack-g
 全局安装webpack
@@ -1095,9 +1095,9 @@ vueinitwebpackappname：vue脚手架使用webpack模板初始化一个appname项
 npmstart=npmrundev：启动项目        
 npmrunbuild：将项目打包    
 
-### :sun_with_face:模块化开发
+#### :sun_with_face:模块化开发
 
-#### :sun_with_face:项目结构
+##### :sun_with_face:项目结构
 ![](https://image.codingce.com.cn/20210209165304.png)
 
 运行流程
@@ -1112,7 +1112,7 @@ npmrunbuild：将项目打包
 
 
 
-#### :sun_with_face:Vue单文件组件
+##### :sun_with_face:Vue单文件组件
 
 Vue单文件组件模板有三个部分；
 ```html
@@ -1147,7 +1147,7 @@ Vue单文件组件模板有三个部分；
 
 
 
-### 导入element-ui快速开发
+#### 导入element-ui快速开发
 1、安装element-ui：npmielement-ui     
 2、在main.js中引入element-ui就可以全局使用了。
 ```bash         

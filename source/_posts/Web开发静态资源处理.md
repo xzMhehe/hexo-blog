@@ -12,8 +12,8 @@ thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/2021082
 description: SpringBoot
 ---
 
-# Web开发探究
-## 简介
+## Web开发探究
+### 简介
 **使用SpringBoot的步骤:**
 
 - 创建一个SpringBoot应用，选择需要的模块，SpringBoot就会默认将的需要的模块自动配置好
@@ -30,8 +30,8 @@ description: SpringBoot
 
 - 自动配置类，封装配置文件的内容：***Properties
 
-# 静态资源处理
-## 静态资源映射规则
+## 静态资源处理
+### 静态资源映射规则
 这个静态资源映射规则：
 SpringBoot中，SpringMVC的web配置都在 WebMvcAutoConfiguration 这个配置类里面；
 可以去看看 WebMvcAutoConfigurationAdapter 中有很多配置方法；
@@ -65,7 +65,7 @@ public void addResourceHandlers(ResourceHandlerRegistry registry) {
 ```
 读一下源代码：比如所有的 /webjars/** ， 都需要去 classpath:/META-INF/resources/webjars/ 找对应的资源；
 
-## 什么是webjars 呢？
+### 什么是webjars 呢？
 Webjars本质就是以jar包的方式引入的静态资源 ， 以前要导入一个静态资源文件，直接导入即可。
 使用SpringBoot需要使用Webjars，可以去搜索一下：
 网站：https://www.webjars.org 
@@ -83,7 +83,7 @@ Webjars本质就是以jar包的方式引入的静态资源 ， 以前要导入�
 访问：只要是静态资源，SpringBoot就会去对应的路径寻找资源，这里访问：http://localhost:8080/webjars/jquery/3.4.1/jquery.js
 ![mark](http://image.codingce.com.cn/blog/20200813/150128770.png)
 
-## 第二种静态资源映射规则
+### 第二种静态资源映射规则
 项目中要是使用自己的静态资源该怎么导入呢？看下一行代码；
 
 去找staticPathPattern发现第二种映射规则 ：/** , 访问当前的项目任意资源，它会去找 resourceProperties 这个类，可以点进去看一下分析：
@@ -115,7 +115,7 @@ ResourceProperties 可以设置和静态资源有关的参数；这里面指向�
 "classpath:/public/"
 ```
 
-## 自定义静态资源路径
+### 自定义静态资源路径
 也可以自己通过配置文件来指定一下，哪些文件夹是需要放静态资源文件的，在application.properties中配置；
 
 ```yaml
@@ -124,7 +124,7 @@ spring.resources.static-locations=classpath:/coding/,classpath:/kuang/
 
 一旦自己定义了静态文件夹的路径，原来的自动配置就都会失效了！
 
-# 首页处理
+## 首页处理
 就是的首页
 ```java
 @Bean
@@ -159,9 +159,9 @@ private Resource getIndexHtml(String location) {
 比如访问  http://localhost:8080/ ，就会找静态资源文件夹下的 index.html
 新建一个 index.html ，在上面的3个目录中任意一个；然后访问测试  http://localhost:8080/  看结果
 
-# Thymeleaf
+## Thymeleaf
 
-## 模板引擎
+### 模板引擎
 前端交给页面，是html页面。如果是以前开发，需要把他们转成jsp页面，jsp好处就是当查出一些数据转发到JSP页面以后，可以用jsp轻松实现数据的显示，及交互等。
 
 jsp支持非常强大的功能，包括能写Java代码，但是呢，现在的这种情况，SpringBoot这个项目首先是以jar的方式，不是war，像第二，用的还是嵌入式的Tomcat，所以呢，他现在默认是不支持jsp的。
@@ -176,7 +176,7 @@ SpringBoot推荐你可以来使用模板引擎：
 
 模板引擎的作用就是来写一个页面模板，比如有些值呢，是动态的，写一些表达式。而这些值，从哪来呢，就是在后台封装一些数据。然后把这个模板和这个数据交给模板引擎，模板引擎按照这个数据帮你把这表达式解析、填充到指定的位置，然后把这个数据最终生成一个想要的内容给写出去，这就是这个模板引擎，不管是jsp还是其他模板引擎，都是这个思想。只不过，就是说不同模板引擎之间，他们可能这个语法有点不一样。其他的就不介绍了，主要来介绍一下SpringBoot给推荐的Thymeleaf模板引擎，这模板引擎呢，是一个高级语言的模板引擎，他的这个语法更简单。而且，功能更强大。
 
-## 引入Thymeleaf
+### 引入Thymeleaf
 怎么引入呢，对于springboot来说，什么事情不都是一个start的事情嘛，去在项目中引入一下.三个网址：
 - Thymeleaf 官网：https://www.thymeleaf.org/
 
@@ -198,7 +198,7 @@ Maven会自动下载jar包，可以去看下下载的东西；
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200931612.png)
 
-## Thymeleaf分析
+### Thymeleaf分析
 首先得按照SpringBoot的自动配置原理看一下这个Thymeleaf的自动配置规则，在按照那个规则，进行使用。
 去找一下Thymeleaf的自动配置类：ThymeleafProperties
 
@@ -225,7 +225,7 @@ public class ThymeleafProperties {
 
 使用thymeleaf什么都不需要配置，只需要将他放在指定的文件夹下即可！
 
-## 测试
+### 测试
 编写一个IndexController
 
 ```java
@@ -267,7 +267,7 @@ public class IndexController {
 </html>
 ```
 
-## Thymeleaf 语法学习
+### Thymeleaf 语法学习
 要学习语法，还是参考官网文档最为准确，找到对应的版本看一下；
 
 Thymeleaf 官网：https://www.thymeleaf.org/ ， 简单看一下官网！去下载Thymeleaf的官方文档！

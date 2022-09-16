@@ -8,7 +8,7 @@ categories:
 ---
 
 
-## 什么是REST
+### 什么是REST
 REST是一种软件架构风格，或者说是一种规范，其强调HTTP应当以资源为中心，并且规范了URI的风格；规范了HTTP请求动作（GET/PUT/POST/DELETE/HEAD/OPTIONS）的使用，具有对应的语义。
 核心概念包括：
 
@@ -24,9 +24,9 @@ REST是一种软件架构风格，或者说是一种规范，其强调HTTP应当
 | POST | localhost:9200/索引名称/类型名称/_search | 查询所有数据 |
 
 
-## 基础测试
+### 基础测试
 
-### 创建一个索引
+#### 创建一个索引
 
 >PUT    /索引名/~类型名~/文档 id
 {
@@ -60,7 +60,7 @@ PUT /test1/type1/1
 }
 ```
 
-### 数据类型
+#### 数据类型
 ```bash
 （1）字符串类型： text, keyword
 （2）数字类型：long, integer, short, byte, double, float, half_float, scaled_float
@@ -71,7 +71,7 @@ PUT /test1/type1/1
 （7）Range: integer_range, float_range, long_range, double_range, date_range
 ```
 
-### 创建具体的索引规则
+#### 创建具体的索引规则
 ```json
 PUT /test2
 {
@@ -100,7 +100,7 @@ PUT /test2
 }
 ```
 
-### GET 获取具体信息
+#### GET 获取具体信息
 获取这个规则, 可以通过 GET 获取具体信息
 ```json
 GET test2
@@ -147,7 +147,7 @@ GET test2
 }
 ```
 
-### 查看默认的信息
+#### 查看默认的信息
 
 ```json
 PUT /test3/_doc/1
@@ -228,7 +228,7 @@ GET test3
 
 如果自己的文档没有指定, 那么es就会给我们默认配置字段类型
 
-### 其他命令
+#### 其他命令
 
 获取 es 当前的信息
 ```bash

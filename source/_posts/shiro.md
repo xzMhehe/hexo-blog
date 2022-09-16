@@ -9,10 +9,10 @@ categories:
 thumbnail: https://s1.ax1x.com/2020/08/20/dJw9De.md.jpg
 ---
 
-# 什么是shiro
+## 什么是shiro
 Apache Shiro是一个强大且易用的Java安全框架,执行身份验证、授权、密码和会话管理。使用Shiro的易于理解的API,您可以快速、轻松地获得任何应用程序,从最小的移动应用程序到最大的网络和企业应用程序。
 
-## 主要功能
+### 主要功能
 ![mark](http://image.codingce.com.cn/blog/20200818/150317377.png)
 三个核心组件：Subject, SecurityManager 和 Realms.
 - Subject：即“当前操作用户”。但是，在Shiro中，Subject这一概念并不仅仅指人，也可以是第三方进程、后台帐户（Daemon Account）或其他类似事物。它仅仅意味着“当前跟软件交互的东西”。Subject代表了当前用户的安全操作，SecurityManager则管理所有用户的安全操作。
@@ -25,7 +25,7 @@ Shiro内置了可以连接大量安全数据源（又名目录）的Realm，如L
 
 ![mark](http://image.codingce.com.cn/blog/20200818/150350014.png)
 
-## 使用步骤
+### 使用步骤
 - 首先去github下载shiro项目
 https://github.com/apache/shiro
 
@@ -41,16 +41,16 @@ log4j.appender.stdout=org.apache.log4j.ConsoleAppender
 log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
 log4j.appender.stdout.layout.ConversionPattern=%d %p [%c] - %m %n
 
-# General Apache libraries
+## General Apache libraries
 log4j.logger.org.apache=WARN
 
-# Spring
+## Spring
 log4j.logger.org.springframework=WARN
 
-# Default Shiro logging
+## Default Shiro logging
 log4j.logger.org.apache.shiro=INFO
 
-# Disable verbose logging
+## Disable verbose logging
 log4j.logger.org.apache.shiro.util.ThreadContext=WARN
 log4j.logger.org.apache.shiro.cache.ehcache.EhCache=WARN
 ```
@@ -58,31 +58,31 @@ log4j.logger.org.apache.shiro.cache.ehcache.EhCache=WARN
 shiro.ini
 ```yaml
 [users]
-# user 'root' with password 'secret' and the 'admin' role
+## user 'root' with password 'secret' and the 'admin' role
 root = secret, admin
-# user 'guest' with the password 'guest' and the 'guest' role
+## user 'guest' with the password 'guest' and the 'guest' role
 guest = guest, guest
-# user 'presidentskroob' with password '12345' ("That's the same combination on
-# my luggage!!!" ;)), and role 'president'
+## user 'presidentskroob' with password '12345' ("That's the same combination on
+## my luggage!!!" ;)), and role 'president'
 presidentskroob = 12345, president
-# user 'darkhelmet' with password 'ludicrousspeed' and roles 'darklord' and 'schwartz'
+## user 'darkhelmet' with password 'ludicrousspeed' and roles 'darklord' and 'schwartz'
 darkhelmet = ludicrousspeed, darklord, schwartz
-# user 'lonestarr' with password 'vespa' and roles 'goodguy' and 'schwartz'
+## user 'lonestarr' with password 'vespa' and roles 'goodguy' and 'schwartz'
 lonestarr = vespa, goodguy, schwartz
 
-# -----------------------------------------------------------------------------
-# Roles with assigned permissions
-# 
-# Each line conforms to the format defined in the
-# org.apache.shiro.realm.text.TextConfigurationRealm#setRoleDefinitions JavaDoc
-# -----------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
+## Roles with assigned permissions
+## 
+## Each line conforms to the format defined in the
+## org.apache.shiro.realm.text.TextConfigurationRealm#setRoleDefinitions JavaDoc
+## -----------------------------------------------------------------------------
 [roles]
-# 'admin' role has all permissions, indicated by the wildcard '*'
+## 'admin' role has all permissions, indicated by the wildcard '*'
 admin = *
-# The 'schwartz' role can do anything (*) with any lightsaber:
+## The 'schwartz' role can do anything (*) with any lightsaber:
 schwartz = lightsaber:*
-# The 'goodguy' role is allowed to 'drive' (action) the winnebago (type) with
-# license plate 'eagle5' (instance specific id)
+## The 'goodguy' role is allowed to 'drive' (action) the winnebago (type) with
+## license plate 'eagle5' (instance specific id)
 goodguy = winnebago:drive:eagle5
 ```
 
@@ -200,9 +200,9 @@ public class Quickstart {
 
 
 
-# SpringBoot整合Shiro
-## 认证
-### 导包
+## SpringBoot整合Shiro
+### 认证
+#### 导包
 ```xml
 <dependencies>
         <!--shiro
@@ -243,7 +243,7 @@ public class Quickstart {
     </dependencies>
 ```
 
-### 编写shiro配置类ShiroConfig
+#### 编写shiro配置类ShiroConfig
 ```java
 package cn.com.codingce.config;
 
@@ -304,7 +304,7 @@ public class ShiroConfig {
 }
 ```
 
-### Realm
+#### Realm
 ```java
 package cn.com.codingce.config;
 
@@ -347,7 +347,7 @@ public class UserRealm extends AuthorizingRealm {
 }
 ```
 
-### 前端页面
+#### 前端页面
 login.html
 ```html
 <!DOCTYPE html>
@@ -370,7 +370,7 @@ login.html
 </html>
 ```
 
-### index.html
+#### index.html
 ```html
 <!DOCTYPE html>
 <html lang="en"
@@ -389,7 +389,7 @@ login.html
 </html>
 ```
 
-### MyController
+#### MyController
 ```java
 package cn.com.codingce.controller;
 
@@ -455,8 +455,8 @@ public class MyController {
 环境搭建以及简单的认证就完成了
 
 
-## 授权
-### 修改ShiroConfig
+### 授权
+#### 修改ShiroConfig
 ```java
 @Bean
     public ShiroFilterFactoryBean getShiroFilterFactoryBean(@Qualifier("securityManager") DefaultWebSecurityManager webSecurityManager) {
@@ -494,7 +494,7 @@ public class MyController {
     }
 ```
 
-### UserRealm
+#### UserRealm
 ```java
 //自定义的Realm
 public class UserRealm extends AuthorizingRealm {
