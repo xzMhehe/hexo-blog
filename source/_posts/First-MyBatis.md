@@ -8,12 +8,12 @@ categories:
 thumbnail: https://s1.ax1x.com/2020/07/17/UsFtWd.jpg
 ---
 
- ##  第一个MyBatis程序
+ ###  第一个MyBatis程序
  思路: 搭建环境-->导入MyBatis-->编写代码-->测试
- ### 搭建环境
+ #### 搭建环境
  搭建数据库
 
- ### 新建项目
+ #### 新建项目
  - 新建一个普通的maven项目
  - 删除src目录
  - 导入maven依赖
@@ -42,7 +42,7 @@ thumbnail: https://s1.ax1x.com/2020/07/17/UsFtWd.jpg
     </dependencies>
  ```
 
-### 创建一个模块
+#### 创建一个模块
 
 - 编写mybatis的核心配置文件
 
@@ -125,7 +125,7 @@ public interface UserDao {
 
 -->
 ```
-### 测试
+#### 测试
 >org.apache.ibatis.binding.BindingException: Type interface cn.com.codingce.dao.UserDao is not known to the MapperRegistry.
 
 这个错会经常遇到
@@ -163,10 +163,10 @@ public interface UserDao {
 - 返回类型不对
 - Maven导出资源问题
 
-### CRUE
-#### namespace
+#### CRUE
+##### namespace
 namespace中的包名要和Dao/mapper接口包名一致
-#### select
+##### select
 选择,查询语句:
 - id: 就是对应的namespace中的方法名
 
@@ -269,7 +269,7 @@ namespace中的包名要和Dao/mapper接口包名一致
 
 **注意点:增删改需要提交事务**
 
-### 分析错误
+#### 分析错误
 - 标签不要匹配错误
 - resource绑定mapper, 需要使用路径
 - 程序配置文件必须符合规范
@@ -277,7 +277,7 @@ namespace中的包名要和Dao/mapper接口包名一致
 - 输出的xml文件存在中文乱码问题
 - maven资源导出问题
 
-### 万能的Map
+#### 万能的Map
 ```java
     User getUserByIdTwo(Map<String, Object> map);
 
@@ -309,7 +309,7 @@ namespace中的包名要和Dao/mapper接口包名一致
 只有一个基本类型参数的情况下, 可以直接在sql中取到   parameterType="int" 可以不写
 多个参数用Map, 或者注解
 
-### 模糊查询
+#### 模糊查询
 - Java代码执行的时候, 传递通配符%%
 
 >List<User> userList = userMapper.getUserListLike("%掌%");
@@ -318,8 +318,8 @@ namespace中的包名要和Dao/mapper接口包名一致
 
 >select * from mybatis.user where name like "%"#{name}"%"
 
-### 配置解析
-#### 核心配置文件
+#### 配置解析
+##### 核心配置文件
 
 - mybatis-config.xml(官方建议使用这个名字)
 
@@ -341,13 +341,13 @@ databaseIdProvider（数据库厂商标识）
 mappers（映射器）
 ```
 
-#### 环境配置(environments)
+##### 环境配置(environments)
 MyBatis 可以配置成适应多种环境
 **不过要记住：尽管可以配置多个环境,但每个 SqlSessionFactory 实例只能选择一种环境.**
 学会使用配置多套运行环境
 **Mybatis默认的事务管理器就是JDBC, 连接池POOLED**
 
-#### 属性(properties)
+##### 属性(properties)
 我们可以通过properties属性来实现引用配置文件
 这些属性可以在外部进行配置,并可以进行动态替换.你既可以在典型的 Java 属性文件中配置这些属性,也可以在 properties 元素的子元素中设置.(db.properties)
 
@@ -368,7 +368,7 @@ MyBatis 可以配置成适应多种环境
     password=123456
 ```
 
-#### 类型别名（typeAliases）
+##### 类型别名（typeAliases）
 - 类型别名可为 Java 类型设置一个缩写名字. 它仅用于 XML 配置,意在降低冗余的全限定类名书写.
 
 ```xml
@@ -403,7 +403,7 @@ public class Author {
 }
 ```
 
-#### 设置
+##### 设置
 
 这是Mybatis中极为重要的调整设置, 他们会改变Mybatis的运行行为
 
@@ -411,12 +411,12 @@ public class Author {
 lazyLoadingEnabled  	延迟加载的全局开关.当开启时,所有关联对象都会延迟加载. 特定关联关系中可通过设置 fetchType 属性来覆盖该项的开关状态.  true | false    true
 logImpl 指定 MyBatis 所用日志的具体实现,未指定时将自动查找 SLF4J | LOG4J | LOG4J2 | JDK_LOGGING | COMMONS_LOGGING | STDOUT_LOGGING | NO_LOGGING    未设置
 
-#### 其他配置
+##### 其他配置
 - typeHandlers（类型处理器）
 - objectFactory（对象工厂）
 - plugins（插件）
 
-#### 映射器（mappers）
+##### 映射器（mappers）
 既然 MyBatis 的行为已经由上述元素配置完了,我们现在就要来定义 SQL 映射语句了. 但首先,我们需要告诉 MyBatis 到哪里去找到这些语句. 在自动查找资源方面,Java 并没有提供一个很好的解决方案,所以最好的办法是直接告诉 MyBatis 到哪里去找映射文件. 你可以使用相对于类路径的资源引用,或完全限定资源定位符（包括 file:/// 形式的 URL）,或类名和包名等.
 
 ```xml
@@ -447,15 +447,15 @@ logImpl 指定 MyBatis 所用日志的具体实现,未指定时将自动查找 S
 </mappers>
 ```
 
-#### 生命周期和作用域
+##### 生命周期和作用域
 生命周期和作用域是至关重要, 因为错误的使用会导致严重的**并发问题**.
-##### SqlSessionFactoryBuilder
+###### SqlSessionFactoryBuilder
 - 一旦创建了 SqlSessionFactory，就不再需要它了
 - 局部变量
-##### SqlSessionFactory
+###### SqlSessionFactory
 - 说白了可以想象为: 数据库连接池
 - 一旦被创建就应该在应用的运行期间一直存在，**没有任何理由丢弃它或重新创建另一个实例**(多次重建 SqlSessionFactory 被视为一种代码“坏习惯”)
-##### SqlSession
+###### SqlSession
 - 连接到连接池的一个请求
 - SqlSession 的实例不是线程安全的，因此是不能被共享的，所以它的最佳的作用域是请求或方法作用域
 - 用完之后赶紧关闭, 否则资源占用

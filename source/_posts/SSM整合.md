@@ -7,9 +7,9 @@ categories:
 - SpringMVC
 ---
 
-# 整合SSM
+## 整合SSM
 
-# 环境要求
+## 环境要求
 环境：
 - IDEA
 - MySQL 5.7.19
@@ -19,7 +19,7 @@ categories:
 要求：
 需要熟练掌握MySQL数据库，Spring，JavaWeb及MyBatis知识，简单的前端知识
 
-# 数据库环境
+## 数据库环境
 创建一个存放书籍数据的数据库表
 
 ```sql
@@ -43,10 +43,10 @@ INSERT  INTO `books`(`bookID`,`bookName`,`bookCounts`,`detail`)VALUES
 (3,'Linux',5,'从进门到进牢');
 ```
 
-# 基本环境搭建
+## 基本环境搭建
 
-## 新建一Maven项目！ssmbuild ， 添加web的支持
-## 导入相关的pom依赖！
+### 新建一Maven项目！ssmbuild ， 添加web的支持
+### 导入相关的pom依赖！
 
 ```xml
 <dependencies>
@@ -112,7 +112,7 @@ INSERT  INTO `books`(`bookID`,`bookName`,`bookCounts`,`detail`)VALUES
 </dependencies>
 ```
 
-## Maven资源过滤设置
+### Maven资源过滤设置
 
 ```xml
 <build>
@@ -137,7 +137,7 @@ INSERT  INTO `books`(`bookID`,`bookName`,`bookCounts`,`detail`)VALUES
 </build>
 ```
 
-# 建立基本结构和配置框架！
+## 建立基本结构和配置框架！
 - cn.com.codingce.pojo
 
 - cn.com.codingce.dao
@@ -170,8 +170,8 @@ INSERT  INTO `books`(`bookID`,`bookName`,`bookCounts`,`detail`)VALUES
 </beans>
 ```
 
-# Mybatis层编写
-## 数据库配置文件 database.properties
+## Mybatis层编写
+### 数据库配置文件 database.properties
 
 ```yml
 jdbc.driver=com.mysql.cj.jdbc.Driver
@@ -180,7 +180,7 @@ jdbc.username=root
 jdbc.password=123456
 ```
 
-## 编写MyBatis的核心配置文件
+### 编写MyBatis的核心配置文件
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -197,7 +197,7 @@ jdbc.password=123456
 </configuration>
 ```
 
-## 编写数据库对应的实体类
+### 编写数据库对应的实体类
 
 ```java
 package cn.com.codingce.pojo;
@@ -263,7 +263,7 @@ public class Books {
 
 ```
 
-## 编写Dao层的 Mapper接口！
+### 编写Dao层的 Mapper接口！
 
 ```java
 package cn.com.codingce.dao;
@@ -291,7 +291,7 @@ public interface BookMapper {
 }
 ```
 
-## 编写接口对应的 Mapper.xml 文件。需要导入MyBatis的包；
+### 编写接口对应的 Mapper.xml 文件。需要导入MyBatis的包；
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -333,7 +333,7 @@ public interface BookMapper {
 </mapper>
 ```
 
-## 编写Service层的接口和实现类
+### 编写Service层的接口和实现类
 
 - 接口：
 
@@ -402,10 +402,10 @@ public class BookServiceImpl implements BookService {
 
 **OK，到此，底层需求操作编写完毕！**
 
-# Spring层
+## Spring层
 
-## 配置Spring整合MyBatis，我们这里数据源使用c3p0连接池；
-## 我们去编写Spring整合Mybatis的相关的配置文件；spring-dao.xml
+### 配置Spring整合MyBatis，我们这里数据源使用c3p0连接池；
+### 我们去编写Spring整合Mybatis的相关的配置文件；spring-dao.xml
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221002192.png)
 
@@ -466,7 +466,7 @@ public class BookServiceImpl implements BookService {
 </beans>
 ```
 
-## Spring整合service层
+### Spring整合service层
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -497,8 +497,8 @@ public class BookServiceImpl implements BookService {
 
 Spring层搞定！再次理解一下，Spring就是一个大杂烩，一个容器！对吧！
 
-# SpringMVC层
-## web.xml
+## SpringMVC层
+### web.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -547,7 +547,7 @@ Spring层搞定！再次理解一下，Spring就是一个大杂烩，一个容�
 </web-app>
 ```
 
-## spring-mvc.xml
+### spring-mvc.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -581,7 +581,7 @@ Spring层搞定！再次理解一下，Spring就是一个大杂烩，一个容�
 </beans>
 ```
 
-## Spring配置整合文件，applicationContext.xml
+### Spring配置整合文件，applicationContext.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -599,8 +599,8 @@ Spring层搞定！再次理解一下，Spring就是一个大杂烩，一个容�
 
 配置文件，暂时结束！
 
-# Controller 和 视图层编写
-## BookController 类编写 ， 方法一：查询全部书籍
+## Controller 和 视图层编写
+### BookController 类编写 ， 方法一：查询全部书籍
 
 ```java
 package cn.com.codingce.controller;
@@ -637,7 +637,7 @@ public class BookController {
 
 ```
 
-## 编写首页 index.jsp
+### 编写首页 index.jsp
 
 ```java
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -671,7 +671,7 @@ public class BookController {
 </html>
 ```
 
-## 书籍列表页面 allbook.jsp
+### 书籍列表页面 allbook.jsp
 
 ```java
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -736,7 +736,7 @@ public class BookController {
 </div>
 ```
 
-## BookController 类编写 ， 方法二：添加书籍
+### BookController 类编写 ， 方法二：添加书籍
 
 ```java
     @RequestMapping("/toAddBook")
@@ -752,7 +752,7 @@ public class BookController {
     }
 ```
 
-## 添加书籍页面：addBook.jsp
+### 添加书籍页面：addBook.jsp
 
 ```html
 <%--
@@ -795,7 +795,7 @@ public class BookController {
 
 ```
 
-## BookController 类编写 ， 方法三：修改书籍
+### BookController 类编写 ， 方法三：修改书籍
 
 ```java
    @RequestMapping("/toUpdateBook")
@@ -816,7 +816,7 @@ public class BookController {
     }
 ```
 
-## 修改书籍页面  updateBook.jsp
+### 修改书籍页面  updateBook.jsp
 
 ```html
 <%--
@@ -860,7 +860,7 @@ public class BookController {
 
 ```
 
-## BookController 类编写 ， 方法四：删除书籍
+### BookController 类编写 ， 方法四：删除书籍
 
 ```java
 @RequestMapping("/del/{bookId}")
@@ -871,7 +871,7 @@ public String deleteBook(@PathVariable("bookId") int id) {
 ```
 
 
-## 实现查询
+### 实现查询
 ```java
     //查询书籍
     @RequestMapping("/queryBook")
@@ -888,7 +888,7 @@ public String deleteBook(@PathVariable("bookId") int id) {
 
 ```
 
-## 实现查询页面
+### 实现查询页面
 
 ```html
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -966,11 +966,11 @@ public String deleteBook(@PathVariable("bookId") int id) {
 
 
 
-## 配置Tomcat，进行运行！
+### 配置Tomcat，进行运行！
 
 到目前为止，这个SSM项目整合已经完全的OK了，可以直接运行进行测试！这个练习十分的重要，需要保证，不看任何东西，自己也可以完整的实现出来！
 
-# 项目结构图 
+## 项目结构图 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221003507.png)
 
 

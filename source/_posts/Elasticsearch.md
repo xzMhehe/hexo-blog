@@ -12,11 +12,11 @@ thumbnail: https://s1.ax1x.com/2020/07/18/U2Mxvq.gif
 description: Elasticsearch
 ---
 
-## 聊聊Doug Cutting
+### 聊聊Doug Cutting
 Doug Cutting，Hadoop语言和Lucene工具包的创始人
 
 
-###  个人经历
+####  个人经历
 1985 年，Cutting 毕业于美国斯坦福大学。在大学时代的头两年，Cutting 学习了诸如物理、地理等常规课程，所以说他并不是一开始就决心投身 IT 行业的，因为学费的压力，Cutting 开始意识到，自己必须学习一些更加实用、有趣的技能。这样，一方面可以帮助自己还清贷款，另一方面，也是为自己未来的生活做打算。因为斯坦福大学座落在 IT 行业的“圣地”硅谷，所以学习软件对年轻人来说是再自然不过的事情了。
 
 Cutting 的第一份工作是在 Xerox 做实习生，Xerox 当时的激光扫描仪上运行着三个不同的操作系统，其中的一个操作系统还没有屏幕保护程序。因此，Cutting 就开始为这套系统开发屏幕保护程序。由于这套程序是基于系统底层开发的，所以其他同事可以给这个程序添加不同的主题。这份工作给了Cutting 一定的满足感，也是他最早的“平台”级的作品。
@@ -37,10 +37,10 @@ Cutting 的第一份工作是在 Xerox 做实习生，Xerox 当时的激光扫�
 就是这样，一个原本不打算成就it事业的人在误打误撞之后凭借自己的天赋成就了自己的一片天地。
 
 
-## Lucence 和 ElasticSearch 关系
+### Lucence 和 ElasticSearch 关系
 ElasticSearch 是基于 Lucence 做了一些封装和加强
 
-## ElasticSearch 概述
+### ElasticSearch 概述
 
 Elasticsearch 是一个分布式的开源搜索和分析引擎，适用于所有类型的数据，包括文本、数字、地理空间、结构化和非结构化数据。
 
@@ -61,7 +61,7 @@ Elasticsearch 是一个分布式的 RESTful 风格的搜索和数据分析引擎
 
 由于Elasticsearch的功能强大和使用简单，维基百科、卫报、Stack Overflow、GitHub等都纷纷采用它来做搜索。现在，Elasticsearch已成为全文搜索领域的主流软件之一。
 
-## 职位
+### 职位
 
 职位描述   
 1、计算机相关专业毕业，本科学历，5年以上开发经验；

@@ -12,7 +12,7 @@ go modules 是 golang 1.11 新加的特性。现在1.12 已经发布了，是时
 
 <!-- more -->
 
-# go modules
+## go modules
 
 go modules 是 golang 1.11 新加的特性。现在1.12 已经发布了，是时候用起来了。Modules官方定义为：
 

@@ -7,7 +7,7 @@ categories:
 - Elasticsearch
 ---
 
-## ES安装
+### ES安装
 环境： jdk1.8 +
 
 >下载：https://www.elastic.co/cn/downloads/elasticsearch
@@ -17,7 +17,7 @@ categories:
 
 
 
-## 文件夹讲解
+### 文件夹讲解
 ```bsah
 bin     启动文件
 config  配置文件
@@ -29,7 +29,7 @@ modules     功能模块
 plgins      插件
 ```
 
-## 启动
+### 启动
 bin 目录下  elasticsearch.bat
 
 ```bash
@@ -152,7 +152,7 @@ s=true, -XX:-OmitStackTraceInFastThrow, -Dio.netty.noUnsafe=true, -Dio.netty.noK
 
 访问 `http://localhost:9200/`
 
-## 安装可视化界面 es head 插件
+### 安装可视化界面 es head 插件
 - 下载地址： https://github.com/mobz/elasticsearch-head/tree/master
 
 - 启动
@@ -180,9 +180,9 @@ http.cors.allow-origin: "*"
 
 
 
-## Kibana 的安装
+### Kibana 的安装
 
-### 了解ELK
+#### 了解ELK
 ELK是三个开源软件的缩写，分别表示：Elasticsearch , Logstash, Kibana , 它们都是开源软件。新增了一个FileBeat，它是一个轻量级的日志收集处理工具(Agent)，Filebeat占用资源少，适合于在各个服务器上搜集日志后传输给Logstash，官方也推荐此工具。
 
 Elasticsearch是个开源分布式搜索引擎，提供搜集、分析、存储数据三大功能。它的特点有：分布式，零配置，自动发现，索引自动分片，索引副本机制，restful风格接口，多数据源，自动搜索负载等。
@@ -192,7 +192,7 @@ Logstash 主要是用来日志的搜集、分析、过滤日志的工具，支�
 
 ![](https://image.codingce.com.cn/elk1.png)
 
-### 启动
+#### 启动
 bin目录下kibana.bat
 ```bash
   log   [09:42:43.291] [info][plugins-service] Plugin "visTypeXy" is disabled.
@@ -227,7 +227,7 @@ bin目录下kibana.bat
 ```
 >http://localhost:5601/
 
-### 需要的可以汉化
+#### 需要的可以汉化
 D:\develop\kibana-7.10.1-windows-x86_64\config\kibana.yml
 ```bash
 i18n.locale: "zh-CN"

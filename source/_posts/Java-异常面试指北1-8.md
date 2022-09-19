@@ -13,20 +13,20 @@ headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202107020
 
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210702094944.jpg
 ---
-# 1、Java中异常分为哪两种？
+## 1、Java中异常分为哪两种？
 `编译时异常` 、`运行时异常`
 
 
-# 2、异常的处理机制有几种？
+## 2、异常的处理机制有几种？
 `异常捕捉`：try…catch…finally
 
 `异常抛出`：throws
 
 
-# 3、如何自定义一个异常
+## 3、如何自定义一个异常
 继承一个异常类，通常是 `RumtimeException` 或者 `Exception`
 
-# 4、try catch finally，try里有return，finally还执行么？
+## 4、try catch finally，try里有return，finally还执行么？
 
 `执行`，并且 finally的执行`早于`try里面的return 
 
@@ -40,10 +40,10 @@ thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/2021070
 4、finally中最好不要包含return，否则程序会提前退出，返回值不是try或catch中保存的返回值。
 
 
-# 5、 Excption与Error包结构
+## 5、 Excption与Error包结构
 Java可抛出(Throwable)的结构分为`三种类型`：`被检查的异常(CheckedException)`，`运行时异常 (RuntimeException)`，`错误(Error)`。
 
-## 1、运行时异常
+### 1、运行时异常
 
 `定义`: RuntimeException 及其 子类 都 被称为运行时异常。 
 
@@ -68,7 +68,7 @@ Java可抛出(Throwable)的结构分为`三种类型`：`被检查的异常(Chec
 - BufferOverflowException（缓存溢出异常）
 
 
-## 2、被检查异常
+### 2、被检查异常
 `定义`: Exception 类本身，以及 Exception 的 子类中 除了"运行时异常"之外 的其它子类都属于被检查异常。 
 
 `特点`: Java编译器会检查它。此类异常，要么通过throws进行声明抛出，要么通过try-catch进行捕获处 理，否则不能通过编译。
@@ -78,12 +78,12 @@ Java可抛出(Throwable)的结构分为`三种类型`：`被检查的异常(Chec
 如：IOException FileNotFoundException SQLException 被检查的异常适用于那些不是因程序引起的错误情况，比如：读取文件时文件不存在引发的 FileNotFoundException 。然而，不被检查的异常通常都是由于糟糕的编程引起的，比如：在对象引用 时没有确保对象非空而引起的 NullPointerException 。
 
 
-## 3、错误
+### 3、错误
 `定义` : Error 类及其 子类。 
 
 `特点`: 和运行时异常一样，编译器也不会对错误进行检查。当资源不足、约束失败、或是其它程序无法 继续运行的条件发生时，就产生错误。程序本身无法修复这些错误的。例如，VirtualMachineError就 属于错误。出现这种错误会导致程序终止运行。OutOfMemoryError、ThreadDeath。 Java虚拟机规范规定JVM的内存分为了好几块，比如堆，栈，程序计数器，方法区等
 
-# 6、Thow与thorws区别
+## 6、Thow与thorws区别
 位置不同
 1. throws 用在函数上，后面跟的是异常类，可以跟多个；而 throw 用在函数内，后面跟的 是异常对象。 
 
@@ -96,9 +96,9 @@ Java可抛出(Throwable)的结构分为`三种类型`：`被检查的异常(Chec
 3. 两者都是消极处理异常的方式，只是抛出或者可能抛出异常，但是不会由函数去处理异 常，真正的处理异常由函数的上层调用处理。
 
 
-# 7、Error与Exception区别？
+## 7、Error与Exception区别？
 Error和Exception都是java错误处理机制的一部分，都继承了 `Throwable` 类。 Exception表示的异常，异常可以通过程序来捕捉，或者优化程序来避免。 Error表示的是`系统错误`，不能通过程序来进行错误处理。
 
 
-# 8、error和exception有什么区别
+## 8、error和exception有什么区别
 `error` 表示恢复不是不可能但很困难的情况下的一种`严重问题`。 比如说内存溢出。 `不可能指望程序能处理这样的情况`； exception `表示一种设计或实现问题`。也就是说，它表示如果程序运行正常，从不会发生的情况

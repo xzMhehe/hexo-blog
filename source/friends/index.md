@@ -25,7 +25,7 @@ menu_id: friends
     </a>
 </div>
 
-### My
+## 我的站点
 
 <div class="friends">
     <a class="brick mdui-ripple mdui-ripple-white" href="http://r.codingce.com.cn/">
@@ -65,7 +65,7 @@ menu_id: friends
     </a>
 </div>
 
-### 特殊链接
+## 特殊链接
 
 <div class="friends">
     <!-- <a class="brick mdui-ripple mdui-ripple-white" href="https://www.bandbbs.cn/">
@@ -91,7 +91,7 @@ menu_id: friends
     </a> -->
 </div>
 
-### 失效友链
+## 失效友链
 
 <details class="mdui-panel-item">
 <summary class="mdui-panel-item-header" style="outline:none">
@@ -151,7 +151,7 @@ menu_id: friends
 @media(max-width:450px){.friends .brick{width:100%;}.friends .brick .container{margin-left:0;width:100%;}.motto{width: 100% !important;}}.motto.long{width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.mdui-panel-item[open] .mdui-panel-item-arrow{transform:rotate(180deg);}.mdui-panel-item-body {height:auto!important;}
 </style>
 
-### 本站模板
+## 本站模板
 
 ```CWorld
 名称：xzMhehe
@@ -160,13 +160,13 @@ menu_id: friends
 简介：The depth of thinking determines your altitude.
 ```
 
-### 申请说明
+## 申请说明
 
 - 不违反国家法律。
 - 请确保你的站点活着。
 - 在你的友链上添加本站。
 
-### 格式模板
+## 格式模板
 
 欢迎评论区留链接。
 

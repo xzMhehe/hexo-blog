@@ -7,11 +7,11 @@ categories:
 - Redis
 ---
 
-## Jedis
+### Jedis
 使用Java来操作Redis
 >什么是Jedis 是Redis官方推荐的Java操作Redis中间件, 如果你要使用Java操作Redis, 那么就该对jedis熟悉
 
-## 测试
+### 测试
 - 导入对应的依赖
 ```xml
     <!-- 导入jedisd的包 -->
@@ -46,14 +46,14 @@ categories:
 输出
 PONG
 
-## 常用API
+### 常用API
 - String
 - List
 - Set
 - Hash
 - Zset
 
-### Redis-key
+#### Redis-key
 ```java
     @Test
     void TestKey() {
@@ -109,7 +109,7 @@ PONG
 删除所有数据库中的所有的key: OK
 ```
 
-### String(字符串)
+#### String(字符串)
 ```java
     @Test
     void TestString() {
@@ -202,7 +202,7 @@ key2GetSet
 获得key2的值字符串: y2G
 ```
 
-### List(列表)
+#### List(列表)
 ```java
     @Test
     void TestList() {
@@ -284,7 +284,7 @@ sortedList排序后：[9, 7, 5, 4, 2, 6, 3]
 
 ```
 
-### Set(集合)
+#### Set(集合)
 ```java
     @Test
     void TestSet() {
@@ -370,7 +370,7 @@ eleSet4中的元素: [e0, e5, e4, e3]
 
 ```
 
-### Hash(哈希)
+#### Hash(哈希)
 ```java
     @Test
     void TestHash() {

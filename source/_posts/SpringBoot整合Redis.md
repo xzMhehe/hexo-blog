@@ -8,11 +8,11 @@ categories:
 ---
 
 
-## SpringBoot整合Redis
+### SpringBoot整合Redis
 SpringBoot 操作数据:spring-data jpa  jdbc mongodb  redis
 SpringData 也是和 SpringBoot 齐名的项目
 
-## 源码分析
+### 源码分析
 ```java
     @Bean
     @ConditionalOnMissingBean(
@@ -35,7 +35,7 @@ SpringData 也是和 SpringBoot 齐名的项目
     }
 ```
 
-## 整合
+### 整合
 说明: 在 SpringBoot2.x 之后, 原来使用的 Jedis 被替换成了 lettuce      
 jedis: 采用直连, 多个线程操作的话, 是不安全的, 如果想要避免不安全, 使用 jedis pool 连接池   更像BIO    
 lettuce: 采用netty 实例可以多个线程中进行共享, 不存在线程不安全的情况, 可以减少线程数据      更像NIO
@@ -89,8 +89,8 @@ lettuce: 采用netty 实例可以多个线程中进行共享, 不存在线程不
 
 - 配置链接
 ```yml
-# SpringBoot 所有的配置类, 都有一个自动配置类 RedisAutoConfiguration
-# 自动配置类都会绑定一个 peoperties 配置文件   RedisProperties
+## SpringBoot 所有的配置类, 都有一个自动配置类 RedisAutoConfiguration
+## 自动配置类都会绑定一个 peoperties 配置文件   RedisProperties
 
 spring.redis.host=127.0.0.1
 spring.redis.port=6379
@@ -122,7 +122,7 @@ spring.redis.port=6379
     }
 ```
 
-## 序列化
+### 序列化
 
 - 实体类
 ```java
@@ -154,7 +154,7 @@ public class User {
 - User 类实现 `Serializable` 接口
 
 
-## 编写自定义的 RedisTemplate
+### 编写自定义的 RedisTemplate
 
 ```java
     @Bean
@@ -190,7 +190,7 @@ public class User {
 ```
 
 
-## RedisUtils
+### RedisUtils
 在企业开发中, 我们80%的情况下, 都不会使用原生方式去编写代码
 
 - RedisUtils

@@ -7,13 +7,13 @@ categories:
 - Redis
 ---
 
-## Redis持久化
+### Redis持久化
 面试和工作, 持久化都是重点
 
 Redis 是内存数据库, 如果不将内存中的数据存入到磁盘, 那么服务器进程退出, 服务器中的数据库状态也会消失, 所以 Redis 提供了持久化功能.
 
  RDB（Redis DataBase）
-## 什么是 RDB
+### 什么是 RDB
 
 ![](https://image.codingce.com.cn/rdb.png)
 
@@ -24,20 +24,20 @@ Redis 会单独创建 ( fork ) 一个子进程进行持久化, 会先将数据�
 
 rdb 保存的文件时 dump.rdb 都是在我们的配置文件中快照中进行配置的.
 
-## 触发机制
+### 触发机制
 - save 的规则满足的情况下, 会触发 rdb 规则
 - 执行了 flushall 命令 也会出发 rdb 规则
 - 退出redis 也会产生 rdb 文件
 
 备份就会自动生成一个 dump.rdb 
 
-## 如何恢复 rdb 文件
+### 如何恢复 rdb 文件
 - 只需要将 rdb 文件放在我们的 redis 启动目录就可以, redis 启动的时候自动检查 dump.rdb 文件, 恢复其中的数据
 - 查看需要存在的位置
 ```bash
 config get dir
 "dir"
-"/usr/local/bin"        # 如果在这个目录不存在 dump.rdb 文件, 启动就会恢复其中的数据
+"/usr/local/bin"        ## 如果在这个目录不存在 dump.rdb 文件, 启动就会恢复其中的数据
 ```
 
 
@@ -52,9 +52,9 @@ config get dir
 
 
 
-## AOF(Append Only File)
+### AOF(Append Only File)
 
-## 什么是 AOF
+### 什么是 AOF
 
 AOF 保存的是 appendonly.aof 文件
 
@@ -75,11 +75,11 @@ redis 给我们提供了一个工具, `redis-check-aof`  --fix
 如果文件正常的话, 重启就可以直接恢复了
 
 ```bash
-# appendonly no           # 默认是不开启 aof 模式的, 默认使用的是 rdb 方式持久化, 在大部分所有情况下, rdb 完全够用
-# appendfilename "appendonly.aof"         # 持久化的文件的名字          
-# appendfsync everysec          # 每秒执行一次  sync 可能会丢失 1s 的数据
-# appendfsync no            # 不执行 sync 这个时候操作系统自己同步数据 速度最快
-# appendfsync always        # 每次修改都会 sync 消耗性能
+## appendonly no           ## 默认是不开启 aof 模式的, 默认使用的是 rdb 方式持久化, 在大部分所有情况下, rdb 完全够用
+## appendfilename "appendonly.aof"         ## 持久化的文件的名字          
+## appendfsync everysec          ## 每秒执行一次  sync 可能会丢失 1s 的数据
+## appendfsync no            ## 不执行 sync 这个时候操作系统自己同步数据 速度最快
+## appendfsync always        ## 每次修改都会 sync 消耗性能
 ```
 
 优点：
@@ -91,7 +91,7 @@ redis 给我们提供了一个工具, `redis-check-aof`  --fix
 - 先对于数据文件来说, aof 远远大于 rdb, 修复的速度也比 rdb 慢
 - aof 运行效率也要比 rdb 慢, 所以我们 redis 默认配置就是 rdb 持久化
 
-## 持久化总结
+### 持久化总结
 如果你只希望你的数据在服务器运行的时候存在，可以不使用任何的持久化方式。
 
 一般建议同时开启两种持久化方式。AOF进行数据的持久化，确保数据不会丢失太多，而RDB更适合用于备份数据库，留着一个做万一的手段。

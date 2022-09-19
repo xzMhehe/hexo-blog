@@ -9,7 +9,7 @@ categories:
 
 Feign[feɪn]
 
-# 什么是Feign？
+## 什么是Feign？
 Feign 的英文表意为“假装，伪装，变形”， 是一个http请求调用的轻量级框架，可以以Java接口注解的方式调用Http请求，而不用像Java中通过封装HTTP请求报文的方式直接调用。Feign通过处理注解，将请求模板化，当实际调用的时候，传入参数，根据参数再应用到请求上，进而转化成真正的请求，这种请求相对而言比较直观。
 Feign被广泛应用在Spring Cloud 的解决方案中，是学习基于Spring Cloud 微服务架构不可或缺的重要组件。
 它让微服务之间调用变得更简单了, 类似controller调用service. SpringCloud集成了Ribbon Eureka, 可以在使用Feign时提供 **负载均衡** 的客户端
@@ -20,19 +20,19 @@ feign主要是社区, 大家都习惯面向接口编程. 这是很多开发人�
 - 微服务名字(ribbon)
 - 接口和注解(feign)
 
-# Feign能干什么
+## Feign能干什么
 - Feign旨在编写Java Http客户端变得更容易
 - 前面使用Ribbon + RestTemplate时, 利用RestTemplate对Http请求的封装处理, 形成了一套模块化用法. 但是实际开发中, 由于服务的依赖的调用可能不止一处, 往往一个接口会被多处调用, 所以都会针对每一个服务自行封装一些客户端类来包装这些依赖服务的调用. 所以Feign在此基础上做了进一步封装, 由他来帮助我们定义和实现依赖服务接口的定义,  **在Feign的实现下, 我们只需要创建一个接口并使用注解的方式来配置它(类似于以前Dao接口上标注@Mapper注解, 现在是一个微服务接口上面标注一个Feign注解即可.) 即可完成对服务同提供方的接口绑定, 简化了使用SpringCloud Ribbon时, 自动封装服务调用客户端的开发量
 
 使用feign 就是代替 RestTemplate 
 
-# 具体实现
-## 实体类项目 加入 接口(和注解)
+## 具体实现
+### 实体类项目 加入 接口(和注解)
 项目结构
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211258632.png)
 
-### pom
+#### pom
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -81,7 +81,7 @@ feign主要是社区, 大家都习惯面向接口编程. 这是很多开发人�
 </project>
 ```
 
-### DeptClientService
+#### DeptClientService
 ```java
 package cn.com.codingce.service;
 
@@ -125,12 +125,12 @@ public interface DeptClientService {
 }
 ```
 
-## 新建客户端项目(springcloud-cusumer-dept-feign)
+### 新建客户端项目(springcloud-cusumer-dept-feign)
 项目结构
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211258298.png)
 
-### pom
+#### pom
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -189,7 +189,7 @@ public interface DeptClientService {
 </project>
 ```
 
-### DeptConsumerController
+#### DeptConsumerController
 ```java
 package cn.com.codingce.springcloud.controller;
 
@@ -226,7 +226,7 @@ public class DeptConsumerController {
 }
 ```
 
-### ConfigBean(配置Ribbon)
+#### ConfigBean(配置Ribbon)
 ```java
 package cn.com.codingce.springcloud.config;
 
@@ -262,7 +262,7 @@ public class ConfigBean {   //configuration -- spring applicationContext.xml
 ```
 
 
-### 启动类FeginDeptConsumer_80
+#### 启动类FeginDeptConsumer_80
 ```java
 package cn.com.codingce.springcloud;
 
@@ -287,7 +287,7 @@ public class FeginDeptConsumer_80 {
 }
 ```
 
-### 操作截图
+#### 操作截图
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108211259873.png)
 

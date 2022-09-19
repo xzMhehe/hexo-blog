@@ -9,7 +9,7 @@ categories:
 thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 ---
 
-# 整合Mybatis
+## 整合Mybatis
 - 导入相关jar包
     - junit
     - mybatis
@@ -84,7 +84,7 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEexPJ.gif
 
 - 测试
 
-# 回忆Mybatis（他认识你你不认识他）
+## 回忆Mybatis（他认识你你不认识他）
 
 - 编写实体类
 
@@ -188,7 +188,7 @@ public interface UserMapper {
     }
 ```
 
-# Mybatis-Spring
+## Mybatis-Spring
 
 - 编写数据源
 

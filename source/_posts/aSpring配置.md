@@ -12,8 +12,8 @@ thumbnail: https://s1.ax1x.com/2020/07/28/aEe2b8.gif
 description: Spring
 ---
 
-# Spring配置
-## 别名
+## Spring配置
+### 别名
 
 ```xml
     <!--别名,别名区分大小写, 我们也可以使用别名获取到这个对象-->
@@ -28,7 +28,7 @@ public static void main(String[] args) {
     }
 ```
 
-## Bean配置
+### Bean配置
 
 ```xml
     <!--
@@ -49,7 +49,7 @@ public static void main(String[] args) {
     }
 ```
 
-## import
+### import
 这个import, 一般用于团队开发使用, 它可以将多个配置文件, 导入合并为一个
 假设现在项目有多个人开发, 这三个人复制不同的类开发, 不同的类需要注册在不同的bean中, 我们可以利用import将所有人的beans.xml合并为一个总的, 使用的时候直接使用总的
 

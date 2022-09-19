@@ -7,18 +7,18 @@ categories:
 - RabbitMQ
 ---
 
-# RabbitMQ 的第一个程序
+## RabbitMQ 的第一个程序
 
 
-## 搭建环境
-## java client
+### 搭建环境
+### java client
 
 生产者和消费者都属于客户端, rabbitMQ的java客户端如下
 
 ![](https://image.codingce.com.cn/20210122133351.png)
 
 
-## 创建 maven 工程
+### 创建 maven 工程
 ```xml
 <dependency>
   <groupId>com.rabbitmq</groupId>
@@ -27,17 +27,17 @@ categories:
 </dependency>
 ```
 
-## AMQP协议的回顾
+### AMQP协议的回顾
 ![](https://image.codingce.com.cn/20210122134305.png)
 
 
-## RabbitMQ支持的消息模型
+### RabbitMQ支持的消息模型
 ![](https://image.codingce.com.cn/20210122134344.png)
 
 ![](https://image.codingce.com.cn/20210122134404.png)
 
 
-## 第一种模型(直连)
+### 第一种模型(直连)
 ![](https://image.codingce.com.cn/20210122134435.png)
 
 在上图的模型中，有以下概念：
@@ -46,7 +46,7 @@ categories:
 - C：消费者：消息的接受者，会一直等待消息到来。
 - queue：消息队列，图中红色部分。类似一个邮箱，可以缓存消息；生产者向其中投递消息，消费者从其中取出消息。
 
-### 开发生产者
+#### 开发生产者
 ```java
 /**
  * 生产者
@@ -86,7 +86,7 @@ public class Provider {
 }
   ```
 
-### 开发消费者
+#### 开发消费者
 ```java
 /**
  * 消费者
@@ -124,7 +124,7 @@ public class Customer {
 
 }
 ```
-### 工具类
+#### 工具类
 ```java
 /**
  * @author mxz
@@ -187,7 +187,7 @@ public class RabbitMQUtils {
 
 
 
-## 第二种模型(work quene)
+### 第二种模型(work quene)
 
 `Work queues`，也被称为（`Task queues`），任务模型。当消息处理比较耗时的时候，可能生产消息的速度会远远大于消息的消费速度。长此以往，消息就会堆积越来越多，无法及时处理。此时就可以使用work 模型：**让多个消费者绑定到一个队列，共同消费队列中的消息**。队列中的消息一旦消费，就会消失，因此任务是不会被重复执行的。
 
@@ -200,7 +200,7 @@ public class RabbitMQUtils {
 - C2：消费者-2：领取任务并完成任务，假设完成速度快
 
 
-### 开发生产者
+#### 开发生产者
 ```java
 /**
  * 生产者
@@ -231,7 +231,7 @@ public class Provider {
 }
 ```
 
-### 开发消费者-1
+#### 开发消费者-1
 ```java
 /**
  * 自动确认消费 autoAck true 12搭配测试
@@ -278,7 +278,7 @@ public class CustomerOne {
 }
 ```
 
-### 开发消费者-2
+#### 开发消费者-2
 ```java
 /**
  * 自动确认消费 autoAck true 12搭配测试
@@ -316,7 +316,7 @@ public class CustomerTwo {
 ```
 
 
-### 测试结果
+#### 测试结果
 ![](https://image.codingce.com.cn/20210122164257.png)
 
 ![](https://image.codingce.com.cn/20210122164437.png)
@@ -324,13 +324,13 @@ public class CustomerTwo {
 
 `总结:默认情况下，RabbitMQ将按顺序将每个消息发送给下一个使用者。平均而言，每个消费者都会收到相同数量的消息。这种分发消息的方式称为循环。`
 
-### 消息自动确认机制
+#### 消息自动确认机制
 >Doing a task can take a few seconds. You may wonder what happens if one of the consumers starts a long task and dies with it only partly done. With our current code, once RabbitMQ delivers a message to the consumer it immediately marks it for deletion. In this case, if you kill a worker we will lose the message it was just processing. We'll also lose all the messages that were dispatched to this particular worker but were not yet handled.
 
 >But we don't want to lose any tasks. If a worker dies, we'd like the task to be delivered to another worker.
 
 
-#### 消费者3
+##### 消费者3
 ```java
 /**
  * 能者多劳  34 搭配测试
@@ -380,7 +380,7 @@ public class CustomerThree {
 ```
 
 
-#### 消费者4
+##### 消费者4
 ```java
 /**
  * 能者多劳  34 搭配测试
@@ -426,7 +426,7 @@ public class CustomerFour {
 
 
 
-## 第三种模型(fanout) 
+### 第三种模型(fanout) 
 `fanout 扇出 也称为广播`
 
 ![](https://image.codingce.com.cn/20210123133218.png)
@@ -442,7 +442,7 @@ public class CustomerFour {
 
 
 
-### 开发开发生产者
+#### 开发开发生产者
 ```java
 /**
  * 生产者
@@ -472,7 +472,7 @@ public class Provider {
 }
 ```
 
-### 开发消费者
+#### 开发消费者
 
 - 消费者 1
 
@@ -593,7 +593,7 @@ public class CustomerThree {
 }
 ```
 
-### 测试结果
+#### 测试结果
 
 ![](https://image.codingce.com.cn/20210123140015.png)
 
@@ -601,8 +601,8 @@ public class CustomerThree {
 
 ![](https://image.codingce.com.cn/20210123140052.png)
 
-## 第四种模型(Routing)
-### Routing 之订阅模型-Direct(直连)
+### 第四种模型(Routing)
+#### Routing 之订阅模型-Direct(直连)
 `在Fanout模式中，一条消息，会被所有订阅的队列都消费。但是，在某些场景下，我们希望不同的消息被不同的队列消费。这时就要用到Direct类型的Exchange。`
 
  在Direct模型下：
@@ -624,7 +624,7 @@ public class CustomerThree {
 - C2：消费者，其所在队列指定了需要routing key 为 info、error、warning 的消息
 
 
-#### 开发生产者
+##### 开发生产者
 
 ```java
 /**
@@ -653,7 +653,7 @@ public class Provider {
 
 
 
-#### 开发消费者
+##### 开发消费者
 
 - 消费者1
 
@@ -733,22 +733,22 @@ public class CustomerTwo {
 ```
 
 
-### Routing 之订阅模型-Topic
+#### Routing 之订阅模型-Topic
 `Topic`类型的`Exchange`与`Direct`相比，都是可以根据`RoutingKey`把消息路由到不同的队列。只不过`Topic`类型`Exchange`可以让队列在绑定`Routing key` 的时候使用通配符！这种模型`Routingkey` 一般都是由一个或多个单词组成，多个单词之间以”.”分割，例如： `item.insert`
 
 
 ![](https://image.codingce.com.cn/20210123153215.png)
 
 ```markdown
-# 统配符
+## 统配符
 		* (star) can substitute for exactly one word.    匹配不多不少恰好1个词
-		# (hash) can substitute for zero or more words.  匹配一个或多个词
-# 如:
-		audit.#    匹配audit.irs.corporate或者 audit.irs 等
+		## (hash) can substitute for zero or more words.  匹配一个或多个词
+## 如:
+		audit.##    匹配audit.irs.corporate或者 audit.irs 等
     audit.*   只能匹配 audit.irs
 ```
 
-#### 开发生产者
+##### 开发生产者
 
 ```java
 /**
@@ -780,7 +780,7 @@ public class Provider {
 }
 ```
 
-#### 开发消费者
+##### 开发消费者
 
 - 消费者
 

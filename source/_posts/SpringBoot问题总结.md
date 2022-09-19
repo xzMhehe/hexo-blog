@@ -7,15 +7,15 @@ categories:
 - SpringBoot
 ---
 
-# Spring Boot 2.x 增加拦截器后静态资源文件404无法访问
-## 问题描述
+## Spring Boot 2.x 增加拦截器后静态资源文件404无法访问
+### 问题描述
 ---
 Spring Boot 2.2.0 增加自定义拦截器后发现静态资源都没法访问，报 404 错误。
 
 网上找了几个方案比如修改资源文件路径由 /** 改为 /static/** 然后添加到排除列表，我的项目没效果。
 
 最后发现是配置拦截器的方式不一样造成的，注意以下两个细节：
-## 配置拦截器的几种方式
+### 配置拦截器的几种方式
 ---
 在 spring boot2.x 中已经不推荐再使用 WebMvcConfigurationAdapter，官方声明已过时。
 
@@ -41,9 +41,9 @@ extends DelegatingWebMvcConfiguration
 
 注意上面的几种拦截实现方式，只有第①种implements WebMvcConfigurer默认不会覆盖 @EnableAutoConfiguration 关于 WebMvcAutoConfiguration 的配置，这种话我看不懂，但发现下面几种都覆盖了会造成资源文件就无法访问。若被覆盖了，可自己再实现 addResourceHandlers() 即可。
 
-## 解决方案
+### 解决方案
 ---
-### 方案一（推荐）
+#### 方案一（推荐）
 注意这里没有 @EnableWebMvc 注解
 ```
 @Configuration
@@ -63,7 +63,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 }
 ```
 
-### 方案二
+#### 方案二
 如果用了 @EnableWebMvc 注解的话，必须重写 addResourceHandlers() 方法
 ```java
 @Configuration
@@ -95,7 +95,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
     }
 }
 ```
-### 方案三
+#### 方案三
 如题是继承 WebMvcConfigurationSupport 类，那么需要和方案二一样必须重写 addResourceHandlers() 方法。
 ```java
 @Configuration

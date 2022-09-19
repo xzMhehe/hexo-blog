@@ -9,7 +9,7 @@ keywords:
   - Go
 description: 探究io.WriteString
 ---
-# 【Go】探究io.WriteString
+## 【Go】探究io.WriteString
 
 在io包里有一个函数叫writeString，这个函数接收两个参数，第一个参数是实现io.Writer接口的具体对象，第二个参数是需要写入的字符串。
 

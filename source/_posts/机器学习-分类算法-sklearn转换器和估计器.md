@@ -10,10 +10,10 @@ headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img2021081309
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img202108130904094.png
 description: 分类算法-sklearn转换器和估计器
 ---
-# 目标
+## 目标
 知道sklearn的转换器和估计器流程
 
-# 转换器
+## 转换器
 想一下之前做的特征工程的步骤？
 
 - 实例化 (实例化的是一个转换器类(Transformer))
@@ -70,7 +70,7 @@ array([[-1., -1., -1.],
        [ 1.,  1.,  1.]])
 ```
 
-# 估计器(sklearn机器学习算法的实现)
+## 估计器(sklearn机器学习算法的实现)
 
 在sklearn中，估计器(estimator)是一个重要的角色，是一类实现了算法的API
 
@@ -93,5 +93,5 @@ array([[-1., -1., -1.],
 - 用于无监督学习的估计器
     - sklearn.cluster.KMeans 聚类
 
-# 估计器工作流程
+## 估计器工作流程
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/20210812070335.png)

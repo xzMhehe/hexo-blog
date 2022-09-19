@@ -8,13 +8,13 @@ categories:
 
 thumbnail: https://s1.ax1x.com/2020/07/17/UsF3dO.png
 ---
-## Java中exdents implement  区别
-### 简单说：
+### Java中exdents implement  区别
+#### 简单说：
 - extends是继承父类，只要那个类不是声明为final或者那个类定义为abstract的就能继承，
 - JAVA中不支持多重继承，但是可以用接口来实现，这样就要用到implements，
 - 继承只能继承一个类，但implements可以实现多个接口，用逗号分开就行了 ,比如  class A extends B implements C,D,E
 
-### 术语话来说：
+#### 术语话来说：
 extends 继承类；implements 实现接口。
 类和接口是不同的：类里是有程序实现的；而接口无程序实现，只可以预定义方法
 

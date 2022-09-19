@@ -8,16 +8,16 @@ categories:
 
 ---
 
-# 页面国际化
+## 页面国际化
 有的时候，的网站会去涉及中英文甚至多语言的切换，这时候就需要学习国际化了！
-# 准备工作
+## 准备工作
 先在IDEA中统一设置properties的编码问题！
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221006425.png)
 
 编写国际化配置文件，抽取页面需要显示的国际化页面消息。
 
-# 配置文件编写
+## 配置文件编写
 - 在resources资源文件下新建一个i18n目录，存放国际化配置文件
 - 建立一个login.properties文件，还有一个login_zh_CN.properties；发现IDEA自动识别了要做国际化操作；文件夹变了！
 
@@ -62,7 +62,7 @@ login.tip=请登录
 login.username=用户名
 ```
 
-# 配置文件生效探究
+## 配置文件生效探究
 去看一下SpringBoot对国际化的自动配置！这里又涉及到一个类：MessageSourceAutoConfiguration
 
 里面有一个方法，这里发现SpringBoot已经自动配置好了管理国际化资源文件的组件 ResourceBundleMessageSource；
@@ -96,12 +96,12 @@ public MessageSource messageSource(MessageSourceProperties properties) {
 ```yaml
 spring.messages.basename=i18n.login
 ```
-# 配置页面国际化值
+## 配置页面国际化值
 去页面获取国际化的值，查看Thymeleaf的文档，找到message取值操作为：#{...}。去页面测试：
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221008424.png)
 
-# 配置国际化解析
+## 配置国际化解析
 在Spring中有一个国际化的Locale （区域信息对象）；里面有一个叫做LocaleResolver （获取区域信息对象）的解析器！
 
 去webmvc自动配置文件，寻找一下  看到SpringBoot默认配置：

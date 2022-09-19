@@ -8,7 +8,7 @@ description: 一面
 headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108261831887.png
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108261831887.png
 ---
-# happens-before指的是什么？
+## happens-before指的是什么？
 happens-before主要是为保证`Java多线程操作时`的`有序性`和`可见性`，防止了`编译器重排序`对程序结果的影响。 因为当一个变量出现`一写多读`，`多读多写`的情况时，就是多个线程读这个变量，然后至少一个线程写这个变量，因为编译器在编译时会对指令进行重排序，如果没有happens-before原则对重排序进行一些约束，就有可能造成程序执行不正确的情况。
 
 具体有`8`条规则：       

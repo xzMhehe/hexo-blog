@@ -12,10 +12,10 @@ thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/2021082
 description: Elasticsearch
 ---
 
-## Elasticsearch 和 solr 的区别
+### Elasticsearch 和 solr 的区别
 
 
-### Elasticsearch 简介
+#### Elasticsearch 简介
 Elasticsearch是一个开源（Apache 2许可证），是一个基于Apache Lucene库构建的RESTful搜索引擎。
 
 Elasticsearch是在Solr之后几年推出的。它提供了一个分布式，多租户能力的全文搜索引擎，具有HTTP Web界面（REST）和无架构JSON文档。Elasticsearch的官方客户端库提供Java，Groovy，PHP，Ruby，Perl，Python，.NET和Javascript。
@@ -33,7 +33,7 @@ Elasticsearch可通过近实时搜索进行扩展。其主要功能之一是多�
 
 - 分组和聚合
 
-### solr 简介
+#### solr 简介
 Apache Solr是一个基于名为Lucene的Java库构建的开源搜索平台。它以用户友好的方式提供Apache Lucene的搜索功能。作为一个行业参与者近十年，它是一个成熟的产品，拥有强大而广泛的用户社区。它提供分布式索引，复制，负载平衡查询以及自动故障转移和恢复。如果它被正确部署然后管理得好，它就能够成为一个高度可靠，可扩展且容错的搜索引擎。很多互联网巨头，如Netflix，eBay，Instagram和亚马逊（CloudSearch）都使用Solr，因为它能够索引和搜索多个站点。
 
 主要功能列表包括：
@@ -53,11 +53,11 @@ Apache Solr是一个基于名为Lucene的Java库构建的开源搜索平台。�
 - NoSQL功能和丰富的文档处理（例如Word和PDF文件）
 
 
-### Luncene 简介
+#### Luncene 简介
 Lucene 是一个基于 Java 的全文信息检索工具包，它不是一个完整的搜索应用程序，而是为你的应用程序提供索引和搜索功能。Lucene 目前是 Apache Jakarta 家族中的一个开源项目。也是目前最为流行的基于 Java 开源全文检索工具包。
 
 
-## Elasticsearch和Solr比较
+### Elasticsearch和Solr比较
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200908973.png)
 
 
@@ -69,7 +69,7 @@ Lucene 是一个基于 Java 的全文信息检索工具包，它不是一个完�
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200908323.png)
 
 
-## Elasticsearch 与 Solr 的比较总结
+### Elasticsearch 与 Solr 的比较总结
 
 - 二者安装都很简单；
 

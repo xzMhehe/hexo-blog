@@ -10,7 +10,7 @@ Elasticsearch Clients 文档
 
 
 
-## spring boot集成ES
+### spring boot集成ES
 
 
 
@@ -45,7 +45,7 @@ client.close();
 
 
 
-### ElasticSearchConfig
+#### ElasticSearchConfig
 
 
 
@@ -132,7 +132,7 @@ class CodingceEsApiApplicationTests {
 
 
 
-### 测试文档的基本操作
+#### 测试文档的基本操作
 
 
 - 实体类

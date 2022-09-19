@@ -13,10 +13,10 @@ abbrlink: 431108ab
 description: Nginx知识整理
 ---
 
-# 1.准备工作
+## 1.准备工作
 结合本文场景，需要安装Nginx和Java环境（运行SpringBoot项目）
 
-## 1.1 关于Mac系统安装Nginx
+### 1.1 关于Mac系统安装Nginx
 
 本次用的是 homebrew 安装的
 
@@ -24,11 +24,11 @@ description: Nginx知识整理
 
 也可前去官网下载
 
-## 1.2 测试项目说明
+### 1.2 测试项目说明
 由于只是测试, SpringBoot只是映射了根路径，端口分别是 10001 和 10002 ，分别返回 demo1 和 demo2 字符串作为区分。
 
-# 2.Nginx负载均衡的集中方式介绍
-## 2.1 轮询
+## 2.Nginx负载均衡的集中方式介绍
+### 2.1 轮询
 轮询方式是Nginx负载`默认`的方式，顾名思义，所有请求都按照时间顺序分配到不同的服务上，如果服务Down掉，可以自动剔除，如下配置后轮训10001服务和10002服务。
 
 ```xml
@@ -38,7 +38,7 @@ upstream  codingce-nginx {
 }
 ```
 
-## 2.2 权重
+### 2.2 权重
 指定每个服务的权重比例，weight和访问比率成正比，通常用于后端服务机器性能不统一，将性能好的分配权重高来发挥服务器最大性能，如下配置后10002服务的访问比率会是10001服务的二倍。
 
 ```xml
@@ -48,7 +48,7 @@ upstream  codingce-nginx {
 }
 ```
 
-## 2.3 iphash
+### 2.3 iphash
 每个请求都根据访问ip的hash结果分配，经过这样的处理，每个访客固定访问一个后端服务，如下配置（ip_hash可以和weight配合使用）。
 
 ```xml
@@ -58,7 +58,7 @@ upstream  codingce-nginx {
        server    localhost:10002 weight=2;
 }
 ```
-## 2.4 最少连接
+### 2.4 最少连接
 将请求分配到连接数最少的服务上。
 ```xml
 upstream  codingce-nginx {
@@ -67,7 +67,7 @@ upstream  codingce-nginx {
        server    localhost:10002 weight=2;
 }
 ```
-## 2.5 fair
+### 2.5 fair
 按后端服务器的响应时间来分配请求，响应时间短的优先分配。
 ```xml
 upstream  codingce-nginx {
@@ -78,7 +78,7 @@ upstream  codingce-nginx {
 ```
 
 
-# 3.测试(以轮询为例子)
+## 3.测试(以轮询为例子)
 重启nginx，第一次 访问http://localhost:10000如图所示，
 
 轮询方式，刷新后依次切换服务
@@ -131,7 +131,7 @@ server {
 }
 ```
 
-# 测试SpringBoot项目地址
+## 测试SpringBoot项目地址
 
 [GitHub](https://github.com/xzMhehe/codingce-java)     
 [Gitee](https://gitee.com/codingce/codingce-java)

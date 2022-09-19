@@ -11,13 +11,13 @@ reward: false
 copyright: false
 ---
 
-## 简介
-### 什么是 MyBatis？
+### 简介
+#### 什么是 MyBatis？
 MyBatis 是一款优秀的**持久层框架**，它支持自定义 SQL、存储过程以及高级映射。**MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作**。MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。  
 MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache software foundation 迁移到了google code，并且改名为MyBatis 。   
 2013年11月迁移到Github。
 
-#### 如何获取MyBatis
+##### 如何获取MyBatis
 - maven仓库   
 ```xml
 <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
@@ -30,22 +30,22 @@ MyBatis 本是apache的一个开源项目iBatis, 2010年这个项目由apache so
 - Github: https://github.com/mybatis/mybatis-3
 - 中文文档地址: https://mybatis.org/mybatis-3/zh/index.html   
 
-### 持久化
+#### 持久化
 数据持久化(是一个动作)
 - 持久化就是将数据在持久化状态和瞬时状态的转化的过程
 - 内存: **断电丢失**
 - 数据库jdbc: io文件持久化(早期将数据存储在tzt文件中,io特别特别的浪费资源)
 - 生活: 冷藏、罐头.
 
-#### 为什么需要持久化
+##### 为什么需要持久化
 - 有一些对象,不能让他丢掉.
 - 内存太贵了(虽然读取速度快)
 
-### 持久层
+#### 持久层
 Dao层、Service、Controller层
 - 完成持久化工作的代码块.
 - 层界限十分明显.
-#### 为什么需要MyBatis
+##### 为什么需要MyBatis
 - 帮助程序员将数据存入到数据库中.
 - 方便
 - 传统的JDBC太复杂了,简化,框架,自动化.

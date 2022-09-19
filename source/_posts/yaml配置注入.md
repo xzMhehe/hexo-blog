@@ -11,8 +11,8 @@ headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200926053.png
 description: SpringBoot
 ---
-# yaml语法学习
-## 配置文件
+## yaml语法学习
+### 配置文件
 SpringBoot使用一个全局的配置文件 ， 配置文件名称是固定的
 
 - application.properties
@@ -30,7 +30,7 @@ application.yml
 server.port=8081
 ```
 
-## yaml概述
+### yaml概述
 YAML是 "YAML Ain't a Markup Language" （YAML不是一种标记语言）的递归缩写。在开发的这种语言时，YAML 的意思其实是："Yet Another Markup Language"（仍是一种标记语言）
 
 这种语言以数据作为中心，而不是以标记语言为重点！
@@ -52,7 +52,7 @@ server：
   prot: 8080
 ```
 
-## yaml基础语法
+### yaml基础语法
 说明：语法要求严格！
 
 - 空格不能省略
@@ -115,10 +115,10 @@ server:
   port: 8082
 ```
 
-# 注入配置文件
+## 注入配置文件
 
 yaml文件更强大的地方在于，他可以给我们的实体类直接注入匹配值！
-## yaml注入配置文件
+### yaml注入配置文件
 - 在springboot项目中的resources目录下新建一个文件 application.yml
 - 编写一个实体类 Dog；
 ```java
@@ -372,7 +372,7 @@ class DemoApplicationTests {
 ![mark](http://image.codingce.com.cn/blog/20200811/081607796.png)
 yaml配置注入到实体类完全OK！
 
-## 加载指定的配置文件
+### 加载指定的配置文件
 **@PropertySource** ：加载指定的配置文件；
 **@configurationProperties**：默认从全局配置文件中获取值；
 
@@ -400,12 +400,12 @@ public class Person {
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200928749.png)
 
-## 配置文件占位符
+### 配置文件占位符
 配置文件还可以编写占位符生成随机数
 ```yaml
 person:
-    name: maxinze${random.uuid} # 随机uuid
-    age: ${random.int}  # 随机int
+    name: maxinze${random.uuid} ## 随机uuid
+    age: ${random.int}  ## 随机int
     happy: false
     birth: 2000/01/01
     maps: {k1: v1,k2: v2}

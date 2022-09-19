@@ -8,16 +8,16 @@ categories:
 ---
 
 
-## IK分词器插件
+### IK分词器插件
 
-## 什么是 IK 分词器
+### 什么是 IK 分词器
 分词:即把一段中文或者别的划分成一个个的关键字,我们在搜索时候会把自己的信息进行分词,会把数据库中或者索引库中的数据进行分词,然后进行一个匹配操作,默认的中文分词器是将每个字看成一个词,比如"我爱技术"会被分为"我","爱","技","术",这显然不符合要求,所以我们需要安装中文分词器IK来解决这个问题
 
 IK提供了两个分词算法:`ik_smart`和`ik_max_word`
 
 其中`ik_smart`为最少切分,`ik_max_word`为最细粒度划分
 
-## 下载安装
+### 下载安装
 同样下载不说直接安装.记得版本相同
 
 解压缩后拷贝到`ElasticSearch`的`plugins`文件夹下
@@ -32,7 +32,7 @@ IK提供了两个分词算法:`ik_smart`和`ik_max_word`
 
 也可以通过ES自带的工具查看 命令行执行 `ElasticSearch-plugin list`
 
-## 进入Kibana测试
+### 进入Kibana测试
 
 先测试 `ik_smart`
 
@@ -134,7 +134,7 @@ GET _analyze
 
 这种自己需要的词,需要自己加到字典中
 
-## IK分词器增加自己的配置
+### IK分词器增加自己的配置
 我们找到IK的配置文件, 位于ik/config/IKAnalyzer.cfg.xml
 
 IKAnalyzer.cfg.xml

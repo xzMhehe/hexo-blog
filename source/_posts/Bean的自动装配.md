@@ -12,7 +12,7 @@ thumbnail: https://s1.ax1x.com/2020/07/18/U2Mxvq.gif
 description: Spring
 ---
 
-# Bean的自动装配
+## Bean的自动装配
 
 - 自动装配是Spring满足Bean依赖的一种方式
 
@@ -26,11 +26,11 @@ description: Spring
 
 - **隐式的自动配置bean【重要】**
 
-## 测试
+### 测试
 
 - 搭建环境成功 ： 一个人有两个宠物
 
-### ByName自动装配
+#### ByName自动装配
 
 ```xml
     <bean id="cat" class="cn.com.codingce.pojo.Cat"/>
@@ -45,7 +45,7 @@ description: Spring
 <!--        <property name="cat" ref="cat"/>-->
      </bean>
 ```
-### ByType自动装配
+#### ByType自动装配
 ```xml
     <bean id="cat" class="cn.com.codingce.pojo.Cat"/>
     <bean id="dog" class="cn.com.codingce.pojo.Dog"/>
@@ -60,13 +60,13 @@ description: Spring
      </bean>
 ```
 
-### 小结 
+#### 小结 
 
 - byName的时候, 需要保证所有bean的id唯一, 并且这个bean需要和自动注入的属性的set方法的值一致
 
 - byType的时候, 需要保证所有class的id唯一, 并且这个bean需要和自动注入的属性的类型一样
 
-## 使用注解实现自动装配
+### 使用注解实现自动装配
 JDK1.5支持注解，Spring2.5就支持注解了
 The introduction of annotation-based configuration raised the question of whether this approach is "better" than XML
 
@@ -94,7 +94,7 @@ The introduction of annotation-based configuration raised the question of whethe
 </beans>
 ```
 
-### @Autowired
+#### @Autowired
 直接使用在属性上即可! 也可以在set方式上的使用
 使用Autowired我们就可以不用使用Set方法了, 前提是你这个自动装配属性在IOC(Spring)容器中存在, 且符合名字byname
 科普:
@@ -126,7 +126,7 @@ public class People {
 如果@Autowired自动装配的环境比较复杂, 自动装配无法通过一个注解【@Autowired】完成的时候，我们可以使用@Qualifier(value="dog22")
 去配合@Autowired的使用
 
-### Resource注解
+#### Resource注解
 ```java
 public class People {
     @Resource
@@ -149,7 +149,7 @@ public class People {
 - 执行顺序不同:  @Autowired通过btType的方式实现。@Resource默认通过byName的方式来实现
 
 
-# 使用注解开发
+## 使用注解开发
 
 - bean
 
@@ -216,7 +216,7 @@ xml与注解最佳实践
     <context:annotation-config/>
 ```
 
-# 使用Java的方式配置Spring
+## 使用Java的方式配置Spring
 
 我们现在要完全不使用Spring的xml的配置了, 全权交给Java来做
 JavaConfig是Spring的一个子项目, 在Spring4之后, 它成为了一个核心的功能.

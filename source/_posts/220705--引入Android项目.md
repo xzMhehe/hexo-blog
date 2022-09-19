@@ -10,15 +10,15 @@ keywords:
 description: ijkplayer引入Android项目
 ---
 
-# 【ijkplayer】引入Android项目（基于k0.8.8）
+## 【ijkplayer】引入Android项目（基于k0.8.8）
 
 
 
-# 编译准备
+## 编译准备
 
 git（Mac自带）、yasm（brew install yasm）、Android sdk（Android studio 默认）、ndk（r14b）、并配置环境变量
 
-## ndk 环境变量
+### ndk 环境变量
 
 ```bash
 export ANDROID_SDK=/Users/inke219223m/Library/Android/sdk/platform-tools
@@ -26,41 +26,41 @@ export ANDROID_NDK=/Volumes/Victory/dev/android-ndk-r14b
 
 export PATH=$PATH:$ANDROID_SDK
 export PATH=$PATH:$ANDROID_NDK
-## mac环境需要配置下面亮项
+### mac环境需要配置下面亮项
 export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-linux-perf"
 export COMMON_FF_CFG_FLAGS="$COMMON_FF_CFG_FLAGS --disable-bzlib"
 ```
 
 
 
-## M1 芯片配置ndk-build
+### M1 芯片配置ndk-build
 
 ```bash
 #!/bin/sh
-# 原来的注释掉
+## 原来的注释掉
 #DIR="$(cd "$(dirname "$0")" && pwd)"
 #$DIR/build/ndk-build "$@"
 
-# M1 build
+## M1 build
 DIR="$(cd "$(dirname "$0")" && pwd)"
 arch -x86_64 /bin/bash $DIR/build/ndk-build "$@"
 ```
 
 
 
-# ijk 项目下载和拉取 ffmpeg 代码
+## ijk 项目下载和拉取 ffmpeg 代码
 
 ```bash
-# clone项目
+## clone项目
 git clone https://github.com/Bilibili/ijkplayer.git
 
-# 进入ijkplayer-android目录
+## 进入ijkplayer-android目录
 cd ijkplayer
 
-# 切换到最新代码分支
+## 切换到最新代码分支
 git checkout -B latest k0.8.8
 
-# 会检查下载ffmpeg代码 
+## 会检查下载ffmpeg代码 
 ./init-android.sh
 
 #初始化openSSL（使ijk编译后支持https）
@@ -69,7 +69,7 @@ git checkout -B latest k0.8.8
 
 
 
-# 编译前选择你的配置
+## 编译前选择你的配置
 
 官方库说明中提供了三种配置支持，每个sh脚本里有对应的配置信息，包含支持编码格式、流媒体协议类型等，如下截取一些decoders，enable标识支持该格式，disable则标识不支持。
 
@@ -114,7 +114,7 @@ ln -s module-lite.sh module.sh
 
 
 
-# 编译
+## 编译
 
 本次编译的是 Android 项目，所以先  cd  到  android/contrib 下 执行清除命令，然后编译对于的  so  库，all  标识编译所有架构的  so，想编译 armv7a 架构则将 all 替换成 armv7a
 
@@ -136,9 +136,9 @@ ln -s module-lite.sh module.sh
 注意本步骤需要同意不受信任软件权限，[具体参考地址](https://support.apple.com/en-us/HT202491)
 
 ```bash
-# 注意回到android 路径下
+## 注意回到android 路径下
 cd ..
-# 执行脚步生成so 文件
+## 执行脚步生成so 文件
 ./compile-ijk.sh all
 ```
 
@@ -151,13 +151,13 @@ cd ..
 
 
 
-# 使用
+## 使用
 待合并
 
 
 
 
-# 问题记录
+## 问题记录
 待记录
 
 

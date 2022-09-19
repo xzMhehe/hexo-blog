@@ -8,7 +8,7 @@ categories:
 ---
 
 
-## Redis 发布订阅
+### Redis 发布订阅
 
 
 Redis 发布订阅(pub/sub) 是一种消息通信模式: 发布者(pub) 发送消息, 订阅者(sub) 就收消息
@@ -27,7 +27,7 @@ Redis 客户端可以订阅任意数量的值
 ![](https://www.runoob.com/wp-content/uploads/2014/11/pubsub2.png)
 
 
-## 命令
+### 命令
 >1	PSUBSCRIBE pattern [pattern ...]
 订阅一个或多个符合给定模式的频道。
 2	PUBSUB subcommand [argument [argument ...]]
@@ -41,11 +41,11 @@ Redis 客户端可以订阅任意数量的值
 6	UNSUBSCRIBE [channel [channel ...]]
 指退订给定的频道。
 
-## 测试
+### 测试
 
 - 接收者
 ```bash
-127.0.0.1:6379> SUBSCRIBE mxz       # 订阅一个频道  mxz
+127.0.0.1:6379> SUBSCRIBE mxz       ## 订阅一个频道  mxz
 Reading messages... (press Ctrl-C to quit)
 1) "subscribe"
 2) "mxz"
@@ -66,7 +66,7 @@ Reading messages... (press Ctrl-C to quit)
 ```
 
 
-## 使用场景
+### 使用场景
 - 实时消息系统
 - 实时聊天
 - 订阅, 关注系统

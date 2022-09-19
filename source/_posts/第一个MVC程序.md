@@ -11,7 +11,7 @@ headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200
 thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108200915967.jpg
 description: SpringMVC
 ---
-# 配置版
+## 配置版
 
 - 新建一个Moudle ， springmvc-02-hello ， 添加web的支持！
 - 确定导入了SpringMVC 的依赖！
@@ -155,14 +155,14 @@ ${msg}
 配置Tomcat 启动测试！
 ![mark](http://image.codingce.com.cn/blog/20200803/093738025.png)
 
-## 可能遇到的问题：访问出现404，排查步骤：
+### 可能遇到的问题：访问出现404，排查步骤：
 - 查看控制台输出，看一下是不是缺少了什么jar包。
 - 如果jar包存在，显示无法输出，就在IDEA的项目发布中，添加lib依赖！
 ![mark](http://image.codingce.com.cn/blog/20200803/093957878.png)
 - 重启Tomcat 即可解决！
 ![mark](http://image.codingce.com.cn/blog/20200803/094023357.png)
 
-# 注解版
+## 注解版
 - 新建一个Moudle，springmvc-03-hello-annotation 。添加web支持！
 - 由于Maven可能存在资源过滤的问题，我们将配置完善   任何maven项目都建议在pom.xml中加上以下资源过滤配置
 ```xml
@@ -274,7 +274,7 @@ ${msg}
 配置Tomcat ，  开启服务器 ， 访问 对应的请求路径！
 ![mark](http://image.codingce.com.cn/blog/20200803/151154817.png)
 
-## 小结
+### 小结
 实现步骤其实非常的简单：
 - 新建一个web项目
 - 导入相关jar包

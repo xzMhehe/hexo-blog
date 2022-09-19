@@ -9,7 +9,7 @@ categories:
 
 Ribbon [ˈrɪbən]
 
-# Ribbon是什么
+## Ribbon是什么
 - Spring Cloud Ribbon是一个基于HTTP和TCP的 **客户端 负载均衡** 工具 
 简单的说，Ribbon是Netflix发布的开源项目，主要功能是提供客户端的软件负载均衡算法，将Netflix的中间层服务连接在一起。Ribbon客户端组件提供一系列完善的配置项如连接超时，重试等。简单的说，就是在配置文件中列出Load Balancer（简称LB）后面所有的机器，Ribbon会自动的帮助你基于某种规则（如简单轮询，随机连接等）去连接这些机器。我们也很容易使用Ribbon实现自定义的负载均衡算法。
 
@@ -19,7 +19,7 @@ Ribbon [ˈrɪbən]
 
 ![mark](http://image.codingce.com.cn/blog/20200911/165621236.png)
 
-# Ribbon能干嘛
+## Ribbon能干嘛
 - LB（负载均衡 LB，即负载均衡(Load Balance)，在微服务或分布式集群中经常用的一种应用。 
 - **负载均衡简单的说就是将用户的请求平摊的分配到多个服务上，从而达到系统的HA。**
 - 常见的负载均衡有软件Nginx，LVS，硬件 F5等。 
@@ -32,8 +32,8 @@ Ribbon [ˈrɪbən]
 
 ![mark](http://image.codingce.com.cn/blog/20200911/203942398.png)
 
-# 具体操作
-## pom
+## 具体操作
+### pom
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -84,7 +84,7 @@ Ribbon [ˈrɪbən]
     </dependencies>
 </project>
 ```
-## ConfigBean
+### ConfigBean
 ```java
 package cn.com.codingce.springcloud.config;
 
@@ -111,7 +111,7 @@ public class ConfigBean {   //configuration -- spring applicationContext.xml
 
 ```
 
-## DeptConsumerController
+### DeptConsumerController
 ```java
 package cn.com.codingce.springcloud.controller;
 
@@ -158,7 +158,7 @@ public class DeptConsumerController {
 }
 ```
 
-## 自定义负载均衡
+### 自定义负载均衡
 ![mark](http://image.codingce.com.cn/blog/20200912/094757534.png)
 
 ![mark](http://image.codingce.com.cn/blog/20200912/094939263.png)
@@ -168,7 +168,7 @@ public class DeptConsumerController {
 项目截图
 ![mark](http://image.codingce.com.cn/blog/20200912/095308699.png)
 
-### 自定义CodingCeRandomRule
+#### 自定义CodingCeRandomRule
 ```java
 package cn.com.codingce.myrule;
 
@@ -264,7 +264,7 @@ public class CodingCeRandomRule extends AbstractLoadBalancerRule {
 }
 ```
 
-### CodingCeRule
+#### CodingCeRule
 ```java
 package cn.com.codingce.myrule;
 

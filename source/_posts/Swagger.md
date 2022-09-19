@@ -9,14 +9,14 @@ categories:
 thumbnail: https://s1.ax1x.com/2020/08/20/dJdY0H.md.jpg
 ---
 
-# 项目集成Swagger
+## 项目集成Swagger
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108220958577.png)
 
 - 了解Swagger的概念及作用
 - 掌握在项目中集成Swagger自动生成API文档
 
-# Swagger简介
+## Swagger简介
 前后端分离
 - 前端 -> 前端控制层、视图层
 - 后端 -> 后端控制层、服务层、数据访问层
@@ -36,7 +36,7 @@ Swagger
 - 支持多种语言 （如：Java，PHP等）
 - 官网：https://swagger.io/
 
-# SpringBoot集成Swagger
+## SpringBoot集成Swagger
 SpringBoot集成Swagger => springfox，两个jar包
 - Springfox-swagger2
 - swagger-springmvc
@@ -80,7 +80,7 @@ public class SwaggerConfig {
 
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108220958408.png)
 
-# 配置Swagger
+## 配置Swagger
 
 - Swagger实例Bean是Docket，所以通过配置Docket实例来配置Swaggger.
 
@@ -123,7 +123,7 @@ public Docket docket() {
 ![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/202108221000060.png)
 
 
-# 配置扫描接口
+## 配置扫描接口
 - 构建Docket时通过select()方法配置怎么扫描接口.
 
 ```java
@@ -175,7 +175,7 @@ regex(final String pathRegex) // 通过正则表达式控制
 ant(final String antPattern) // 通过ant()控制
 ```
 
-# 配置Swagger开关
+## 配置Swagger开关
 
 - 通过enable()方法配置是否启用swagger，如果是false，swagger将不能在浏览器中访问了
 
@@ -218,7 +218,7 @@ public Docket docket(Environment environment) {
 - 可以在项目中增加一个dev的配置文件查看效果！
 
 
-# 配置API分组
+## 配置API分组
 
 - 如果没有配置分组，默认是default。通过groupName()方法即可配置分组：
 
@@ -293,7 +293,7 @@ public class SwaggerConfig {
 ```
 
 
-# 常用注解
+## 常用注解
 Swagger的所有注解定义在io.swagger.annotations包下
 
 下面列一些经常用到的，未列举出来的可以另行查阅说明：
@@ -340,7 +340,7 @@ public class HelloCobtroller {
 
 ```
 
-# 拓展：其他皮肤
+## 拓展：其他皮肤
 
 - 默认的   访问 http://localhost:8080/swagger-ui.html
 

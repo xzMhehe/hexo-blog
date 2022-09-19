@@ -4,7 +4,7 @@ date: 2020-08-21 17:06:41
 tags: [Java, 面经]
 ---
 
-# Java 流(Stream)、文件(File)和IO
+## Java 流(Stream)、文件(File)和IO
 Java.io 包几乎包含了所有操作输入、输出需要的类。所有这些流类代表了输入源和输出目标。
 
 Java.io 包中的流支持很多种格式，比如：基本类型、对象、本地化字符集等等。
@@ -13,7 +13,7 @@ Java.io 包中的流支持很多种格式，比如：基本类型、对象、本
 
 Java 为 I/O 提供了强大的而灵活的支持，使其更广泛地应用到文件传输和网络编程中。
 
-# 读取控制台输入
+## 读取控制台输入
 (JDK 5 前)
 Java 的控制台输入由 System.in 完成。
 
@@ -25,7 +25,7 @@ BufferedReader br = new BufferedReader(new
                       InputStreamReader(System.in));
 ```
 
-# 从控制台读取多字符输入
+## 从控制台读取多字符输入
 从 BufferedReader 对象读取一个字符要使用 read() 方法，它的语法如下：
 ```java
 int read( ) throws IOException
@@ -72,7 +72,7 @@ q
 ```
 
 
-# 从控制台读取字符串
+## 从控制台读取字符串
 (JDK 5 前)
 从标准输入读取一个字符串需要使用 BufferedReader 的 readLine() 方法。
 
@@ -115,7 +115,7 @@ end
 
 *JDK 5 后的版本我们也可以使用 Java Scanner 类来获取控制台的输入*
 
-# 读写文件
+## 读写文件
 如前所述，一个流被定义为一个数据序列。输入流用于从源读取数据，输出流用于向目标写数据。
 
 下图是一个描述输入流和输出流的类层次图。
@@ -123,7 +123,7 @@ end
 
 下面将要讨论的两个重要的流是 FileInputStream 和 FileOutputStream：
 
-## FileInputStream
+### FileInputStream
 该流用于从文件读取数据，它的对象可以用关键字 new 来创建。
 
 有多种构造方法可用来创建对象。
@@ -148,7 +148,7 @@ InputStream out = new FileInputStream(f);
 |4|public int read(byte[] r) throws IOException{} 这个方法从输入流读取r.length长度的字节。返回读取的字节数。如果是文件结尾则返回-1。|
 |5|public int available() throws IOException{} 返回下一次对此输入流调用的方法可以不受阻塞地从此输入流读取的字节数。返回一个整数值。|
 
-## FileOutputStream
+### FileOutputStream
 该类用来创建一个文件并向文件中写数据。
 
 如果该流在打开文件进行输出前，目标文件不存在，那么该流会创建该文件。
@@ -256,7 +256,7 @@ public class fileStreamTest2 {
 }
 ```
 
-# Java Scanner 类
+## Java Scanner 类
 java.util.Scanner 是 Java5 的新特征，我们可以通过 Scanner 类来获取用户的输入。
 下面是创建 Scanner 对象的基本语法：
 ```java
@@ -264,7 +264,7 @@ Scanner s = new Scanner(System.in);
 ```
 
 接下来我们演示一个最简单的数据输入，并通过 Scanner 类的 next() 与 nextLine() 方法获取输入的字符串，在读取前我们一般需要 使用 hasNext 与 hasNextLine 判断是否还有输入的数据：
-## 使用 next 方法：
+### 使用 next 方法：
 ```java
 import java.util.Scanner; 
  
@@ -295,7 +295,7 @@ runoob com
 ```
 
 可以看到 com 字符串并未输出，接下来我们看 nextLine。
-## 使用 nextLine 方法：
+### 使用 nextLine 方法：
 ```java
 import java.util.Scanner;
  
@@ -327,7 +327,7 @@ runoob com
 
 可以看到 com 字符串输出。
 
-## next() 与 nextLine() 区别
+### next() 与 nextLine() 区别
 next():
 - 一定要读取到有效字符后才可以结束输入。
 - 对输入有效字符之前遇到的空白，next() 方法会自动将其去掉。

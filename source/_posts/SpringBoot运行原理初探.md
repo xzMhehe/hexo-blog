@@ -8,8 +8,8 @@ categories:
 
 ---
 Maven项目，一般从pom.xml文件探究起；
-# pom.xml
-## 父依赖
+## pom.xml
+### 父依赖
 其中它主要是依赖一个父项目，主要是管理项目的资源过滤及插件！
 ```xml
 <parent>
@@ -33,7 +33,7 @@ Maven项目，一般从pom.xml文件探究起；
 
 **以后导入依赖默认是不需要写版本；但是如果导入的包没有在依赖中管理着就需要手动配置版本了；**
 
-## 启动器 spring-boot-starter
+### 启动器 spring-boot-starter
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -47,9 +47,9 @@ Maven项目，一般从pom.xml文件探究起；
 
 SpringBoot将所有的功能场景都抽取出来，做成一个个的starter （启动器），只需要在项目中引入这些starter即可，所有相关的依赖都会导入进来 ，要用什么功能就导入什么样的场景启动器即可 ；未来也可以自己自定义 starter；
 
-# 主启动类
+## 主启动类
 分析完了 pom.xml 来看看这个启动类
-## 默认的主启动类
+### 默认的主启动类
 ```java
 //@SpringBootApplication 来标注一个主程序类
 //说明这是一个Spring Boot应用
@@ -66,7 +66,7 @@ public class SpringbootApplication {
 
 **一个简单的启动类并不简单！**
 
-## @SpringBootApplication
+### @SpringBootApplication
 作用：标注在某个类上说明这个类是SpringBoot的主配置类 ， SpringBoot就应该运行这个类的main方法来启动SpringBoot应用；
 
 进入这个注解：可以看到上面还有很多其他注解！   
@@ -87,12 +87,12 @@ public @interface SpringBootApplication {
 }
 ```
 
-## @ComponentScan
+### @ComponentScan
 这个注解在Spring中很重要 ,它对应XML配置中的元素。
 
 作用：自动扫描并加载符合条件的组件或者bean ， 将这个bean定义加载到IOC容器中
 
-## @SpringBootConfiguration
+### @SpringBootConfiguration
 
 作用：SpringBoot的配置类 ，标注在某个类上 ， 表示这是一个SpringBoot的配置类；
 
@@ -113,7 +113,7 @@ public @interface Configuration {}
 
 回到 SpringBootApplication 注解中继续看。
 
-## @EnableAutoConfiguration
+### @EnableAutoConfiguration
 @EnableAutoConfiguration ：开启自动配置功能
 以前需要自己配置的东西，而现在SpringBoot可以自动配置 ；@EnableAutoConfiguration告诉SpringBoot开启自动配置功能，这样自动配置才能生效；
 
@@ -194,7 +194,7 @@ private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoad
 ```
 
 - 发现一个多次出现的文件：spring.factories
-## spring.factories
+### spring.factories
 根据源头打开spring.factories ， 看到了很多自动配置的文件；这就是自动配置根源所在！
 ![mark](http://image.codingce.com.cn/blog/20200809/082400571.png)
 WebMvcAutoConfiguration
@@ -212,8 +212,8 @@ WebMvcAutoConfiguration
 - 它会给容器中导入非常多的自动配置类 （xxxAutoConfiguration）, 就是给容器中导入这个场景需要的所有组件 ， 并配置好这些组件 ；
 - 有了自动配置类 ， 免去了手动编写配置注入功能组件等的工作；
 
-# SpringApplication
-## 不简单的方法
+## SpringApplication
+### 不简单的方法
 我最初以为就是运行了一个main方法，没想到却开启了一个服务；
 ```java
 @SpringBootApplication
@@ -227,7 +227,7 @@ public class SpringbootApplication {
 **SpringApplication.run分析**
 分析该方法主要分两部分，一部分是SpringApplication的实例化，二是run方法的执行；
 
-## SpringApplication
+### SpringApplication
 这个类主要做了以下四件事情：
 
 - 推断应用的类型是普通的项目还是Web项目
@@ -246,7 +246,7 @@ public SpringApplication(ResourceLoader resourceLoader, Class... primarySources)
 }
 ```
 
-## run方法流程分析
+### run方法流程分析
 
 ![mark](http://image.codingce.com.cn/blog/20200809/082900623.png)
 

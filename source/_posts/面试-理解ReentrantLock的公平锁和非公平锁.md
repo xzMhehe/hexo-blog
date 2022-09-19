@@ -15,7 +15,7 @@ thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/2021090
 
 首先从公平锁开始看起。
 
-# ReentrantLock 的公平锁
+## ReentrantLock 的公平锁
 ReentrantLock 默认采用非公平锁，除非在构造方法中传入参数 true 。
 
 ```java
@@ -29,7 +29,7 @@ ReentrantLock 默认采用非公平锁，除非在构造方法中传入参数 tr
     }
 ```
 
-# 公平锁的 lock 方法：
+## 公平锁的 lock 方法：
 ```java
     static final class FairSync extends Sync {
         final void lock() {
@@ -67,7 +67,7 @@ ReentrantLock 默认采用非公平锁，除非在构造方法中传入参数 tr
 我们可以看到，在注释1的位置，有个`!hasQueuedPredecessors()`条件，意思是说当前同步队列没有前驱节点（也就是没有线程在等待）时才会去`compareAndSetState(0, acquires)`使用CAS修改同步状态变量。所以就实现了公平锁，根据线程发出请求的顺序获取锁。
 
 
-# 非公平锁的lock方法
+## 非公平锁的lock方法
 ```java
     static final class NonfairSync extends Sync {
         final void lock() {
@@ -114,7 +114,7 @@ ReentrantLock 默认采用非公平锁，除非在构造方法中传入参数 tr
 非公平锁的实现在刚进入lock方法时会直接使用一次CAS去尝试获取锁，不成功才会到acquire方法中，如注释2。而在nonfairTryAcquire方法中并没有判断是否有前驱节点在等待，直接CAS尝试获取锁，如注释3。由此实现了非公平锁。
 
 
-# 总结
+## 总结
 **非公平锁和公平锁的两处不同**：
 - 非公平锁在调用 lock 后，首先就会调用 CAS 进行一次抢锁，如果这个时候恰巧锁没有被占用，那么直接就获取到锁返回了。
 

@@ -5,7 +5,7 @@ tags: 音视频
 categories: [音视频]
 ---
 
-# IJKFFOptions参数说明
+## IJKFFOptions参数说明
 ```cpp
 // 打开h265硬解
 ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec-hevc", 1);
@@ -90,7 +90,7 @@ if (直播) {
 ```
 
 
-# skip_loop_filter参数相关
+## skip_loop_filter参数相关
 ```cpp
 // for codec option 'skip_loop_filter' and 'skip_frame'
 typedef enum IJKAVDiscard {
@@ -120,21 +120,21 @@ typedef enum IJKAVDiscard {
 [h.264 去块滤波块效应及其产生原因](https:// www.cnblogs.com/TaigaCon/p/5500110.html)
 
 
-# 相关问题以及解决方案
-## 达不到秒开，首屏显示慢，后来把播放前探测时间改为1
+## 相关问题以及解决方案
+### 达不到秒开，首屏显示慢，后来把播放前探测时间改为1
 ```cpp
 // 播放前的探测时间
 [options setFormatOptionIntValue:1 forKey:@”analyzeduration”];
 ```
 
-## 音画不同步
+### 音画不同步
 有同事发现在模拟器的情况下音画不同步，刚开始理解以为是CPU处理画面处理不过来，所以加了framedrop参数 做了丢帧处理，后来才明白是因为模拟器处理效率低，不需要做丢帧处理
 ```cpp
 // 开启硬解码（硬件解码CPU消耗低。软解，更稳定）
 [options setPlayerOptionIntValue:1 forKey:@”videotoolbox”];
 ```
 
-## 延迟产生的原因以及优化
+### 延迟产生的原因以及优化
 原因:       
 保证直播的流畅性是指在直播过程中保证播放不发生卡顿，卡顿是指在播放过程中声音和画面出现停滞，非常影响用户体验。造成卡顿的原因有几种情况:
 - 推流端网络抖动导致数据无法发送到服务器，造成播放端卡顿;
@@ -150,7 +150,7 @@ typedef enum IJKAVDiscard {
 为了解决这个问题，首先`播放器需要将拉流线程和解码线程分开`，`并建立一个缓冲队列用于缓冲音视频数据`。拉流线程将从服务器上获取到的音视频流放入队列，解码线程从队列中获取音视频数据进行解码播放，队列的长度可以调整。当网络发生抖动时，播放器无法从服务器上获取到数据或获取数据的速度较慢，此时队列中缓存的数据可以起到一个过渡的作用，让用户感觉不到网络发生了抖动。
 当然这是对于网络发生抖动的情况所采取的策略，如果播放端的网络迟迟不能恢复或者服务器的边缘结点 出现宕机，则需要应用层进行重连或调度。
 
-## 软硬编解码的选择
+### 软硬编解码的选择
 `软编解码`：使用`CPU进行编解码`，大多使用`FFmpeg`来编码和解压音视频数据；
 
 `硬编解码`：主要使用`非CPU`进行编解码，如`GPU`等。在使用中，大多直接调用系统API进行音视频编解码处理。
