@@ -21,9 +21,9 @@ sidebar:
     # welcome
     welcome:
       layout: markdown
-      title: 旅行者
+      title: 【后端码匠】微信公众号
       content: |
-        The depth of thinking determines your altitude.
+        但行好事，莫問前程。
 
 ######## Comments ########
 comments:
