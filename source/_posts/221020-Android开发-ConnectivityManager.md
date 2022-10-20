@@ -5,7 +5,29 @@ tags: Android
 categories: [Android]
 ---
 
-ConnectivityManager类用于查询网络状态，并且也能被动监听网络状态的变化。
+
+## 概况
+ConnectivityManager主要职责，官方说明：
+>Monitor network connections (Wi-Fi, GPRS, UMTS, etc.)
+Send broadcast intents when network connectivity changes
+Attempt to "fail over" to another network when connectivity to a network is lost
+Provide an API that allows applications to query the coarse-grained or fine-grained state of the available networks
+Provide an API that allows applications to request and select networks for their data traffic
+
+>监控网络连接(Wi-Fi, GPRS, UMTS, etc.)；
+当网络连接改变时发送Intent；
+当连接到一个网络失败时，尝试用其他网络补救；
+提供API给应用查询有效网络粗略或者精确的状态；
+提供API给应用为它们的数据传输请求和选择网络；
+
+`ConnectivityManager类用于查询网络状态，并且也能被动监听网络状态的变化。`
+
+## 需要的权限
+```xml
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+```
+
+
 
 ## 判断是否有网络
 下面这个getActiveNetworkInfo 方法是过时的旧方法。这里记录一下，请注意如果获取到的是null，那么等于当前设备没有连接网络。注意这里是使用kotlin代码调用的。
