@@ -12,7 +12,7 @@
     "version": "5.4.2"
   },
   "dependencies": {
-    "acorn": "^2.7.0",
+    "acorn": "^8.8.1",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "gitment": "^0.0.3",
