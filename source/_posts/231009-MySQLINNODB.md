@@ -9,8 +9,8 @@ categories:
 keywords:
   - MySQL
 description: MySQL
-headimg: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/img/mo/20231009143126.png
-thumbnail: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/img/mo/20231009143126.png
+headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN@main/static/img/gf/20240121102727.png
+thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN@main/static/img/gf/20240121102727.png
 ---
 
 ## 简介
