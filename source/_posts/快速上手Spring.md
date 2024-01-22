@@ -118,7 +118,7 @@ public class MyTest {
         根据set方法注入
     -->
 
-    <bean id="mysqlImpl" class="cn.com.codingce.dao.UserDaoMysqlImpl" />
+    <bean id="mysqlImpl" class="cn.com.codingce.dao.UserDaoMySQLImpl" />
     <bean id="oracleImpl" class="cn.com.codingce.dao.UserDaoOracleImpl" />
     <bean id="UserServiceImpl" class="cn.com.codingce.service.UserServiceImpl">
         <!--ref 引用Spring容器中创建好的对象
@@ -135,7 +135,7 @@ public class MyTest {
 //    public static void main(String[] args) {
 //        //用户实际调用的是业务层, dao层他们不需要接触
 //        UserService userService = new UserServiceImpl();
-//        ((UserServiceImpl)userService).setUserDao(new UserDaoMysqlImpl());
+//        ((UserServiceImpl)userService).setUserDao(new UserDaoMySQLImpl());
 //        userService.getUser();
 //    }
 

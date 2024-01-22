@@ -1,5 +1,5 @@
 ---
-title: Mysql - 数据库面试题打卡第三天
+title: MySQL - 数据库面试题打卡第三天
 date: 2021-06-21 11:06:15
 tags:
   - MySQL

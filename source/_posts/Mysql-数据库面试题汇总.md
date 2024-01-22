@@ -1,5 +1,5 @@
 ---
-title: Mysql - 数据库面试题汇总
+title: MySQL - 数据库面试题汇总
 date: 2021-06-25 09:26:17
 password: houduanmajiang
 abstract: 密码是"后端码匠"的拼音

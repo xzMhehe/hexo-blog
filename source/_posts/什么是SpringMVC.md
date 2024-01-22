@@ -80,7 +80,7 @@ Model2这样不仅提高的代码的复用率与项目的扩展性，且大大�
 
 - 王坚 去 IOE MySql
 
-- Mysql:    Mysql->AliSQL->AliRedis
+- MySQL:    MySQL->AliSQL->AliRedis
 
 - All in one --->微服务
 

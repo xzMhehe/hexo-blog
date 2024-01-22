@@ -74,9 +74,9 @@ Spring 框架是一个分层架构,由 7 个定义良好的模块组成.Spring �
 ```
 
 ```java
-    public class UserDaoMysqlImpl implements UserDao {
+    public class UserDaoMySQLImpl implements UserDao {
         public void getUser() {
-            System.out.println("Mysql获取用户数据");
+            System.out.println("MySQL获取用户数据");
         }
     }
 ```
@@ -138,7 +138,7 @@ public class UserServiceImpl implements UserService {
         public static void main(String[] args) {
             //用户实际调用的是业务层, dao层他们不需要接触
             UserService userService = new UserServiceImpl();
-            ((UserServiceImpl)userService).setUserDao(new UserDaoMysqlImpl());
+            ((UserServiceImpl)userService).setUserDao(new UserDaoMySQLImpl());
             userService.getUser();
         }
     }
