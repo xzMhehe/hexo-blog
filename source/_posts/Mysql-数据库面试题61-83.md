@@ -1,5 +1,5 @@
 ---
-title: Mysql - 数据库面试题打卡第七天
+title: MySQL - 数据库面试题打卡第七天
 date: 2021-06-25 09:04:14
 tags:
   - MySQL

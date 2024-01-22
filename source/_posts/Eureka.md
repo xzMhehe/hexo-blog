@@ -134,7 +134,7 @@ eureka:
 
 ## 对比Zookeeper
 回顾CAP原则
-RDBMS(Mysql、Oracle、sqlServer) ==>ACID
+RDBMS(MySQL、Oracle、sqlServer) ==>ACID
 NoSQL(redis、 mongdb)==>CAP
 
 ### ACID是什么
