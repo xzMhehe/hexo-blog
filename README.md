@@ -43,14 +43,9 @@ hexo-blog, 拉取即用
 
 1.  Hexo官方文档 https://hexo.io/zh-cn/docs/commands
 
-#### 效果图
-![mark](http://image.codingce.com.cn/blog/20200926/104806961.png)
-![mark](http://image.codingce.com.cn/blog/20200926/104829089.png)
-
 ### 注
-
 - 访问地址：[个人博客](https://i.codingce.com.cn/)
 
 ### 更新时间
 
->2021-07-07
+>2024-01-26
