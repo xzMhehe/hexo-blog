@@ -5,7 +5,11 @@
 
 # hexo-blog 个人博客
 
+
 ##  GitHub地址
+
+
+
 https://github.com/xzMhehe/hexo-blog
 
 ##  介绍
@@ -13,12 +17,14 @@ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（�
 
 hexo-blog, 拉取即用。
 
+
 ## 基本配置
 
-- 这是我的个人博客仓库，搭建原理为 [hexo](https://hexo.io/zh-cn/) + [Github Pages](https://pages.github.com/)；
-- 使用的主题是经 [inside](https://github.com/ikeq/hexo-theme-inside) 修改而来；
-- 图片储存在 [七牛云](https://www.qiniu.com/),目前使用的图床是 [MPic-图床神器](http://mpic.lzhaofu.cn/)；
-- 评论插件使用的是 [Valine](https://valine.js.org/)。
+- 这是我的个人博客仓库，搭建原理为 [hexo](https://hexo.io/zh-cn/) + [Github Pages](https://pages.github.com/)
+- 使用的主题是经 [inside](https://github.com/ikeq/hexo-theme-inside) 修改而来
+- 图片储存在 [七牛云](https://www.qiniu.com/),目前使用的图床是 [MPic-图床神器](http://mpic.lzhaofu.cn/)
+- 评论插件使用的是 [gitalk](https://gitalk.github.io/).
+
 
 ## 进阶配置
 
@@ -35,10 +41,10 @@ hexo-blog, 拉取即用。
 - `Visual Studio Code`
 
 ## 使用说明
-
 1.  hexo s 本地运行；
 2.  hexo d 远程部署；
 3.  hexo clean 清除缓存文件 (db.json) 和已生成的静态文件 (public)。
+
 
 ## 参与贡献
 
