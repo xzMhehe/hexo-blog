@@ -104,7 +104,7 @@ public class ExcelHeadTestController {
 ## 代码实现
 
 ### 导出工具
-exHealthSheetDy 静态方法如下，实现了 2 个 sheet 不同结构导出，
+exHealthSheetDy 静态方法如下，实现了 2 个 sheet 不同结构导出。
 ```java
 /**
  * 2 sheet 动态追加列
