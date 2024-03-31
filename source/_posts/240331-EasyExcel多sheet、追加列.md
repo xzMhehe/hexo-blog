@@ -17,8 +17,11 @@ thumbnail: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/
 ## 背景
 最近接到一个导出Excel的业务，需求就是`多sheet`，`每个sheet导出不同结构`，`第一个sheet里面能够根据最后一列动态的追加列`。原本使用的 pig4cloud 架子，使用 @ResponseExcel注解方式组装返回数据即可，但是实现过程中发现并不是所想要的效果。
 
-组件地址：https://github.com/pig-mesh/excel-spring-boot-starter
+>组件地址：https://github.com/pig-mesh/excel-spring-boot-starter
 
+这样写能够实现多 sheet 导出，但是动态的移除列然后在追加列我尝试了并没有好的方案，有可能也是我没有找到，我找到的是下面面动态的修改列名称。
+
+多 sheet导出，只需要返 `List<List>` 即可。
 ```java
 @ResponseExcel(name = "不同Sheet的导出", sheet = {"sheet1", "sheet2"})
 @PostMapping("/export")
@@ -28,7 +31,6 @@ public List<List> export(@RequestBody queryModel model) {
 }
 ```
 
-组件动态修改列方案
 >导出并自定义头信息
 ```java
 @Data
@@ -97,16 +99,15 @@ public class ExcelHeadTestController {
 ![](https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/img/gf/20240331142833.png)
 
 
-这样写能够实现多 sheet 导出，但是动态的追加列我尝试了并没有好的方案，有可能也是我没有找到，我找到的是上面动态的修改列名称。
-
 那就只能放弃使用组件方式，自己写 EasyExcel 拦截器。
 
 ## 代码实现
 
 ### 导出工具
+exHealthSheetDy 静态方法如下，实现了 2 个 sheet 不同结构导出，
 ```java
 /**
- * 多 sheet 动态追加列
+ * 2 sheet 动态追加列
  *
  * @param response      响应
  * @param dataMap       dataMap
