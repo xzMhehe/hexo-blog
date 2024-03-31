@@ -8,8 +8,8 @@ categories:
 keywords:
   - 业务
 description: 业务-EasyExcel多sheet、追加列
-headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN@main/static/img/gf/20240331142111.png
-thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN@main/static/img/gf/20240331142111.png
+headimg: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/img/gf/20240331142111.png
+thumbnail: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/img/gf/20240331142111.png
 ---
 
 # 业务-EasyExcel多sheet、追加列
@@ -94,7 +94,7 @@ public class ExcelHeadTestController {
 }
 ```
 
-![](https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN@main/static/img/gf/20240331142833.png)
+![](https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/img/gf/20240331142833.png)
 
 
 这样写能够实现多 sheet 导出，但是动态的追加列我尝试了并没有好的方案，有可能也是我没有找到，我找到的是上面动态的修改列名称。
