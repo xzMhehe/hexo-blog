@@ -15,7 +15,7 @@ thumbnail: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/
 # 业务-EasyExcel多sheet、追加列
 
 ## 背景
-最近接到一个导出Excel的业务，需求就是`多sheet`，`每个sheet导出不同结构`，`第一个sheet里面能够根据最后一列动态的追加列`。原本使用的 pig4cloud 架子，使用 @ResponseExcel注解方式组装返回数据即可，但是实现过程中发现并不是所想要的效果。
+最近接到一个导出Excel的业务，需求就是`多sheet`，`每个sheet导出不同结构`，`第一个sheet里面能够根据最后一列动态的追加列，追加多少得看运营人员传了多少需求列`。原本使用的 pig4cloud 架子，使用 @ResponseExcel注解方式组装返回数据即可，但是实现过程中发现并不是所想要的效果。
 
 >组件地址：https://github.com/pig-mesh/excel-spring-boot-starter
 
@@ -161,7 +161,7 @@ private static OutputStream getOutputStream(String fileName, HttpServletResponse
 
 
 ### 拦截器
-业务需求是根据 13 列切割追加列。
+业务需求是根据 13 列切割根据传入的要求集合追加列。
 ```java
 import cn.hutool.core.util.StrUtil;
 import com.alibaba.excel.write.handler.RowWriteHandler;
@@ -257,7 +257,7 @@ public class LabelGroupNameRowWriteHandler implements RowWriteHandler {
 	}
 
 	/**
-	 * excel首列序号列样式
+	 * excel列样式
 	 *
 	 * @param workbook Workbook
 	 * @return CellStyle
