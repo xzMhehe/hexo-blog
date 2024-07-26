@@ -9,8 +9,8 @@ categories:
 keywords:
   - MySQL
 description: MySQL
-headimg: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/gf/20240630080316.png
-thumbnail: https://cdn.jsdelivr.net/gh/xzMhehe/StaticFile_CDN/static/img/gf/20240630080316.png
+headimg: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/img/mo/20240726142126.png
+thumbnail: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/img/mo/20240726142126.png
 ---
 这个问题我相信大家对它并不陌生，但是有很多人对它产生的原因以及处理吃的不是特别透，很多情况都是交给DBA去定位和处理问题，接下来我们就针对这个问题来展开讨论。
 
