@@ -7,6 +7,9 @@ categories:
   - 业务
 keywords:
   - 业务
+theme: up
+password: houduanmajiang
+abstract: 更多精彩关注 后端码匠 微信公众号
 description: 业务-EasyExcel多sheet、追加列
 headimg: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/img/gf/20240331142111.png
 thumbnail: https://raw.githubusercontent.com/xzMhehe/StaticFile_CDN/main/static/img/gf/20240331142111.png
@@ -249,8 +252,6 @@ public class LabelGroupNameRowWriteHandler implements RowWriteHandler {
 			firstCellStyle = firstCellStyle(workbook);
 			for (Map.Entry<String, Cell> stringCellEntry : map.entrySet()) {
 				stringCellEntry.getValue().setCellValue(stringCellEntry.getKey());
-				stringCellEntry.getValue().setCellStyle(firstCellStyle);
-				stringCellEntry.getValue().setCellStyle(firstCellStyle);
 				stringCellEntry.getValue().setCellStyle(firstCellStyle);
 			}
 		}
