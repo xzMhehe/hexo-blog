@@ -8,10 +8,20 @@ copyright: false
 
 <div class="friends">
     <a class="brick mdui-ripple mdui-ripple-white" href="https://pinkpeachabc.cn/">
+        <img class="blog-avatar" src="https://awps-assets.meituan.net/mit/blog/v20190629/asset/icon/android-icon-192x192.png?v=Whistle&t=20181017-1r">
+        <div class="container">
+            <div class="name">美团技术团队</div>
+            <div class="motto">一行代码，亿万生活</div>
+        </div>
+    </a>
+</div>
+
+<div class="friends">
+    <a class="brick mdui-ripple mdui-ripple-white" href="https://pinkpeachabc.cn/">
         <img class="blog-avatar" src="https://cdn.jsdelivr.net/gh/pinkpeachabc/images/Blog-imgs/logo.png">
         <div class="container">
             <div class="name">pinkpeach</div>
-            <div class="motto">Life is sad at times, but it is up to you to make your own life happy..</div>
+            <div class="motto">Life is sad at times, but it is up to you to make your own life happy.</div>
         </div>
     </a>
 </div>
