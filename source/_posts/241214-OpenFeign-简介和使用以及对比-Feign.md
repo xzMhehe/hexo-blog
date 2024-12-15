@@ -433,7 +433,7 @@ public class OrderController {
 }
 ```
 
-# 效果
+## 效果
 
 Nacos
 
@@ -461,8 +461,8 @@ curl --request GET \
 ```
 
 
-# 配置说明
-## 超时配置
+## 配置说明
+### 超时配置
 
 ```yml
 client:
@@ -491,7 +491,7 @@ client:
         connect-timeout: 2000
         read-timeout: 2000
 ```
-## Gzip压缩设置
+### Gzip压缩设置
 OpenFeign 可对请求与响应进行压缩设置
 ```yml
 cloud:
@@ -506,7 +506,7 @@ cloud:
             enabled: true
 ```
 
-# 负载均衡
+## 负载均衡
 
 OpenFeign 的负载均衡器 Ribbon 默认采用的是轮询算法
 更换负载均衡策略
@@ -561,7 +561,7 @@ public class OpenFeignConfig {
 ```
 
 
-# 对比Feign
+## 对比Feign
 Feign 的远程调用底层实现技术默认采用的是 JDK 的 URLConnection，同时还支持HttpClient 与 OkHttp。由于 JDK 的 URLConnection 不支持连接池，通信效率很低，所以生产中是不会使用该默认实现的。
 
 Spring Cloud OpenFeign 中直接将默认实现变为了 HttpClient，同时也支持OkHttp。用户可根据业务需求选择要使用的远程调用底层实现技术。
