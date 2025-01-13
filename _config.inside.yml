@@ -119,7 +119,7 @@ sns:
 # Sidebar footer copyright info
 footer:
   # Set to false to hide.
-  copyright: '&copy; 2024 ♥ <span>后端码匠</span>'
+  copyright: '&copy; 2025 ♥ <span>后端码匠</span>'
 
   # Set to false to hide Hexo link.
   powered: false
