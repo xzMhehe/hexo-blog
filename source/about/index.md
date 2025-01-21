@@ -37,7 +37,7 @@ menu_id: about
 }
 ```
 
-<center><font color=BBBBBB size=3>永远相信美好的事情终将发生！</font></center>
+<center><font color=BBBBBB size=3>永远相信美好的事情即将发生！</font></center>
 
 <center><font color=BBBBBB size=5>本站微信公众号</font></center>
 
